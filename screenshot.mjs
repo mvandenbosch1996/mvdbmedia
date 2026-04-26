@@ -20,11 +20,14 @@ const next = existing.length ? Math.max(...existing) + 1 : 1;
 const filename = `screenshot-${next}${label}.png`;
 const outPath  = path.join(screenshotDir, filename);
 
-const browser = await puppeteer.launch({ headless: 'new' });
-const page    = await browser.newPage();
-await page.setViewport({ width: 1440, height: 900 });
-await page.goto(url, { waitUntil: 'networkidle2' });
-await page.screenshot({ path: outPath, fullPage: true });
-await browser.close();
+const browser = await puppeteer.launch({ headless: true });
+try {
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.goto(url, { waitUntil: 'networkidle2' });
+  await page.screenshot({ path: outPath, fullPage: true });
+} finally {
+  await browser.close();
+}
 
 console.log(`Screenshot saved: temporary screenshots/${filename}`);
