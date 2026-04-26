@@ -41,7 +41,84 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <nav id="nav" style="
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+">
+  <!-- Logo -->
+  <a href="#" style="
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    text-decoration: none;
+    line-height: 1;
+  ">MVDB<span style="color: var(--orange);">media</span></a>
+
+  <!-- Navigatielinks (desktop) -->
+  <div id="nav-links" style="display: flex; gap: 32px; align-items: center;">
+    <a href="#diensten" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease;">Diensten</a>
+    <a href="#portfolio" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease;">Portfolio</a>
+    <a href="#over" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease;">Over mij</a>
+    <a href="#contact" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease;">Contact</a>
+  </div>
+
+  <!-- CTA -->
+  <a href="#contact" style="
+    background: var(--orange);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 8px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+  " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Offerte aanvragen</a>
+
+  <!-- Hamburger (mobiel) -->
+  <button id="menu-btn" onclick="toggleMenu()" style="
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 5px;
+  ">
+    <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+  </button>
+</nav>
+
+<!-- Mobiel menu -->
+<div id="mobile-menu" style="
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 49;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px 24px;
+  flex-direction: column; gap: 16px;
+">
+  <a href="#diensten" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Diensten</a>
+  <a href="#portfolio" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Portfolio</a>
+  <a href="#over" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Over mij</a>
+  <a href="#contact" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0;">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="
+    display: block; text-align: center; margin-top: 8px;
+    background: var(--orange); color: #000;
+    font-size: 0.8rem; font-weight: 800; padding: 12px;
+    border-radius: 3px; text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  ">Offerte aanvragen</a>
+</div>
   <!-- HERO -->
   <!-- DIENSTEN -->
   <!-- PORTFOLIO -->
@@ -50,7 +127,26 @@
   <!-- FOOTER -->
 
   <script>
-    // JS voor interactiviteit komt hier
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Nav links hover
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('mouseenter', () => link.style.color = 'var(--text-primary)');
+      link.addEventListener('mouseleave', () => link.style.color = 'var(--text-secondary)');
+    });
+
+    // Responsive nav
+    function handleResize() {
+      const w = window.innerWidth;
+      document.getElementById('nav-links').style.display = w < 768 ? 'none' : 'flex';
+      document.querySelector('nav > a[href="#contact"]').style.display = w < 768 ? 'none' : 'inline-block';
+      document.getElementById('menu-btn').style.display = w < 768 ? 'flex' : 'none';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
   </script>
 </body>
 </html>
