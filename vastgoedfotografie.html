@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vastgoedfotografie — MVDBmedia</title>
+  <meta name="description" content="Professionele vastgoedfotografie, 360° virtuele tours en dronebeelden voor makelaars, bouwbedrijven en vastgoedontwikkelaars. Snel geleverd, scherp geprijsd.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mvdbmedia.nl/vastgoedfotografie.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mvdbmedia.nl/vastgoedfotografie.html">
+  <meta property="og:title" content="Vastgoedfotografie — MVDBmedia">
+  <meta property="og:description" content="Panden die zichzelf verkopen — vanaf de eerste blik. Professionele vastgoedfotografie, 360° tours en dronebeelden.">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/vastgoed-huis.jpg">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vastgoedfotografie — MVDBmedia">
+  <meta name="twitter:description" content="Professionele vastgoedfotografie voor makelaars en vastgoedontwikkelaars.">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/vastgoed-huis.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base:      #0d0d0d;
+      --bg-elevated:  #161616;
+      --bg-card:      #1a1a1a;
+      --border:       #2a2a2a;
+      --border-light: #333333;
+      --orange:       #ff8c00;
+      --orange-dim:   #c96e00;
+      --orange-glow:  rgba(255,140,0,0.15);
+      --text-primary: #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted:   #5a5550;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --shadow-sm:    0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-md:    0 8px 24px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
+      --shadow-lg:    0 20px 48px rgba(0,0,0,0.6), 0 6px 16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+    }
+
+    /* ── Scroll reveal ── */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ── Nav responsive ── */
+    @media (max-width: 900px) {
+      #nav-links, #nav-cta { display: none !important; }
+      #menu-btn { display: flex !important; }
+    }
+
+    /* ── Section responsive padding ── */
+    @media (max-width: 768px) {
+      .section-pad { padding: 72px 24px !important; }
+      .hero-section { padding: 60px 24px 56px !important; min-height: 60vh !important; }
+      .intro-grid { grid-template-columns: 1fr !important; }
+      .intro-img-col { display: none !important; }
+      .include-grid { grid-template-columns: 1fr !important; }
+      .voor-wie-grid { grid-template-columns: 1fr !important; }
+      .tour-block { padding: 28px 24px !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+      .footer-bottom { flex-direction: column !important; align-items: flex-start !important; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Card hover ── */
+    .include-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
+    }
+    .include-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,140,0,0.08);
+    }
+
+    .voor-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1);
+    }
+    .voor-card:hover {
+      border-color: var(--border-light);
+      transform: translateX(4px);
+    }
+
+    /* ── Buttons ── */
+    .btn-orange {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(255,140,0,0.28), 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.4), 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .btn-orange:active { transform: translateY(0); }
+    .btn-orange:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border-light);
+      padding: 13px 24px;
+      border-radius: 3px;
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .btn-ghost:hover {
+      color: var(--text-primary);
+      border-color: rgba(255,140,0,0.35);
+      transform: translateY(-1px);
+    }
+    .btn-ghost:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    /* ── Orange label ── */
+    .orange-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .orange-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── Icon circle ── */
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,140,0,0.1);
+      border: 1px solid rgba(255,140,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--orange);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════ NAV ══════════════════════════ -->
+  <nav style="
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  ">
+    <a href="index.html" style="
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1;
+    ">MVDB<span style="color: var(--orange);">media</span></a>
+
+    <div id="nav-links" style="display: flex; gap: 32px; align-items: center;">
+      <a href="index.html#diensten" style="font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s ease;"
+         onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Diensten</a>
+      <a href="index.html#portfolio" style="font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s ease;"
+         onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
+      <a href="index.html#over" style="font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s ease;"
+         onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Over mij</a>
+      <a href="index.html#contact" style="font-size:0.8rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s ease;"
+         onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
+    </div>
+
+    <a id="nav-cta" href="index.html#contact" class="btn-orange" style="padding:8px 20px;font-size:0.7rem;">Offerte aanvragen</a>
+
+    <button id="menu-btn" onclick="toggleMenu()" style="
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    " aria-label="Menu openen">
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" style="
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 49;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px 24px;
+    flex-direction: column; gap: 16px;
+  ">
+    <a href="index.html#diensten" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Diensten</a>
+    <a href="index.html#portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="index.html#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="index.html#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="index.html#contact" onclick="toggleMenu()" class="btn-orange" style="display:block;text-align:center;margin-top:8px;">Offerte aanvragen</a>
+  </div>
+
+
+  <!-- ══════════════════════════ HERO ══════════════════════════ -->
+  <section class="hero-section" style="
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 80px 64px;
+    overflow: hidden;
+  ">
+    <!-- Background image -->
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Vastgoedfotografie" style="
+        width:100%;height:100%;object-fit:cover;object-position:center;
+        display:block;
+      ">
+      <!-- Gradient overlay -->
+      <div style="
+        position:absolute;inset:0;
+        background:linear-gradient(to top,rgba(13,13,13,0.97) 0%,rgba(13,13,13,0.55) 50%,rgba(13,13,13,0.3) 100%);
+      "></div>
+    </div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;max-width:1280px;width:100%;margin:0 auto;">
+
+      <!-- Breadcrumb -->
+      <a href="index.html#diensten" style="
+        display:inline-flex;align-items:center;gap:6px;
+        font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+        color:var(--orange);text-decoration:none;margin-bottom:28px;
+        transition:opacity 0.2s ease;
+      " onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+        ← Terug
+      </a>
+
+      <!-- Orange label -->
+      <div style="
+        font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+        color:var(--orange);margin-bottom:18px;
+      ">— FOTOGRAFIE &amp; VIDEO PRODUCTIE —</div>
+
+      <!-- H1 -->
+      <h1 style="
+        font-family:var(--font-display);
+        font-size:clamp(4rem,8vw,9rem);
+        line-height:0.88;
+        letter-spacing:0.02em;
+        color:var(--text-primary);
+        margin-bottom:24px;
+      ">VASTGOED&shy;<br><span style="color:var(--orange);">FOTOGRAFIE</span></h1>
+
+      <!-- Tagline -->
+      <p style="
+        font-size:1.05rem;
+        font-weight:300;
+        line-height:1.65;
+        color:var(--text-secondary);
+        max-width:480px;
+        margin-bottom:40px;
+      ">Panden die zichzelf verkopen — vanaf de eerste blik.</p>
+
+      <!-- CTAs -->
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
+        <a href="index.html#portfolio" class="btn-ghost">Bekijk portfolio</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ SECTION 1: INTRO ══════════════════════════ -->
+  <section class="section-pad" style="
+    background: var(--bg-elevated);
+    padding: 100px 64px;
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- Subtle bg gradient -->
+    <div style="position:absolute;right:-10%;top:-20%;width:45%;height:70%;background:radial-gradient(ellipse,rgba(255,140,0,0.05) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="intro-grid" style="display:grid;grid-template-columns:1.5fr 1fr;gap:72px;align-items:center;">
+
+        <!-- Left: text -->
+        <div>
+          <div class="orange-label scroll-reveal">De kracht van beeld</div>
+
+          <h2 class="scroll-reveal reveal-delay-1" style="
+            font-family:var(--font-display);
+            font-size:clamp(2.8rem,5vw,5.5rem);
+            line-height:0.9;
+            letter-spacing:0.02em;
+            color:var(--text-primary);
+            margin-bottom:32px;
+          ">PANDEN DIE<br><span style="color:var(--orange);">SPREKEN</span></h2>
+
+          <p class="scroll-reveal reveal-delay-2" style="
+            font-size:0.95rem;line-height:1.8;color:var(--text-secondary);
+            font-weight:300;margin-bottom:20px;max-width:560px;
+          ">
+            In de vastgoedmarkt telt de eerste indruk. Professionele foto's zijn niet langer een luxe — ze zijn de sleutel tot een snellere verkoop, hogere biedingen en meer bezichtigingen. Ik fotografeer elk pand in het beste licht, letterlijk en figuurlijk.
+          </p>
+
+          <p class="scroll-reveal reveal-delay-3" style="
+            font-size:0.95rem;line-height:1.8;color:var(--text-secondary);
+            font-weight:300;max-width:560px;
+          ">
+            Of het nu gaat om een gezinswoning, een luxe appartement of een commercieel pand — ik ken de hoeken, de lichtval en de compositie die een ruimte maximaal doet spreken. En met onze 360° virtuele tours bied je kopers een unieke interactieve beleving.
+          </p>
+        </div>
+
+        <!-- Right: image with accent -->
+        <div class="intro-img-col scroll-reveal reveal-delay-2" style="position:relative;">
+          <!-- Orange corner accent top-right -->
+          <div style="
+            position:absolute;top:-12px;right:-12px;
+            width:64px;height:64px;z-index:2;pointer-events:none;
+            border-top:3px solid var(--orange);
+            border-right:3px solid var(--orange);
+          "></div>
+          <!-- Orange corner accent bottom-left -->
+          <div style="
+            position:absolute;bottom:-12px;left:-12px;
+            width:40px;height:40px;z-index:2;pointer-events:none;
+            border-bottom:2px solid rgba(255,140,0,0.4);
+            border-left:2px solid rgba(255,140,0,0.4);
+          "></div>
+
+          <div style="position:relative;border-radius:4px;overflow:hidden;box-shadow:var(--shadow-lg);">
+            <img src="fotos/drone-eiland.jpg" alt="Drone luchtfoto vastgoed" style="
+              width:100%;height:360px;object-fit:cover;display:block;
+            ">
+            <div style="
+              position:absolute;inset:0;
+              background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 55%),
+                          linear-gradient(135deg,rgba(255,140,0,0.08),transparent 60%);
+            "></div>
+            <div style="
+              position:absolute;bottom:16px;left:18px;
+              font-family:var(--font-display);font-size:0.85rem;
+              letter-spacing:0.1em;color:rgba(240,237,232,0.7);
+            ">DRONE PERSPECTIEF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ SECTION 2: WAT IS INBEGREPEN ══════════════════════════ -->
+  <section class="section-pad" style="
+    background: var(--bg-base);
+    padding: 100px 64px;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div style="position:absolute;left:-5%;bottom:-20%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <!-- Heading -->
+      <div style="text-align:center;margin-bottom:64px;">
+        <div class="orange-label scroll-reveal" style="justify-content:center;margin-bottom:16px;">Wat krijg jij</div>
+        <h2 class="scroll-reveal reveal-delay-1" style="
+          font-family:var(--font-display);
+          font-size:clamp(2.8rem,5vw,5.5rem);
+          line-height:0.9;letter-spacing:0.02em;
+          color:var(--text-primary);
+        ">WAT IS<br><span style="color:var(--orange);">INBEGREPEN?</span></h2>
+      </div>
+
+      <!-- 2x3 grid -->
+      <div class="include-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+
+        <!-- Card 1 -->
+        <div class="include-card scroll-reveal reveal-delay-1">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Home icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+              <polyline points="9 21 9 12 15 12 15 21"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">INTERIEUR&shy;OPNAMES</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Breed-hoek opnames van alle kamers in professioneel licht. Geen donkere hoeken, geen vervorming.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="include-card scroll-reveal reveal-delay-2">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Sun icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">EXTERIEUR&shy;OPNAMES</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Voor-, zij- en achteraanzichten op het ideale moment. Gouden-uurlicht op aanvraag.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="include-card scroll-reveal reveal-delay-1">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Globe / 360 icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <ellipse cx="12" cy="12" rx="4" ry="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">360° VIRTUELE TOUR</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Interactieve rondleiding via de 360°-camera. Kopers verkennen het pand online alsof ze er zelf staan.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="include-card scroll-reveal reveal-delay-2">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Drone icon (simplified) -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="2"/>
+              <path d="M12 10v-3M12 17v-3"/>
+              <path d="M10 12H7M17 12h-3"/>
+              <circle cx="7" cy="7" r="2"/>
+              <circle cx="17" cy="7" r="2"/>
+              <circle cx="7" cy="17" r="2"/>
+              <circle cx="17" cy="17" r="2"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">DRONE COMBO</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Luchtfoto's en video's van het pand en de omgeving. Ideaal voor grotere objecten of mooie ligging.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="include-card scroll-reveal reveal-delay-1">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Edit/sliders icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="21" x2="4" y2="14"/>
+              <line x1="4" y1="10" x2="4" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12" y2="3"/>
+              <line x1="20" y1="21" x2="20" y2="16"/>
+              <line x1="20" y1="12" x2="20" y2="3"/>
+              <line x1="1" y1="14" x2="7" y2="14"/>
+              <line x1="9" y1="8" x2="15" y2="8"/>
+              <line x1="17" y1="16" x2="23" y2="16"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">HDR NABEWERKING</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Elke foto wordt nabewerkt met HDR-techniek voor perfecte belichting in elk licht.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="include-card scroll-reveal reveal-delay-2">
+          <div class="icon-circle" style="margin-bottom:20px;">
+            <!-- Clock icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">SNELLE OPLEVERING</div>
+          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Beelden beschikbaar binnen 24–48 uur. Same-day oplevering op aanvraag mogelijk.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ SECTION 3: VOOR WIE ══════════════════════════ -->
+  <section class="section-pad" style="
+    background: var(--bg-elevated);
+    padding: 80px 64px;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div style="position:absolute;right:-5%;top:-10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="voor-wie-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+
+        <!-- Left: heading -->
+        <div>
+          <div class="orange-label scroll-reveal">Doelgroep</div>
+          <h2 class="scroll-reveal reveal-delay-1" style="
+            font-family:var(--font-display);
+            font-size:clamp(2.8rem,5vw,5.5rem);
+            line-height:0.9;letter-spacing:0.02em;
+            color:var(--text-primary);
+            margin-bottom:24px;
+          ">IDEAAL<br><span style="color:var(--orange);">VOOR</span></h2>
+          <p class="scroll-reveal reveal-delay-2" style="font-size:0.93rem;line-height:1.78;color:var(--text-secondary);font-weight:300;max-width:380px;">
+            Van individuele makelaar tot grote vastgoedontwikkelaar — professionele beelden maken het verschil voor iedereen die vastgoed wil presenteren.
+          </p>
+        </div>
+
+        <!-- Right: cards -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <div class="voor-card scroll-reveal reveal-delay-1">
+            <div class="icon-circle">
+              <!-- Building icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="18"/><rect x="14" y="9" width="7" height="12"/>
+                <rect x="10" y="15" width="4" height="6"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">MAKELAARS</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Meer bezichtigingen, snellere verkoop</div>
+            </div>
+            <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;">→</div>
+          </div>
+
+          <div class="voor-card scroll-reveal reveal-delay-2">
+            <div class="icon-circle">
+              <!-- Hard hat icon (wrench as proxy) -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">BOUWBEDRIJVEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Nieuwbouw- en renovatieprojecten in beeld</div>
+            </div>
+            <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;">→</div>
+          </div>
+
+          <div class="voor-card scroll-reveal reveal-delay-3">
+            <div class="icon-circle">
+              <!-- Layers icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">VASTGOEDONTWIKKELAARS</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Projectpresentaties en marketing</div>
+            </div>
+            <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;">→</div>
+          </div>
+
+          <div class="voor-card scroll-reveal reveal-delay-4">
+            <div class="icon-circle">
+              <!-- Home icon small -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+                <polyline points="9 21 9 12 15 12 15 21"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">AIRBNB VERHUURDERS</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Meer boekingen door betere foto's</div>
+            </div>
+            <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;">→</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ SECTION 4: 360° VIRTUELE TOURS ══════════════════════════ -->
+  <section class="section-pad" style="
+    background: var(--bg-base);
+    padding: 80px 64px;
+  ">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="tour-block scroll-reveal" style="
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--orange);
+        border-radius: 4px;
+        padding: 40px 48px;
+        position: relative;
+        overflow: hidden;
+      ">
+        <!-- Background glow -->
+        <div style="position:absolute;top:-30%;right:-10%;width:50%;height:100%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+
+        <div style="position:relative;z-index:1;">
+          <!-- Badge -->
+          <div style="
+            display:inline-flex;align-items:center;gap:8px;
+            font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+            color:var(--orange);margin-bottom:20px;
+            border:1px solid rgba(255,140,0,0.3);
+            background:rgba(255,140,0,0.08);
+            padding:5px 12px;border-radius:2px;
+          ">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <ellipse cx="12" cy="12" rx="4" ry="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+            360° VIRTUELE TOURS
+          </div>
+
+          <!-- H3 -->
+          <h3 style="
+            font-family:var(--font-display);
+            font-size:clamp(2rem,4vw,3.8rem);
+            line-height:0.92;letter-spacing:0.02em;
+            color:var(--text-primary);
+            margin-bottom:24px;
+            max-width:700px;
+          ">LAAT KOPERS RONDLOPEN<br><span style="color:var(--orange);">VOOR DE BEZICHTIGING</span></h3>
+
+          <!-- Text -->
+          <p style="
+            font-size:0.93rem;line-height:1.8;color:var(--text-secondary);
+            font-weight:300;max-width:620px;margin-bottom:32px;
+          ">
+            Met onze 360°-camera maak ik een interactieve virtuele rondleiding van het pand. Potentiële kopers kunnen via hun telefoon, tablet of computer door het huis lopen — op elk moment van de dag. Dit bespaart onnodige bezichtigingen en trekt serieuze kopers aan.
+          </p>
+
+          <!-- Tag badges -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <span style="
+              font-size:0.65rem;font-weight:600;letter-spacing:0.08em;
+              color:var(--text-secondary);
+              border:1px solid var(--border-light);
+              padding:5px 12px;border-radius:2px;
+              background:rgba(255,255,255,0.02);
+            ">Matterport compatible</span>
+            <span style="
+              font-size:0.65rem;font-weight:600;letter-spacing:0.08em;
+              color:var(--text-secondary);
+              border:1px solid var(--border-light);
+              padding:5px 12px;border-radius:2px;
+              background:rgba(255,255,255,0.02);
+            ">Deelbaar via link</span>
+            <span style="
+              font-size:0.65rem;font-weight:600;letter-spacing:0.08em;
+              color:var(--text-secondary);
+              border:1px solid var(--border-light);
+              padding:5px 12px;border-radius:2px;
+              background:rgba(255,255,255,0.02);
+            ">Geschikt voor Funda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ CTA SECTION ══════════════════════════ -->
+  <section class="section-pad" style="
+    background: var(--bg-elevated);
+    padding: 100px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  ">
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,140,0,0.08) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;max-width:600px;margin:0 auto;">
+      <div class="orange-label scroll-reveal" style="justify-content:center;margin-bottom:20px;">Klaar om te starten?</div>
+
+      <h2 class="scroll-reveal reveal-delay-1" style="
+        font-family:var(--font-display);
+        font-size:clamp(2.8rem,5.5vw,5.8rem);
+        line-height:0.9;letter-spacing:0.02em;
+        color:var(--text-primary);
+        margin-bottom:24px;
+      ">SNEL EN SCHERP<br><span style="color:var(--orange);">OP DE MARKT?</span></h2>
+
+      <p class="scroll-reveal reveal-delay-2" style="
+        font-size:0.95rem;line-height:1.75;color:var(--text-secondary);
+        font-weight:300;margin-bottom:40px;
+      ">
+        Ik plan een opnamedatum die past bij jouw planning en lever snel op.
+      </p>
+
+      <div class="scroll-reveal reveal-delay-3">
+        <a href="index.html#contact" class="btn-orange" style="font-size:0.75rem;padding:16px 36px;">
+          Offerte aanvragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
+
+        <!-- Brand -->
+        <div>
+          <a href="index.html" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">
+            Professionele fotografie en videoproductie in Nederland. Van portret tot drone.
+          </p>
+        </div>
+
+        <!-- Diensten -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="portretfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portretfotografie</a>
+            <a href="vastgoedfotografie.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Vastgoedfotografie</a>
+            <a href="dronebeelden.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
+            <a href="evenementen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Evenementen</a>
+            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Website bouwen</a>
+          </div>
+        </div>
+
+        <!-- Navigatie -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="index.html#portfolio" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
+            <a href="index.html#werkwijze" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Werkwijze</a>
+            <a href="index.html#over" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Over mij</a>
+            <a href="index.html#contact" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
+          </div>
+        </div>
+
+        <!-- Volg ons -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Instagram</a>
+            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">LinkedIn</a>
+            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">YouTube</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom" style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+        <div style="display:flex;gap:24px;">
+          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Privacybeleid</a>
+          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════ WHATSAPP BUTTON ══════════════════════════ -->
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20vastgoedfotografie."
+     target="_blank" rel="noopener" aria-label="WhatsApp contact"
+     style="
+       position:fixed;bottom:28px;right:28px;z-index:150;
+       width:52px;height:52px;border-radius:50%;
+       background:#25d366;
+       display:flex;align-items:center;justify-content:center;
+       box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);
+       transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
+     "
+     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
+     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
+     onfocus="this.style.transform='scale(1.12)'" onblur="this.style.transform='scale(1)'">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+
+  <!-- ══════════════════════════ SCRIPTS ══════════════════════════ -->
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+    // Nav hover highlight
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('mouseenter', () => link.style.color = 'var(--text-primary)');
+      link.addEventListener('mouseleave', () => link.style.color = 'var(--text-secondary)');
+    });
+  </script>
+
+</body>
+</html>

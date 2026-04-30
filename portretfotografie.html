@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portretfotografie — MVDBmedia</title>
+  <meta name="description" content="Professionele portretfotografie door MVDBmedia. Van zakelijke headshots tot artistieke portretten — jouw karakter eeuwig vastgelegd.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mvdbmedia.nl/portretfotografie.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mvdbmedia.nl/portretfotografie.html">
+  <meta property="og:title" content="Portretfotografie — MVDBmedia">
+  <meta property="og:description" content="Professionele portretfotografie. Jouw unieke karakter, eeuwig vastgelegd.">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/portret-ollie.jpg">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portretfotografie — MVDBmedia">
+  <meta name="twitter:description" content="Professionele portretfotografie. Jouw unieke karakter, eeuwig vastgelegd.">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/portret-ollie.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base:        #0d0d0d;
+      --bg-elevated:    #161616;
+      --bg-card:        #1a1a1a;
+      --border:         #2a2a2a;
+      --border-light:   #333333;
+      --orange:         #ff8c00;
+      --orange-dim:     #c96e00;
+      --orange-glow:    rgba(255,140,0,0.15);
+      --text-primary:   #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted:     #5a5550;
+      --font-display:   'Bebas Neue', sans-serif;
+      --font-body:      'Inter', sans-serif;
+      --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-md:      0 8px 24px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.6);
+      --shadow-lg:      0 20px 48px rgba(0,0,0,0.6), 0 6px 16px rgba(0,0,0,0.5);
+      --shadow-glow:    0 0 0 1px rgba(255,140,0,0.3), 0 4px 20px rgba(255,140,0,0.2), 0 2px 8px rgba(0,0,0,0.6);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-pad { padding: 0 24px !important; }
+      .hero-content { padding: 40px 24px !important; }
+      .hero-h1 { font-size: clamp(3.2rem, 14vw, 6rem) !important; }
+      .section-pad { padding: 72px 24px !important; }
+      .intro-grid { grid-template-columns: 1fr !important; }
+      .inclusions-grid { grid-template-columns: 1fr !important; }
+      .voor-wie-grid { grid-template-columns: 1fr !important; }
+      .packages-grid { grid-template-columns: 1fr !important; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .hero-cta-row { flex-direction: column !important; align-items: flex-start !important; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .intro-grid { grid-template-columns: 1fr 1fr !important; }
+      .packages-grid { grid-template-columns: 1fr 1fr !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+
+    /* ── NAV LINKS HOVER ── */
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+
+    /* ── ORANGE BUTTON ── */
+    .btn-orange {
+      background: var(--orange);
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(255,140,0,0.28), 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.4), 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .btn-orange:active { transform: translateY(0); }
+    .btn-orange:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    /* ── GHOST BUTTON ── */
+    .btn-ghost {
+      color: var(--text-primary);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 13px 24px;
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-ghost:active { opacity: 0.8; }
+    .btn-ghost:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    /* ── INCLUSION CARD ── */
+    .inclusion-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    .inclusion-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── AUDIENCE CARD ── */
+    .audience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .audience-card:hover { border-color: var(--border-light); transform: translateX(4px); }
+
+    /* ── PACKAGE CARD ── */
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    .package-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .package-card.featured {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 1px rgba(255,140,0,0.2), var(--shadow-lg);
+      position: relative;
+    }
+    .package-card.featured:hover { box-shadow: 0 0 0 1px rgba(255,140,0,0.4), 0 24px 56px rgba(0,0,0,0.7); }
+
+    /* ── ORANGE ICON CIRCLE ── */
+    .icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,140,0,0.12);
+      border: 1px solid rgba(255,140,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--orange);
+    }
+
+    /* ── ORANGE LABEL ── */
+    .orange-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .orange-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION H2 ── */
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 4.5vw, 5rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 28px;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    .grain {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.045;
+      pointer-events: none;
+    }
+
+    /* ── PACKAGE CHECK LIST ── */
+    .pkg-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .pkg-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+    .pkg-list li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(255,140,0,0.1);
+      border: 1px solid rgba(255,140,0,0.3);
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%23ff8c00' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ── FOOTER LINK ── */
+    .footer-link {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-link:hover { color: var(--text-primary); }
+    .footer-link:focus-visible { outline: 1px solid var(--orange); outline-offset: 2px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: opacity 0.2s ease;
+    }
+    .breadcrumb:hover { opacity: 0.75; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════ -->
+  <nav id="nav" class="nav-pad" style="
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  ">
+    <a href="index.html" style="
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1;
+    ">MVDB<span style="color:var(--orange);">media</span></a>
+
+    <div id="nav-links" style="display:flex;gap:32px;align-items:center;">
+      <a href="index.html#diensten" class="nav-link">Diensten</a>
+      <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+      <a href="index.html#over" class="nav-link">Over mij</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+
+    <a href="index.html#contact" class="btn-orange" style="font-size:0.7rem;padding:8px 20px;">Offerte aanvragen</a>
+
+    <button id="menu-btn" onclick="toggleMenu()" aria-label="Menu openen" style="
+      display: none;
+      background: transparent; border: none; cursor: pointer;
+      padding: 8px; flex-direction: column; gap: 5px;
+    ">
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    </button>
+  </nav>
+
+  <!-- MOBIEL MENU -->
+  <div id="mobile-menu" style="
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 49;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px 24px;
+    flex-direction: column; gap: 16px;
+  ">
+    <a href="index.html#diensten" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Diensten</a>
+    <a href="index.html#portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="index.html#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="index.html#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="index.html#contact" onclick="toggleMenu()" style="
+      display:block;text-align:center;margin-top:8px;
+      background:var(--orange);color:#000;
+      font-size:0.8rem;font-weight:800;padding:12px;
+      border-radius:3px;text-decoration:none;
+      letter-spacing:0.1em;text-transform:uppercase;
+    ">Offerte aanvragen</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section style="
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  ">
+    <!-- Background photo -->
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img
+        src="fotos/portret-ollie.jpg"
+        alt="Portretfotografie MVDBmedia"
+        style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"
+      >
+      <!-- Gradient overlay -->
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.97) 0%,rgba(13,13,13,0.55) 50%,rgba(13,13,13,0.3) 100%);"></div>
+    </div>
+
+    <!-- Grain texture -->
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-hero">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-hero)"/>
+    </svg>
+
+    <!-- Hero content -->
+    <div class="hero-content" style="
+      position: relative; z-index: 1;
+      padding: 80px 64px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    ">
+      <!-- Breadcrumb -->
+      <a href="index.html#diensten" class="breadcrumb">← Terug</a>
+
+      <!-- Orange label -->
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;">
+        — FOTOGRAFIE &amp; VIDEO PRODUCTIE —
+      </div>
+
+      <!-- H1 -->
+      <h1 class="hero-h1" style="
+        font-family: var(--font-display);
+        font-size: clamp(4rem, 8vw, 9rem);
+        line-height: 0.88;
+        letter-spacing: 0.02em;
+        color: var(--text-primary);
+        margin: 0 0 24px;
+      ">
+        PORTRET­<br><span style="color:var(--orange);">FOTOGRAFIE</span>
+      </h1>
+
+      <!-- Tagline -->
+      <p style="
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--text-secondary);
+        margin: 0 0 40px;
+        max-width: 420px;
+        line-height: 1.7;
+      ">Jouw unieke karakter, eeuwig vastgelegd.</p>
+
+      <!-- CTA row -->
+      <div class="hero-cta-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
+        <a href="index.html#portfolio" class="btn-ghost">Bekijk portfolio</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — INTRO
+  ══════════════════════════════════════════ -->
+  <section class="section-pad" style="background:var(--bg-elevated);padding:100px 64px;position:relative;overflow:hidden;">
+
+    <!-- Subtle glow -->
+    <div style="position:absolute;right:-10%;top:10%;width:45%;height:70%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="intro-grid" style="display:grid;grid-template-columns:3fr 2fr;gap:72px;align-items:center;">
+
+        <!-- Left: Text -->
+        <div>
+          <div class="orange-label">Wat is portretfotografie?</div>
+          <h2 class="section-h2">
+            MEER DAN<br><span style="color:var(--orange);">EEN FOTO</span>
+          </h2>
+          <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 20px;font-weight:300;max-width:540px;">
+            Of je nu een zakelijke headshot nodig hebt voor LinkedIn, een artistiek portret voor jouw portfolio, of een mooie herinnering wilt bewaren — ik zorg dat het beeld klopt. Tijdens elke sessie neem ik de tijd om jou op je gemak te stellen, zodat jouw karakter écht naar voren komt.
+          </p>
+          <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0;font-weight:300;max-width:540px;">
+            Ik werk met professionele Sony Alpha-apparatuur en naturel licht of studio-opstellingen, afhankelijk van wat het beste bij jou past. Het resultaat: beelden die indruk maken en lang bijblijven.
+          </p>
+        </div>
+
+        <!-- Right: Photo with frame accent -->
+        <div style="position:relative;">
+          <!-- Decorative top-left orange line -->
+          <div style="position:absolute;top:-16px;left:-16px;width:60px;height:60px;border-top:3px solid var(--orange);border-left:3px solid var(--orange);border-radius:2px 0 0 0;z-index:2;pointer-events:none;"></div>
+          <!-- Decorative bottom-right orange line -->
+          <div style="position:absolute;bottom:-16px;right:-16px;width:60px;height:60px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange);border-radius:0 0 2px 0;z-index:2;pointer-events:none;"></div>
+
+          <div style="border-radius:4px;overflow:hidden;box-shadow:var(--shadow-lg);">
+            <img
+              src="fotos/portret-ziggy.jpg"
+              alt="Portretfotografie voorbeeld"
+              style="width:100%;display:block;object-fit:cover;object-position:center top;"
+            >
+            <!-- Color treatment -->
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,140,0,0.04),transparent 55%),linear-gradient(to top,rgba(0,0,0,0.25) 0%,transparent 50%);pointer-events:none;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — WAT IS INBEGREPEN?
+  ══════════════════════════════════════════ -->
+  <section class="section-pad" style="background:var(--bg-base);padding:100px 64px;position:relative;overflow:hidden;">
+
+    <!-- Grain -->
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-s2">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-s2)"/>
+    </svg>
+
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <!-- Section header -->
+      <div style="margin-bottom:56px;">
+        <div class="orange-label">Volledig pakket</div>
+        <h2 class="section-h2">
+          WAT IS<br><span style="color:var(--orange);">INBEGREPEN?</span>
+        </h2>
+      </div>
+
+      <!-- 2×3 grid -->
+      <div class="inclusions-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+        <!-- 1. Intakegesprek -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Chat bubble -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">INTAKE­GESPREK</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Samen bespreken we jouw doelen, gewenste stijl en locatievoorkeuren. Zo weten we van tevoren precies wat we willen bereiken.</p>
+        </div>
+
+        <!-- 2. Locatiescouting -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Map pin -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">LOCATIE­SCOUTING</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Ik help bij het vinden van de perfecte locatie — of dat nu buiten, in studio of op jouw eigen plek is.</p>
+        </div>
+
+        <!-- 3. Professionele sessie -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Camera -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">PROFESSIONELE SESSIE</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Een ontspannen shoot van 1 à 2 uur. Ik begeleid je bij elke pose zodat je er op je best uitziet.</p>
+        </div>
+
+        <!-- 4. Poseer & stijladvies -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Sparkle/star -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">POSEER &amp; STIJL­ADVIES</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Geen ervaring voor de camera? Geen probleem. Ik geef je concrete tips zodat je zelfverzekerd voor de lens staat.</p>
+        </div>
+
+        <!-- 5. Professionele retouchering -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Edit/pen -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">PROFESSIONELE RETOUCHERING</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Elke geselecteerde foto wordt zorgvuldig nabewerkt — kleurcorrectie, huidretouchering en sfeeroptimalisatie.</p>
+        </div>
+
+        <!-- 6. Online galerij -->
+        <div class="inclusion-card">
+          <div class="icon-circle" style="margin-bottom:18px;">
+            <!-- Download -->
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:10px;">ONLINE GALERIJ</div>
+          <p style="font-size:0.82rem;line-height:1.65;color:var(--text-secondary);margin:0;font-weight:300;">Jouw beelden worden klaargezet in een persoonlijke online galerij. Downloaden in hoge resolutie, direct bruikbaar.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — VOOR WIE?
+  ══════════════════════════════════════════ -->
+  <section class="section-pad" style="background:var(--bg-elevated);padding:80px 64px;position:relative;overflow:hidden;">
+
+    <div style="position:absolute;left:-8%;bottom:-10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.05) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="voor-wie-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+
+        <!-- Left -->
+        <div>
+          <div class="orange-label">Geschikt voor</div>
+          <h2 class="section-h2">
+            VOOR<br><span style="color:var(--orange);">WIE?</span>
+          </h2>
+          <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0;font-weight:300;max-width:400px;">
+            Portretfotografie is voor iedereen die zichzelf op zijn best wil presenteren — professioneel of persoonlijk. Of je nu een eerste indruk wilt versterken of een herinnering wilt bewaren.
+          </p>
+        </div>
+
+        <!-- Right: 4 audience cards -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+
+          <!-- 1 -->
+          <div class="audience-card">
+            <div class="icon-circle">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Zakelijke professionals</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">LinkedIn, website of perskaart</div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="audience-card">
+            <div class="icon-circle">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Entrepreneurs &amp; zzp'ers</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Jouw gezicht bij jouw merk</div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="audience-card">
+            <div class="icon-circle">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 7l-7 5 7 5V7z"/>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Modellen &amp; acteurs</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Portfolio-updates en castings</div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="audience-card">
+            <div class="icon-circle">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.88rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Gezinnen &amp; koppels</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Herinneringen voor het leven</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — PACKAGES
+  ══════════════════════════════════════════ -->
+  <section class="section-pad" style="background:var(--bg-base);padding:100px 64px;position:relative;overflow:hidden;">
+
+    <!-- Grain -->
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-s4">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-s4)"/>
+    </svg>
+    <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:70%;height:50%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <!-- Section header — centered -->
+      <div style="text-align:center;margin-bottom:56px;">
+        <div class="orange-label" style="justify-content:center;">Transparante pakketten</div>
+        <h2 style="
+          font-family: var(--font-display);
+          font-size: clamp(2.8rem, 4.5vw, 5rem);
+          line-height: 0.88;
+          letter-spacing: 0.02em;
+          color: var(--text-primary);
+          margin: 0;
+        ">
+          KIES JOUW<br><span style="color:var(--orange);">PAKKET</span>
+        </h2>
+      </div>
+
+      <!-- 3-col package grid -->
+      <div class="packages-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;">
+
+        <!-- BASIS -->
+        <div class="package-card">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">BASIS</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Voor een snelle start</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">Prijs op aanvraag</div>
+          <ul class="pkg-list">
+            <li>Intakegesprek</li>
+            <li>1 uur sessie</li>
+            <li>10 bewerkte foto's</li>
+            <li>Online galerij</li>
+          </ul>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- STANDAARD — featured -->
+        <div class="package-card featured">
+          <!-- Badge -->
+          <div style="
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:var(--orange);color:#000;
+            font-size:0.58rem;font-weight:900;
+            padding:4px 14px;border-radius:20px;
+            letter-spacing:0.15em;text-transform:uppercase;
+            white-space:nowrap;
+          ">Meest gekozen</div>
+
+          <div style="margin-bottom:24px;margin-top:4px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--orange);margin-bottom:6px;">STANDAARD</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">De populairste keuze</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">Prijs op aanvraag</div>
+          <ul class="pkg-list">
+            <li>Intakegesprek</li>
+            <li>Locatiescouting</li>
+            <li>2 uur sessie</li>
+            <li>25 bewerkte foto's</li>
+            <li>Online galerij</li>
+            <li>Stijladvies</li>
+          </ul>
+          <a href="index.html#contact" class="btn-orange" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="package-card">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">PREMIUM</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Volledige ervaring</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">Prijs op aanvraag</div>
+          <ul class="pkg-list">
+            <li>Intakegesprek</li>
+            <li>Locatiescouting</li>
+            <li>Halve dag sessie</li>
+            <li>50+ bewerkte foto's</li>
+            <li>Online galerij</li>
+            <li>Stijladvies</li>
+            <li>Meerdere locaties</li>
+            <li>RAW-bestanden</li>
+          </ul>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CTA SECTION
+  ══════════════════════════════════════════ -->
+  <section style="background:var(--bg-elevated);padding:100px 64px;text-align:center;position:relative;overflow:hidden;">
+
+    <!-- Radial orange glow -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;height:140%;background:radial-gradient(ellipse,rgba(255,140,0,0.1) 0%,transparent 60%);pointer-events:none;"></div>
+    <!-- Grain -->
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-cta">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-cta)"/>
+    </svg>
+
+    <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+      <div class="orange-label" style="justify-content:center;">Start vandaag</div>
+      <h2 style="
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 6vw, 6rem);
+        line-height: 0.88;
+        letter-spacing: 0.02em;
+        color: var(--text-primary);
+        margin: 0 0 24px;
+      ">
+        KLAAR OM TE<br><span style="color:var(--orange);">BEGINNEN?</span>
+      </h2>
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--text-secondary);margin:0 0 44px;font-weight:300;">
+        Neem contact op en ik stuur je binnen 24 uur een persoonlijk voorstel.
+      </p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
+        <a href="index.html#portfolio" class="btn-ghost">Bekijk portfolio</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
+
+        <!-- Brand -->
+        <div>
+          <a href="index.html" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">
+            Professionele fotografie en videoproductie in Nederland. Van portret tot drone.
+          </p>
+        </div>
+
+        <!-- Diensten -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="portretfotografie.html" class="footer-link" style="color:var(--orange);">Portretfotografie</a>
+            <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
+            <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
+            <a href="evenementen.html" class="footer-link">Evenementen</a>
+            <a href="websitebouwen.html" class="footer-link">Website bouwen</a>
+          </div>
+        </div>
+
+        <!-- Navigatie -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="index.html#portfolio" class="footer-link">Portfolio</a>
+            <a href="index.html#werkwijze" class="footer-link">Werkwijze</a>
+            <a href="index.html#over" class="footer-link">Over mij</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Volg ons -->
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">LinkedIn</a>
+            <a href="#" class="footer-link">YouTube</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+        <div style="display:flex;gap:24px;">
+          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Privacybeleid</a>
+          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Algemene voorwaarden</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════
+       WHATSAPP FIXED BUTTON
+  ══════════════════════════════════════════ -->
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20portretfotografie%20en%20wil%20graag%20meer%20informatie."
+     target="_blank" rel="noopener" aria-label="WhatsApp contact"
+     style="
+       position:fixed;bottom:28px;right:28px;z-index:150;
+       width:52px;height:52px;border-radius:50%;
+       background:#25d366;
+       display:flex;align-items:center;justify-content:center;
+       box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);
+       transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
+     "
+     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
+     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
+     onfocus="this.style.transform='scale(1.12)'"
+     onblur="this.style.transform='scale(1)'"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+
+  <!-- ══════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════ -->
+  <script>
+    // ── Mobile menu toggle ──
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // ── Responsive nav ──
+    function handleResize() {
+      const w = window.innerWidth;
+      const navLinks = document.getElementById('nav-links');
+      const navCta = document.querySelector('nav > a.btn-orange');
+      const menuBtn = document.getElementById('menu-btn');
+      if (navLinks) navLinks.style.display = w < 768 ? 'none' : 'flex';
+      if (navCta)   navCta.style.display   = w < 768 ? 'none' : 'inline-block';
+      if (menuBtn)  menuBtn.style.display  = w < 768 ? 'flex' : 'none';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // ── Sticky nav scroll effect ──
+    (function() {
+      const nav = document.getElementById('nav');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          if (window.scrollY > 20) {
+            nav.style.background = 'rgba(13,13,13,0.96)';
+            nav.style.backdropFilter = 'blur(12px)';
+            nav.style.boxShadow = '0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.5)';
+          } else {
+            nav.style.background = 'var(--bg-elevated)';
+            nav.style.backdropFilter = 'none';
+            nav.style.boxShadow = 'none';
+          }
+          ticking = false;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

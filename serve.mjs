@@ -17,7 +17,7 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  const rawPath = req.url.split('?')[0];
+  const rawPath = decodeURIComponent(req.url.split('?')[0]);
   const urlPath = rawPath === '/' ? '/index.html' : rawPath;
   const filePath = path.join(__dirname, urlPath);
 
