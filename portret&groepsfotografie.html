@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portret & Groepsfotografie — MVDBmedia</title>
+  <meta name="description" content="Portretfotografie en groepsfotografie door MVDBmedia. Van zakelijke headshots tot groepsportretten — jouw moment eeuwig vastgelegd.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mvdbmedia.nl/portret&groepsfotografie.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mvdbmedia.nl/portret&groepsfotografie.html">
+  <meta property="og:title" content="Portret & Groepsfotografie — MVDBmedia">
+  <meta property="og:description" content="Portretfotografie en groepsfotografie door MVDBmedia.">
+  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/portret-ollie.jpg">
+  <meta property="og:locale" content="nl_NL">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portret & Groepsfotografie — MVDBmedia">
+  <meta name="twitter:description" content="Portretfotografie en groepsfotografie door MVDBmedia.">
+  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/portret-ollie.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base:        #0d0d0d;
+      --bg-elevated:    #161616;
+      --bg-card:        #1a1a1a;
+      --border:         #2a2a2a;
+      --border-light:   #333333;
+      --orange:         #ff8c00;
+      --orange-dim:     #c96e00;
+      --orange-glow:    rgba(255,140,0,0.15);
+      --text-primary:   #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted:     #7a736e;
+      --font-display:   'Bebas Neue', sans-serif;
+      --font-body:      'Inter', sans-serif;
+      --shadow-lg:      0 20px 48px rgba(0,0,0,0.6), 0 6px 16px rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      #nav-links, #nav-cta { display: none !important; }
+      #menu-btn { display: flex !important; }
+    }
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(255,140,0,0.28), 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-orange:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.4), 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .btn-orange:active { transform: translateY(0); }
+    .btn-orange:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    .btn-ghost {
+      color: var(--text-primary);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 13px 24px;
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+    .footer-link {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-link:hover { color: var(--text-primary); }
+
+    /* ── SPLIT PANELS ── */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 64px);
+    }
+    @media (max-width: 768px) {
+      .split-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .split-panel {
+        min-height: 60vh !important;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+      .nav-pad { padding: 0 24px !important; }
+    }
+
+    .split-panel {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      min-height: calc(100vh - 64px);
+    }
+    .split-panel .panel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .split-panel:hover .panel-img {
+      transform: scale(1.05);
+    }
+    .split-panel .panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.96) 0%, rgba(13,13,13,0.5) 55%, rgba(13,13,13,0.25) 100%);
+      transition: background 0.4s ease;
+    }
+    .split-panel:hover .panel-overlay {
+      background: linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.6) 55%, rgba(13,13,13,0.3) 100%);
+    }
+    .split-panel .panel-border {
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .split-panel:hover .panel-border {
+      border-color: var(--orange);
+    }
+    .split-panel .panel-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 52px 48px;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .split-panel .panel-content { padding: 36px 28px; }
+    }
+    .panel-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--orange);
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 18px;
+    }
+    .panel-desc {
+      font-size: 0.85rem;
+      line-height: 1.72;
+      color: var(--text-secondary);
+      margin: 0 0 28px;
+      font-weight: 300;
+      max-width: 360px;
+    }
+    .panel-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      transition: gap 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .split-panel:hover .panel-cta { gap: 16px; }
+    .panel-cta-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,140,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .split-panel:hover .panel-cta-arrow {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .split-panel:hover .panel-cta-arrow svg { stroke: #000; }
+
+    /* divider between panels */
+    .split-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+      z-index: 5;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .split-divider { display: none; }
+    }
+
+    /* grain */
+    .grain {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* tags */
+    .panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid rgba(255,140,0,0.25);
+      border-radius: 2px;
+      padding: 3px 9px;
+      margin-right: 6px;
+      margin-bottom: 18px;
+    }
+
+    /* dienst-cards */
+    .dienst-card:hover .dienst-img { transform: scale(1.04); }
+    .dienst-card:hover .dienst-border { transform: scaleX(1); }
+    .dienst-card:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+    @media (max-width: 768px) {
+      .diensten-grid { grid-template-columns: 1fr !important; }
+      .section-header-row { flex-direction: column !important; align-items: flex-start !important; }
+      .page-pad { padding: 0 24px !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
+
+  <!-- NAV -->
+  <nav id="nav" class="nav-pad" style="
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  ">
+    <a href="index.html" style="
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1;
+    ">MVDB<span style="color:var(--orange);">media</span></a>
+
+    <div id="nav-links" style="display:flex;gap:32px;align-items:center;">
+      <a href="index.html#diensten" class="nav-link">Diensten</a>
+      <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+      <a href="index.html#over" class="nav-link">Over mij</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+
+    <a id="nav-cta" href="index.html#contact" class="btn-orange" style="font-size:0.7rem;padding:8px 20px;">Offerte aanvragen</a>
+
+    <button id="menu-btn" onclick="toggleMenu()" aria-label="Menu openen" style="
+      display: none;
+      background: transparent; border: none; cursor: pointer;
+      padding: 8px; flex-direction: column; gap: 5px;
+    ">
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    </button>
+  </nav>
+
+  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+
+  <!-- MOBIEL MENU -->
+  <div id="mobile-menu" style="
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 49;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px 24px;
+    flex-direction: column; gap: 16px;
+  ">
+    <a href="index.html#diensten" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Diensten</a>
+    <a href="index.html#portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="index.html#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="index.html#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="index.html#contact" onclick="toggleMenu()" style="
+      display:block;text-align:center;margin-top:8px;
+      background:var(--orange);color:#000;
+      font-size:0.8rem;font-weight:800;padding:12px;
+      border-radius:3px;text-decoration:none;
+      letter-spacing:0.1em;text-transform:uppercase;
+    ">Offerte aanvragen</a>
+  </div>
+
+
+  <!-- CARDS SECTION -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="page-pad" style="padding:56px 64px 0;max-width:1280px;margin:0 auto;">
+      <a href="index.html#diensten" style="display:inline-flex;align-items:center;gap:6px;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);text-decoration:none;margin-bottom:0;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">← Terug naar Diensten</a>
+    </div>
+
+    <section class="page-pad" style="padding:40px 64px 100px;position:relative;overflow:hidden;">
+      <!-- Grain -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.03;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+        <filter id="grain-hub"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+        <rect width="100%" height="100%" filter="url(#grain-hub)"/>
+      </svg>
+
+      <div style="max-width:1280px;margin:0 auto;position:relative;">
+        <!-- Section header -->
+        <div class="section-header-row" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:32px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+              <span style="display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;"></span>
+              Kies je sessie
+            </div>
+            <h1 style="font-family:var(--font-display);font-size:clamp(2.8rem,5vw,5.2rem);line-height:0.88;letter-spacing:0.02em;margin:0;color:var(--text-primary);">
+              PORTRET &amp;<br><span style="color:var(--orange);">GROEPSFOTOGRAFIE</span>
+            </h1>
+          </div>
+          <p style="font-size:0.9rem;line-height:1.78;color:var(--text-secondary);max-width:340px;font-weight:300;margin:0;">
+            Van solo portret tot grote groepen — kies de sessie die bij jou past en ontdek alles over de pakketten.
+          </p>
+        </div>
+
+        <!-- 2-card grid -->
+        <div class="diensten-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
+
+          <!-- Card 1: Portretfotografie -->
+          <a class="dienst-card" href="portretfotografie.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+            <div style="height:340px;overflow:hidden;position:relative;">
+              <img src="fotos/marit/marit%201.jpg" alt="Portretfotografie" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+              <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              </div>
+            </div>
+            <div style="padding:24px 24px 28px;">
+              <h2 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">PORTRETFOTOGRAFIE</h2>
+              <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Van zakelijke headshots tot artistieke portretten. Jouw karakter, eeuwig vastgelegd in één sterk beeld.</p>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Individueel
+                </div>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Op locatie
+                </div>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Bewerking inbegrepen
+                </div>
+              </div>
+              <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
+            </div>
+            <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+          </a>
+
+          <!-- Card 2: Groepsfotografie -->
+          <a class="dienst-card" href="groepsfotografie.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+            <div style="height:340px;overflow:hidden;position:relative;">
+              <img src="fotos/groepsfoto%201.jpg" alt="Groepsfotografie" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+              <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+            </div>
+            <div style="padding:24px 24px 28px;">
+              <h2 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">GROEPSFOTOGRAFIE</h2>
+              <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Teams, families, verenigingen — groepen van elke omvang. Eén krachtige foto die iedereen samenbrengt.</p>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Groepen &amp; teams
+                </div>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Op locatie
+                </div>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Bewerking inbegrepen
+                </div>
+              </div>
+              <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
+            </div>
+            <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
+
+        <div>
+          <a href="index.html" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">
+            Professionele fotografie en videoproductie in Nederland. Van portret tot drone.
+          </p>
+        </div>
+
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="portret&amp;groepsfotografie.html" class="footer-link" style="color:var(--orange);" aria-current="page">Portret &amp; Groepsfotografie</a>
+            <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
+            <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
+            <a href="websitebouwen.html" class="footer-link">Webdesign op maat</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="index.html#portfolio" class="footer-link">Portfolio</a>
+            <a href="index.html#werkwijze" class="footer-link">Werkwijze</a>
+            <a href="index.html#over" class="footer-link">Over mij</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20portret-%20of%20groepsfotografie%20en%20wil%20graag%20meer%20informatie."
+     target="_blank" rel="noopener" aria-label="WhatsApp contact"
+     style="
+       position:fixed;bottom:28px;right:28px;z-index:150;
+       width:52px;height:52px;border-radius:50%;
+       background:#25d366;
+       display:flex;align-items:center;justify-content:center;
+       box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);
+       transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
+     "
+     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
+     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleResize() {
+      const w = window.innerWidth;
+      const navLinks = document.getElementById('nav-links');
+      const navCta = document.getElementById('nav-cta');
+      const menuBtn = document.getElementById('menu-btn');
+      if (navLinks) navLinks.style.display = w <= 900 ? 'none' : 'flex';
+      if (navCta)   navCta.style.display   = w <= 900 ? 'none' : 'inline-block';
+      if (menuBtn)  menuBtn.style.display  = w <= 900 ? 'flex' : 'none';
+      if (w > 900) document.getElementById('mobile-menu').style.display = 'none';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    (function() {
+      const nav = document.getElementById('nav');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 20;
+          nav.style.background = scrolled ? 'rgba(22,22,22,0.98)' : 'var(--bg-elevated)';
+          nav.style.boxShadow = scrolled ? '0 4px 24px rgba(0,0,0,0.4)' : 'none';
+          ticking = false;
+        });
+        ticking = true;
+      });
+    })();
+  </script>
+</body>
+</html>

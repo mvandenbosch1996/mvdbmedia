@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webdesign op maat — MVDBmedia</title>
-  <meta name="description" content="MVDBmedia bouwt scherpe, op-maat websites voor fotografen, ZZP'ers en kleine bedrijven. Mobiel-first, SEO-vriendelijk en snel geleverd.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mvdbmedia.nl/websitebouwen.html">
+  <title>Evenementen & Video — MVDBmedia</title>
+  <meta name="description" content="Professionele evenementenfotografie en videoreportages door MVDBmedia. Van bruiloften tot festivals — elke emotie eeuwig vastgelegd.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://mvdbmedia.nl/evenementen.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mvdbmedia.nl/websitebouwen.html">
-  <meta property="og:title" content="Webdesign op maat — MVDBmedia">
-  <meta property="og:description" content="Scherpe, op-maat websites voor fotografen, ZZP'ers en kleine bedrijven. Mobiel-first en SEO-vriendelijk.">
-  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta property="og:url" content="https://mvdbmedia.nl/evenementen.html">
+  <meta property="og:title" content="Evenementen & Video — MVDBmedia">
+  <meta property="og:description" content="Professionele evenementenfotografie en videoreportages. Van bruiloften tot festivals.">
+  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/events-groep.jpg">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Webdesign op maat — MVDBmedia">
-  <meta name="twitter:description" content="Scherpe, op-maat websites voor fotografen, ZZP'ers en kleine bedrijven.">
-  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta name="twitter:title" content="Evenementen & Video — MVDBmedia">
+  <meta name="twitter:description" content="Professionele evenementenfotografie en videoreportages. Van bruiloften tot festivals.">
+  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/events-groep.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
@@ -64,7 +64,7 @@
       .voor-wie-grid { grid-template-columns: 1fr !important; }
       .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .hero-cta-row { flex-direction: column !important; align-items: flex-start !important; }
-      .process-grid { grid-template-columns: 1fr 1fr !important; }
+      .feature-grid { grid-template-columns: 1fr !important; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
       .intro-grid { grid-template-columns: 1fr 1fr !important; }
@@ -151,6 +151,7 @@
     .reveal-delay-2 { transition-delay:0.16s; }
     .reveal-delay-3 { transition-delay:0.24s; }
     .reveal-delay-4 { transition-delay:0.32s; }
+    .reveal-delay-5 { transition-delay:0.40s; }
     @media (prefers-reduced-motion: reduce) {
       .scroll-reveal { opacity:1 !important;transform:none !important;transition:none !important; }
     }
@@ -160,14 +161,6 @@
       #nav-links, #nav-cta { display: none !important; }
       #menu-btn { display: flex !important; }
     }
-
-    /* Process step */
-    .process-step {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px;
-      padding: 28px 24px;
-      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1);
-    }
-    .process-step:hover { border-color: rgba(255,140,0,0.2); transform: translateY(-2px); }
   </style>
 </head>
 <body>
@@ -220,10 +213,8 @@
   <!-- HERO -->
   <section style="position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80" alt="Webdesign op maat MVDBmedia" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.97) 0%,rgba(13,13,13,0.6) 50%,rgba(13,13,13,0.35) 100%);"></div>
-      <!-- Subtle orange tint -->
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,140,0,0.06) 0%,transparent 50%);"></div>
+      <img src="fotos/events-groep.jpg" alt="Evenementenfotografie MVDBmedia" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.97) 0%,rgba(13,13,13,0.55) 50%,rgba(13,13,13,0.3) 100%);"></div>
     </div>
 
     <svg class="grain" xmlns="http://www.w3.org/2000/svg">
@@ -244,16 +235,16 @@
         line-height:0.88;letter-spacing:0.02em;
         color:var(--text-primary);margin:0 0 24px;
       ">
-        WEBSITE<br><span style="color:var(--orange);">BOUWEN</span>
+        EVENEMENTEN<br><span style="color:var(--orange);">&amp; VIDEO</span>
       </h1>
 
-      <p style="font-size:1rem;font-weight:300;color:var(--text-secondary);margin:0 0 40px;max-width:440px;line-height:1.7;">
-        Een scherpe website die jouw werk laat spreken — op maat, snel en zonder gedoe.
+      <p style="font-size:1rem;font-weight:300;color:var(--text-secondary);margin:0 0 40px;max-width:420px;line-height:1.7;">
+        Elke emotie vastgelegd — van begin tot einde.
       </p>
 
       <div class="hero-cta-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
         <a href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
-        <a href="#aanpak" class="btn-ghost">Bekijk aanpak</a>
+        <a href="index.html#portfolio" class="btn-ghost">Bekijk portfolio</a>
       </div>
     </div>
   </section>
@@ -268,44 +259,27 @@
 
         <!-- Text -->
         <div>
-          <div class="orange-label scroll-reveal">Jouw online aanwezigheid</div>
+          <div class="orange-label scroll-reveal">Wat is evenementenfotografie?</div>
           <h2 class="section-h2 scroll-reveal reveal-delay-1">
-            MEER DAN<br><span style="color:var(--orange);">EEN WEBSITE</span>
+            MEER DAN EEN<br><span style="color:var(--orange);">REPORTAGE</span>
           </h2>
           <p class="scroll-reveal reveal-delay-2" style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 20px;font-weight:300;max-width:540px;">
-            Jouw werk is goed — maar ziet jouw website dat ook? Een professionele, snelle website is het visitekaartje dat 24/7 voor je werkt. Van een strak portfolio dat klanten overtuigt tot een volledige bedrijfswebsite — ik bouw precies wat jij nodig hebt.
+            Een evenement is vluchtig — de beelden blijven. Of het nu gaat om een bruisend festival, een intieme bruiloft of een professioneel bedrijfsevenement: ik ben er van het eerste tot het laatste moment om alles vast te leggen zoals het werkelijk was.
           </p>
           <p class="scroll-reveal reveal-delay-3" style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0;font-weight:300;max-width:540px;">
-            Geen templates, geen kant-en-klare oplossingen — elke website wordt volledig op maat gebouwd. Mobiel-first, snel, SEO-vriendelijk en klaar binnen een paar weken.
+            Ik combineer scherpe fotoreportages met dynamische videoproductie, inclusief professionele montage en optioneel dronebeelden van bovenaf. Alles in één pakket, zodat jij je kunt focussen op je event.
           </p>
         </div>
 
-        <!-- Visual: code mockup card -->
+        <!-- Image -->
         <div class="scroll-reveal reveal-delay-2" style="position:relative;">
           <div style="position:absolute;top:-16px;left:-16px;width:60px;height:60px;border-top:3px solid var(--orange);border-left:3px solid var(--orange);border-radius:2px 0 0 0;z-index:2;pointer-events:none;"></div>
           <div style="position:absolute;bottom:-16px;right:-16px;width:60px;height:60px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange);border-radius:0 0 2px 0;z-index:2;pointer-events:none;"></div>
 
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:var(--shadow-lg);">
-            <!-- Browser chrome -->
-            <div style="background:#111;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border);">
-              <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:block;"></span>
-              <span style="width:10px;height:10px;border-radius:50%;background:#febc2e;display:block;"></span>
-              <span style="width:10px;height:10px;border-radius:50%;background:#28c840;display:block;"></span>
-              <div style="flex:1;background:#1a1a1a;border-radius:3px;height:18px;margin-left:8px;display:flex;align-items:center;padding:0 8px;">
-                <span style="font-size:0.6rem;color:var(--text-muted);letter-spacing:0.04em;">mvdbmedia.nl</span>
-              </div>
-            </div>
-            <!-- Fake website preview -->
-            <div style="padding:20px;background:#111;">
-              <div style="height:8px;background:var(--orange);border-radius:2px;width:40%;margin-bottom:12px;opacity:0.8;"></div>
-              <div style="height:5px;background:var(--border-light);border-radius:2px;width:75%;margin-bottom:6px;"></div>
-              <div style="height:5px;background:var(--border-light);border-radius:2px;width:60%;margin-bottom:16px;"></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-                <div style="height:48px;background:var(--bg-elevated);border-radius:3px;border:1px solid var(--border);"></div>
-                <div style="height:48px;background:var(--bg-elevated);border-radius:3px;border:1px solid var(--border);"></div>
-              </div>
-              <div style="height:32px;background:rgba(255,140,0,0.15);border:1px solid rgba(255,140,0,0.3);border-radius:3px;width:50%;"></div>
-            </div>
+          <div style="border-radius:4px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative;">
+            <img src="fotos/events-groep.jpg" alt="Evenement fotografie" style="width:100%;height:360px;object-fit:cover;object-position:center;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,140,0,0.05),transparent 55%),linear-gradient(to top,rgba(0,0,0,0.3) 0%,transparent 55%);pointer-events:none;"></div>
+            <div style="position:absolute;bottom:16px;left:18px;font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.1em;color:rgba(240,237,232,0.7);">LIVE REPORTAGE</div>
           </div>
         </div>
 
@@ -324,7 +298,7 @@
 
     <div style="max-width:1280px;margin:0 auto;">
       <div class="scroll-reveal" style="text-align:center;margin-bottom:64px;">
-        <div class="orange-label" style="justify-content:center;">Standaard inbegrepen</div>
+        <div class="orange-label" style="justify-content:center;">Wat krijg jij</div>
         <h2 class="section-h2" style="margin:0;">WAT IS<br><span style="color:var(--orange);">INBEGREPEN?</span></h2>
       </div>
 
@@ -334,55 +308,55 @@
         <div class="inclusion-card scroll-reveal reveal-delay-1">
           <div class="icon-box" style="margin-bottom:20px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">MOBIEL-FIRST DESIGN</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Jouw website ziet er perfect uit op elk apparaat — van telefoon tot groot beeldscherm.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">FOTOREPORTAGE</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Volledige fotoreportage van begin tot einde. Scherpe, sfeervolle beelden van elk moment.</p>
         </div>
 
         <!-- Card 2 -->
         <div class="inclusion-card scroll-reveal reveal-delay-2">
           <div class="icon-box" style="margin-bottom:20px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">SEO-OPTIMALISATIE</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Goede structuur, snelle laadtijden en correcte metadata zodat Google jou vindt.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">VIDEO­REPORTAGE</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Professioneel gemonteerde aftermovie of highlight-video in hoge resolutie.</p>
         </div>
 
         <!-- Card 3 -->
         <div class="inclusion-card scroll-reveal reveal-delay-3">
           <div class="icon-box" style="margin-bottom:20px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">RAZENDSNEL</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Geoptimaliseerde code, gecomprimeerde afbeeldingen en snelle laadtijden voor de beste gebruikerservaring.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">SAME-DAY EDIT</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Een selectie bewerkte foto's nog diezelfde dag geleverd — ideaal voor direct gebruik op social media.</p>
         </div>
 
         <!-- Card 4 -->
         <div class="inclusion-card scroll-reveal reveal-delay-1">
           <div class="icon-box" style="margin-bottom:20px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">OP MAAT ONTWERP</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Geen templates. Jouw website heeft een eigen identiteit die past bij jouw merk en doelgroep.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">ONLINE GALERIJ</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Alle beelden worden geüpload naar een privé online galerij — makkelijk te downloaden en te delen.</p>
         </div>
 
         <!-- Card 5 -->
         <div class="inclusion-card scroll-reveal reveal-delay-2">
           <div class="icon-box" style="margin-bottom:20px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path d="M12 2L12 6M6 4L8.5 7.5M18 4L15.5 7.5M2 12L6 12M22 12L18 12M4.5 18L7 15.5M19.5 18L17 15.5"/><circle cx="12" cy="12" r="3"/><circle cx="7" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/><circle cx="12" cy="7" r="1.5"/><circle cx="12" cy="17" r="1.5"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">CONTACT &amp; FORMULIEREN</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Contactformulieren, WhatsApp-integratie en duidelijke calls-to-action die bezoekers omzetten in klanten.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">DRONE COVERAGE</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Spectaculaire luchtbeelden van jouw event voor een uniek vogelperspectief. Op aanvraag beschikbaar.</p>
         </div>
 
         <!-- Card 6 -->
@@ -390,11 +364,11 @@
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(255,140,0,0.05) 0%,transparent 60%);pointer-events:none;"></div>
           <div class="icon-box" style="margin-bottom:20px;background:rgba(255,140,0,0.15);border-color:rgba(255,140,0,0.3);position:relative;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>
             </svg>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;position:relative;">SSL &amp; BEVEILIGING</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;position:relative;">HTTPS standaard. Veilig voor jou én voor jouw bezoekers — en beter voor je Google-ranking.</p>
+          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;position:relative;">PROFESSIONELE NABEWERKING</div>
+          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;position:relative;">Elke foto en video wordt zorgvuldig nabewerkt in een consistente stijl die past bij jouw event.</p>
         </div>
 
       </div>
@@ -402,53 +376,9 @@
   </section>
 
 
-  <!-- SECTION 3: AANPAK / WERKWIJZE -->
-  <section id="aanpak" class="section-pad" style="background:var(--bg-elevated);padding:80px 64px;position:relative;overflow:hidden;">
+  <!-- SECTION 3: VOOR WIE? -->
+  <section class="section-pad" style="background:var(--bg-elevated);padding:80px 64px;position:relative;overflow:hidden;">
     <div style="position:absolute;right:-5%;top:-10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
-
-    <div style="max-width:1280px;margin:0 auto;">
-      <div class="scroll-reveal" style="margin-bottom:56px;">
-        <div class="orange-label">Hoe werkt het?</div>
-        <h2 class="section-h2">ONZE<br><span style="color:var(--orange);">AANPAK</span></h2>
-        <p style="font-size:0.9rem;line-height:1.78;color:var(--text-secondary);font-weight:300;max-width:520px;">
-          Van eerste gesprek tot live website — een helder en efficiënt traject zonder verrassingen.
-        </p>
-      </div>
-
-      <div class="process-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-
-        <div class="process-step scroll-reveal reveal-delay-1">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">01</div>
-          <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">INTAKE</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">We bespreken jouw wensen, doelgroep en stijl. Wat moet de website bereiken?</p>
-        </div>
-
-        <div class="process-step scroll-reveal reveal-delay-2">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">02</div>
-          <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">ONTWERP</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Ik maak een visueel concept op maat. Jij geeft feedback, wij verfijnen.</p>
-        </div>
-
-        <div class="process-step scroll-reveal reveal-delay-3">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">03</div>
-          <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">BOUW</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">De website wordt gebouwd en getest op alle apparaten en browsers.</p>
-        </div>
-
-        <div class="process-step scroll-reveal reveal-delay-4">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">04</div>
-          <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">LIVE</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Jouw website gaat online. Inclusief instructies zodat je zelf wijzigingen kunt maken.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- SECTION 4: VOOR WIE? -->
-  <section class="section-pad" style="background:var(--bg-base);padding:80px 64px;position:relative;overflow:hidden;">
-    <div style="position:absolute;right:-5%;top:10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
 
     <div style="max-width:1280px;margin:0 auto;">
       <div class="voor-wie-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start;">
@@ -458,7 +388,7 @@
           <div class="orange-label scroll-reveal">Doelgroepen</div>
           <h2 class="section-h2 scroll-reveal reveal-delay-1">PERFECT<br><span style="color:var(--orange);">VOOR</span></h2>
           <p class="scroll-reveal reveal-delay-2" style="font-size:0.9rem;line-height:1.78;color:var(--text-secondary);font-weight:300;max-width:340px;">
-            Of je nu net begint of al jaren actief bent — een goede website is de investering die zichzelf terugverdient.
+            Van intieme bijeenkomsten tot grootschalige festivals — elk event verdient beelden die de sfeer werkelijk vastleggen.
           </p>
         </div>
 
@@ -468,12 +398,12 @@
           <div class="audience-card scroll-reveal reveal-delay-1">
             <div class="icon-box">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
               </svg>
             </div>
             <div>
-              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">FOTOGRAFEN &amp; VIDEOMAKERS</div>
-              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Een portfolio dat jouw werk écht laat spreken.</div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">BRUILOFTEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">De mooiste dag van je leven, eeuwig bewaard.</div>
             </div>
             <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;flex-shrink:0;">→</div>
           </div>
@@ -481,12 +411,12 @@
           <div class="audience-card scroll-reveal reveal-delay-2">
             <div class="icon-box">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
               </svg>
             </div>
             <div>
-              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">ZZP'ERS &amp; FREELANCERS</div>
-              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Professioneel online, zonder groot budget te besteden.</div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">FESTIVALS &amp; CONCERTEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Energie en sfeer live vastgelegd op foto en video.</div>
             </div>
             <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;flex-shrink:0;">→</div>
           </div>
@@ -494,12 +424,12 @@
           <div class="audience-card scroll-reveal reveal-delay-3">
             <div class="icon-box">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                <rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
               </svg>
             </div>
             <div>
-              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">KLEINE BEDRIJVEN</div>
-              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Een website die klanten aantrekt en vertrouwen uitstraalt.</div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">BEDRIJFSEVENEMENTEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Congressen, launches en teamdagen professioneel in beeld.</div>
             </div>
             <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;flex-shrink:0;">→</div>
           </div>
@@ -507,16 +437,74 @@
           <div class="audience-card scroll-reveal reveal-delay-4">
             <div class="icon-box">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
               </svg>
             </div>
             <div>
-              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">MAKELAARS &amp; VASTGOED</div>
-              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Gecombineerd met onze vastgoedfotografie voor maximaal resultaat.</div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">SPORTEVENEMENTEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Actie, spanning en overwinning — niets ontgaat de lens.</div>
             </div>
             <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;flex-shrink:0;">→</div>
           </div>
 
+          <div class="audience-card scroll-reveal reveal-delay-5">
+            <div class="icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">FAMILIEBIJEENKOMSTEN</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);font-weight:300;">Jubilea, verjaardagen en reunies voor altijd bewaard.</div>
+            </div>
+            <div style="margin-left:auto;color:var(--orange);opacity:0.6;font-size:1rem;flex-shrink:0;">→</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 4: SAME-DAY EDIT HIGHLIGHT -->
+  <section class="section-pad" style="background:var(--bg-base);padding:80px 64px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="scroll-reveal" style="
+        background:var(--bg-card);border:1px solid var(--border);
+        border-left:4px solid var(--orange);border-radius:4px;
+        padding:40px 48px;position:relative;overflow:hidden;
+      ">
+        <div style="position:absolute;top:-30%;right:-10%;width:50%;height:100%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+
+        <div style="position:relative;z-index:1;">
+          <div style="
+            display:inline-flex;align-items:center;gap:8px;
+            font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+            color:var(--orange);margin-bottom:20px;
+            border:1px solid rgba(255,140,0,0.3);background:rgba(255,140,0,0.08);
+            padding:5px 12px;border-radius:2px;
+          ">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            SAME-DAY EDITING
+          </div>
+
+          <h3 style="
+            font-family:var(--font-display);font-size:clamp(2rem,4vw,3.8rem);
+            line-height:0.92;letter-spacing:0.02em;color:var(--text-primary);
+            margin-bottom:24px;max-width:680px;
+          ">BEELDEN KLAAR TERWIJL<br><span style="color:var(--orange);">HET EVENT NOG LOOPT</span></h3>
+
+          <p style="font-size:0.93rem;line-height:1.8;color:var(--text-secondary);font-weight:300;max-width:620px;margin-bottom:32px;">
+            Met de same-day edit service leveren we een eerste selectie van bewerkte foto's terwijl jouw event nog gaande is. Perfect voor directe social media posts, live communicatie of een strak impressievideo die de avond afsluit.
+          </p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;color:var(--text-secondary);border:1px solid var(--border-light);padding:5px 12px;border-radius:2px;background:rgba(255,255,255,0.02);">Dezelfde dag geleverd</span>
+            <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;color:var(--text-secondary);border:1px solid var(--border-light);padding:5px 12px;border-radius:2px;background:rgba(255,255,255,0.02);">Social media ready</span>
+            <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;color:var(--text-secondary);border:1px solid var(--border-light);padding:5px 12px;border-radius:2px;background:rgba(255,255,255,0.02);">Op aanvraag</span>
+          </div>
         </div>
       </div>
     </div>
@@ -528,14 +516,14 @@
     <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,140,0,0.08) 0%,transparent 65%);pointer-events:none;"></div>
 
     <div class="scroll-reveal" style="position:relative;z-index:1;max-width:600px;margin:0 auto;">
-      <div class="orange-label" style="justify-content:center;">Klaar om te starten?</div>
+      <div class="orange-label" style="justify-content:center;">Klaar om te beginnen?</div>
 
       <h2 style="font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.8rem);line-height:0.9;letter-spacing:0.02em;color:var(--text-primary);margin-bottom:24px;">
-        WEBSITE DIE<br><span style="color:var(--orange);">INDRUK MAAKT?</span>
+        JOUW EVENT<br><span style="color:var(--orange);">VOOR ALTIJD?</span>
       </h2>
 
       <p style="font-size:0.95rem;line-height:1.75;color:var(--text-secondary);font-weight:300;margin-bottom:40px;">
-        Vertel me over jouw project. Ik maak een vrijblijvende offerte op maat — meestal binnen 24 uur.
+        Vertel me over jouw evenement. Ik denk graag met je mee over de beste aanpak en lever een scherpe offerte op maat.
       </p>
 
       <a href="index.html#contact" class="btn-orange" style="font-size:0.75rem;padding:16px 36px;">
@@ -562,7 +550,8 @@
             <a href="portret&amp;groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
             <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
-            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Webdesign op maat</a>
+            <a href="evenementen.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Evenementen</a>
+            <a href="websitebouwen.html" class="footer-link">Webdesign op maat</a>
           </div>
         </div>
 
@@ -593,7 +582,7 @@
 
 
   <!-- WHATSAPP -->
-  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20het%20bouwen%20van%20een%20website." target="_blank" rel="noopener" aria-label="WhatsApp contact"
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20evenementenfotografie." target="_blank" rel="noopener" aria-label="WhatsApp contact"
     style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;"
     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"

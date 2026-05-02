@@ -9,7 +9,8 @@ const screenshotDir = path.join(__dirname, 'temporary screenshots');
 if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir);
 
 const url   = process.argv[2] || 'http://localhost:3000';
-const label = process.argv[3] ? `-${process.argv[3]}` : '';
+const rawLabel = process.argv[3] ? process.argv[3].replace(/[^a-zA-Z0-9_-]/g, '') : '';
+const label = rawLabel ? `-${rawLabel}` : '';
 
 const existing = fs.readdirSync(screenshotDir)
   .filter(f => f.startsWith('screenshot-') && f.endsWith('.png'))
@@ -20,11 +21,11 @@ const next = existing.length ? Math.max(...existing) + 1 : 1;
 const filename = `screenshot-${next}${label}.png`;
 const outPath  = path.join(screenshotDir, filename);
 
-const browser = await puppeteer.launch({ headless: true });
+const browser = await puppeteer.launch({ headless: 'new' });
 try {
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 900 });
-  await page.goto(url, { waitUntil: 'networkidle2' });
+  await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
   await page.screenshot({ path: outPath, fullPage: true });
 } finally {
   await browser.close();

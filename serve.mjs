@@ -7,13 +7,24 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = 3000;
 
 const MIME = {
-  '.html': 'text/html',
-  '.css':  'text/css',
-  '.js':   'application/javascript',
-  '.png':  'image/png',
-  '.jpg':  'image/jpeg',
-  '.svg':  'image/svg+xml',
-  '.ico':  'image/x-icon',
+  '.html':  'text/html',
+  '.css':   'text/css',
+  '.js':    'application/javascript',
+  '.mjs':   'application/javascript',
+  '.json':  'application/json',
+  '.png':   'image/png',
+  '.jpg':   'image/jpeg',
+  '.jpeg':  'image/jpeg',
+  '.gif':   'image/gif',
+  '.webp':  'image/webp',
+  '.svg':   'image/svg+xml',
+  '.ico':   'image/x-icon',
+  '.woff':  'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf':   'font/ttf',
+  '.mp4':   'video/mp4',
+  '.webm':  'video/webm',
+  '.pdf':   'application/pdf',
 };
 
 http.createServer((req, res) => {
@@ -21,7 +32,9 @@ http.createServer((req, res) => {
   const urlPath = rawPath === '/' ? '/index.html' : rawPath;
   const filePath = path.join(__dirname, urlPath);
 
-  if (!filePath.startsWith(__dirname + path.sep) && filePath !== __dirname) {
+  const safePath = path.resolve(filePath);
+  const safeBase = path.resolve(__dirname);
+  if (!safePath.startsWith(safeBase + path.sep) && safePath !== safeBase) {
     res.writeHead(403);
     res.end('Forbidden');
     return;

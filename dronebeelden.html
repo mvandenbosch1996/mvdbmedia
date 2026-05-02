@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drone Visuals — MVDBmedia | Luchtfotografie & Cinematische Drone Video</title>
+  <title>Drone Visuals — MVDBmedia | Luchtfotografie & FPV Drone Video</title>
   <meta name="description" content="Professionele drone visuals in 4K UHD. MVDBmedia biedt luchtfotografie en drone video met de DJI Avata 2 — vergunningsvrij en volledig verzekerd.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mvdbmedia.nl/dronebeelden.html">
@@ -11,10 +11,16 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mvdbmedia.nl/dronebeelden.html">
-  <meta property="og:title" content="Drone Visuals — MVDBmedia | Luchtfotografie & Cinematische Drone Video">
+  <meta property="og:title" content="Drone Visuals — MVDBmedia | Luchtfotografie & FPV Drone Video">
   <meta property="og:description" content="Professionele drone visuals in 4K UHD. Luchtfotografie en drone video met de DJI Avata 2 — vergunningsvrij en volledig verzekerd.">
-  <meta property="og:image" content="https://mvdbmedia.nl/og-image.jpg">
+  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
   <meta property="og:locale" content="nl_NL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Drone Visuals — MVDBmedia | Luchtfotografie & FPV Drone Video">
+  <meta name="twitter:description" content="Professionele drone visuals in 4K UHD. Luchtfotografie en drone video met de DJI Avata 2 — vergunningsvrij en volledig verzekerd.">
+  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
 
   <!-- Favicon (inline SVG) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
@@ -37,7 +43,7 @@
       --orange-glow:    rgba(255,140,0,0.15);
       --text-primary:   #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:     #5a5550;
+      --text-muted:     #7a736e;
       --font-display:   'Bebas Neue', sans-serif;
       --font-body:      'Inter', sans-serif;
       --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -88,6 +94,7 @@
       .cert-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
       .cert-badges > div { white-space: normal !important; }
       .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+      .drone-opties-grid { grid-template-columns: 1fr !important; }
       .footer-grid-inner { grid-template-columns: 1fr !important; }
       .hero-btns { flex-direction: column !important; align-items: flex-start !important; }
     }
@@ -96,9 +103,15 @@
       .voor-wie-grid { grid-template-columns: 1fr !important; }
       .footer-grid { grid-template-columns: 1fr 1fr !important; }
     }
+
+    /* dienst-cards hover */
+    .dienst-card:hover .dienst-img { transform: scale(1.04); }
+    .dienst-card:hover .dienst-border { transform: scaleX(1); }
+    .dienst-card:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
   </style>
 </head>
 <body>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
 
   <!-- NAV -->
   <nav id="nav" class="nav-pad" style="
@@ -158,6 +171,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
+  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
 
   <!-- MOBILE MENU -->
   <div id="mobile-menu" style="
@@ -378,213 +392,123 @@
     </div>
   </section>
 
-  <!-- SECTION 2: WAT IS INBEGREPEN? -->
-  <section id="inbegrepen" class="section-pad" style="
-    padding:100px 64px;
-    background:var(--bg-base);
-    position:relative;
-    overflow:hidden;
-  ">
-    <div style="position:absolute;left:-8%;bottom:-10%;width:45%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.05) 0%,transparent 65%);pointer-events:none;"></div>
+  <!-- SECTION 1B: DRONE OPTIES -->
+  <section class="section-pad" style="padding:100px 64px;background:var(--bg-base);position:relative;overflow:hidden;">
+
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.04;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-opties"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <rect width="100%" height="100%" filter="url(#grain-opties)"/>
+    </svg>
 
     <div style="max-width:1280px;margin:0 auto;">
-      <!-- Section header -->
+
+      <!-- Header -->
       <div class="scroll-reveal" style="margin-bottom:64px;">
-        <div style="
-          font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
-          color:var(--orange);margin-bottom:16px;
-          display:flex;align-items:center;gap:8px;
-        ">
+        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:8px;">
           <span style="display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;"></span>
-          Inclusief pakket
+          DJI Mini 2 &amp; DJI Avata 2
         </div>
-        <h2 style="
-          font-family:var(--font-display);
-          font-size:clamp(2.8rem,5vw,5.5rem);
-          line-height:0.9;
-          letter-spacing:0.02em;
-          color:var(--text-primary);
-          margin:0;
-        ">
-          WAT IS<br><span style="color:var(--orange);">INBEGREPEN?</span>
+        <h2 style="font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,5rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin:0;">
+          WAARVOOR<br><span style="color:var(--orange);">INZETTEN?</span>
         </h2>
       </div>
 
-      <!-- 2x3 grid of cards -->
-      <div class="include-grid" style="
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:24px;
-      ">
+      <!-- 4 opties -->
+      <div class="drone-opties-grid scroll-reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
 
-        <!-- Card 1: 4K Video -->
-        <div class="scroll-reveal" style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.5)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.1);
-            border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-            </svg>
+        <!-- 1. Vastgoed & makelaars -->
+        <a class="dienst-card" href="drone-vastgoed.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+          <div style="height:280px;overflow:hidden;position:relative;">
+            <img src="fotos/vastgoed-huis.jpg" alt="Drone vastgoed" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">4K UHD LUCHT­VIDEO</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Cinematic drone-video in 4K Ultra HD — de hoogste beeldkwaliteit voor professioneel gebruik.</p>
-        </div>
+          <div style="padding:24px 24px 28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">VASTGOED &amp;<br>MAKELAARS</h3>
+            <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Scherpe luchtfoto's en video's van woningen, bedrijfspanden en kavels. De DJI Mini 2 levert stabiele 4K-beelden die een pand in zijn volle context tonen — straat, tuin en omgeving in één shot.</p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Luchtfoto's &amp; video</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Woningen &amp; kavels</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Vergunningsvrij</div>
+            </div>
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
+          </div>
+          <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+        </a>
 
-        <!-- Card 2: Luchtfotografie -->
-        <div class="scroll-reveal reveal-delay-1" style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.5)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.1);
-            border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
-            </svg>
+        <!-- 2. Constructie in beeld -->
+        <a class="dienst-card" href="drone-constructie.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+          <div style="height:280px;overflow:hidden;position:relative;">
+            <img src="fotos/drone-bouwplaats.jpg" alt="Drone constructie" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20M4 20V10l8-6 8 6v10M10 20v-6h4v6"/></svg>
+            </div>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">LUCHT­FOTOGRAFIE</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Scherpe luchtfoto's vanuit meerdere hoeken en hoogtes voor maximale impact.</p>
-        </div>
+          <div style="padding:24px 24px 28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">CONSTRUCTIE<br>IN BEELD</h3>
+            <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Periodieke overvluchten van bouwprojecten, van fundering tot oplevering. De Mini 2 brengt het totaaloverzicht, de Avata 2 duikt in de details — samen vertellen ze het hele bouwverhaal.</p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Bouwprogressie in beeld</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Van fundering tot oplevering</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Luchtfoto's &amp; video</div>
+            </div>
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
+          </div>
+          <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+        </a>
 
-        <!-- Card 3: Inspectie -->
-        <div class="scroll-reveal reveal-delay-2" style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.5)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.1);
-            border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-            </svg>
+        <!-- 3. Events -->
+        <a class="dienst-card" href="drone-events.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+          <div style="height:280px;overflow:hidden;position:relative;">
+            <img src="fotos/events-groep.jpg" alt="Drone events" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">INSPECTIE­OPNAMES</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Technische inspecties van daken, gevels, zonnepanelen of infrastructuur zonder steiger of lift.</p>
-        </div>
+          <div style="padding:24px 24px 28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">EVENTS</h3>
+            <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Festivals, sportevenementen, openingsrecepties — de Avata 2 vliegt er doorheen met cinematische FPV-bewegingen die geen cameraman kan evenaren. De Mini 2 vangt het grote plaatje van bovenaf.</p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Festivals</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Wedstrijden</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Bruiloften</div>
+            </div>
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
+          </div>
+          <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+        </a>
 
-        <!-- Card 4: Cinematische bewegingen -->
-        <div class="scroll-reveal" style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.5)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.1);
-            border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/>
-            </svg>
+        <!-- 4. Drone Auto Content -->
+        <a class="dienst-card" href="drone-auto.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+          <div style="height:280px;overflow:hidden;position:relative;">
+            <img src="fotos/drone-park.jpg" alt="Drone auto content" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
+            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8l5-2v10l-5-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">CINEMATISCHE BEWEGINGEN</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Vloeiende, dramatische camerabeweging zoals dolly-shots, reveal-shots en orbitals.</p>
-        </div>
-
-        <!-- Card 5: RAW bestanden -->
-        <div class="scroll-reveal reveal-delay-1" style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.5)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.1);
-            border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-            </svg>
+          <div style="padding:24px 24px 28px;">
+            <h3 style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 10px;line-height:1.05;">DRONE<br>AUTO CONTENT</h3>
+            <p style="font-size:0.8rem;line-height:1.72;color:var(--text-secondary);margin:0 0 12px;font-weight:300;">Reveal shots, tracking bewegingen en lage dynamische sweeps langs jouw auto. De Avata 2 geeft de cinematische FPV-look die je van grote automerken kent — de Mini 2 voegt de strakke overhead- en crane-shots toe.</p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:16px;">
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">FPV high-speed tracking</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Cinematic FPV</div>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,140,0,0.3);border-radius:2px;padding:4px 10px;">Social media content</div>
+            </div>
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Bekijk pakketten <span aria-hidden="true">→</span></span>
           </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">RAW + BEWERKTE BESTANDEN</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;">Je ontvangt zowel de ruwe als de volledig nabewerkte bestanden in hoge resolutie.</p>
-        </div>
-
-        <!-- Card 6: Gecertificeerd -->
-        <div class="scroll-reveal reveal-delay-2" style="
-          background:var(--bg-card);
-          border:1px solid rgba(255,140,0,0.2);
-          border-radius:4px;
-          padding:28px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-          position:relative;overflow:hidden;
-        "
-        onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 0 0 1px rgba(255,140,0,0.3),0 16px 40px rgba(0,0,0,0.4)'"
-        onmouseout="this.style.borderColor='rgba(255,140,0,0.2)';this.style.transform='translateY(0)';this.style.boxShadow='none'"
-        >
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(255,140,0,0.06) 0%,transparent 60%);pointer-events:none;"></div>
-          <div style="
-            width:44px;height:44px;
-            background:rgba(255,140,0,0.15);
-            border:1px solid rgba(255,140,0,0.3);
-            border-radius:3px;
-            display:flex;align-items:center;justify-content:center;
-            margin-bottom:20px;
-            position:relative;
-          ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:12px;line-height:1.1;">VERGUNNINGSVRIJ</div>
-          <p style="font-size:0.82rem;line-height:1.72;color:var(--text-secondary);margin:0;position:relative;">DJI Avata 2 onder 250 gram — geen licentie vereist. Volledig verzekerd en professioneel.</p>
-        </div>
+          <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
+        </a>
 
       </div>
     </div>
   </section>
+
+  
 
   <!-- SECTION 3: CERTIFICERINGEN -->
   <section class="section-pad" style="
@@ -695,164 +619,6 @@
     </div>
   </section>
 
-  <!-- SECTION 4: VOOR WIE? -->
-  <section class="section-pad" style="
-    padding:80px 64px;
-    background:var(--bg-base);
-    position:relative;
-    overflow:hidden;
-  ">
-    <div style="position:absolute;right:-5%;top:10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
-
-    <div class="voor-wie-grid scroll-reveal" style="
-      display:grid;
-      grid-template-columns:1fr 1.4fr;
-      gap:80px;
-      align-items:start;
-      max-width:1280px;
-      margin:0 auto;
-    ">
-      <!-- Left: Heading -->
-      <div style="position:sticky;top:80px;">
-        <div style="
-          font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
-          color:var(--orange);margin-bottom:16px;
-          display:flex;align-items:center;gap:8px;
-        ">
-          <span style="display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;"></span>
-          Doelgroepen
-        </div>
-        <h2 style="
-          font-family:var(--font-display);
-          font-size:clamp(2.8rem,5vw,5.5rem);
-          line-height:0.9;
-          letter-spacing:0.02em;
-          color:var(--text-primary);
-          margin:0;
-        ">
-          PERFECT<br><span style="color:var(--orange);">VOOR</span>
-        </h2>
-      </div>
-
-      <!-- Right: Audience cards -->
-      <div style="display:flex;flex-direction:column;gap:16px;">
-
-        <!-- Audience 1 -->
-        <div style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:24px 28px;
-          display:flex;align-items:center;gap:20px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-          cursor:default;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateX(6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateX(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            flex-shrink:0;width:48px;height:48px;
-            background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;display:flex;align-items:center;justify-content:center;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">VASTGOED &amp; MAKELAARS</div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Panden vanuit de lucht in beeld — meer impact, meer interesse.</div>
-          </div>
-        </div>
-
-        <!-- Audience 2 -->
-        <div style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:24px 28px;
-          display:flex;align-items:center;gap:20px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-          cursor:default;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateX(6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateX(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            flex-shrink:0;width:48px;height:48px;
-            background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;display:flex;align-items:center;justify-content:center;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">BOUW &amp; PROJECTONTWIKKELING</div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Voortgang en resultaat documenteren vanuit de lucht.</div>
-          </div>
-        </div>
-
-        <!-- Audience 3 -->
-        <div style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:24px 28px;
-          display:flex;align-items:center;gap:20px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-          cursor:default;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateX(6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateX(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            flex-shrink:0;width:48px;height:48px;
-            background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;display:flex;align-items:center;justify-content:center;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">EVENEMENTEN</div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Aerial coverage van festivals, sportevenementen en buitenlocaties.</div>
-          </div>
-        </div>
-
-        <!-- Audience 4 -->
-        <div style="
-          background:var(--bg-card);
-          border:1px solid var(--border);
-          border-radius:4px;
-          padding:24px 28px;
-          display:flex;align-items:center;gap:20px;
-          transition:border-color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
-          cursor:default;
-        "
-        onmouseover="this.style.borderColor='var(--border-light)';this.style.transform='translateX(6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'"
-        onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateX(0)';this.style.boxShadow='none'"
-        >
-          <div style="
-            flex-shrink:0;width:48px;height:48px;
-            background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.2);
-            border-radius:3px;display:flex;align-items:center;justify-content:center;
-          ">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:4px;">FILM &amp; RECLAME</div>
-            <div style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;">Cinematische openingen en establisher shots voor films en commercials.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- CTA SECTION -->
   <section class="section-pad" style="
     padding:100px 64px;
@@ -939,11 +705,10 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="portretfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portretfotografie</a>
+            <a href="portret&amp;groepsfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Vastgoedfotografie</a>
             <a href="dronebeelden.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;font-weight:600;" aria-current="page">Drone Visuals</a>
-            <a href="evenementen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Evenementen</a>
-            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Website bouwen</a>
+            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
           </div>
         </div>
 
@@ -962,9 +727,7 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Instagram</a>
-            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">LinkedIn</a>
-            <a href="#" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">YouTube</a>
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Instagram</a>
           </div>
         </div>
 
@@ -973,10 +736,6 @@
       <!-- Bottom bar -->
       <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
         <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
-        <div style="display:flex;gap:24px;">
-          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Privacybeleid</a>
-          <a href="#" style="font-size:0.7rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">Algemene voorwaarden</a>
-        </div>
       </div>
     </div>
   </footer>
@@ -985,8 +744,9 @@
   <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20drone%20visuals." target="_blank" rel="noopener" aria-label="WhatsApp contact"
     style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;"
     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
-    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
+    onfocus="this.style.transform='scale(1.12)'" onblur="this.style.transform='scale(1)'">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
     </svg>
   </a>
