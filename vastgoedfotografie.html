@@ -172,6 +172,60 @@
     }
     .btn-ghost:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
+    /* ── Package card ── */
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    .package-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .package-card.featured {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 1px rgba(255,140,0,0.2), var(--shadow-lg);
+      position: relative;
+    }
+    .package-card.featured:hover { box-shadow: 0 0 0 1px rgba(255,140,0,0.4), 0 24px 56px rgba(0,0,0,0.7); }
+
+    /* ── Pkg list ── */
+    .pkg-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .pkg-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+    .pkg-list li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: rgba(255,140,0,0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%23ff8c00' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+      border: 1px solid rgba(255,140,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .packages-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .packages-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+
     /* ── Orange label ── */
     .orange-label {
       display: inline-flex;
@@ -333,8 +387,7 @@
 
       <!-- CTAs -->
       <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
-        <a href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
-        <a href="index.html#portfolio" class="btn-ghost">Bekijk portfolio</a>
+        <a href="#pakketten" class="btn-orange">Pakketten bekijken</a>
       </div>
     </div>
   </section>
@@ -418,133 +471,6 @@
     </div>
   </section>
 
-
-  <!-- ══════════════════════════ SECTION 2: WAT IS INBEGREPEN ══════════════════════════ -->
-  <section class="section-pad" style="
-    background: var(--bg-base);
-    padding: 100px 64px;
-    position: relative;
-    overflow: hidden;
-  ">
-    <div style="position:absolute;left:-5%;bottom:-20%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
-
-    <div style="max-width:1280px;margin:0 auto;">
-
-      <!-- Heading -->
-      <div style="text-align:center;margin-bottom:64px;">
-        <div class="orange-label scroll-reveal" style="justify-content:center;margin-bottom:16px;">Wat krijg jij</div>
-        <h2 class="scroll-reveal reveal-delay-1" style="
-          font-family:var(--font-display);
-          font-size:clamp(2.8rem,5vw,5.5rem);
-          line-height:0.9;letter-spacing:0.02em;
-          color:var(--text-primary);
-        ">WAT IS<br><span style="color:var(--orange);">INBEGREPEN?</span></h2>
-      </div>
-
-      <!-- 2x3 grid -->
-      <div class="include-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
-
-        <!-- Card 1 -->
-        <div class="include-card scroll-reveal reveal-delay-1">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Home icon -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
-              <polyline points="9 21 9 12 15 12 15 21"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">INTERIEUR&shy;OPNAMES</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Breed-hoek opnames van alle kamers in professioneel licht. Geen donkere hoeken, geen vervorming.</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="include-card scroll-reveal reveal-delay-2">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Sun icon -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"/>
-              <line x1="12" y1="1" x2="12" y2="3"/>
-              <line x1="12" y1="21" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3" y2="12"/>
-              <line x1="21" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">EXTERIEUR&shy;OPNAMES</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Voor-, zij- en achteraanzichten op het ideale moment. Gouden-uurlicht op aanvraag.</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="include-card scroll-reveal reveal-delay-1">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Globe / 360 icon -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <ellipse cx="12" cy="12" rx="4" ry="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">360° VIRTUELE TOUR</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Interactieve rondleiding via de 360°-camera. Kopers verkennen het pand online alsof ze er zelf staan.</p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="include-card scroll-reveal reveal-delay-2">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Drone icon (simplified) -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="2"/>
-              <path d="M12 10v-3M12 17v-3"/>
-              <path d="M10 12H7M17 12h-3"/>
-              <circle cx="7" cy="7" r="2"/>
-              <circle cx="17" cy="7" r="2"/>
-              <circle cx="7" cy="17" r="2"/>
-              <circle cx="17" cy="17" r="2"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">DRONE COMBO</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Luchtfoto's en video's van het pand en de omgeving. Ideaal voor grotere objecten of mooie ligging.</p>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="include-card scroll-reveal reveal-delay-1">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Edit/sliders icon -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" y1="21" x2="4" y2="14"/>
-              <line x1="4" y1="10" x2="4" y2="3"/>
-              <line x1="12" y1="21" x2="12" y2="12"/>
-              <line x1="12" y1="8" x2="12" y2="3"/>
-              <line x1="20" y1="21" x2="20" y2="16"/>
-              <line x1="20" y1="12" x2="20" y2="3"/>
-              <line x1="1" y1="14" x2="7" y2="14"/>
-              <line x1="9" y1="8" x2="15" y2="8"/>
-              <line x1="17" y1="16" x2="23" y2="16"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">HDR NABEWERKING</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Elke foto wordt nabewerkt met HDR-techniek voor perfecte belichting in elk licht.</p>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="include-card scroll-reveal reveal-delay-2">
-          <div class="icon-circle" style="margin-bottom:20px;">
-            <!-- Clock icon -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div style="font-family:var(--font-display);font-size:1.25rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">SNELLE OPLEVERING</div>
-          <p style="font-size:0.83rem;line-height:1.72;color:var(--text-secondary);font-weight:300;">Beelden beschikbaar binnen 24–48 uur. Same-day oplevering op aanvraag mogelijk.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
 
   <!-- ══════════════════════════ SECTION 3: VOOR WIE ══════════════════════════ -->
@@ -727,6 +653,91 @@
   </section>
 
 
+  <!-- ══════════════════════════ PAKKETTEN ══════════════════════════ -->
+  <section id="pakketten" class="section-pad" style="background:var(--bg-base);padding:100px 64px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:70%;height:50%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <div style="text-align:center;margin-bottom:56px;">
+        <div class="orange-label scroll-reveal" style="justify-content:center;">Transparante pakketten</div>
+        <h2 class="scroll-reveal reveal-delay-1" style="
+          font-family:var(--font-display);
+          font-size:clamp(2.8rem,4.5vw,5rem);
+          line-height:0.88;letter-spacing:0.02em;
+          color:var(--text-primary);margin:0;
+        ">KIES JOUW<br><span style="color:var(--orange);">PAKKET</span></h2>
+      </div>
+
+      <div class="packages-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;">
+
+        <!-- BASIS -->
+        <div class="package-card scroll-reveal reveal-delay-1">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">BASIS</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Appartement of kleine woning</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">€79</div>
+          <ul class="pkg-list">
+            <li>Interieur- &amp; exterieurbeelden</li>
+            <li>15 bewerkte foto's</li>
+            <li>HDR nabewerking</li>
+            <li>Online galerij</li>
+            <li>Levering binnen 48 uur</li>
+          </ul>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- STANDAARD — featured -->
+        <div class="package-card featured scroll-reveal reveal-delay-2">
+          <div style="
+            position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+            background:var(--orange);color:#000;
+            font-size:0.58rem;font-weight:900;
+            padding:4px 14px;border-radius:20px;
+            letter-spacing:0.15em;text-transform:uppercase;
+            white-space:nowrap;
+          ">Meest gekozen</div>
+          <div style="margin-bottom:24px;margin-top:4px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--orange);margin-bottom:6px;">STANDAARD</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Gezinswoning of makelaarspand</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">€139</div>
+          <ul class="pkg-list">
+            <li>Interieur- &amp; exterieurbeelden</li>
+            <li>360° virtuele tour</li>
+            <li>25 bewerkte foto's</li>
+            <li>HDR nabewerking</li>
+            <li>Online galerij</li>
+            <li>Levering binnen 24 uur</li>
+          </ul>
+          <a href="index.html#contact" class="btn-orange" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="package-card scroll-reveal reveal-delay-3">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">PREMIUM</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Luxe pand of projectontwikkelaar</div>
+          </div>
+          <div style="font-size:0.82rem;color:var(--orange);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;">€229</div>
+          <ul class="pkg-list">
+            <li>Interieur- &amp; exterieurbeelden</li>
+            <li>360° virtuele tour</li>
+            <li>40+ bewerkte foto's</li>
+            <li>Drone combo (luchtbeelden)</li>
+            <li>HDR nabewerking</li>
+            <li>Online galerij</li>
+            <li>Same-day oplevering mogelijk</li>
+          </ul>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <!-- ══════════════════════════ CTA SECTION ══════════════════════════ -->
   <section class="section-pad" style="
     background: var(--bg-elevated);
@@ -785,7 +796,7 @@
             <a href="portret&amp;groepsfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Vastgoedfotografie</a>
             <a href="dronebeelden.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
-            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
+            <a href="webdesignopmaat.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
           </div>
         </div>
 

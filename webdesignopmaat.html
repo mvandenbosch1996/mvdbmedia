@@ -6,11 +6,11 @@
   <title>Webdesign op maat — MVDBmedia</title>
   <meta name="description" content="MVDBmedia bouwt scherpe, op-maat websites voor fotografen, ZZP'ers en kleine bedrijven. Mobiel-first, SEO-vriendelijk en snel geleverd.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mvdbmedia.nl/websitebouwen.html">
+  <link rel="canonical" href="https://mvdbmedia.nl/webdesignopmaat.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mvdbmedia.nl/websitebouwen.html">
+  <meta property="og:url" content="https://mvdbmedia.nl/webdesignopmaat.html">
   <meta property="og:title" content="Webdesign op maat — MVDBmedia">
   <meta property="og:description" content="Scherpe, op-maat websites voor fotografen, ZZP'ers en kleine bedrijven. Mobiel-first en SEO-vriendelijk.">
   <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
@@ -168,6 +168,34 @@
       transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1);
     }
     .process-step:hover { border-color: rgba(255,140,0,0.2); transform: translateY(-2px); }
+    /* Package cards */
+    .package-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px;
+      padding: 36px 32px; display: flex; flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+    }
+    .package-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .package-card.featured {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 1px rgba(255,140,0,0.2), var(--shadow-lg);
+      position: relative;
+    }
+    .package-card.featured:hover { box-shadow: 0 0 0 1px rgba(255,140,0,0.4), 0 24px 56px rgba(0,0,0,0.7); }
+    .pkg-list {
+      list-style: none; padding: 0; margin: 0 0 32px;
+      display: flex; flex-direction: column; gap: 10px; flex: 1;
+    }
+    .pkg-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.82rem; color: var(--text-secondary); font-weight: 400; line-height: 1.45;
+    }
+    .pkg-list li::before {
+      content: ''; width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,140,0,0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%23ff8c00' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+      border: 1px solid rgba(255,140,0,0.3);
+    }
+    @media (max-width: 768px) { .packages-grid { grid-template-columns: 1fr !important; } }
+    @media (min-width: 769px) and (max-width: 1024px) { .packages-grid { grid-template-columns: 1fr 1fr !important; } }
   </style>
 </head>
 <body>
@@ -240,7 +268,7 @@
         line-height:0.88;letter-spacing:0.02em;
         color:var(--text-primary);margin:0 0 24px;
       ">
-        WEBSITE<br><span style="color:var(--orange);">BOUWEN</span>
+        WEBDESIGN<br><span style="color:var(--orange);">OP MAAT</span>
       </h1>
 
       <p style="font-size:1rem;font-weight:300;color:var(--text-secondary);margin:0 0 40px;max-width:440px;line-height:1.7;">
@@ -414,25 +442,25 @@
       <div class="process-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
 
         <div class="process-step scroll-reveal reveal-delay-1">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">01</div>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">01</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">INTAKE</div>
           <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">We bespreken jouw wensen, doelgroep en stijl. Wat moet de website bereiken?</p>
         </div>
 
         <div class="process-step scroll-reveal reveal-delay-2">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">02</div>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">02</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">ONTWERP</div>
           <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Ik maak een visueel concept op maat. Jij geeft feedback, wij verfijnen.</p>
         </div>
 
         <div class="process-step scroll-reveal reveal-delay-3">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">03</div>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">03</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">BOUW</div>
           <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">De website wordt gebouwd en getest op alle apparaten en browsers.</p>
         </div>
 
         <div class="process-step scroll-reveal reveal-delay-4">
-          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,140,0,0.15);line-height:1;margin-bottom:16px;">04</div>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">04</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">LIVE</div>
           <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Jouw website gaat online. Inclusief instructies zodat je zelf wijzigingen kunt maken.</p>
         </div>
@@ -519,6 +547,81 @@
   </section>
 
 
+
+  <!-- PAKKETTEN -->
+  <section id="pakketten" class="section-pad" style="background:var(--bg-base);padding:100px 64px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:70%;height:50%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 60%);pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <div style="text-align:center;margin-bottom:56px;">
+        <div class="orange-label scroll-reveal" style="justify-content:center;">Transparante pakketten</div>
+        <h2 class="scroll-reveal reveal-delay-1" style="font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,5rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin:0;">KIES JOUW<br><span style="color:var(--orange);">PAKKET</span></h2>
+      </div>
+
+      <div class="packages-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;">
+
+        <!-- STARTER -->
+        <div class="package-card scroll-reveal reveal-delay-1">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">STARTER</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Snel en zonder gedoe online</div>
+          </div>
+          <div style="font-size:0.88rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">€400 – €800</div>
+          <ul class="pkg-list">
+            <li>1–5 pagina's (home, over ons, contact)</li>
+            <li>Modern mobielvriendelijk design</li>
+            <li>Contactformulier</li>
+            <li>Snelle oplevering (±3–5 dagen)</li>
+            <li>1 revisieronde inbegrepen</li>
+          </ul>
+          <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:20px;padding:12px;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid var(--border);line-height:1.6;">Website wordt door ons beheerd — geen eigen aanpassingen nodig.</div>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- BUSINESS — featured -->
+        <div class="package-card featured scroll-reveal reveal-delay-2">
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-size:0.58rem;font-weight:900;padding:4px 14px;border-radius:20px;letter-spacing:0.15em;text-transform:uppercase;white-space:nowrap;">Meest gekozen</div>
+          <div style="margin-bottom:24px;margin-top:4px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--orange);margin-bottom:6px;">BUSINESS</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Groeien met flexibiliteit</div>
+          </div>
+          <div style="font-size:0.88rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">€900 – €1.800</div>
+          <ul class="pkg-list">
+            <li>5–10 pagina's op maat</li>
+            <li>Professioneel design op maat</li>
+            <li>Mobielvriendelijk + snelle laadtijd</li>
+            <li>Basis SEO (Google-vindbaarheid)</li>
+            <li>Contactformulieren &amp; conversiegerichte structuur</li>
+            <li>Zelf aanpassen via WordPress</li>
+            <li>2 revisierondes inbegrepen</li>
+          </ul>
+          <a href="index.html#contact" class="btn-orange" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="package-card scroll-reveal reveal-delay-3">
+          <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">PREMIUM</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Alles uit je website halen</div>
+          </div>
+          <div style="font-size:0.88rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">€1.800 – €3.500+</div>
+          <ul class="pkg-list">
+            <li>10+ pagina's volledig maatwerk</li>
+            <li>Conversiegericht opgebouwd</li>
+            <li>Geavanceerde SEO optimalisatie</li>
+            <li>Performance optimalisatie</li>
+            <li>Extra functies (blog, uitbreidingen)</li>
+            <li>Volledige bewerkmogelijkheid via WordPress</li>
+            <li>3 revisierondes inbegrepen</li>
+            <li>Prioriteit support</li>
+          </ul>
+          <a href="index.html#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA SECTION -->
   <section class="section-pad" style="background:var(--bg-elevated);padding:100px 64px;text-align:center;position:relative;overflow:hidden;">
     <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,140,0,0.08) 0%,transparent 65%);pointer-events:none;"></div>
@@ -558,7 +661,7 @@
             <a href="portret&amp;groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
             <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
-            <a href="websitebouwen.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Webdesign op maat</a>
+            <a href="webdesignopmaat.html" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Webdesign op maat</a>
           </div>
         </div>
 

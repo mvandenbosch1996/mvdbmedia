@@ -6,7 +6,7 @@ const pages = [
   'http://localhost:3000/vastgoedfotografie.html',
   'http://localhost:3000/dronebeelden.html',
   'http://localhost:3000/evenementen.html',
-  'http://localhost:3000/websitebouwen.html',
+  'http://localhost:3000/webdesignopmaat.html',
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
