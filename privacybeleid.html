@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacybeleid — MVDBmedia</title>
+  <meta name="description" content="Privacybeleid van MVDBmedia. Lees hoe wij omgaan met jouw persoonsgegevens.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://mvdbmedia.nl/privacybeleid.html">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base:        #0d0d0d;
+      --bg-elevated:    #161616;
+      --bg-card:        #1a1a1a;
+      --border:         #2a2a2a;
+      --border-light:   #333333;
+      --orange:         #ff8c00;
+      --text-primary:   #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted:     #7a736e;
+      --font-display:   'Bebas Neue', sans-serif;
+      --font-body:      'Inter', sans-serif;
+      --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+    .btn-orange {
+      background: var(--orange);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 8px 20px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: opacity 0.2s ease;
+    }
+    .btn-orange:hover { opacity: 0.85; }
+    #menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text-primary);
+    }
+    @media (max-width: 900px) {
+      .nav-links, #nav-cta { display: none !important; }
+      #menu-btn { display: flex !important; }
+      nav { padding: 0 24px; }
+    }
+
+    /* MOBILE MENU */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    #mobile-menu a {
+      font-size: 1rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    #mobile-menu a:last-child { border-bottom: none; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 64px 72px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,140,0,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: opacity 0.2s ease;
+    }
+    .breadcrumb:hover { opacity: 0.75; }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 520px;
+    }
+    .hero-meta {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .meta-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.6;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 64px 100px;
+    }
+    .section-block {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-block:last-child { border-bottom: none; }
+    .section-num {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-num::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 32px;
+      background: var(--orange);
+      opacity: 0.4;
+    }
+    .section-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .section-block p {
+      font-size: 0.88rem;
+      line-height: 1.82;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .section-block p:last-child { margin-bottom: 0; }
+    .section-block strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .data-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .data-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+    .data-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .right-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 18px 20px;
+      transition: border-color 0.2s ease;
+    }
+    .right-card:hover { border-color: rgba(255,140,0,0.25); }
+    .right-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .right-card p {
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0;
+      font-weight: 300;
+    }
+    .contact-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-top: 20px;
+    }
+    .contact-box p {
+      margin-bottom: 12px;
+    }
+    .contact-box a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 52px 64px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 44px;
+      align-items: start;
+    }
+    .footer-link {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-link:hover { color: var(--text-primary); }
+
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
+      .rights-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 40px 24px 56px; }
+      .content { padding: 48px 24px 72px; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      footer { padding: 48px 24px 32px; }
+      .rights-grid { grid-template-columns: 1fr !important; }
+      .contact-box { padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">MVDB<span style="color:var(--orange);">media</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html#diensten" class="nav-link">Diensten</a>
+      <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+      <a href="index.html#over" class="nav-link">Over mij</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+    <a id="nav-cta" href="index.html#contact" class="btn-orange">Offerte aanvragen</a>
+    <button id="menu-btn" aria-label="Menu openen" onclick="document.getElementById('mobile-menu').style.display = document.getElementById('mobile-menu').style.display === 'flex' ? 'none' : 'flex'">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" style="display:none;flex-direction:column;">
+    <a href="index.html#diensten">Diensten</a>
+    <a href="index.html#portfolio">Portfolio</a>
+    <a href="index.html#over">Over mij</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#contact" style="display:block;text-align:center;margin-top:8px;background:var(--orange);color:#000;font-size:0.8rem;font-weight:800;padding:12px;border-radius:3px;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">Offerte aanvragen</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <a href="index.html" class="breadcrumb">← Terug naar home</a>
+      <h1>PRIVACY<br><span style="color:var(--orange);">BELEID</span></h1>
+      <p class="hero-sub">Hoe MVDBmedia omgaat met jouw persoonsgegevens — transparant, AVG-conform en zonder kleine lettertjes.</p>
+      <div class="hero-meta">
+        <div class="meta-item"><div class="meta-dot"></div>Versie 1.0</div>
+        <div class="meta-item"><div class="meta-dot"></div>Ingangsdatum: mei 2026</div>
+        <div class="meta-item"><div class="meta-dot"></div>Toepasselijk recht: Nederlands</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="content">
+
+      <!-- 1. Wie is verantwoordelijk -->
+      <div class="section-block">
+        <div class="section-num">01</div>
+        <h2>WIE IS<br><span style="color:var(--orange);">VERANTWOORDELIJK</span></h2>
+        <p>De verwerkingsverantwoordelijke voor jouw persoonsgegevens is:</p>
+        <p>
+          <strong>MVDBmedia</strong><br>
+          Michael van den Bosch<br>
+          Nederland<br>
+          E-mail: <strong>m.vandenbosch1996@gmail.com</strong><br>
+          WhatsApp: <strong>+31 6 24819278</strong>
+        </p>
+        <p>MVDBmedia is een eenmanszaak die professionele fotografie, drone visuals en webdesign aanbiedt aan particulieren en bedrijven in Nederland. Dit privacybeleid is van toepassing op alle diensten en de website <strong>mvdbmedia.nl</strong>.</p>
+      </div>
+
+      <!-- 2. Welke gegevens -->
+      <div class="section-block">
+        <div class="section-num">02</div>
+        <h2>WELKE GEGEVENS<br><span style="color:var(--orange);">VERZAMELEN WIJ</span></h2>
+        <p>Wij verzamelen alleen gegevens die je zelf actief aanlevert — nooit meer dan noodzakelijk. De volgende gegevens kunnen worden verwerkt:</p>
+        <ul class="data-list">
+          <li><strong>Naam</strong> — zodat we je persoonlijk kunnen aanspreken en de juiste offerte kunnen opstellen.</li>
+          <li><strong>E-mailadres</strong> — om te reageren op jouw aanvraag of vraag.</li>
+          <li><strong>Telefoonnummer of WhatsApp</strong> — als je contact opneemt via de WhatsApp-knop op de website.</li>
+          <li><strong>Bericht / projectomschrijving</strong> — de informatie die je invult in het contactformulier of stuurt via WhatsApp.</li>
+          <li><strong>Gekozen dienst</strong> — het type fotografie of dienst dat je hebt geselecteerd in het contactformulier.</li>
+        </ul>
+        <p>Wij verzamelen <strong>geen</strong> automatische tracking-data, cookies van derden, of locatiegegevens via de website. Er is geen analytics-software actief.</p>
+      </div>
+
+      <!-- 3. Waarvoor -->
+      <div class="section-block">
+        <div class="section-num">03</div>
+        <h2>WAARVOOR GEBRUIKEN<br><span style="color:var(--orange);">WIJ DE GEGEVENS</span></h2>
+        <p>Jouw gegevens worden uitsluitend gebruikt voor de volgende doeleinden:</p>
+        <ul class="data-list">
+          <li><strong>Het beantwoorden van jouw aanvraag of vraag</strong> — wij nemen contact op via e-mail of WhatsApp.</li>
+          <li><strong>Het opmaken van een offerte</strong> — op basis van de door jou opgegeven dienst en wensen.</li>
+          <li><strong>De uitvoering van een opdracht</strong> — communicatie rondom de shoot, levering of het webdesignproject.</li>
+          <li><strong>Facturatie</strong> — naam en contactgegevens worden gebruikt op de factuur na opdrachtverlening.</li>
+        </ul>
+        <p>Wij verkopen, verhuren of delen jouw gegevens <strong>nooit</strong> met derden voor commerciële doeleinden. Gegevens worden niet gebruikt voor nieuwsbrieven of marketing, tenzij je daar expliciet toestemming voor geeft.</p>
+        <p>De wettelijke grondslag voor verwerking is <strong>gerechtvaardigd belang</strong> (het uitvoeren van een overeenkomst of het beantwoorden van een aanvraag) en, waar van toepassing, <strong>toestemming</strong>.</p>
+      </div>
+
+      <!-- 4. Hoe lang -->
+      <div class="section-block">
+        <div class="section-num">04</div>
+        <h2>HOE LANG BEWAREN<br><span style="color:var(--orange);">WIJ DE GEGEVENS</span></h2>
+        <p>Wij bewaren jouw gegevens niet langer dan noodzakelijk:</p>
+        <ul class="data-list">
+          <li><strong>Aanvragen zonder opdracht</strong> — gegevens worden uiterlijk 3 maanden na het laatste contact verwijderd.</li>
+          <li><strong>Klantgegevens na opdracht</strong> — worden bewaard zolang de wettelijke bewaarplicht dat vereist. Voor boekhoudkundige gegevens geldt een bewaartermijn van <strong>7 jaar</strong> (Belastingdienst).</li>
+          <li><strong>Foto's en beeldmateriaal</strong> — worden niet langer dan de overeengekomen periode bewaard, tenzij schriftelijk anders afgesproken.</li>
+          <li><strong>WhatsApp-berichten</strong> — worden bewaard zolang relevant voor de opdracht en daarna verwijderd.</li>
+        </ul>
+      </div>
+
+      <!-- 5. Jouw rechten -->
+      <div class="section-block">
+        <div class="section-num">05</div>
+        <h2>JOUW<br><span style="color:var(--orange);">RECHTEN</span></h2>
+        <p>Onder de AVG (Algemene Verordening Gegevensbescherming) heb je de volgende rechten met betrekking tot jouw persoonsgegevens:</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <h3>INZAGE</h3>
+            <p>Je kunt opvragen welke gegevens wij van jou hebben opgeslagen.</p>
+          </div>
+          <div class="right-card">
+            <h3>CORRECTIE</h3>
+            <p>Je kunt onjuiste of verouderde gegevens laten corrigeren.</p>
+          </div>
+          <div class="right-card">
+            <h3>VERWIJDERING</h3>
+            <p>Je kunt vragen om verwijdering van jouw gegevens ("recht op vergetelheid").</p>
+          </div>
+          <div class="right-card">
+            <h3>BEZWAAR</h3>
+            <p>Je kunt bezwaar maken tegen de verwerking van jouw gegevens.</p>
+          </div>
+          <div class="right-card">
+            <h3>OVERDRAAGBAARHEID</h3>
+            <p>Je kunt jouw gegevens in een gestructureerd formaat opvragen.</p>
+          </div>
+          <div class="right-card">
+            <h3>KLACHT</h3>
+            <p>Je kunt een klacht indienen bij de <strong>Autoriteit Persoonsgegevens</strong> (autoriteitpersoonsgegevens.nl).</p>
+          </div>
+        </div>
+        <p>Om gebruik te maken van jouw rechten kun je contact opnemen via de gegevens in sectie 6. Wij reageren binnen 30 dagen.</p>
+      </div>
+
+      <!-- 6. Contact -->
+      <div class="section-block">
+        <div class="section-num">06</div>
+        <h2>CONTACT &<br><span style="color:var(--orange);">VRAGEN</span></h2>
+        <p>Heb je vragen over dit privacybeleid of wil je gebruik maken van jouw rechten? Neem dan contact op:</p>
+        <div class="contact-box">
+          <p><strong>MVDBmedia — Michael van den Bosch</strong></p>
+          <p>E-mail: <a href="mailto:m.vandenbosch1996@gmail.com">m.vandenbosch1996@gmail.com</a></p>
+          <p>WhatsApp: <a href="https://wa.me/31624819278">+31 6 24819278</a></p>
+          <p style="margin-top:16px;font-size:0.78rem;color:var(--text-muted);margin-bottom:0;">Wij streven ernaar om binnen <strong style="color:var(--text-secondary);">5 werkdagen</strong> te reageren op privacy-gerelateerde verzoeken.</p>
+        </div>
+        <p style="margin-top:24px;">MVDBmedia behoudt zich het recht voor dit privacybeleid te wijzigen. De meest actuele versie is altijd te vinden op deze pagina. Bij ingrijpende wijzigingen informeren wij actieve klanten per e-mail.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">Professionele fotografie en videoproductie in Nederland. Van portret tot drone.</p>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="portret&groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
+            <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
+            <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
+            <a href="websitebouwen.html" class="footer-link">Webdesign op maat</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="index.html#portfolio" class="footer-link">Portfolio</a>
+            <a href="index.html#over" class="footer-link">Over mij</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+        <a href="privacybeleid.html" style="font-size:0.7rem;color:var(--orange);text-decoration:none;">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20een%20vraag%20over%20het%20privacybeleid." target="_blank" rel="noopener noreferrer" aria-label="Neem contact op via WhatsApp"
+    style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;"
+    onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
+    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
