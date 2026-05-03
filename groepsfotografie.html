@@ -273,6 +273,9 @@
       pointer-events: none;
       z-index: 1;
     }
+    .werkwijze-steps::-webkit-scrollbar { height: 4px; }
+    .werkwijze-steps::-webkit-scrollbar-track { background: transparent; }
+    .werkwijze-steps::-webkit-scrollbar-thumb { background: rgba(255,140,0,0.35); border-radius: 2px; }
   </style>
 </head>
 <body>
@@ -332,10 +335,6 @@
 
     <div class="hero-content" style="position:relative;z-index:1;padding:80px 64px;max-width:1280px;margin:0 auto;width:100%;">
       <a href="portret&amp;groepsfotografie.html" class="breadcrumb">← Portret &amp; Groepsfotografie</a>
-
-      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;">
-        — FOTOGRAFIE &amp; VIDEO PRODUCTIE —
-      </div>
 
       <h1 class="hero-h1" style="font-family:var(--font-display);font-size:clamp(4rem,8vw,9rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin:0 0 24px;">
         GROEPS­<br><span style="color:var(--orange);">FOTOGRAFIE</span>
@@ -619,6 +618,39 @@
     </div>
   </section>
 
+
+  <!-- HOE HET WERKT -->
+  <section class="section-pad" style="padding:120px 64px;background:var(--bg-elevated);position:relative;overflow:hidden;">
+    <div style="position:absolute;left:-6%;top:10%;width:42%;height:75%;background:radial-gradient(ellipse,rgba(255,140,0,0.05) 0%,transparent 65%);pointer-events:none;"></div>
+    <div style="position:absolute;right:-6%;bottom:5%;width:38%;height:65%;background:radial-gradient(ellipse,rgba(255,140,0,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="margin-bottom:64px;">
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;"></span>De werkwijze</div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+          <h2 style="font-family:var(--font-display);font-size:clamp(2.8rem,5vw,5.2rem);line-height:0.88;letter-spacing:0.02em;margin:0;color:var(--text-primary);">HOE HET <span style="color:var(--orange);">WERKT</span></h2>
+          <p style="font-size:0.9rem;line-height:1.78;color:var(--text-secondary);max-width:340px;margin:0;font-weight:300;">Van eerste contact tot de eindoplevering — een helder, persoonlijk proces.</p>
+        </div>
+      </div>
+      <div class="werkwijze-steps" style="display:flex;overflow-x:auto;gap:20px;padding-bottom:24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,140,0,0.35) transparent;">
+        <div style="flex:0 0 300px;min-width:300px;text-align:center;scroll-snap-align:start;" onmouseenter="this.querySelector('.ws-card').style.borderColor='rgba(255,140,0,0.35)';this.querySelector('.ws-card').style.transform='translateY(-4px)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--orange)'" onmouseleave="this.querySelector('.ws-card').style.borderColor='var(--border)';this.querySelector('.ws-card').style.transform='translateY(0)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--border)'">
+          <div class="ws-circle" style="width:80px;height:80px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 0 4px var(--bg-base),0 0 0 5px var(--border);transition:box-shadow 0.3s ease;"><span style="font-family:var(--font-display);font-size:1.9rem;color:var(--orange);letter-spacing:0.04em;line-height:1;">01</span></div>
+          <div class="ws-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:28px 22px 30px;transition:border-color 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);box-shadow:0 2px 8px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.5);"><div style="width:36px;height:36px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3 style="font-family:var(--font-display);font-size:1.9rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 12px;line-height:1.0;">INTAKE</h3><p style="font-size:0.78rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">We bespreken jouw wensen, doelen en locatie. Zo werk ik volledig op maat — geen verrassing achteraf.</p></div>
+        </div>
+        <div style="flex:0 0 300px;min-width:300px;text-align:center;scroll-snap-align:start;" onmouseenter="this.querySelector('.ws-card').style.borderColor='rgba(255,140,0,0.35)';this.querySelector('.ws-card').style.transform='translateY(-4px)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--orange)'" onmouseleave="this.querySelector('.ws-card').style.borderColor='var(--border)';this.querySelector('.ws-card').style.transform='translateY(0)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--border)'">
+          <div class="ws-circle" style="width:80px;height:80px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 0 4px var(--bg-base),0 0 0 5px var(--border);transition:box-shadow 0.3s ease;"><span style="font-family:var(--font-display);font-size:1.9rem;color:var(--orange);letter-spacing:0.04em;line-height:1;">02</span></div>
+          <div class="ws-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:28px 22px 30px;transition:border-color 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);box-shadow:0 2px 8px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.5);"><div style="width:36px;height:36px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3 style="font-family:var(--font-display);font-size:1.9rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 12px;line-height:1.0;">SHOOT</h3><p style="font-size:0.78rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">De professionele sessie op locatie. Ik zorg voor de sfeer, de timing en de perfecte belichting.</p></div>
+        </div>
+        <div style="flex:0 0 300px;min-width:300px;text-align:center;scroll-snap-align:start;" onmouseenter="this.querySelector('.ws-card').style.borderColor='rgba(255,140,0,0.35)';this.querySelector('.ws-card').style.transform='translateY(-4px)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--orange)'" onmouseleave="this.querySelector('.ws-card').style.borderColor='var(--border)';this.querySelector('.ws-card').style.transform='translateY(0)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--border)'">
+          <div class="ws-circle" style="width:80px;height:80px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 0 4px var(--bg-base),0 0 0 5px var(--border);transition:box-shadow 0.3s ease;"><span style="font-family:var(--font-display);font-size:1.9rem;color:var(--orange);letter-spacing:0.04em;line-height:1;">03</span></div>
+          <div class="ws-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:28px 22px 30px;transition:border-color 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);box-shadow:0 2px 8px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.5);"><div style="width:36px;height:36px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3 style="font-family:var(--font-display);font-size:1.9rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 12px;line-height:1.0;">EDITING</h3><p style="font-size:0.78rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">Zorgvuldige nabewerking, kleurcorrectie en retouchering in Adobe Suite — tot elk beeld klopt.</p></div>
+        </div>
+        <div style="flex:0 0 300px;min-width:300px;text-align:center;scroll-snap-align:start;" onmouseenter="this.querySelector('.ws-card').style.borderColor='rgba(255,140,0,0.35)';this.querySelector('.ws-card').style.transform='translateY(-4px)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--orange)'" onmouseleave="this.querySelector('.ws-card').style.borderColor='var(--border)';this.querySelector('.ws-card').style.transform='translateY(0)';this.querySelector('.ws-circle').style.boxShadow='0 0 0 4px var(--bg-base),0 0 0 5px var(--border)'">
+          <div class="ws-circle" style="width:80px;height:80px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 0 4px var(--bg-base),0 0 0 5px var(--border);transition:box-shadow 0.3s ease;"><span style="font-family:var(--font-display);font-size:1.9rem;color:var(--orange);letter-spacing:0.04em;line-height:1;">04</span></div>
+          <div class="ws-card" style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:28px 22px 30px;transition:border-color 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);box-shadow:0 2px 8px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.5);"><div style="width:36px;height:36px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><h3 style="font-family:var(--font-display);font-size:1.9rem;letter-spacing:0.04em;color:var(--text-primary);margin:0 0 12px;line-height:1.0;">LEVERING</h3><p style="font-size:0.78rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">Snelle oplevering via een persoonlijke downloadlink — hoge resolutie, direct bruikbaar.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section style="background:var(--bg-base);padding:100px 64px;text-align:center;position:relative;overflow:hidden;">
