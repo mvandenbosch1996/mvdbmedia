@@ -1,0 +1,21 @@
+# Hosting / CI cache
+.netlify/
+
+# Dev tools
+node_modules/
+temporary screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts (niet nodig op server)
+download_instagram.py
+audit.mjs
+serve.mjs
+screenshot.mjs
+
+# IDE / editor
+.claude/
+.superpowers/
+docs/
