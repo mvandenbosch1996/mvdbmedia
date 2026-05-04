@@ -102,12 +102,14 @@
       .diensten-grid { grid-template-columns: 1fr !important; }
       .diensten-grid .dienst-card[style*="grid-column:1/-1"] { flex-direction: column !important; }
       .diensten-grid .dienst-card[style*="grid-column:1/-1"] > div:first-child { width: 100% !important; min-height: 200px !important; }
+      .over-stats-balk { grid-template-columns: repeat(2,1fr) !important; }
+      .over-aanpak-grid { grid-template-columns: 1fr !important; }
     }
     /* Scroll reveal animations */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(22px);
+      transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .scroll-reveal.is-visible {
       opacity: 1;
@@ -128,14 +130,194 @@
       50%       { opacity: 1;   }
     }
 
+    /* ── HERO TEXT REVEAL ── */
+    @keyframes wordReveal {
+      from { opacity: 0; transform: translateY(22px); filter: blur(2px); }
+      to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+    }
+    .word-reveal {
+      display: inline-block;
+      opacity: 0;
+      animation: wordReveal 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-sub-reveal {
+      opacity: 0;
+      animation: wordReveal 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
+    }
+    .hero-cta-reveal {
+      opacity: 0;
+      animation: wordReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .scroll-reveal {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
       }
+      .word-reveal, .hero-sub-reveal, .hero-cta-reveal {
+        opacity: 1 !important;
+        animation: none !important;
+      }
       .scroll-mouse-dot { animation: none !important; }
       .scroll-mouse-wrap { animation: none !important; }
+    }
+
+    /* ── BUTTON PULSE GLOW ── */
+    @keyframes btnPulseRing {
+      0%   { box-shadow: 0 0 0 0 rgba(255,140,0,0.45); }
+      70%  { box-shadow: 0 0 0 14px rgba(255,140,0,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,140,0,0); }
+    }
+    #submit-btn {
+      position: relative;
+    }
+    #submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      animation: btnPulseRing 2.6s ease-out infinite;
+      pointer-events: none;
+    }
+    #submit-btn:hover::after,
+    #submit-btn:disabled::after { animation: none; }
+
+    /* ── FIELD VALIDATION CHECKMARK ── */
+    @keyframes checkPop {
+      0%   { opacity:0; transform:scale(0) rotate(-15deg); }
+      60%  { opacity:1; transform:scale(1.3) rotate(6deg); }
+      100% { opacity:1; transform:scale(1) rotate(0deg); }
+    }
+    .field-check {
+      position: absolute;
+      right: 12px;
+      bottom: 11px;
+      width: 20px; height: 20px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      pointer-events: none;
+    }
+    .field-check.is-valid {
+      animation: checkPop 0.44s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #submit-btn::after { animation: none; }
+      .field-check.is-valid { animation: none; opacity:1; transform:scale(1); }
+    }
+
+    /* ── OVER MIJ: PHOTO SLIDE-IN + CORNER DRAW ── */
+    .over-photo {
+      opacity: 0;
+      transform: translateX(44px);
+      transition: opacity 0.55s ease-out,
+                  transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .over-photo.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Vertical line — tekent van boven naar beneden */
+    .over-corner-v {
+      position: absolute;
+      right: 0; top: 0;
+      width: 3px; height: 0;
+      background: var(--orange);
+      border-radius: 2px 2px 0 0;
+      transition: height 0.38s cubic-bezier(0.22, 1, 0.36, 1) 0.48s;
+    }
+    .over-photo.in-view .over-corner-v { height: 100%; }
+
+    /* Horizontal line — tekent van rechts naar links */
+    .over-corner-h {
+      position: absolute;
+      right: 0; bottom: 0;
+      height: 3px; width: 0;
+      background: var(--orange);
+      border-radius: 0 0 3px 0;
+      transition: width 0.38s cubic-bezier(0.22, 1, 0.36, 1) 0.76s;
+    }
+    .over-photo.in-view .over-corner-h { width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .over-photo            { opacity:1 !important; transform:none !important; transition:none !important; }
+      .over-corner-v         { height:100% !important; transition:none !important; }
+      .over-corner-h         { width:100% !important;  transition:none !important; }
+    }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 200;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--orange) 0%, rgba(255,200,80,0.9) 100%);
+      box-shadow: 0 0 10px rgba(255,140,0,0.55), 0 0 4px rgba(255,140,0,0.35);
+      pointer-events: none;
+      transform-origin: left;
+      will-change: width;
+    }
+
+    /* ── STAGGERED TAG REVEAL ── */
+    .dienst-tag {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.4s ease,
+                  transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dienst-card.is-visible .dienst-tag:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:0.28s; }
+    .dienst-card.is-visible .dienst-tag:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:0.42s; }
+    .dienst-card.is-visible .dienst-tag:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:0.56s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dienst-tag { opacity:1 !important; transform:none !important; transition:none !important; }
+      #scroll-progress { display:none; }
+    }
+
+    /* ── DIENST CARD MICRO-INTERACTIONS ── */
+
+    /* 1 — Icon pulse/rotate */
+    .dienst-icon {
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.28s ease,
+                  border-color 0.28s ease;
+    }
+
+    /* 2 — Image overlay slides up from bottom */
+    .dienst-img-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 18px 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.28) 55%, transparent 100%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.36s ease;
+    }
+    .dienst-card:hover .dienst-img-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* 3 — "Meer info" text slides up */
+    .dienst-meer-info {
+      transform: translateY(8px);
+      opacity: 0.6;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.3s ease;
+    }
+    .dienst-card:hover .dienst-meer-info {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     /* ── LIGHTBOX ── */
@@ -190,6 +372,8 @@
   </style>
 </head>
 <body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
 
   <!-- NAV -->
@@ -279,7 +463,7 @@
     padding: 100px 64px 80px;
   ">
     <!-- Background layers -->
-    <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
+    <div id="hero-parallax-bg" style="position:absolute;inset:0;z-index:0;pointer-events:none;will-change:transform;">
       <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.05;" xmlns="http://www.w3.org/2000/svg">
         <filter id="grain">
           <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
@@ -320,12 +504,12 @@
           color:var(--text-primary);
           margin:0 0 28px;
         ">
-          WIJ MAKEN<br>
-          <span style="color:var(--orange);">JOUW VERHAAL</span><br>
-          ONVERGETELIJK
+          <span class="word-reveal" style="animation-delay:0.05s">WIJ</span>&nbsp;<span class="word-reveal" style="animation-delay:0.22s">MAKEN</span><br>
+          <span class="word-reveal" style="color:var(--orange);animation-delay:0.40s">JOUW</span>&nbsp;<span class="word-reveal" style="color:var(--orange);animation-delay:0.57s">VERHAAL</span><br>
+          <span class="word-reveal" style="animation-delay:0.76s">ONVERGETELIJK</span>
         </h1>
 
-        <p style="
+        <p class="hero-sub-reveal" style="
           font-size:1rem;
           line-height:1.78;
           color:var(--text-secondary);
@@ -333,10 +517,10 @@
           margin:0 0 44px;
           font-weight:300;
         ">
-          Van portretfotografie tot dronecinematografie — MVDBmedia vertaalt jouw visie naar beelden die écht blijven hangen.
+          MVDBmedia levert professionele beeldproductie voor bedrijven en particulieren. Van portret- en groepsfotografie tot vastgoedbeelden, 360°-fotografie, drone cinematografie en webdesign op maat — alles onder één dak, zodat jouw merk consistent en krachtig overkomt op elk platform.
         </p>
 
-        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="hero-cta-reveal" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
           <a href="portfolio.html" style="
             background:var(--orange);
             color:#000;
@@ -483,7 +667,12 @@
           <div style="height:280px;overflow:hidden;position:relative;">
             <img src="fotos/marit/marit%201.jpg" alt="Portretfotografie" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
-            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+            <div class="dienst-img-overlay">
+              <span style="display:block;width:18px;height:2px;background:var(--orange);flex-shrink:0;border-radius:1px;"></span>
+              <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,237,232,0.92);">Meer info</span>
+              <span style="color:var(--orange);font-size:0.85rem;line-height:1;">→</span>
+            </div>
+            <div class="dienst-icon" style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             </div>
           </div>
@@ -506,7 +695,7 @@
                 Snel geleverd
               </div>
             </div>
-            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
+            <span class="dienst-meer-info" style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
           </div>
           <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
         </a>
@@ -516,7 +705,12 @@
           <div style="height:280px;overflow:hidden;position:relative;">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Vastgoedfotografie" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
-            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+            <div class="dienst-img-overlay">
+              <span style="display:block;width:18px;height:2px;background:var(--orange);flex-shrink:0;border-radius:1px;"></span>
+              <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,237,232,0.92);">Meer info</span>
+              <span style="color:var(--orange);font-size:0.85rem;line-height:1;">→</span>
+            </div>
+            <div class="dienst-icon" style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
           </div>
@@ -539,17 +733,22 @@
                 24u levering
               </div>
             </div>
-            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
+            <span class="dienst-meer-info" style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
           </div>
           <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
         </a>
 
         <!-- Drone -->
-        <a class="dienst-card" href="dronebeelden.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+        <a class="dienst-card" href="dronevisuals.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
           <div style="height:280px;overflow:hidden;position:relative;">
             <img src="fotos/drone-kasteel.jpg" alt="Drone Visuals" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
-            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+            <div class="dienst-img-overlay">
+              <span style="display:block;width:18px;height:2px;background:var(--orange);flex-shrink:0;border-radius:1px;"></span>
+              <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,237,232,0.92);">Meer info</span>
+              <span style="color:var(--orange);font-size:0.85rem;line-height:1;">→</span>
+            </div>
+            <div class="dienst-icon" style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><path d="M12 2L12 6M6 4L8.5 7.5M18 4L15.5 7.5M2 12L6 12M22 12L18 12M4.5 18L7 15.5M19.5 18L17 15.5"/><circle cx="12" cy="12" r="3"/><circle cx="7" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/><circle cx="12" cy="7" r="1.5"/><circle cx="12" cy="17" r="1.5"/></svg>
             </div>
           </div>
@@ -572,7 +771,7 @@
                 DJI Avata 2
               </div>
             </div>
-            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
+            <span class="dienst-meer-info" style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
           </div>
           <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
         </a>
@@ -583,7 +782,12 @@
           <div style="height:280px;overflow:hidden;position:relative;">
             <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Webdesign op maat" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
-            <div style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
+            <div class="dienst-img-overlay">
+              <span style="display:block;width:18px;height:2px;background:var(--orange);flex-shrink:0;border-radius:1px;"></span>
+              <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,237,232,0.92);">Meer info</span>
+              <span style="color:var(--orange);font-size:0.85rem;line-height:1;">→</span>
+            </div>
+            <div class="dienst-icon" style="position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.22);display:flex;align-items:center;justify-content:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
           </div>
@@ -606,7 +810,7 @@
                 Binnen 2 weken live
               </div>
             </div>
-            <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
+            <span class="dienst-meer-info" style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);">Meer info <span aria-hidden="true">→</span></span>
           </div>
           <div class="dienst-border" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;"></div>
         </a>
@@ -623,20 +827,27 @@
     overflow: hidden;
   ">
     <div style="position:absolute;right:-5%;bottom:-15%;width:45%;height:70%;background:radial-gradient(ellipse,rgba(255,140,0,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+    <div style="position:absolute;left:-10%;top:10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(255,140,0,0.03) 0%,transparent 65%);pointer-events:none;"></div>
 
     <div style="max-width:1280px;margin:0 auto;">
-      <div class="over-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+
+      <!-- Main grid: image + tekst -->
+      <div class="over-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
 
         <!-- Image -->
-        <div style="position:relative;">
+        <div class="over-photo" style="position:relative;">
           <div style="position:relative;border-radius:4px;overflow:hidden;box-shadow:var(--shadow-lg);">
             <img src="fotos/michael-profiel.jpg" alt="Michael van den Bosch, oprichter MVDBmedia" style="width:100%;display:block;object-fit:cover;object-position:center top;">
             <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,140,0,0.06),transparent 55%),linear-gradient(to top,rgba(0,0,0,0.35) 0%,transparent 55%);"></div>
           </div>
           <!-- Frame accent -->
           <div style="position:absolute;top:-14px;left:-14px;right:14px;bottom:14px;border:1px solid var(--border);border-radius:4px;z-index:-1;"></div>
-          <!-- Orange corner -->
-          <div style="position:absolute;bottom:-10px;right:-10px;width:72px;height:72px;border-right:3px solid var(--orange);border-bottom:3px solid var(--orange);border-radius:0 0 4px 0;"></div>
+          <!-- Orange corner — two animated lines -->
+          <div style="position:absolute;bottom:-10px;right:-10px;width:72px;height:72px;">
+            <div class="over-corner-v"></div>
+            <div class="over-corner-h"></div>
+          </div>
+
         </div>
 
         <!-- Text -->
@@ -650,14 +861,103 @@
           </h2>
 
           <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 18px;font-weight:300;">
-            Ik ben Michael van den Bosch, oprichter van MVDBmedia. Ik combineer portret- en groepsfotografie, vastgoedbeelden, drone cinematografie en webdesign onder één dak — zodat jouw verhaal op elk platform klopt.
+            Ik ben Michael van den Bosch, oprichter van MVDBmedia. Wat begon als een passie voor beeld is uitgegroeid tot een volwaardig mediabedrijf — van portret- en groepsfotografie tot luchtcinematografie en webdesign. Alles onder één dak, zodat jouw verhaal op elk platform klopt.
+          </p>
+          <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 18px;font-weight:300;">
+            Ik werk vanuit een duidelijke overtuiging: goede beelden zijn geen luxe, maar een investering. Of je nu een woning verkoopt, je bedrijf presenteert, een evenement wilt vastleggen of online wilt groeien — ik denk mee van de eerste schets tot de oplevering.
           </p>
           <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 36px;font-weight:300;">
-            Of je nu een pand wilt verkopen, een team in beeld wilt brengen, luchtbeelden nodig hebt of een sterke website zoekt — ik denk mee van concept tot oplevering. Persoonlijk, scherp en altijd gericht op resultaat.
+            Persoonlijk contact staat bij mij centraal. Geen grote bureau-structuur, maar direct lijntje — snel schakelen, eerlijk advies, en resultaat dat staat. Ik werk door heel Nederland en ben altijd bereikbaar voor een vrijblijvend gesprek.
           </p>
 
+          <a href="#contact" style="
+            display:inline-flex;align-items:center;gap:10px;
+            background:var(--orange);color:#0d0d0d;
+            font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;
+            padding:14px 28px;border-radius:3px;
+            box-shadow:0 4px 20px rgba(255,140,0,0.25);
+            transition:background 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+          "
+          onmouseover="this.style.background='#ff9f1a';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
+          onmouseout="this.style.background='var(--orange)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.25)'"
+          onmousedown="this.style.transform='translateY(0)'"
+          >
+            Stel je vraag
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
       </div>
+
+      <!-- Stats / feiten balk -->
+      <div class="over-stats-balk" style="
+        display:grid;grid-template-columns:repeat(4,1fr);
+        border:1px solid var(--border);border-radius:4px;
+        margin-top:80px;overflow:hidden;
+        background:var(--bg-card);
+      ">
+        <div style="padding:32px 28px;border-right:1px solid var(--border);">
+          <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--orange);line-height:1;margin-bottom:8px;">4</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Disciplines</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;line-height:1.5;">Foto · Drone · 360° · Webdesign</div>
+        </div>
+        <div style="padding:32px 28px;border-right:1px solid var(--border);">
+          <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--orange);line-height:1;margin-bottom:8px;">NL</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Heel Nederland</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;line-height:1.5;">Beschikbaar in heel Nederland</div>
+        </div>
+        <div style="padding:32px 28px;border-right:1px solid var(--border);">
+          <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--orange);line-height:1;margin-bottom:8px;">&lt;24u</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Reactietijd</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;line-height:1.5;">Altijd bereikbaar, snel geschakeld</div>
+        </div>
+        <div style="padding:32px 28px;">
+          <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--orange);line-height:1;margin-bottom:8px;">1:1</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Persoonlijk contact</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;line-height:1.5;">Direct met Michael, geen tussenpersoon</div>
+        </div>
+      </div>
+
+      <!-- Aanpak cards -->
+      <div class="over-aanpak-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;">
+
+        <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
+          transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
+          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+        >
+          <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Van A tot Z</div>
+          <p style="font-size:0.85rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">Ik werk gestructureerd: intake, planning, uitvoering en nazorg. Zodat jij geen omkijken hebt en weet wat je kunt verwachten.</p>
+        </div>
+
+        <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
+          transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
+          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+        >
+          <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Eerlijk advies</div>
+          <p style="font-size:0.85rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">Geen verkooppraatjes. Ik leg uit wat werkt voor jouw situatie en denk mee over wat echt nodig is — ook als dat minder is dan je dacht.</p>
+        </div>
+
+        <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
+          transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
+          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+        >
+          <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Resultaat dat staat</div>
+          <p style="font-size:0.85rem;line-height:1.75;color:var(--text-secondary);margin:0;font-weight:300;">Beelden die werken, websites die converteren. Kwaliteit is geen toeval — het is het resultaat van aandacht voor elk detail, van opname tot eindproduct.</p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -725,18 +1025,20 @@
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:40px;box-shadow:var(--shadow-lg);">
           <form onsubmit="handleFormSubmit(event)" novalidate>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-              <div>
+              <div style="position:relative;">
                 <label for="form-naam" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Naam</label>
                 <input id="form-naam" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                <span class="field-check" id="check-naam" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
               </div>
-              <div>
+              <div style="position:relative;">
                 <label for="form-email" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">E-mail</label>
                 <input id="form-email" type="email" name="email" placeholder="jouw@email.nl" required autocomplete="email" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                <span class="field-check" id="check-email" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
               </div>
             </div>
-            <div style="margin-bottom:16px;">
+            <div style="margin-bottom:16px;position:relative;">
               <label for="form-dienst" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Dienst</label>
-              <select id="form-dienst" name="dienst" required style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+              <select id="form-dienst" name="dienst" required style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" >
                 <option value="" disabled selected style="color:var(--text-muted);">Selecteer een dienst</option>
                 <option value="portret">Portretfotografie</option>
                 <option value="groep">Groepsfotografie</option>
@@ -747,10 +1049,12 @@
                 <option value="webdesign">Webdesign op maat</option>
                 <option value="overig">Overig / Combinatie</option>
               </select>
+              <span class="field-check" id="check-dienst" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
             </div>
-            <div style="margin-bottom:24px;">
+            <div style="margin-bottom:24px;position:relative;">
               <label for="form-bericht" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Bericht</label>
               <textarea id="form-bericht" name="bericht" placeholder="Vertel me over jouw project, wensen en beschikbaarheid..." required rows="5" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;resize:vertical;line-height:1.65;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+              <span class="field-check" id="check-bericht" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
             </div>
             <button type="submit" id="submit-btn" style="width:100%;background:var(--orange);color:#000;font-size:0.68rem;font-weight:800;padding:15px 24px;border:none;border-radius:3px;cursor:pointer;letter-spacing:0.12em;text-transform:uppercase;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;box-shadow:0 4px 20px rgba(255,140,0,0.22);"
             onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
@@ -777,7 +1081,7 @@
           <div style="display:flex;flex-direction:column;gap:11px;">
             <a href="portret&amp;groepsfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Vastgoedfotografie</a>
-            <a href="dronebeelden.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
+            <a href="dronevisuals.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
             <a href="webdesignopmaat.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
           </div>
         </div>
@@ -879,14 +1183,25 @@
     // Dienst card hover
     document.querySelectorAll('.dienst-card').forEach(card => {
       const border = card.querySelector('.dienst-border');
-      const img = card.querySelector('.dienst-img');
+      const img   = card.querySelector('.dienst-img');
+      const icon  = card.querySelector('.dienst-icon');
       card.addEventListener('mouseenter', () => {
         if (border) border.style.transform = 'scaleX(1)';
-        if (img) img.style.transform = 'scale(1.06)';
+        if (img)   img.style.transform   = 'scale(1.05)';
+        if (icon) {
+          icon.style.transform   = 'scale(1.2) rotate(8deg)';
+          icon.style.background  = 'rgba(255,140,0,0.2)';
+          icon.style.borderColor = 'rgba(255,140,0,0.55)';
+        }
       });
       card.addEventListener('mouseleave', () => {
         if (border) border.style.transform = 'scaleX(0)';
-        if (img) img.style.transform = 'scale(1)';
+        if (img)   img.style.transform   = 'scale(1)';
+        if (icon) {
+          icon.style.transform   = 'scale(1) rotate(0deg)';
+          icon.style.background  = 'rgba(255,140,0,0.1)';
+          icon.style.borderColor = 'rgba(255,140,0,0.22)';
+        }
       });
     });
 
@@ -936,18 +1251,27 @@
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduceMotion) return;
 
+      // Label badge-items inside cards so CSS stagger transitions can target them
+      document.querySelectorAll('.dienst-card').forEach(card => {
+        const tagsWrap = card.querySelector('div[style*="gap:6px"][style*="margin-bottom"]');
+        if (tagsWrap) {
+          tagsWrap.querySelectorAll(':scope > div').forEach(tag => tag.classList.add('dienst-tag'));
+        }
+      });
+
+      // General section targets (.over-grid removed — photo has own observer, text col added separately)
       const targets = [
         ...document.querySelectorAll(
-          '#diensten .diensten-grid, #diensten h2, #diensten p,' +
+          '#diensten h2, #diensten p,' +
           '#portfolio h2, #portfolio #portfolio-filters, #portfolio #portfolio-grid,' +
-          '#over .over-grid,' +
+          '#over .over-grid > div:last-child, #over .over-stats-balk,' +
           '#contact .contact-grid,' +
           'footer .footer-grid, footer > div > div:last-child'
         )
       ];
 
       const textTargets = [
-        ...document.querySelectorAll('#diensten h3, #diensten .dienst-card p, #over p, #contact p')
+        ...document.querySelectorAll('#diensten h3, #diensten .dienst-card p, #over p, #over .over-aanpak-grid > div, #contact p')
       ];
 
       const allTargets = [...targets, ...textTargets];
@@ -955,6 +1279,14 @@
         el.classList.add('scroll-reveal');
         const delay = index % 4;
         if (delay > 0) el.classList.add(`reveal-delay-${delay}`);
+      });
+
+      // Service cards stagger individually (left → right, 0 / 0.1 / 0.2 / 0.3s)
+      const cardDelays = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3'];
+      document.querySelectorAll('.dienst-card').forEach((card, i) => {
+        card.classList.add('scroll-reveal');
+        if (cardDelays[i]) card.classList.add(cardDelays[i]);
+        allTargets.push(card);
       });
 
       const observer = new IntersectionObserver((entries, obs) => {
@@ -965,8 +1297,8 @@
         });
       }, {
         root: null,
-        threshold: 0.14,
-        rootMargin: '0px 0px -8% 0px'
+        threshold: 0.10,
+        rootMargin: '0px 0px -6% 0px'
       });
 
       allTargets.forEach((el) => observer.observe(el));
@@ -1047,6 +1379,88 @@
       if (e.key === 'ArrowLeft') lightboxNav(-1);
       if (e.key === 'ArrowRight') lightboxNav(1);
     });
+
+    // Form field validation checkmarks
+    function validateField(fieldId, checkId, testFn) {
+      const el    = document.getElementById(fieldId);
+      const check = document.getElementById(checkId);
+      if (!el || !check) return;
+      const valid = testFn(el.value);
+      if (valid) {
+        check.classList.remove('is-valid');
+        void check.offsetWidth;        // force reflow → restart animation
+        check.classList.add('is-valid');
+      } else {
+        check.classList.remove('is-valid');
+      }
+    }
+
+    (function initFormValidation() {
+      const rules = [
+        { id: 'form-naam',    check: 'check-naam',    event: 'blur',   test: v => v.trim().length >= 2 },
+        { id: 'form-email',   check: 'check-email',   event: 'blur',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+        { id: 'form-dienst',  check: 'check-dienst',  event: 'change', test: v => v !== '' },
+        { id: 'form-bericht', check: 'check-bericht', event: 'blur',   test: v => v.trim().length >= 10 },
+      ];
+      rules.forEach(({ id, check, event, test }) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener(event, () => validateField(id, check, test));
+      });
+      // Submit button hover — pause glow
+      const btn = document.getElementById('submit-btn');
+      if (btn) {
+        btn.addEventListener('mouseenter', () => btn.style.setProperty('--glow','0'));
+        btn.addEventListener('mouseleave', () => btn.style.removeProperty('--glow'));
+      }
+    })();
+
+    // Over mij: photo slide-in + border-draw corner
+    (function() {
+      const photo = document.querySelector('.over-photo');
+      if (!photo || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (photo) { photo.style.opacity = '1'; photo.style.transform = 'none'; }
+        return;
+      }
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.18 });
+      obs.observe(photo);
+    })();
+
+    // Scroll progress bar
+    (function() {
+      const bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      let ticking = false;
+      function update() {
+        const scrollTop = window.scrollY;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (docH > 0 ? Math.min(scrollTop / docH, 1) * 100 : 0) + '%';
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+    })();
+
+    // Hero parallax — achtergrond beweegt 35% trager dan de tekst
+    (function() {
+      const bg = document.getElementById('hero-parallax-bg');
+      if (!bg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+          bg.style.transform = 'translateY(' + (window.scrollY * 0.35) + 'px)';
+          ticking = false;
+        });
+      }, { passive: true });
+    })();
 
     // Contact form submit — stuurt berichten naar m.vandenbosch1996@gmail.com via Formspree
     async function handleFormSubmit(e) {

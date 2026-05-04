@@ -205,6 +205,101 @@
     #lb-caption-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.04em; color: var(--text-primary); }
     #lb-counter { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; }
 
+    /* FILTER TABS */
+    #filter-bar { border-bottom: 1px solid var(--border); padding-bottom: 0; }
+    .filter-btn {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); background: none; border: none; cursor: pointer;
+      padding: 0 0 14px; position: relative;
+      transition: color 0.2s ease;
+    }
+    .filter-btn::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 2px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.28s cubic-bezier(0.22,1,0.36,1);
+    }
+    .filter-btn.is-active { color: var(--text-primary); }
+    .filter-btn.is-active::after { transform: scaleX(1); }
+    .filter-btn:hover:not(.is-active) { color: var(--text-secondary); }
+    .filter-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+
+    /* PROJECT GRID */
+    #project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+
+    /* PROJECT CARD */
+    .proj-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      aspect-ratio: 4/3;
+      background: #111;
+    }
+    .proj-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
+    }
+    .proj-card:hover img { transform: scale(1.05); filter: brightness(0.78); }
+    .proj-card.is-hidden { display: none !important; }
+
+    /* Orange accent line on hover */
+    .proj-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+      z-index: 3;
+    }
+    .proj-card:hover::after { transform: scaleX(1); }
+
+    /* Badge — photo count, always visible */
+    .proj-badge {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 9px; border-radius: 20px;
+    }
+
+    /* Overlay — always visible */
+    .proj-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.22) 55%, transparent 80%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 20px 18px 22px;
+      transition: background 0.35s ease;
+    }
+    .proj-card:hover .proj-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.35) 60%, transparent 85%);
+    }
+
+    .proj-tag {
+      font-size: 0.48rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 5px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .proj-tag::before { content: ''; display: block; width: 12px; height: 1px; background: var(--orange); flex-shrink: 0; }
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 1.8vw, 1.9rem);
+      letter-spacing: 0.04em; color: var(--text-primary); line-height: 0.95;
+    }
+    .proj-count {
+      font-size: 0.62rem; color: rgba(255,255,255,0.5); font-weight: 300;
+      margin-top: 5px; letter-spacing: 0.04em;
+    }
+    .proj-card:hover .proj-count { color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 960px) {
+      #project-grid { grid-template-columns: repeat(2,1fr) !important; }
+    }
+    @media (max-width: 560px) {
+      #project-grid { grid-template-columns: 1fr !important; }
+    }
+
     @media (max-width: 768px) {
       .sp { padding-left: 24px !important; padding-right: 24px !important; }
       .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -264,8 +359,8 @@
           </p>
           <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
             <div>
-              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">22</div>
-              <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Beelden</div>
+              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">8</div>
+              <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Projecten</div>
             </div>
             <div style="width:1px;background:var(--border);"></div>
             <div>
@@ -279,197 +374,105 @@
   </section>
 
 
-  <!-- CATEGORY CARDS -->
-  <section style="padding:0 64px 4px;background:var(--bg-base);" class="sp">
+  <!-- FILTER + PROJECTS -->
+  <section style="padding:0 64px 80px;background:var(--bg-base);" class="sp">
     <div style="max-width:1280px;margin:0 auto;">
-      <div style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);">Kies een categorie</div>
-        <button id="btn-all" onclick="selectCat('all',null)" style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);background:transparent;border:none;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;">Toon alles</button>
+
+      <!-- Filter tabs -->
+      <div id="filter-bar" style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
+        <button class="filter-btn is-active" data-filter="all" onclick="filterProjects('all',this)">Alles</button>
+        <button class="filter-btn" data-filter="portret" onclick="filterProjects('portret',this)">Portret</button>
+        <button class="filter-btn" data-filter="drone" onclick="filterProjects('drone',this)">Drone</button>
+        <button class="filter-btn" data-filter="constructie" onclick="filterProjects('constructie',this)">Constructie</button>
+        <button class="filter-btn" data-filter="groep" onclick="filterProjects('groep',this)">Groep</button>
+        <button class="filter-btn" data-filter="vastgoed" onclick="filterProjects('vastgoed',this)">Vastgoed</button>
       </div>
 
-      <div class="cat-grid">
+      <!-- Project grid — art-directed: 3 cols × 4 rows -->
+      <div id="project-grid">
 
-        <div class="cat-card is-active cat-span2" onclick="selectCat('portret',this)" data-cat="portret" role="button" tabindex="0" aria-label="Portretfotografie bekijken" onkeydown="if(event.key==='Enter')selectCat('portret',this)">
-          <img src="fotos/marit/marit%201.jpg" alt="Portretfotografie" loading="eager">
-          <div class="cat-overlay"></div>
-          <div class="cat-label">
-            <div class="cat-tag">Dienst</div>
-            <div class="cat-name">PORTRETFOTOGRAFIE</div>
-            <div class="cat-sub">Mensen &amp; honden · op locatie</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="selectCat('drone',this)" data-cat="drone" role="button" tabindex="0" aria-label="Drone Visuals bekijken" onkeydown="if(event.key==='Enter')selectCat('drone',this)">
-          <img src="fotos/drone-fort.jpg" alt="Drone Visuals" loading="eager">
-          <div class="cat-overlay"></div>
-          <div class="cat-label">
-            <div class="cat-tag">Dienst</div>
-            <div class="cat-name">DRONE VISUALS</div>
-            <div class="cat-sub">Landschappen · luchtfoto's</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="selectCat('groep',this)" data-cat="groep" role="button" tabindex="0" aria-label="Groepsfotografie bekijken" onkeydown="if(event.key==='Enter')selectCat('groep',this)">
-          <img src="fotos/events-groep.jpg" alt="Groepsfotografie" loading="lazy">
-          <div class="cat-overlay"></div>
-          <div class="cat-label">
-            <div class="cat-tag">Dienst</div>
-            <div class="cat-name">GROEPSFOTOGRAFIE</div>
-            <div class="cat-sub">Events · teams · families</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="selectCat('constructie',this)" data-cat="constructie" role="button" tabindex="0" aria-label="Constructie in Beeld bekijken" onkeydown="if(event.key==='Enter')selectCat('constructie',this)">
-          <img src="fotos/drone-bouwplaats.jpg" alt="Constructie in Beeld" loading="lazy">
-          <div class="cat-overlay"></div>
-          <div class="cat-label">
-            <div class="cat-tag">Dienst</div>
-            <div class="cat-name">CONSTRUCTIE IN BEELD</div>
-            <div class="cat-sub">Bouwplaats · drone</div>
-          </div>
-        </div>
-
-        <div class="cat-card" onclick="selectCat('vastgoed',this)" data-cat="vastgoed" role="button" tabindex="0" aria-label="Vastgoedfotografie bekijken" onkeydown="if(event.key==='Enter')selectCat('vastgoed',this)">
-          <img src="fotos/vastgoed-huis.jpg" alt="Vastgoedfotografie" loading="lazy">
-          <div class="cat-overlay"></div>
-          <div class="cat-label">
-            <div class="cat-tag">Dienst</div>
-            <div class="cat-name">VASTGOEDFOTOGRAFIE</div>
-            <div class="cat-sub">Exterieurs · interieurs</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- GALLERY -->
-  <section id="gallery" style="padding:4px 64px 0;background:var(--bg-base);" class="sp">
-    <div style="max-width:1280px;margin:0 auto;">
-      <div style="padding:14px 0 10px;display:flex;align-items:center;gap:8px;">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>
-        <span id="gallery-cat-name" style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);">Portretfotografie</span>
-        <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);">—</span>
-        <span id="gallery-count" style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);">8</span>
-        <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);">beelden</span>
-      </div>
-
-      <div class="masonry" id="masonry-grid">
-
-        <!-- PORTRET (visible by default) -->
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Portretshoot Marit" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Portretshoot Marit">
+        <!-- Row 1: Marit (×2, tall hero) + Luchtfotografie -->
+        <div class="proj-card" data-cat="portret" onclick="openProject(0)">
           <img src="fotos/marit/marit%201.jpg" alt="Portretshoot Marit" loading="eager">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Portretshoot Marit</div></div></div>
+          <div class="proj-badge">5 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Portretfotografie</div>
+            <div class="proj-title">Portretshoot Marit</div>
+            <div class="proj-count">Op locatie · Canon</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Ollie" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Ollie">
-          <img src="fotos/portret-ollie.jpg" alt="Portret Ollie" loading="eager">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Ollie</div></div></div>
+        <div class="proj-card" data-cat="drone" onclick="openProject(3)">
+          <img src="fotos/drone-fort.jpg" alt="Luchtfotografie" loading="eager">
+          <div class="proj-badge">8 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Drone Visuals</div>
+            <div class="proj-title">Luchtfotografie</div>
+            <div class="proj-count">DJI Avata 2</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Buiten portret" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Buiten portret">
-          <img src="fotos/marit/marit%202.jpeg" alt="Buiten portret" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Buiten portret</div></div></div>
+        <!-- Row 2: Ollie + Bouwdoc (×2) -->
+        <div class="proj-card" data-cat="portret" onclick="openProject(1)">
+          <img src="fotos/portret-ollie.jpg" alt="Hondenfotografie Ollie" loading="lazy">
+          <div class="proj-badge">3 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Portretfotografie</div>
+            <div class="proj-title">Hondenfoto's — Ollie</div>
+            <div class="proj-count">Op locatie · Canon</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Ziggy" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Ziggy">
-          <img src="fotos/portret-ziggy.jpg" alt="Portret Ziggy" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Ziggy</div></div></div>
+        <div class="proj-card" data-cat="constructie" onclick="openProject(5)">
+          <img src="fotos/bouw/IMG-20251109-WA0023.jpg" alt="Bouwdocumentatie" loading="lazy">
+          <div class="proj-badge">10 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Constructie in Beeld</div>
+            <div class="proj-title">Bouwdocumentatie</div>
+            <div class="proj-count">Canon · grondniveau</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Close-up portret" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Close-up portret">
-          <img src="fotos/marit/marit%203.jpeg" alt="Close-up portret" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Close-up portret</div></div></div>
+        <!-- Row 3: Ziggy + Constructie drone + Groep -->
+        <div class="proj-card" data-cat="portret" onclick="openProject(2)">
+          <img src="fotos/portret-ziggy.jpg" alt="Hondenfotografie Ziggy" loading="lazy">
+          <div class="proj-badge">3 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Portretfotografie</div>
+            <div class="proj-title">Hondenfoto's — Ziggy</div>
+            <div class="proj-count">Op locatie · Canon</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Lichtportret" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Lichtportret">
-          <img src="fotos/marit/marit%204.jpeg" alt="Lichtportret" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Lichtportret</div></div></div>
+        <div class="proj-card" data-cat="constructie" onclick="openProject(4)">
+          <img src="fotos/drone-bouwplaats.jpg" alt="Bouwplaats vanuit de lucht" loading="lazy">
+          <div class="proj-badge">13 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Constructie in Beeld</div>
+            <div class="proj-title">Bouwplaats vanuit de lucht</div>
+            <div class="proj-count">DJI Avata 2</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Sfeerportret" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Sfeerportret">
-          <img src="fotos/marit/marit%205.jpeg" alt="Sfeerportret" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Sfeerportret</div></div></div>
+        <div class="proj-card" data-cat="groep" onclick="openProject(6)">
+          <img src="fotos/groepsfoto%201.jpg" alt="Groepsfotografie" loading="lazy">
+          <div class="proj-badge">3 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Groepsfotografie</div>
+            <div class="proj-title">Groepssessie</div>
+            <div class="proj-count">Op locatie · Canon</div>
+          </div>
         </div>
 
-        <div class="masonry-item" data-cat="portret" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Ollie in actie" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Portretfotografie" data-ctitle="Ollie in actie">
-          <img src="fotos/portret%20honden/ollie%201.jpg" alt="Ollie in actie" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Portret</div><div class="m-title">Ollie in actie</div></div></div>
-        </div>
-
-        <!-- GROEP (hidden by default) -->
-        <div class="masonry-item is-hidden" data-cat="groep" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Groepsfoto" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Groepsfotografie" data-ctitle="Groepsfoto">
-          <img src="fotos/groepsfoto%201.jpg" alt="Groepsfoto" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Groep</div><div class="m-title">Groepsfoto</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="groep" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Event sfeerbeeld" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Groepsfotografie" data-ctitle="Event sfeerbeeld">
-          <img src="fotos/events-groep.jpg" alt="Event groepsfotografie" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Groep</div><div class="m-title">Event sfeerbeeld</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="groep" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Event groepsfoto" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Groepsfotografie" data-ctitle="Event groepsfoto">
-          <img src="fotos/groepsfoto%202.jpg" alt="Event groepsfoto" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Groep</div><div class="m-title">Event groepsfoto</div></div></div>
-        </div>
-
-        <!-- DRONE (hidden by default) -->
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Eiland vanuit de lucht" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Eiland vanuit de lucht">
-          <img src="fotos/drone-eiland.jpg" alt="Drone eiland" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Eiland vanuit de lucht</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Fort overzicht" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Fort overzicht">
-          <img src="fotos/drone-fort.jpg" alt="Drone fort" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Fort overzicht</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Kasteel in herfst" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Kasteel in herfst">
-          <img src="fotos/drone-kasteel.jpg" alt="Drone kasteel" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Kasteel in herfst</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Parklandschap" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Parklandschap">
-          <img src="fotos/drone-park.jpg" alt="Drone park" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Parklandschap</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Luchtopname" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Luchtopname">
-          <img src="fotos/luchtfotos/IMG-20251109-WA0012.jpg" alt="Luchtfoto" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Luchtopname</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="drone" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Aerial view" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Drone Visuals" data-ctitle="Aerial view">
-          <img src="fotos/luchtfotos/IMG-20251109-WA0016.jpg" alt="Aerial drone" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Drone</div><div class="m-title">Aerial view</div></div></div>
-        </div>
-
-        <!-- CONSTRUCTIE (hidden by default) -->
-        <div class="masonry-item is-hidden" data-cat="constructie" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Bouwplaats overzicht" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Constructie in Beeld" data-ctitle="Bouwplaats overzicht">
-          <img src="fotos/drone-bouwplaats.jpg" alt="Bouwplaats drone" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Constructie</div><div class="m-title">Bouwplaats overzicht</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="constructie" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Bouwprogressie" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Constructie in Beeld" data-ctitle="Bouwprogressie">
-          <img src="fotos/bouwplaats%20drone/IMG-20251109-WA0021.jpg" alt="Bouwprogressie drone" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Constructie</div><div class="m-title">Bouwprogressie</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="constructie" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Constructie detail" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Constructie in Beeld" data-ctitle="Constructie detail">
-          <img src="fotos/bouw/IMG-20251109-WA0021.jpg" alt="Constructie detail" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Constructie</div><div class="m-title">Constructie detail</div></div></div>
-        </div>
-
-        <div class="masonry-item is-hidden" data-cat="constructie" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Constructie voortgang" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Constructie in Beeld" data-ctitle="Constructie voortgang">
-          <img src="fotos/bouw/IMG-20251109-WA0022.jpg" alt="Constructie voortgang" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Constructie</div><div class="m-title">Constructie voortgang</div></div></div>
-        </div>
-
-        <!-- VASTGOED (hidden by default) -->
-        <div class="masonry-item is-hidden" data-cat="vastgoed" onclick="openLightbox(this)" role="button" tabindex="0" aria-label="Villa exterieur" onkeydown="if(event.key==='Enter')openLightbox(this)" data-clabel="Vastgoedfotografie" data-ctitle="Villa exterieur">
-          <img src="fotos/vastgoed-huis.jpg" alt="Vastgoed exterieur" loading="lazy">
-          <div class="m-overlay"><div class="m-caption"><div class="m-cat">Vastgoed</div><div class="m-title">Villa exterieur</div></div></div>
+        <!-- Row 4: Vastgoed full width -->
+        <div class="proj-card" data-cat="vastgoed" onclick="openProject(7)">
+          <img src="fotos/vastgoed-huis.jpg" alt="Vastgoedfotografie" loading="lazy">
+          <div class="proj-badge">1 foto</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Vastgoedfotografie</div>
+            <div class="proj-title">Woningfotografie</div>
+            <div class="proj-count">Exterieur · Canon</div>
+          </div>
         </div>
 
       </div>
@@ -515,7 +518,7 @@
           <div style="display:flex;flex-direction:column;gap:11px;">
             <a href="portret&amp;groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
-            <a href="dronebeelden.html" class="footer-link">Drone Visuals</a>
+            <a href="dronevisuals.html" class="footer-link">Drone Visuals</a>
             <a href="webdesignopmaat.html" class="footer-link">Webdesign op maat</a>
           </div>
         </div>
@@ -608,47 +611,117 @@
     })();
 
     // FILTER
-    var catLabels = {
-      portret: 'Portretfotografie',
-      groep: 'Groepsfotografie',
-      drone: 'Drone Visuals',
-      constructie: 'Constructie in Beeld',
-      vastgoed: 'Vastgoedfotografie',
-      all: 'Alle categorieën'
-    };
-
-    function selectCat(cat, cardEl) {
-      document.querySelectorAll('.cat-card').forEach(function(c) { c.classList.remove('is-active'); });
-      if (cardEl) cardEl.classList.add('is-active');
-
-      var items = document.querySelectorAll('.masonry-item');
-      var visible = 0;
-      items.forEach(function(item) {
-        if (cat === 'all' || item.dataset.cat === cat) {
-          item.classList.remove('is-hidden');
-          visible++;
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      document.querySelectorAll('.proj-card').forEach(function(card) {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('is-hidden');
         } else {
-          item.classList.add('is-hidden');
+          card.classList.add('is-hidden');
         }
       });
-
-      document.getElementById('gallery-cat-name').textContent = catLabels[cat] || cat;
-      document.getElementById('gallery-count').textContent = visible;
-
-      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // PROJECT DATA
+    var projects = [
+      {
+        label: 'Portretfotografie', title: 'Portretshoot Marit',
+        photos: [
+          { src: 'fotos/marit/marit%201.jpg', title: 'Portretshoot Marit' },
+          { src: 'fotos/marit/marit%202.jpeg', title: 'Portretshoot Marit' },
+          { src: 'fotos/marit/marit%203.jpeg', title: 'Portretshoot Marit' },
+          { src: 'fotos/marit/marit%204.jpeg', title: 'Portretshoot Marit' },
+          { src: 'fotos/marit/marit%205.jpeg', title: 'Portretshoot Marit' }
+        ]
+      },
+      {
+        label: 'Portretfotografie', title: 'Hondenfoto\'s — Ollie',
+        photos: [
+          { src: 'fotos/portret-ollie.jpg', title: 'Ollie' },
+          { src: 'fotos/portret%20honden/ollie%201.jpg', title: 'Ollie' },
+          { src: 'fotos/portret%20honden/ollie%202.jpg', title: 'Ollie' }
+        ]
+      },
+      {
+        label: 'Portretfotografie', title: 'Hondenfoto\'s — Ziggy',
+        photos: [
+          { src: 'fotos/portret-ziggy.jpg', title: 'Ziggy' },
+          { src: 'fotos/portret%20honden/ziggy%201.jpg', title: 'Ziggy' },
+          { src: 'fotos/portret%20honden/ziggy%202.jpg', title: 'Ziggy' }
+        ]
+      },
+      {
+        label: 'Drone Visuals', title: 'Luchtfotografie',
+        photos: [
+          { src: 'fotos/drone-eiland.jpg', title: 'Eiland vanuit de lucht' },
+          { src: 'fotos/drone-fort.jpg', title: 'Fort overzicht' },
+          { src: 'fotos/drone-kasteel.jpg', title: 'Kasteel' },
+          { src: 'fotos/drone-park.jpg', title: 'Parklandschap' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0012.jpg', title: 'Luchtopname' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0016.jpg', title: 'Aerial view' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0017.jpg', title: 'Luchtfoto' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0019.jpg', title: 'Luchtfoto' }
+        ]
+      },
+      {
+        label: 'Constructie in Beeld', title: 'Bouwplaats vanuit de lucht',
+        photos: [
+          { src: 'fotos/drone-bouwplaats.jpg', title: 'Bouwplaats overzicht' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0021.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0022.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0023.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0025.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0026.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0028.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0030.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0036.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0037.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0038.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0039.jpg', title: 'Bouwprogressie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0042.jpg', title: 'Bouwprogressie' }
+        ]
+      },
+      {
+        label: 'Constructie in Beeld', title: 'Bouwdocumentatie',
+        photos: [
+          { src: 'fotos/bouw/IMG-20251109-WA0021.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0022.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0023.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0024.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0025.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0026.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0027.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0028.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0029.jpg', title: 'Bouwdocumentatie' },
+          { src: 'fotos/bouw/IMG-20251109-WA0030.jpg', title: 'Bouwdocumentatie' }
+        ]
+      },
+      {
+        label: 'Groepsfotografie', title: 'Groepssessie',
+        photos: [
+          { src: 'fotos/groepsfoto%201.jpg', title: 'Groepsfoto' },
+          { src: 'fotos/groepsfoto%202.jpg', title: 'Groepsfoto' },
+          { src: 'fotos/events-groep.jpg', title: 'Event sfeerbeeld' }
+        ]
+      },
+      {
+        label: 'Vastgoedfotografie', title: 'Woningfotografie',
+        photos: [
+          { src: 'fotos/vastgoed-huis.jpg', title: 'Villa exterieur' }
+        ]
+      }
+    ];
 
     // LIGHTBOX
-    var lbItems = [], lbIndex = 0;
+    var lbItems = [], lbIndex = 0, lbCurrentLabel = '';
 
-    function getVisible() {
-      return Array.from(document.querySelectorAll('.masonry-item:not(.is-hidden)'));
-    }
-
-    function openLightbox(el) {
-      lbItems = getVisible();
-      lbIndex = lbItems.indexOf(el);
-      showLb(lbIndex);
+    function openProject(projectIndex) {
+      var project = projects[projectIndex];
+      lbItems = project.photos;
+      lbCurrentLabel = project.label;
+      lbIndex = 0;
+      showLb(0);
       var lb = document.getElementById('lightbox');
       lb.classList.add('lb-open');
       requestAnimationFrame(function() {
@@ -660,12 +733,14 @@
 
     function showLb(i) {
       var item = lbItems[i];
-      var img = item.querySelector('img');
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox-img').alt = img.alt;
-      document.getElementById('lb-caption-cat').textContent = item.dataset.clabel || '';
-      document.getElementById('lb-caption-title').textContent = item.dataset.ctitle || '';
+      var imgEl = document.getElementById('lightbox-img');
+      imgEl.src = item.src;
+      imgEl.alt = item.title;
+      document.getElementById('lb-caption-cat').textContent = lbCurrentLabel;
+      document.getElementById('lb-caption-title').textContent = item.title;
       document.getElementById('lb-counter').textContent = (i + 1) + ' / ' + lbItems.length;
+      document.getElementById('lb-prev').style.display = lbItems.length > 1 ? 'flex' : 'none';
+      document.getElementById('lb-next').style.display = lbItems.length > 1 ? 'flex' : 'none';
     }
 
     function closeLightbox() {
