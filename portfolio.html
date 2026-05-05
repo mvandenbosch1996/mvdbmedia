@@ -359,12 +359,12 @@
           </p>
           <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
             <div>
-              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">8</div>
+              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">6</div>
               <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Projecten</div>
             </div>
             <div style="width:1px;background:var(--border);"></div>
             <div>
-              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">5</div>
+              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">4</div>
               <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Categorieën</div>
             </div>
           </div>
@@ -385,7 +385,6 @@
         <button class="filter-btn" data-filter="drone" onclick="filterProjects('drone',this)">Drone</button>
         <button class="filter-btn" data-filter="constructie" onclick="filterProjects('constructie',this)">Constructie</button>
         <button class="filter-btn" data-filter="groep" onclick="filterProjects('groep',this)">Groep</button>
-        <button class="filter-btn" data-filter="vastgoed" onclick="filterProjects('vastgoed',this)">Vastgoed</button>
       </div>
 
       <!-- Project grid — art-directed: 3 cols × 4 rows -->
@@ -398,7 +397,6 @@
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Portretshoot Marit</div>
-            <div class="proj-count">Op locatie · Canon</div>
           </div>
         </div>
 
@@ -408,72 +406,47 @@
           <div class="proj-overlay">
             <div class="proj-tag">Drone Visuals</div>
             <div class="proj-title">Luchtfotografie</div>
-            <div class="proj-count">DJI Avata 2</div>
           </div>
         </div>
 
-        <!-- Row 2: Ollie + Bouwdoc (×2) -->
+        <!-- Row 2: Ollie -->
         <div class="proj-card" data-cat="portret" onclick="openProject(1)">
           <img src="fotos/portret-ollie.jpg" alt="Hondenfotografie Ollie" loading="lazy">
-          <div class="proj-badge">3 foto's</div>
+          <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Hondenfoto's — Ollie</div>
-            <div class="proj-count">Op locatie · Canon</div>
-          </div>
-        </div>
-
-        <div class="proj-card" data-cat="constructie" onclick="openProject(5)">
-          <img src="fotos/bouw/IMG-20251109-WA0023.jpg" alt="Bouwdocumentatie" loading="lazy">
-          <div class="proj-badge">10 foto's</div>
-          <div class="proj-overlay">
-            <div class="proj-tag">Constructie in Beeld</div>
-            <div class="proj-title">Bouwdocumentatie</div>
-            <div class="proj-count">Canon · grondniveau</div>
           </div>
         </div>
 
         <!-- Row 3: Ziggy + Constructie drone + Groep -->
         <div class="proj-card" data-cat="portret" onclick="openProject(2)">
           <img src="fotos/portret-ziggy.jpg" alt="Hondenfotografie Ziggy" loading="lazy">
-          <div class="proj-badge">3 foto's</div>
+          <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Hondenfoto's — Ziggy</div>
-            <div class="proj-count">Op locatie · Canon</div>
           </div>
         </div>
 
         <div class="proj-card" data-cat="constructie" onclick="openProject(4)">
-          <img src="fotos/drone-bouwplaats.jpg" alt="Bouwplaats vanuit de lucht" loading="lazy">
+          <img src="fotos/drone-bouwplaats.jpg" alt="Bouwplaats — Bouwbedrijf Vellinga" loading="lazy">
           <div class="proj-badge">13 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Constructie in Beeld</div>
-            <div class="proj-title">Bouwplaats vanuit de lucht</div>
-            <div class="proj-count">DJI Avata 2</div>
+            <div class="proj-title">Bouwplaats — Bouwbedrijf Vellinga</div>
           </div>
         </div>
 
-        <div class="proj-card" data-cat="groep" onclick="openProject(6)">
+        <div class="proj-card" data-cat="groep" onclick="openProject(5)">
           <img src="fotos/groepsfoto%201.jpg" alt="Groepsfotografie" loading="lazy">
-          <div class="proj-badge">3 foto's</div>
+          <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Groepsfotografie</div>
-            <div class="proj-title">Groepssessie</div>
-            <div class="proj-count">Op locatie · Canon</div>
+            <div class="proj-title">Groepsfoto — Friesland Ontruimingen</div>
           </div>
         </div>
 
-        <!-- Row 4: Vastgoed full width -->
-        <div class="proj-card" data-cat="vastgoed" onclick="openProject(7)">
-          <img src="fotos/vastgoed-huis.jpg" alt="Vastgoedfotografie" loading="lazy">
-          <div class="proj-badge">1 foto</div>
-          <div class="proj-overlay">
-            <div class="proj-tag">Vastgoedfotografie</div>
-            <div class="proj-title">Woningfotografie</div>
-            <div class="proj-count">Exterieur · Canon</div>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -638,7 +611,6 @@
       {
         label: 'Portretfotografie', title: 'Hondenfoto\'s — Ollie',
         photos: [
-          { src: 'fotos/portret-ollie.jpg', title: 'Ollie' },
           { src: 'fotos/portret%20honden/ollie%201.jpg', title: 'Ollie' },
           { src: 'fotos/portret%20honden/ollie%202.jpg', title: 'Ollie' }
         ]
@@ -646,7 +618,6 @@
       {
         label: 'Portretfotografie', title: 'Hondenfoto\'s — Ziggy',
         photos: [
-          { src: 'fotos/portret-ziggy.jpg', title: 'Ziggy' },
           { src: 'fotos/portret%20honden/ziggy%201.jpg', title: 'Ziggy' },
           { src: 'fotos/portret%20honden/ziggy%202.jpg', title: 'Ziggy' }
         ]
@@ -665,7 +636,7 @@
         ]
       },
       {
-        label: 'Constructie in Beeld', title: 'Bouwplaats vanuit de lucht',
+        label: 'Constructie in Beeld', title: 'Bouwplaats — Bouwbedrijf Vellinga',
         photos: [
           { src: 'fotos/drone-bouwplaats.jpg', title: 'Bouwplaats overzicht' },
           { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0021.jpg', title: 'Bouwprogressie' },
@@ -683,34 +654,12 @@
         ]
       },
       {
-        label: 'Constructie in Beeld', title: 'Bouwdocumentatie',
+        label: 'Groepsfotografie', title: 'Groepsfoto — Friesland Ontruimingen',
         photos: [
-          { src: 'fotos/bouw/IMG-20251109-WA0021.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0022.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0023.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0024.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0025.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0026.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0027.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0028.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0029.jpg', title: 'Bouwdocumentatie' },
-          { src: 'fotos/bouw/IMG-20251109-WA0030.jpg', title: 'Bouwdocumentatie' }
-        ]
-      },
-      {
-        label: 'Groepsfotografie', title: 'Groepssessie',
-        photos: [
-          { src: 'fotos/groepsfoto%201.jpg', title: 'Groepsfoto' },
           { src: 'fotos/groepsfoto%202.jpg', title: 'Groepsfoto' },
           { src: 'fotos/events-groep.jpg', title: 'Event sfeerbeeld' }
         ]
       },
-      {
-        label: 'Vastgoedfotografie', title: 'Woningfotografie',
-        photos: [
-          { src: 'fotos/vastgoed-huis.jpg', title: 'Villa exterieur' }
-        ]
-      }
     ];
 
     // LIGHTBOX

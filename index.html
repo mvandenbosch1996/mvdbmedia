@@ -104,6 +104,7 @@
       .diensten-grid .dienst-card[style*="grid-column:1/-1"] > div:first-child { width: 100% !important; min-height: 200px !important; }
       .over-stats-balk { grid-template-columns: repeat(2,1fr) !important; }
       .over-aanpak-grid { grid-template-columns: 1fr !important; }
+      .form-naam-grid { grid-template-columns: 1fr !important; }
     }
     /* Scroll reveal animations */
     .scroll-reveal {
@@ -1024,7 +1025,7 @@
         <!-- Form Right -->
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:40px;box-shadow:var(--shadow-lg);">
           <form onsubmit="handleFormSubmit(event)" novalidate>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="form-naam-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
               <div style="position:relative;">
                 <label for="form-naam" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Naam</label>
                 <input id="form-naam" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
@@ -1036,7 +1037,7 @@
                 <span class="field-check" id="check-email" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
               </div>
             </div>
-            <div style="margin-bottom:16px;position:relative;">
+            <div id="dienst-wrapper" style="margin-bottom:16px;position:relative;transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
               <label for="form-dienst" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Dienst</label>
               <select id="form-dienst" name="dienst" required style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" >
                 <option value="" disabled selected style="color:var(--text-muted);">Selecteer een dienst</option>
@@ -1050,6 +1051,13 @@
                 <option value="overig">Overig / Combinatie</option>
               </select>
               <span class="field-check" id="check-dienst" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            </div>
+            <div style="margin-bottom:16px;position:relative;">
+              <label for="form-reden" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Reden van contact</label>
+              <select id="form-reden" name="reden" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" onchange="toggleDienst(this.value)">
+                <option value="offerte">Offerte aanvragen</option>
+                <option value="vraag">Algemene vraag stellen</option>
+              </select>
             </div>
             <div style="margin-bottom:24px;position:relative;">
               <label for="form-bericht" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Bericht</label>
@@ -1133,7 +1141,27 @@
   </div>
 
   <script>
-    // Mobile menu toggle
+    function toggleDienst(val) {
+      const wrapper = document.getElementById('dienst-wrapper');
+      const select = document.getElementById('form-dienst');
+      const bericht = document.getElementById('form-bericht');
+      if (val === 'vraag') {
+        wrapper.style.opacity = '0';
+        wrapper.style.transform = 'translateY(-6px)';
+        setTimeout(() => { wrapper.style.display = 'none'; }, 300);
+        select.required = false;
+        bericht.placeholder = 'Stel gerust je vraag, ik reageer binnen 24 uur...';
+      } else {
+        wrapper.style.display = 'block';
+        requestAnimationFrame(() => {
+          wrapper.style.opacity = '1';
+          wrapper.style.transform = 'translateY(0)';
+        });
+        select.required = true;
+        bericht.placeholder = 'Vertel me over jouw project, wensen en beschikbaarheid...';
+      }
+    }
+
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
       const btn = document.getElementById('menu-btn');
