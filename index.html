@@ -89,7 +89,8 @@
     @media (max-width: 768px) {
       .section-pad { padding: 80px 24px !important; }
       .nav-pad { padding: 0 24px !important; }
-      #hero { align-items: flex-start !important; padding-top: 40px !important; padding-bottom: 140px !important; min-height: unset !important; }
+      #hero { align-items: flex-start !important; padding-top: 40px !important; padding-bottom: 40px !important; min-height: calc(87vh - 64px) !important; }
+      .scroll-mouse-wrap { position: fixed !important; bottom: 28px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 40 !important; }
       #diensten { padding-top: 28px !important; }
       #portfolio { padding-top: 28px !important; }
       #over { padding-top: 28px !important; }
@@ -105,6 +106,15 @@
       .over-stats-balk { grid-template-columns: repeat(2,1fr) !important; }
       .over-aanpak-grid { grid-template-columns: 1fr !important; }
       .form-naam-grid { grid-template-columns: 1fr !important; }
+
+      /* Showreel: minder top-padding op mobiel zodat koptekst piept */
+      #showreel { padding-top: 44px !important; }
+
+      /* Scroll-hint: groter en helderder op mobiel */
+      .scroll-mouse-wrap { bottom: 24px !important; gap: 8px !important; }
+      .scroll-label { font-size: 0.62rem !important; letter-spacing: 0.22em !important; color: var(--text-secondary) !important; }
+      .scroll-mouse-body { width: 28px !important; height: 44px !important; border-color: rgba(160,152,144,0.55) !important; }
+      .scroll-tail { height: 18px !important; }
     }
     /* Scroll reveal animations */
     .scroll-reveal {
@@ -283,14 +293,48 @@
 
     /* ── DIENST CARD MICRO-INTERACTIONS ── */
 
-    /* 1 — Icon pulse/rotate */
+    /* 1 — Left orange bar slides down from top */
+    .dienst-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, var(--orange) 0%, var(--orange-dim) 100%);
+      transition: height 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .dienst-card:hover::before { height: 100%; }
+
+    /* 2 — Subtiele achtergrond opwarming */
+    .dienst-card {
+      transition: background 0.38s ease;
+    }
+    .dienst-card:hover { background: #1e1a15 !important; }
+
+    /* 3 — Bottom border inschuiven */
+    .dienst-card:hover .dienst-border { transform: scaleX(1) !important; }
+
+    /* 4 — Image zoom */
+    .dienst-card:hover .dienst-img { transform: scale(1.05); }
+
+    /* 5 — Icon pulse/rotate */
     .dienst-icon {
       transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
                   background 0.28s ease,
                   border-color 0.28s ease;
     }
+    .dienst-card:hover .dienst-icon {
+      background: rgba(255,140,0,0.2) !important;
+      border-color: rgba(255,140,0,0.5) !important;
+      transform: scale(1.12);
+    }
 
-    /* 2 — Image overlay slides up from bottom */
+    /* 6 — Active/press state */
+    .dienst-card:active { transform: scale(0.985); transition: transform 0.1s ease; }
+
+    /* 7 — Image overlay slides up from bottom */
     .dienst-img-overlay {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -370,6 +414,121 @@
     #lb-cat { font-size: 0.6rem; color: #ff8c00; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
     #lb-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #f0ede8; letter-spacing: 0.04em; }
     #lb-counter { font-size: 0.65rem; color: rgba(240,237,232,0.4); margin-top: 6px; letter-spacing: 0.1em; }
+
+    /* ── WHATSAPP FLOATING BUTTON ── */
+    #wa-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 150;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 18px 0 13px;
+      height: 48px;
+      border-radius: 24px;
+      background: var(--orange);
+      text-decoration: none;
+      box-shadow:
+        0 0 0 1px rgba(255,140,0,0.4),
+        0 6px 20px rgba(255,140,0,0.28),
+        0 2px 8px rgba(0,0,0,0.55);
+      transition:
+        transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+        box-shadow 0.25s ease;
+      position: fixed;
+    }
+    #wa-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      animation: btnPulseRing 2.2s ease-out 1.8s 3;
+      pointer-events: none;
+    }
+    #wa-btn:hover {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(255,140,0,0.55),
+        0 12px 32px rgba(255,140,0,0.38),
+        0 4px 12px rgba(0,0,0,0.5);
+    }
+    #wa-btn:active { transform: scale(0.97); }
+    #wa-btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+    #wa-label {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #0d0d0d;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      #wa-btn {
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        justify-content: center;
+      }
+      #wa-btn::after { border-radius: 50%; }
+      #wa-label { display: none; }
+    }
+
+    /* ── SHOWREEL ── */
+    @keyframes showreel-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes showreel-right {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+    .showreel-strip:hover .showreel-marquee {
+      animation-play-state: paused;
+    }
+    .showreel-frame {
+      flex-shrink: 0;
+      height: 320px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .showreel-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .showreel-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      transition: background 0.35s ease;
+    }
+    .showreel-frame:hover img {
+      transform: scale(1.06);
+    }
+    .showreel-frame:hover::after {
+      background: linear-gradient(180deg, rgba(255,140,0,0.07) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .showreel-frame:hover {
+      box-shadow: 0 0 0 2px var(--orange), 0 8px 32px rgba(255,140,0,0.2);
+    }
+    @media (max-width: 768px) {
+      .showreel-frame { height: 220px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .showreel-marquee { animation: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -505,7 +664,7 @@
           color:var(--text-primary);
           margin:0 0 28px;
         ">
-          <span class="word-reveal" style="animation-delay:0.05s">WIJ</span>&nbsp;<span class="word-reveal" style="animation-delay:0.22s">MAKEN</span><br>
+          <span class="word-reveal" style="animation-delay:0.05s">IK</span>&nbsp;<span class="word-reveal" style="animation-delay:0.22s">MAAK</span><br>
           <span class="word-reveal" style="color:var(--orange);animation-delay:0.40s">JOUW</span>&nbsp;<span class="word-reveal" style="color:var(--orange);animation-delay:0.57s">VERHAAL</span><br>
           <span class="word-reveal" style="animation-delay:0.76s">ONVERGETELIJK</span>
         </h1>
@@ -614,9 +773,9 @@
       text-decoration:none;
       animation:scroll-fade 2.8s ease-in-out infinite;
     ">
-      <div style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);">Scroll</div>
+      <div class="scroll-label" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);">Scroll</div>
       <!-- Mouse body -->
-      <div style="
+      <div class="scroll-mouse-body" style="
         position:relative;
         width:24px;height:38px;
         border:1.5px solid rgba(160,152,144,0.35);
@@ -634,8 +793,62 @@
         "></div>
       </div>
       <!-- Tail line -->
-      <div style="width:1px;height:24px;background:linear-gradient(180deg,rgba(160,152,144,0.22),transparent);"></div>
+      <div class="scroll-tail" style="width:1px;height:24px;background:linear-gradient(180deg,rgba(160,152,144,0.22),transparent);"></div>
     </a>
+  </section>
+
+  <!-- SHOWREEL -->
+  <section id="showreel" style="
+    padding: 96px 0 80px;
+    background: var(--bg-base);
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- Achtergrond gloed -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;height:80%;background:radial-gradient(ellipse,rgba(255,140,0,0.035) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <!-- Koptekst -->
+    <div class="scroll-reveal" style="padding:0 64px;margin-bottom:52px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+        <div style="width:28px;height:1px;background:var(--orange);"></div>
+        <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);font-family:var(--font-body);font-weight:500;">Mijn beste werk</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <h2 style="font-family:var(--font-display);font-size:clamp(52px,7vw,88px);line-height:0.88;margin:0;color:var(--text-primary);letter-spacing:0.01em;">SHOWREEL</h2>
+        <p style="font-family:var(--font-body);font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:380px;margin:0;">
+          Van drone tot portret — een greep uit het werk dat ik voor klanten maak. Hover om te pauzeren.
+        </p>
+      </div>
+    </div>
+
+    <!-- Strip -->
+    <div class="showreel-strip" style="position:relative;">
+      <!-- Vervaag randen links en rechts -->
+      <div style="position:absolute;top:0;left:0;width:180px;height:100%;background:linear-gradient(90deg,var(--bg-base) 0%,transparent 100%);z-index:3;pointer-events:none;"></div>
+      <div style="position:absolute;top:0;right:0;width:180px;height:100%;background:linear-gradient(270deg,var(--bg-base) 0%,transparent 100%);z-index:3;pointer-events:none;"></div>
+
+      <!-- Één rij: beweegt naar links -->
+      <div style="overflow:hidden;">
+        <div class="showreel-marquee" style="display:flex;gap:14px;width:max-content;animation:showreel-left 55s linear infinite;">
+          <!-- Eerste set — 10 fotos -->
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-fort.jpg" alt="Drone — fort" loading="lazy"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ollie.jpg" alt="Portret" loading="lazy"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-kasteel.jpg" alt="Drone — kasteel" loading="lazy"></div>
+          <div class="showreel-frame" style="width:400px;"><img src="fotos/events-groep.jpg" alt="Evenement" loading="lazy"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/marit/marit%201.jpg" alt="Portret" loading="lazy"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/vastgoed-huis.jpg" alt="Vastgoed" loading="lazy"></div>
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-eiland.jpg" alt="Drone — eiland" loading="lazy"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ziggy.jpg" alt="Portret" loading="lazy"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-park.jpg" alt="Drone — park" loading="lazy"></div>
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/luchtfotos/IMG-20251109-WA0012.jpg" alt="Luchtfoto" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scheidingslijn onderaan -->
+    <div style="margin-top:64px;padding:0 64px;">
+      <div style="height:1px;background:linear-gradient(90deg,transparent,var(--orange) 30%,var(--border) 70%,transparent);"></div>
+    </div>
   </section>
 
   <!-- DIENSTEN -->
@@ -863,6 +1076,9 @@
 
           <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 18px;font-weight:300;">
             Ik ben Michael van den Bosch, oprichter van MVDBmedia. Wat begon als een passie voor beeld is uitgegroeid tot een volwaardig mediabedrijf — van portret- en groepsfotografie tot luchtcinematografie en webdesign. Alles onder één dak, zodat jouw verhaal op elk platform klopt.
+          </p>
+          <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 18px;font-weight:300;">
+            MVDBmedia is een jong bedrijf — en daar ben ik trots op. Het betekent dat ik nog elke opdracht behandel als een kans om te bewijzen wat ik kan. Geen wachtlijsten van weken, geen assistent die jouw shoot doet, geen verborgen kosten. Je krijgt mij, mijn volledige aandacht, en eerlijke tarieven die passen bij waar ik nu sta. De klanten van vandaag bouwen mee aan het portfolio van morgen — en daar mogen ze wat voor terugverwachten.
           </p>
           <p style="font-size:0.92rem;line-height:1.82;color:var(--text-secondary);margin:0 0 18px;font-weight:300;">
             Ik werk vanuit een duidelijke overtuiging: goede beelden zijn geen luxe, maar een investering. Of je nu een woning verkoopt, je bedrijf presenteert, een evenement wilt vastleggen of online wilt groeien — ik denk mee van de eerste schets tot de oplevering.
@@ -1116,13 +1332,11 @@
   </footer>
 
   <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20een%20shoot%20en%20wil%20graag%20meer%20informatie." target="_blank" rel="noopener noreferrer" id="wa-btn" aria-label="Neem contact op via WhatsApp"
-    style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;"
-    onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
-    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <a href="https://wa.me/31624819278?text=Hoi%20Michael%2C%20ik%20heb%20interesse%20in%20een%20shoot%20en%20wil%20graag%20meer%20informatie." target="_blank" rel="noopener noreferrer" id="wa-btn" aria-label="Neem contact op via WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#0d0d0d" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
     </svg>
+    <span id="wa-label">WhatsApp</span>
   </a>
 
   <!-- LIGHTBOX -->
@@ -1273,6 +1487,32 @@
         item.style.pointerEvents = show ? 'auto' : 'none';
       });
     }
+
+    // Scroll-indicator: verberg op mobiel zodra hero uit beeld scrolt
+    (function initScrollHint() {
+      if (window.innerWidth > 768) return;
+      const indicator = document.querySelector('.scroll-mouse-wrap');
+      const hero = document.querySelector('#hero');
+      if (!indicator || !hero) return;
+      window.addEventListener('scroll', function() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        const visible = heroBottom > 80;
+        indicator.style.opacity = visible ? '' : '0';
+        indicator.style.pointerEvents = visible ? '' : 'none';
+      }, { passive: true });
+    })();
+
+    // Showreel: kloon items via JS zodat HTML schoon blijft
+    (function initShowreel() {
+      const track = document.querySelector('.showreel-marquee');
+      if (!track) return;
+      const original = Array.from(track.children);
+      original.forEach(el => {
+        const clone = el.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    })();
 
     // Scroll reveal (IntersectionObserver, no library)
     (function initScrollReveal() {
