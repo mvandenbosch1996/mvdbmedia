@@ -1255,6 +1255,13 @@
               <span aria-hidden="true" style="position:absolute;right:14px;bottom:13px;pointer-events:none;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
               <span class="field-check" id="check-dienst" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
             </div>
+            <!-- Pakket selector — verschijnt na dienst keuze -->
+            <div id="pakket-wrapper" style="display:none;margin-bottom:16px;opacity:0;transform:translateY(-6px);transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
+              <label style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Pakket</label>
+              <div id="pakket-opties" style="display:flex;flex-direction:column;gap:8px;"></div>
+              <input type="hidden" id="form-pakket" name="pakket" value="">
+            </div>
+
             <div style="margin-bottom:16px;position:relative;">
               <label for="form-reden" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Reden van contact</label>
               <select id="form-reden" name="reden" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" onchange="toggleDienst(this.value)">
@@ -1343,14 +1350,101 @@
   </div>
 
   <script>
+    const PAKKETTEN = {
+      portret: [
+        { label: 'Basis', prijs: '€99' },
+        { label: 'Standaard', prijs: '€199' },
+      ],
+      groep: [
+        { label: 'Basis', prijs: '€149' },
+        { label: 'Standaard', prijs: '€299' },
+        { label: 'Premium', prijs: '€599' },
+      ],
+      vastgoed: [
+        { label: 'Basis', prijs: '€149' },
+        { label: 'Standaard', prijs: '€299' },
+        { label: 'Premium', prijs: '€599' },
+      ],
+      webdesign: [
+        { label: 'Starter', prijs: '€400–€800' },
+        { label: 'Business', prijs: '€900–€1.800' },
+        { label: 'Premium', prijs: '€1.800–€3.500+' },
+      ],
+      constructie: [
+        { label: 'Start', prijs: '€295' },
+        { label: 'Progres', prijs: '€795' },
+        { label: 'Archief', prijs: '€1.495' },
+      ],
+      events: [
+        { label: 'Basis', prijs: '€79' },
+        { label: 'Standaard', prijs: '€139' },
+        { label: 'Premium', prijs: '€219' },
+      ],
+      droneauto: [
+        { label: 'Basis', prijs: '€79' },
+        { label: 'Standaard', prijs: '€129' },
+        { label: 'Premium', prijs: '€199' },
+      ],
+    };
+
+    function handleDienstChange(val) {
+      const wrapper = document.getElementById('pakket-wrapper');
+      const opties = document.getElementById('pakket-opties');
+      const input = document.getElementById('form-pakket');
+
+      if (PAKKETTEN[val]) {
+        opties.innerHTML = '';
+        input.value = '';
+        PAKKETTEN[val].forEach(p => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.dataset.pakket = p.label;
+          btn.innerHTML = `<span style="font-weight:600;font-size:0.82rem;">${p.label}</span><span style="color:var(--orange);font-size:0.78rem;font-weight:700;">${p.prijs}</span>`;
+          btn.style.cssText = 'display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-family:var(--font-body);cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease;text-align:left;';
+          btn.addEventListener('mouseenter', () => { if (!btn.classList.contains('selected')) btn.style.borderColor = 'rgba(255,140,0,0.4)'; });
+          btn.addEventListener('mouseleave', () => { if (!btn.classList.contains('selected')) btn.style.borderColor = 'var(--border)'; });
+          btn.addEventListener('click', () => {
+            opties.querySelectorAll('button').forEach(b => {
+              b.classList.remove('selected');
+              b.style.borderColor = 'var(--border)';
+              b.style.background = 'var(--bg-elevated)';
+            });
+            btn.classList.add('selected');
+            btn.style.borderColor = 'var(--orange)';
+            btn.style.background = 'rgba(255,140,0,0.06)';
+            input.value = p.label;
+          });
+          opties.appendChild(btn);
+        });
+        wrapper.style.display = 'block';
+        requestAnimationFrame(() => {
+          wrapper.style.opacity = '1';
+          wrapper.style.transform = 'translateY(0)';
+        });
+      } else {
+        wrapper.style.opacity = '0';
+        wrapper.style.transform = 'translateY(-6px)';
+        setTimeout(() => { wrapper.style.display = 'none'; }, 300);
+        input.value = '';
+      }
+    }
+
+    document.getElementById('form-dienst').addEventListener('change', function() {
+      handleDienstChange(this.value);
+    });
+
     function toggleDienst(val) {
       const wrapper = document.getElementById('dienst-wrapper');
       const select = document.getElementById('form-dienst');
       const bericht = document.getElementById('form-bericht');
+      const pakketWrapper = document.getElementById('pakket-wrapper');
       if (val === 'vraag') {
         wrapper.style.opacity = '0';
         wrapper.style.transform = 'translateY(-6px)';
         setTimeout(() => { wrapper.style.display = 'none'; }, 300);
+        pakketWrapper.style.opacity = '0';
+        pakketWrapper.style.transform = 'translateY(-6px)';
+        setTimeout(() => { pakketWrapper.style.display = 'none'; }, 300);
         select.required = false;
         bericht.placeholder = 'Stel gerust je vraag, ik reageer binnen 24 uur...';
       } else {
@@ -1361,6 +1455,7 @@
         });
         select.required = true;
         bericht.placeholder = 'Vertel me over jouw project, wensen en beschikbaarheid...';
+        handleDienstChange(select.value);
       }
     }
 
