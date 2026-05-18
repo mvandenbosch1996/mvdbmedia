@@ -13,17 +13,65 @@
   <meta property="og:url" content="https://mvdbmedia.nl/">
   <meta property="og:title" content="MVDBmedia — Professionele Fotografie">
   <meta property="og:description" content="Portretfotografie, vastgoedfotografie en drone visuals. Scherpe beelden die jouw verhaal vertellen.">
-  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MVDBmedia — Professionele Fotografie">
   <meta name="twitter:description" content="Portretfotografie, vastgoedfotografie en drone visuals.">
-  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
 
   <!-- Favicon (inline SVG) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://mvdbmedia.nl/#business",
+        "name": "MVDBmedia",
+        "url": "https://mvdbmedia.nl/",
+        "logo": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
+        "image": "https://mvdbmedia.nl/fotos/drone-fort.jpg",
+        "description": "MVDBmedia levert professionele portretfotografie, vastgoedfotografie en drone visuals. Scherpe beelden die jouw verhaal vertellen.",
+        "telephone": "+31624819278",
+        "email": "mvdbmedia1996@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "NL"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Nederland"
+        },
+        "sameAs": [
+          "https://www.instagram.com/mvdbmedia"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Fotografie & Media diensten",
+          "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Portretfotografie"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vastgoedfotografie"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Drone Visuals"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webdesign op maat"}}
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mvdbmedia.nl/#website",
+        "url": "https://mvdbmedia.nl/",
+        "name": "MVDBmedia",
+        "publisher": {"@id": "https://mvdbmedia.nl/#business"}
+      }
+    ]
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -587,7 +635,7 @@
     display: flex; align-items: center; justify-content: space-between;
     transition: background 0.3s ease, box-shadow 0.3s ease;
   ">
-    <a href="#" style="
+    <a href="index.html" style="
       font-family: var(--font-display);
       font-size: 1.75rem;
       letter-spacing: 0.06em;
@@ -817,16 +865,16 @@
       <div style="overflow:hidden;">
         <div class="showreel-marquee" style="display:flex;gap:14px;width:max-content;animation:showreel-left 30s linear infinite alternate;">
           <!-- Eerste set — 10 fotos -->
-          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-fort.jpg" alt="Drone — fort" loading="lazy"></div>
-          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ollie.jpg" alt="Portret" loading="lazy"></div>
-          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-kasteel.jpg" alt="Drone — kasteel" loading="lazy"></div>
-          <div class="showreel-frame" style="width:400px;"><img src="fotos/events-groep.jpg" alt="Evenement" loading="lazy"></div>
-          <div class="showreel-frame" style="width:220px;"><img src="fotos/marit/marit%201.jpg" alt="Portret" loading="lazy"></div>
-          <div class="showreel-frame" style="width:440px;"><img src="fotos/vastgoed-huis.jpg" alt="Vastgoed" loading="lazy"></div>
-          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-eiland.jpg" alt="Drone — eiland" loading="lazy"></div>
-          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ziggy.jpg" alt="Portret" loading="lazy"></div>
-          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-park.jpg" alt="Drone — park" loading="lazy"></div>
-          <div class="showreel-frame" style="width:480px;"><img src="fotos/luchtfotos/IMG-20251109-WA0012.jpg" alt="Luchtfoto" loading="lazy"></div>
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-fort.jpg" alt="Drone — fort" loading="eager"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ollie.jpg" alt="Portret" loading="eager"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-kasteel.jpg" alt="Drone — kasteel" loading="eager"></div>
+          <div class="showreel-frame" style="width:400px;"><img src="fotos/events-groep.jpg" alt="Evenement" loading="eager"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/marit/marit%201.jpg" alt="Portret" loading="eager"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/vastgoed-huis.jpg" alt="Vastgoed" loading="eager"></div>
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/drone-eiland.jpg" alt="Drone — eiland" loading="eager"></div>
+          <div class="showreel-frame" style="width:220px;"><img src="fotos/portret-ziggy.jpg" alt="Portret" loading="eager"></div>
+          <div class="showreel-frame" style="width:440px;"><img src="fotos/drone-park.jpg" alt="Drone — park" loading="eager"></div>
+          <div class="showreel-frame" style="width:480px;"><img src="fotos/luchtfotos/IMG-20251109-WA0012.jpg" alt="Luchtfoto" loading="eager"></div>
         </div>
       </div>
     </div>
@@ -863,7 +911,7 @@
       <div class="diensten-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
 
         <!-- Portret -->
-        <a class="dienst-card" href="portret&amp;groepsfotografie.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
+        <a class="dienst-card" href="portret-groepsfotografie.html" style="background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;">
           <div style="height:280px;overflow:hidden;position:relative;">
             <img src="fotos/marit/marit%201.jpg" alt="Portretfotografie" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);" class="dienst-img">
             <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg-card) 0%,rgba(0,0,0,0.15) 45%,transparent 65%);"></div>
@@ -1290,7 +1338,7 @@
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
         <div>
-          <a href="#" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <a href="index.html" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
           <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">
             Professionele fotografie in Nederland. Van portret tot drone.
           </p>
@@ -1298,7 +1346,7 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="portret&amp;groepsfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
+            <a href="portret-groepsfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Vastgoedfotografie</a>
             <a href="dronevisuals.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
             <a href="webdesignopmaat.html" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>

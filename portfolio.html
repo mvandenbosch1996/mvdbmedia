@@ -11,13 +11,40 @@
   <meta property="og:url" content="https://mvdbmedia.nl/portfolio.html">
   <meta property="og:title" content="Portfolio — MVDBmedia">
   <meta property="og:description" content="Professionele fotografie en drone visuals — bekijk het werk van MVDBmedia.">
-  <meta property="og:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
   <meta property="og:locale" content="nl_NL">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Portfolio — MVDBmedia">
   <meta name="twitter:description" content="Professionele fotografie en drone visuals.">
-  <meta name="twitter:image" content="https://mvdbmedia.netlify.app/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d' rx='5'/><text x='50%' y='73%' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23ff8c00'>M</text></svg>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "Portfolio — MVDBmedia",
+        "description": "Bekijk het portfolio van MVDBmedia — portretfotografie, groepsfotografie, drone visuals en vastgoedfotografie.",
+        "url": "https://mvdbmedia.nl/portfolio.html",
+        "publisher": {
+          "@type": "LocalBusiness",
+          "name": "MVDBmedia",
+          "url": "https://mvdbmedia.nl/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mvdbmedia.nl/"},
+          {"@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://mvdbmedia.nl/portfolio.html"}
+        ]
+      }
+    ]
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -489,7 +516,7 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="portret&amp;groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
+            <a href="portret-groepsfotografie.html" class="footer-link">Portret &amp; Groepsfotografie</a>
             <a href="vastgoedfotografie.html" class="footer-link">Vastgoedfotografie</a>
             <a href="dronevisuals.html" class="footer-link">Drone Visuals</a>
             <a href="webdesignopmaat.html" class="footer-link">Webdesign op maat</a>
@@ -526,7 +553,7 @@
     <button class="lb-btn" id="lb-prev" onclick="lbPrev()" aria-label="Vorige foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <img id="lightbox-img" src="" alt="">
+    <img id="lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="">
     <button class="lb-btn" id="lb-next" onclick="lbNext()" aria-label="Volgende foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
