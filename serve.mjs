@@ -43,6 +43,19 @@ http.createServer((req, res) => {
   const ext = path.extname(filePath);
 
   fs.readFile(filePath, (err, data) => {
+    if (err && err.code === 'ENOENT' && !ext) {
+      const htmlPath = filePath + '.html';
+      fs.readFile(htmlPath, (err2, data2) => {
+        if (err2) {
+          res.writeHead(404);
+          res.end('Not found');
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(data2);
+      });
+      return;
+    }
     if (err) {
       const status = err.code === 'ENOENT' ? 404 : 500;
       res.writeHead(status);
