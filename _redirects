@@ -1,0 +1,3 @@
+# Oude ampersand-duplicate → clean URL (301, behoudt SEO van ooit geindexeerde URL)
+/portret&groepsfotografie.html   /portret-groepsfotografie   301
+/portret%26groepsfotografie.html /portret-groepsfotografie   301
