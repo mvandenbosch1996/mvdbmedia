@@ -36,7 +36,7 @@
   "logo": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
   "description": "MVDBmedia levert professionele portret-, vastgoed- en dronefotografie, plus webdesign op maat. Gevestigd in Sneek, beschikbaar in heel Friesland en Nederland.",
   "telephone": "+31624819278",
-  "email": "mvdbmedia1996@gmail.com",
+  "email": "info@mvdbmedia.nl",
   "url": "https://mvdbmedia.nl",
   "address": {
     "@type": "PostalAddress",
@@ -1232,13 +1232,13 @@
           </p>
 
           <div style="display:flex;flex-direction:column;gap:22px;">
-            <a href="mailto:mvdbmedia1996@gmail.com" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <a href="mailto:info@mvdbmedia.nl" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
               <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
                 <div style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;">E-mail</div>
-                <div style="font-size:0.85rem;font-weight:500;">mvdbmedia1996@gmail.com</div>
+                <div style="font-size:0.85rem;font-weight:500;">info@mvdbmedia.nl</div>
               </div>
             </a>
             <a href="tel:+31624819278" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
@@ -1847,7 +1847,7 @@
     // Tijdstempel voor timing-check bij submit
     const _formLoadedAt = Date.now();
 
-    // Contact form submit — stuurt berichten naar m.vandenbosch1996@gmail.com via Formspree
+    // Contact form submit — stuurt berichten naar info@mvdbmedia.nl via Formspree
     async function handleFormSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submit-btn');
@@ -1865,7 +1865,7 @@
         { id: 'form-email',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
         { id: 'form-dienst',  test: v => v !== '' },
         { id: 'form-reden',   test: v => v !== '' },
-        { id: 'form-bericht', test: v => v.trim().length >= 10 },
+        { id: 'form-bericht', test: v => v.trim().length >= 3 },
       ];
 
       let allValid = true;
