@@ -1,3 +1,6 @@
+# Homepage: /index.html → / (301, lost Google Search Console "pagina met omleiding" op)
+/index.html   /   301
+
 # Oude ampersand-duplicate → clean URL (301, behoudt SEO van ooit geindexeerde URL)
 /portret&groepsfotografie.html   /portret-groepsfotografie   301
 /portret%26groepsfotografie.html /portret-groepsfotografie   301
