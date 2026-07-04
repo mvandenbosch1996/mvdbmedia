@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Website intake · MVDBmedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0d0b;
+    --panel:#161411;
+    --panel-2:#1c1915;
+    --line:#2a2620;
+    --gold:#c4a96e;
+    --gold-soft:rgba(196,169,110,.14);
+    --text:#e9e5dc;
+    --muted:#8f887b;
+    --ok:#9dbd8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;
+    font-weight:300;
+    font-size:15px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:#141210}
+
+  /* ---------- voortgang ---------- */
+  .progress-wrap{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:3px;background:rgba(255,255,255,.05);
+  }
+  .progress-bar{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,#a88c52,var(--gold));
+    transition:width .4s ease;
+  }
+  .progress-label{
+    position:fixed;top:10px;right:16px;z-index:50;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);
+    background:rgba(14,13,11,.85);padding:4px 10px;border-radius:20px;
+    border:1px solid var(--line);
+    backdrop-filter:blur(6px);
+  }
+  .progress-label strong{color:var(--gold);font-weight:500}
+
+  /* ---------- header ---------- */
+  header{
+    max-width:760px;margin:0 auto;
+    padding:96px 24px 56px;
+    text-align:center;
+  }
+  .brand{
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+  }
+  header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    font-size:clamp(38px,6vw,58px);
+    line-height:1.12;
+    margin:22px 0 18px;
+  }
+  header h1 em{font-style:italic;color:var(--gold)}
+  header p{color:var(--muted);max-width:520px;margin:0 auto}
+  .header-rule{
+    width:56px;height:1px;background:var(--gold);
+    margin:34px auto 0;opacity:.7;
+  }
+
+  /* ---------- secties ---------- */
+  main{max-width:760px;margin:0 auto;padding:0 24px 120px}
+  section{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:36px 34px 40px;
+    margin-bottom:26px;
+    position:relative;
+  }
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--gold);font-size:20px;min-width:26px;
+  }
+  section h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:27px;letter-spacing:.01em;
+  }
+  .sec-check{
+    margin-left:auto;font-size:12px;color:var(--ok);
+    opacity:0;transition:opacity .3s;letter-spacing:.05em;
+  }
+  section.done .sec-check{opacity:1}
+  .sec-sub{color:var(--muted);font-size:13.5px;margin-bottom:26px}
+
+  /* ---------- velden ---------- */
+  .field{margin-bottom:20px}
+  label{
+    display:block;font-size:11.5px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:8px;
+  }
+  label .opt{color:#5f594e;text-transform:none;letter-spacing:0;font-weight:400}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;
+    font-weight:300;font-size:14.5px;
+    padding:12px 14px;
+    outline:none;
+    transition:border-color .25s, background .25s;
+  }
+  textarea{min-height:96px;resize:vertical}
+  input:focus,textarea:focus,select:focus{
+    border-color:var(--gold);
+    background:#201d18;
+  }
+  input::placeholder,textarea::placeholder{color:#5c564b}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+
+  /* ---------- keuzevakjes ---------- */
+  .choices{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{position:relative}
+  .chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .chip span{
+    display:inline-block;
+    padding:9px 16px;
+    border:1px solid var(--line);
+    border-radius:30px;
+    font-size:13.5px;color:var(--muted);
+    cursor:pointer;user-select:none;
+    transition:all .2s;
+  }
+  .chip input:checked + span{
+    border-color:var(--gold);
+    background:var(--gold-soft);
+    color:var(--gold);
+  }
+  .chip input:focus-visible + span{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* ---------- eigen toevoegingen ---------- */
+  .add-row{display:flex;gap:10px;margin-top:14px}
+  .add-row input{flex:1}
+  .btn-add{
+    background:none;border:1px solid var(--gold);color:var(--gold);
+    border-radius:4px;padding:0 18px;cursor:pointer;
+    font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:.06em;
+    transition:all .2s;white-space:nowrap;
+  }
+  .btn-add:hover{background:var(--gold);color:#141210}
+  .custom-list{list-style:none;margin-top:12px}
+  .custom-list li{
+    display:flex;align-items:center;gap:10px;
+    font-size:14px;color:var(--text);
+    padding:8px 0;border-bottom:1px dashed var(--line);
+  }
+  .custom-list li::before{content:"—";color:var(--gold)}
+  .custom-list button{
+    margin-left:auto;background:none;border:none;color:#6a6357;
+    cursor:pointer;font-size:15px;line-height:1;padding:4px;
+  }
+  .custom-list button:hover{color:#c47a6e}
+
+  /* ---------- bestand uploaden ---------- */
+  .file-drop{
+    display:block;
+    border:1px dashed var(--gold);
+    border-radius:4px;
+    background:var(--gold-soft);
+    padding:22px 16px;
+    text-align:center;
+    font-size:13.5px;color:var(--gold);
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .file-drop:hover{background:rgba(196,169,110,.22)}
+  .file-drop input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+  .file-drop.has-file{border-style:solid;color:var(--text)}
+  .file-hint{font-size:12px;color:var(--muted);margin-top:8px}
+
+  /* ---------- versturen ---------- */
+  .submit-box{
+    text-align:center;
+    background:var(--panel);
+    border:1px solid var(--gold);
+    border-radius:6px;
+    padding:48px 34px;
+  }
+  .submit-box h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;margin-bottom:10px;
+  }
+  .submit-box p{color:var(--muted);font-size:14px;max-width:440px;margin:0 auto 30px}
+  .btn-main{
+    background:var(--gold);color:#141210;border:none;
+    font-family:'Montserrat',sans-serif;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;
+    padding:16px 38px;border-radius:3px;cursor:pointer;
+    transition:all .25s;
+  }
+  .btn-main:hover{background:#d6bc82;transform:translateY(-1px)}
+  .btn-ghost{
+    background:none;border:1px solid var(--line);color:var(--muted);
+    font-family:'Montserrat',sans-serif;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:15px 26px;border-radius:3px;cursor:pointer;margin-left:12px;
+    transition:all .25s;
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  @media(max-width:560px){
+    .btn-ghost{margin:12px 0 0;display:block;width:100%}
+    .btn-main{display:block;width:100%}
+  }
+  .notice{
+    margin-top:20px;font-size:13px;color:var(--ok);
+    opacity:0;transition:opacity .3s;
+  }
+  .notice.show{opacity:1}
+
+  footer{
+    text-align:center;color:#5c564b;font-size:12px;
+    letter-spacing:.1em;padding:0 24px 60px;
+  }
+  footer a{color:var(--gold);text-decoration:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;animation:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
+<div class="progress-label"><strong id="pct">0%</strong> ingevuld</div>
+
+<header>
+  <div class="brand">MVDBmedia</div>
+  <h1>Uw website begint <em>hier</em></h1>
+  <p>Vul dit formulier op uw gemak in. Hoe vollediger uw antwoorden, hoe beter wij het ontwerp op uw bedrijf kunnen afstemmen. Niets is verplicht — sla gerust over wat u nog niet weet.</p>
+  <div class="header-rule"></div>
+</header>
+
+<main>
+
+  <!-- 1 · Bedrijfsgegevens -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">1</span><h2>Bedrijfsgegevens</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Wie bent u en hoe kunnen we u bereiken?</p>
+    <div class="row">
+      <div class="field"><label for="bedrijf">Bedrijfsnaam</label><input type="text" id="bedrijf" data-q="Bedrijfsnaam" placeholder="Bijv. Bakkerij Jansen"></div>
+      <div class="field"><label for="contact">Contactpersoon</label><input type="text" id="contact" data-q="Contactpersoon" placeholder="Voor- en achternaam"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="email">E-mailadres</label><input type="email" id="email" data-q="E-mail" placeholder="naam@bedrijf.nl"></div>
+      <div class="field"><label for="tel">Telefoonnummer</label><input type="tel" id="tel" data-q="Telefoon" placeholder="06 12345678"></div>
+    </div>
+    <div class="field"><label for="huidig">Huidige website <span class="opt">(indien aanwezig)</span></label><input type="url" id="huidig" data-q="Huidige website" placeholder="https://"></div>
+    <div class="field"><label for="huidigfb">Wat stoort u aan uw huidige website — en wat moet juist behouden blijven? <span class="opt">(indien van toepassing)</span></label><textarea id="huidigfb" data-q="Huidige website — wat mist/behouden" placeholder="Bijv. verouderde uitstraling, slecht op mobiel… maar de teksten mogen blijven"></textarea></div>
+  </section>
+
+  <!-- 2 · Over het bedrijf -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">2</span><h2>Over uw bedrijf</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Vertel in uw eigen woorden — dit vormt de basis van de teksten en het ontwerp.</p>
+    <div class="field"><label for="watdoet">Wat doet uw bedrijf?</label><textarea id="watdoet" data-q="Wat doet het bedrijf" placeholder="Diensten, producten, werkgebied…"></textarea></div>
+    <div class="field"><label for="usp">Waarin onderscheidt u zich van concurrenten?</label><textarea id="usp" data-q="Onderscheidend vermogen" placeholder="Vakmanschap, ervaring, persoonlijke aanpak…"></textarea></div>
+    <div class="field"><label for="doelgroep">Wie is uw ideale klant?</label><textarea id="doelgroep" data-q="Doelgroep" placeholder="Particulier of zakelijk? Regio? Leeftijd?"></textarea></div>
+    <div class="field">
+      <label for="addTerm">Op welke zoektermen wilt u gevonden worden?</label>
+      <div class="add-row" style="margin-top:0">
+        <input type="text" id="addTerm" placeholder="Bijv. loodgieter Sneek — druk op + of Enter">
+        <button type="button" class="btn-add" data-add="addTerm" data-list="termList">+ Toevoegen</button>
+      </div>
+      <ul class="custom-list" id="termList" data-group="Gewenste zoektermen"></ul>
+    </div>
+    <div class="field"><label for="regio">In welke plaatsen of regio werkt u?</label><input type="text" id="regio" data-q="Werkgebied" placeholder="Bijv. Friesland, heel Nederland…"></div>
+  </section>
+
+  <!-- 3 · Doel -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">3</span><h2>Doel van de website</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Wat moet de website vooral voor u doen? Meerdere antwoorden mogelijk.</p>
+    <div class="choices" data-group="Doel van de website">
+      <label class="chip"><input type="checkbox" value="Meer aanvragen / offertes ontvangen"><span>Meer aanvragen ontvangen</span></label>
+      <label class="chip"><input type="checkbox" value="Professionele uitstraling / visitekaartje"><span>Professionele uitstraling</span></label>
+      <label class="chip"><input type="checkbox" value="Werk / portfolio tonen"><span>Werk tonen</span></label>
+      <label class="chip"><input type="checkbox" value="Beter vindbaar in Google"><span>Beter vindbaar in Google</span></label>
+      <label class="chip"><input type="checkbox" value="Online verkopen"><span>Online verkopen</span></label>
+      <label class="chip"><input type="checkbox" value="Online boekingen / afspraken"><span>Boekingen / afspraken</span></label>
+      <label class="chip"><input type="checkbox" value="Informatie geven aan bestaande klanten"><span>Klanten informeren</span></label>
+    </div>
+    <div class="field" style="margin-top:22px"><label for="doelanders">Iets anders of een toelichting? <span class="opt">(optioneel)</span></label><input type="text" id="doelanders" data-q="Doel — toelichting" placeholder="Uw eigen aanvulling"></div>
+  </section>
+
+  <!-- 4 · Pagina's -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">4</span><h2>Pagina's</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Welke pagina's moet de website krijgen? U kunt zelf pagina's toevoegen.</p>
+    <div class="choices" data-group="Gewenste pagina's">
+      <label class="chip"><input type="checkbox" value="Home" checked><span>Home</span></label>
+      <label class="chip"><input type="checkbox" value="Over ons"><span>Over ons</span></label>
+      <label class="chip"><input type="checkbox" value="Diensten"><span>Diensten</span></label>
+      <label class="chip"><input type="checkbox" value="Portfolio / projecten"><span>Portfolio / projecten</span></label>
+      <label class="chip"><input type="checkbox" value="Prijzen / tarieven"><span>Prijzen</span></label>
+      <label class="chip"><input type="checkbox" value="Reviews / referenties"><span>Reviews</span></label>
+      <label class="chip"><input type="checkbox" value="Veelgestelde vragen"><span>Veelgestelde vragen</span></label>
+      <label class="chip"><input type="checkbox" value="Blog / nieuws"><span>Blog / nieuws</span></label>
+      <label class="chip"><input type="checkbox" value="Contact"><span>Contact</span></label>
+    </div>
+    <div class="add-row">
+      <input type="text" id="addPage" placeholder="Eigen pagina toevoegen, bijv. 'Vacatures'">
+      <button type="button" class="btn-add" data-add="addPage" data-list="pageList">+ Toevoegen</button>
+    </div>
+    <ul class="custom-list" id="pageList" data-group="Eigen pagina's"></ul>
+  </section>
+
+  <!-- 5 · Functionaliteiten -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">5</span><h2>Functionaliteiten</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Wat moet de website kunnen? Twijfelt u ergens over — vink het aan, dan bespreken we het.</p>
+    <div class="choices" data-group="Functionaliteiten">
+      <label class="chip"><input type="checkbox" value="Contactformulier"><span>Contactformulier</span></label>
+      <label class="chip"><input type="checkbox" value="Offerte-aanvraagformulier"><span>Offerteformulier</span></label>
+      <label class="chip"><input type="checkbox" value="Google Maps / routebeschrijving"><span>Google Maps</span></label>
+      <label class="chip"><input type="checkbox" value="Koppeling Google reviews"><span>Google reviews</span></label>
+      <label class="chip"><input type="checkbox" value="Fotogalerij"><span>Fotogalerij</span></label>
+      <label class="chip"><input type="checkbox" value="Video"><span>Video</span></label>
+      <label class="chip"><input type="checkbox" value="Online agenda / boekingssysteem"><span>Boekingssysteem</span></label>
+      <label class="chip"><input type="checkbox" value="Webshop"><span>Webshop</span></label>
+      <label class="chip"><input type="checkbox" value="Nieuwsbrief-aanmelding"><span>Nieuwsbrief</span></label>
+      <label class="chip"><input type="checkbox" value="Meertalig (bijv. NL/EN/DE)"><span>Meertalig</span></label>
+      <label class="chip"><input type="checkbox" value="Koppeling social media"><span>Social media</span></label>
+      <label class="chip"><input type="checkbox" value="Zelf teksten kunnen aanpassen"><span>Zelf kunnen bewerken</span></label>
+    </div>
+    <div class="add-row">
+      <input type="text" id="addFunc" placeholder="Eigen wens toevoegen">
+      <button type="button" class="btn-add" data-add="addFunc" data-list="funcList">+ Toevoegen</button>
+    </div>
+    <ul class="custom-list" id="funcList" data-group="Eigen functionaliteiten"></ul>
+  </section>
+
+  <!-- 6 · Stijl -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">6</span><h2>Stijl &amp; uitstraling</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Hoe moet de website aanvoelen? Voorbeelden helpen ons enorm.</p>
+    <div class="choices" data-group="Gewenste uitstraling">
+      <label class="chip"><input type="checkbox" value="Luxe / exclusief"><span>Luxe</span></label>
+      <label class="chip"><input type="checkbox" value="Warm / persoonlijk"><span>Warm &amp; persoonlijk</span></label>
+      <label class="chip"><input type="checkbox" value="Strak / modern"><span>Strak &amp; modern</span></label>
+      <label class="chip"><input type="checkbox" value="Ambachtelijk / authentiek"><span>Ambachtelijk</span></label>
+      <label class="chip"><input type="checkbox" value="Zakelijk / betrouwbaar"><span>Zakelijk</span></label>
+      <label class="chip"><input type="checkbox" value="Speels / kleurrijk"><span>Speels</span></label>
+      <label class="chip"><input type="checkbox" value="Rustig / minimalistisch"><span>Minimalistisch</span></label>
+    </div>
+    <div class="field" style="margin-top:22px"><label for="kleuren">Voorkeur voor kleuren? <span class="opt">(bijv. huisstijlkleuren)</span></label><input type="text" id="kleuren" data-q="Kleurvoorkeur" placeholder="Bijv. donkergroen met goud, of: volg ons logo"></div>
+    <div class="field"><label for="mooi">Websites die u mooi vindt <span class="opt">(niet verplicht — mogen ook buiten uw branche zijn)</span></label><textarea id="mooi" data-q="Voorbeeldsites (mooi)" placeholder="Plak hier één of meer links en vertel wat u erin aanspreekt"></textarea></div>
+    <div class="field"><label for="nietmooi">Wat moet de website juist níét zijn?</label><input type="text" id="nietmooi" data-q="Wat het niet moet zijn" placeholder="Bijv. druk, kinderachtig, ouderwets…"></div>
+  </section>
+
+  <!-- 7 · Content -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">7</span><h2>Teksten, foto's &amp; logo</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Wat heeft u al in huis? Wat er nog niet is, kunnen wij verzorgen — inclusief fotografie en dronebeelden.</p>
+    <div class="field">
+      <label>Logo</label>
+      <div class="choices" data-group="Logo" data-single>
+        <label class="chip"><input type="radio" name="logo" value="Logo aanwezig (digitaal bestand)"><span>Aanwezig</span></label>
+        <label class="chip"><input type="radio" name="logo" value="Logo aanwezig, maar mag vernieuwd worden"><span>Mag vernieuwd</span></label>
+        <label class="chip"><input type="radio" name="logo" value="Geen logo — graag laten ontwerpen"><span>Nog geen logo</span></label>
+      </div>
+      <div id="logoUpload" style="display:none;margin-top:16px">
+        <label for="logoFile">Upload uw logo <span class="opt">(png, jpg, svg, pdf of ai — liefst hoogste kwaliteit)</span></label>
+        <label class="file-drop" for="logoFile">
+          <input type="file" id="logoFile" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps,.webp" multiple>
+          <span id="logoFileText">Klik hier om uw logobestand(en) te kiezen</span>
+        </label>
+        <p class="file-hint">Uw logo wordt automatisch meegestuurd wanneer u het formulier verstuurt.</p>
+      </div>
+    </div>
+    <div class="field">
+      <label>Teksten</label>
+      <div class="choices" data-group="Teksten" data-single>
+        <label class="chip"><input type="radio" name="tekst" value="Wij leveren de teksten zelf aan"><span>Leveren wij aan</span></label>
+        <label class="chip"><input type="radio" name="tekst" value="Graag laten schrijven op basis van ons verhaal"><span>Graag laten schrijven</span></label>
+        <label class="chip"><input type="radio" name="tekst" value="Combinatie: wij leveren ruw materiaal aan"><span>Combinatie</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Foto's &amp; beeldmateriaal</label>
+      <div class="choices" data-group="Beeldmateriaal">
+        <label class="chip"><input type="checkbox" value="Eigen foto's beschikbaar"><span>Eigen foto's aanwezig</span></label>
+        <label class="chip"><input type="checkbox" value="Interesse in professionele fotografie"><span>Fotografie gewenst</span></label>
+        <label class="chip"><input type="checkbox" value="Interesse in dronebeelden"><span>Dronebeelden gewenst</span></label>
+        <label class="chip"><input type="checkbox" value="Interesse in video"><span>Video gewenst</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · Praktisch -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">8</span><h2>Praktische zaken</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Domein, planning en budget — een indicatie is voldoende.</p>
+    <div class="row">
+      <div class="field"><label for="domein">Gewenste domeinnaam <span class="opt">(of huidige)</span></label><input type="text" id="domein" data-q="Domeinnaam" placeholder="www.uwbedrijf.nl"></div>
+      <div class="field"><label for="deadline">Wanneer wilt u live?</label><input type="text" id="deadline" data-q="Gewenste livegang" placeholder="Bijv. binnen 4 weken, vóór het seizoen…"></div>
+    </div>
+    <div class="field"><label for="domeinbeheer">Waar is het domein geregistreerd en heeft u daar toegang toe? <span class="opt">(indien van toepassing)</span></label><input type="text" id="domeinbeheer" data-q="Domeinbeheer / toegang" placeholder="Bijv. bij TransIP, inloggegevens heb ik / weet ik niet"></div>
+    <div class="field">
+      <label>Onderhoud na oplevering</label>
+      <div class="choices" data-group="Onderhoud" data-single>
+        <label class="chip"><input type="radio" name="onderhoud" value="Zelf bijhouden"><span>Zelf bijhouden</span></label>
+        <label class="chip"><input type="radio" name="onderhoud" value="Laten onderhouden door MVDBmedia"><span>Laten onderhouden</span></label>
+        <label class="chip"><input type="radio" name="onderhoud" value="Weet ik nog niet — graag advies"><span>Weet ik nog niet</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Budgetindicatie <span class="opt">(helpt ons een passend voorstel te maken)</span></label>
+      <div class="choices" data-group="Budgetindicatie" data-single>
+        <label class="chip"><input type="radio" name="budget" value="€ 500 – € 750"><span>€ 500 – € 750</span></label>
+        <label class="chip"><input type="radio" name="budget" value="€ 750 – € 1.000"><span>€ 750 – € 1.000</span></label>
+        <label class="chip"><input type="radio" name="budget" value="€ 1.000 – € 2.500"><span>€ 1.000 – € 2.500</span></label>
+        <label class="chip"><input type="radio" name="budget" value="€ 2.500 of meer"><span>€ 2.500 +</span></label>
+      </div>
+    </div>
+    <div class="field"><label for="budgetEigen">Staat uw budget er niet tussen? <span class="opt">(vul hier uw eigen bedrag in)</span></label><input type="text" id="budgetEigen" data-q="Budget — eigen bedrag" placeholder="Bijv. € 1.800"></div>
+  </section>
+
+  <!-- 9 · Eigen toevoegingen -->
+  <section data-sec>
+    <div class="sec-head"><span class="sec-num">9</span><h2>Uw eigen toevoegingen</h2><span class="sec-check">✓ ingevuld</span></div>
+    <p class="sec-sub">Alles wat u verder nog kwijt wilt: wensen, ideeën, vragen of zorgen. Niets is te klein of te gek.</p>
+    <div class="field"><textarea id="extra" data-q="Eigen toevoegingen" style="min-height:130px" placeholder="Schrijf hier vrijuit…"></textarea></div>
+  </section>
+
+  <!-- Versturen -->
+  <div class="submit-box" id="submitBox">
+    <h2>Klaar? Verstuur uw antwoorden</h2>
+    <p>Uw antwoorden (en logo) worden direct naar MVDBmedia gestuurd. U ontvangt hieronder een bevestiging.</p>
+    <input type="text" name="website_hp" id="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <button type="button" class="btn-main" id="btnSend">Verstuur formulier</button>
+    <button type="button" class="btn-ghost" id="btnCopy">Kopieer antwoorden</button>
+    <button type="button" class="btn-ghost" id="btnDownload">Download als bestand</button>
+    <div class="notice" id="notice"></div>
+  </div>
+
+</main>
+
+<footer>
+  MVDBmedia · Sneek · <a href="https://mvdbmedia.nl">mvdbmedia.nl</a> · <a href="mailto:info@mvdbmedia.nl">info@mvdbmedia.nl</a>
+</footer>
+
+<script>
+(function(){
+  var MAIL_TO = "info@mvdbmedia.nl";
+
+  /* ---- eigen items toevoegen ---- */
+  document.querySelectorAll(".btn-add").forEach(function(btn){
+    var input = document.getElementById(btn.dataset.add);
+    var list  = document.getElementById(btn.dataset.list);
+    function add(){
+      var v = input.value.trim();
+      if(!v) return;
+      var li = document.createElement("li");
+      var span = document.createElement("span");
+      span.textContent = v;
+      var del = document.createElement("button");
+      del.type = "button";
+      del.textContent = "✕";
+      del.setAttribute("aria-label","Verwijder " + v);
+      del.addEventListener("click", function(){ li.remove(); updateProgress(); });
+      li.appendChild(span); li.appendChild(del);
+      list.appendChild(li);
+      input.value = "";
+      input.focus();
+      updateProgress();
+    }
+    btn.addEventListener("click", add);
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){ e.preventDefault(); add(); }
+    });
+  });
+
+  /* ---- logo upload tonen/verbergen ---- */
+  var logoBox = document.getElementById("logoUpload");
+  var logoFile = document.getElementById("logoFile");
+  var logoText = document.getElementById("logoFileText");
+  document.querySelectorAll('input[name="logo"]').forEach(function(r){
+    r.addEventListener("change", function(){
+      var show = r.value.indexOf("aanwezig") > -1 || r.value.indexOf("Aanwezig") > -1 || r.value.indexOf("vernieuwd") > -1;
+      logoBox.style.display = show ? "block" : "none";
+      if(!show){ logoFile.value = ""; logoText.textContent = "Klik hier om uw logobestand(en) te kiezen"; logoText.parentElement.classList.remove("has-file"); }
+      updateProgress();
+    });
+  });
+  logoFile.addEventListener("change", function(){
+    if(logoFile.files.length){
+      var names = Array.prototype.map.call(logoFile.files, function(f){ return f.name; });
+      logoText.textContent = "✓ " + names.join(", ");
+      logoText.parentElement.classList.add("has-file");
+    } else {
+      logoText.textContent = "Klik hier om uw logobestand(en) te kiezen";
+      logoText.parentElement.classList.remove("has-file");
+    }
+  });
+
+  /* ---- voortgang & sectiestatus ---- */
+  var sections = Array.prototype.slice.call(document.querySelectorAll("[data-sec]"));
+  function sectionFilled(sec){
+    var texts = sec.querySelectorAll("input[type=text],input[type=email],input[type=tel],input[type=url],textarea");
+    for(var i=0;i<texts.length;i++){ if(texts[i].value.trim()) return true; }
+    var checks = sec.querySelectorAll("input[type=checkbox]:checked,input[type=radio]:checked");
+    if(checks.length) return true;
+    if(sec.querySelectorAll(".custom-list li").length) return true;
+    return false;
+  }
+  function updateProgress(){
+    var done = 0;
+    sections.forEach(function(sec){
+      var ok = sectionFilled(sec);
+      sec.classList.toggle("done", ok);
+      if(ok) done++;
+    });
+    var pct = Math.round((done / sections.length) * 100);
+    document.getElementById("bar").style.width = pct + "%";
+    document.getElementById("pct").textContent = pct + "%";
+  }
+  document.addEventListener("input", updateProgress);
+  document.addEventListener("change", updateProgress);
+  updateProgress();
+
+  /* ---- samenvatting opbouwen ---- */
+  function buildSummary(){
+    var lines = [];
+    lines.push("WEBSITE INTAKE — MVDBmedia");
+    lines.push("Ingevuld op: " + new Date().toLocaleDateString("nl-NL"));
+    lines.push("");
+
+    sections.forEach(function(sec){
+      var title = sec.querySelector("h2").textContent.trim();
+      var block = [];
+
+      sec.querySelectorAll("input[data-q],textarea[data-q]").forEach(function(el){
+        if(el.value.trim()) block.push(el.dataset.q + ": " + el.value.trim());
+      });
+
+      sec.querySelectorAll(".choices").forEach(function(group){
+        var checked = group.querySelectorAll("input:checked");
+        if(checked.length){
+          var vals = Array.prototype.map.call(checked, function(c){ return c.value; });
+          block.push(group.dataset.group + ": " + vals.join(", "));
+        }
+      });
+
+      var lf = sec.querySelector("#logoFile");
+      if(lf && lf.files.length){
+        var names = Array.prototype.map.call(lf.files, function(f){ return f.name; });
+        block.push("Logo-bestand (meegestuurd als bijlage): " + names.join(", "));
+      }
+
+      sec.querySelectorAll(".custom-list").forEach(function(list){
+        var items = list.querySelectorAll("li span");
+        if(items.length){
+          var vals = Array.prototype.map.call(items, function(s){ return s.textContent; });
+          block.push(list.dataset.group + ": " + vals.join(", "));
+        }
+      });
+
+      if(block.length){
+        lines.push("=== " + title.toUpperCase() + " ===");
+        lines = lines.concat(block);
+        lines.push("");
+      }
+    });
+
+    return lines.join("\n");
+  }
+
+  function notify(msg){
+    var n = document.getElementById("notice");
+    n.textContent = msg;
+    n.classList.add("show");
+    setTimeout(function(){ n.classList.remove("show"); }, 4000);
+  }
+
+  /* ---- versturen ---- */
+  var sending = false;
+  function mailtoFallback(){
+    var body = buildSummary();
+    var bedrijf = document.getElementById("bedrijf").value.trim();
+    var subject = "Website intake" + (bedrijf ? " — " + bedrijf : "");
+    var href = "mailto:" + MAIL_TO +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+    if(href.length > 7500){
+      notify("Gebruik 'Kopieer' of 'Download' en stuur de antwoorden naar " + MAIL_TO + ".");
+      return;
+    }
+    window.location.href = href;
+    notify("Direct versturen lukte niet — uw e-mailprogramma is geopend als alternatief. Vergeet uw logo niet als bijlage.");
+  }
+
+  document.getElementById("btnSend").addEventListener("click", function(){
+    if(sending) return;
+    var btn = this;
+    var summary = buildSummary();
+    var fd = new FormData();
+    fd.append("summary", summary);
+    fd.append("bedrijf", document.getElementById("bedrijf").value.trim());
+    fd.append("email", document.getElementById("email").value.trim());
+    fd.append("website_hp", document.getElementById("website_hp").value);
+    if(logoFile && logoFile.files.length){
+      Array.prototype.forEach.call(logoFile.files, function(f){ fd.append("logo", f, f.name); });
+    }
+
+    sending = true;
+    btn.disabled = true;
+    var oldLabel = btn.textContent;
+    btn.textContent = "Versturen…";
+
+    fetch("/api/intake", { method:"POST", body: fd })
+      .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(data){ return {ok:res.ok, data:data}; }); })
+      .then(function(r){
+        if(r.ok && r.data && r.data.ok !== false){
+          var box = document.getElementById("submitBox");
+          box.innerHTML = '<h2>Bedankt — uw antwoorden zijn verstuurd</h2>' +
+            '<p>We nemen zo snel mogelijk contact met u op. Wilt u nog iets toevoegen of wijzigen? Mail gerust naar <a href="mailto:' + MAIL_TO + '" style="color:var(--gold)">' + MAIL_TO + '</a>.</p>';
+          box.scrollIntoView({behavior:"smooth", block:"center"});
+        } else {
+          sending = false;
+          btn.disabled = false;
+          btn.textContent = oldLabel;
+          notify((r.data && r.data.error) ? r.data.error : "Versturen mislukt — probeer het opnieuw of gebruik 'Kopieer antwoorden'.");
+        }
+      })
+      .catch(function(){
+        sending = false;
+        btn.disabled = false;
+        btn.textContent = oldLabel;
+        mailtoFallback();
+      });
+  });
+
+  document.getElementById("btnCopy").addEventListener("click", function(){
+    var text = buildSummary();
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand("copy"); notify("Antwoorden gekopieerd — plak ze in een e-mail aan " + MAIL_TO + "."); }
+      catch(e){ notify("Kopiëren lukte niet — gebruik 'Download als bestand'."); }
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){
+        notify("Antwoorden gekopieerd — plak ze in een e-mail aan " + MAIL_TO + ".");
+      }).catch(fallback);
+    } else { fallback(); }
+  });
+
+  document.getElementById("btnDownload").addEventListener("click", function(){
+    var text = buildSummary();
+    var bedrijf = document.getElementById("bedrijf").value.trim().replace(/[^a-z0-9]+/gi,"-").toLowerCase();
+    var blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "website-intake" + (bedrijf ? "-" + bedrijf : "") + ".txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+    notify("Bestand gedownload — stuur het als bijlage naar " + MAIL_TO + ".");
+  });
+})();
+</script>
+</body>
+</html>
