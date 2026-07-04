@@ -60,6 +60,7 @@ export async function onRequestPost(context) {
     from: env.INTAKE_FROM || "MVDBmedia Intake <intake@mvdbmedia.nl>",
     to: [env.INTAKE_TO || "info@mvdbmedia.nl"],
     subject: "Website intake" + (bedrijf ? " — " + bedrijf : ""),
+    html: renderHtml(summary, bedrijf, email),
     text: summary,
   };
   if (attachments.length) payload.attachments = attachments;
@@ -89,6 +90,94 @@ export async function onRequest(context) {
 }
 
 /* ---------- helpers ---------- */
+
+// Zet de platte-tekst samenvatting om naar een nette HTML-mail.
+// Structuur van summary:
+//   regel 1: "WEBSITE INTAKE — MVDBmedia"
+//   regel 2: "Ingevuld op: <datum>"
+//   daarna per sectie:  "=== TITEL ===", gevolgd door "label: waarde" regels
+function renderHtml(summary, bedrijf, email) {
+  const lines = String(summary).split("\n");
+  let ingevuld = "";
+  const sections = []; // { title, rows: [{label, value}] }
+  let current = null;
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (line.startsWith("WEBSITE INTAKE")) continue;
+    if (/^Ingevuld op:/i.test(line)) {
+      ingevuld = line.replace(/^Ingevuld op:\s*/i, "").trim();
+      continue;
+    }
+    const sec = line.match(/^===\s*(.*?)\s*===$/);
+    if (sec) {
+      current = { title: sec[1], rows: [] };
+      sections.push(current);
+      continue;
+    }
+    const idx = line.indexOf(":");
+    const row = idx > -1
+      ? { label: line.slice(0, idx).trim(), value: line.slice(idx + 1).trim() }
+      : { label: "", value: line };
+    if (current) current.rows.push(row);
+  }
+
+  const GOLD = "#c4a96e";
+  const INK = "#1c1915";
+  const MUTED = "#6b6459";
+  const LINE = "#e7e2d8";
+  const BG = "#f4f1ea";
+
+  const sectionsHtml = sections.map((s) => {
+    const rows = s.rows.map((r) => {
+      if (!r.label) {
+        return `<tr><td colspan="2" style="padding:8px 0;color:${INK};font-size:15px;line-height:1.6;">${esc(r.value)}</td></tr>`;
+      }
+      return `<tr>
+        <td style="padding:8px 16px 8px 0;color:${MUTED};font-size:13px;vertical-align:top;white-space:nowrap;">${esc(r.label)}</td>
+        <td style="padding:8px 0;color:${INK};font-size:15px;line-height:1.5;">${esc(r.value)}</td>
+      </tr>`;
+    }).join("");
+    return `
+      <tr><td style="padding:28px 0 0;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${GOLD};border-bottom:2px solid ${GOLD};padding-bottom:6px;margin-bottom:4px;">${esc(s.title)}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">${rows}</table>
+      </td></tr>`;
+  }).join("");
+
+  const meta = [
+    bedrijf ? `<strong style="color:#ffffff;">${esc(bedrijf)}</strong>` : "",
+    isEmail(email) ? `<a href="mailto:${esc(email)}" style="color:${GOLD};text-decoration:none;">${esc(email)}</a>` : "",
+    ingevuld ? `Ingevuld op ${esc(ingevuld)}` : "",
+  ].filter(Boolean).join(" &nbsp;·&nbsp; ");
+
+  return `<!doctype html><html><body style="margin:0;padding:0;background:${BG};">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BG};padding:32px 12px;">
+    <tr><td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid ${LINE};border-radius:12px;overflow:hidden;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+        <tr><td style="background:#161411;padding:24px 32px;">
+          <div style="color:#ffffff;font-size:18px;font-weight:700;letter-spacing:.02em;">Website intake — <span style="color:${GOLD};">MVDBmedia</span></div>
+          ${meta ? `<div style="color:#b9b1a2;font-size:13px;margin-top:6px;">${meta}</div>` : ""}
+        </td></tr>
+        <tr><td style="padding:8px 32px 32px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${sectionsHtml}</table>
+        </td></tr>
+        <tr><td style="padding:16px 32px;background:#faf8f3;border-top:1px solid ${LINE};color:${MUTED};font-size:12px;">
+          Ingevuld via het intakeformulier op mvdbmedia.nl. Reageren gaat rechtstreeks naar de aanvrager.
+        </td></tr>
+      </table>
+    </td></tr>
+  </table></body></html>`;
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
