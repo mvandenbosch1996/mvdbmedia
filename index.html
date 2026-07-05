@@ -53,8 +53,6 @@
   "sameAs": ["https://www.instagram.com/mvdbmedia"]
 }
 </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -90,7 +88,6 @@
 
     /* Sticky nav scroll-margin compensation — voorkomt dat secties achter de nav verdwijnen */
     #diensten,
-    #portfolio,
     #over,
     #contact {
       scroll-margin-top: 64px;
@@ -110,7 +107,6 @@
     /* Responsive overrides */
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr !important; }
-      .hero-collage { display: none !important; }
       .over-grid { grid-template-columns: 1fr !important; }
       .contact-grid { grid-template-columns: 1fr !important; }
       .footer-grid { grid-template-columns: 1fr 1fr !important; }
@@ -142,13 +138,9 @@
       }
       .diensten-arrow { display: none !important; }
       #diensten { padding-top: 28px !important; }
-      #portfolio { padding-top: 28px !important; }
       #over { padding-top: 28px !important; }
       #contact { padding-top: 28px !important; }
       .hero-stats { gap: 24px !important; }
-      .portfolio-grid-inner { grid-template-columns: repeat(2, 1fr) !important; grid-auto-rows: 160px !important; }
-      .portfolio-item-lg { grid-column: span 2 !important; grid-row: span 1 !important; }
-      .portfolio-item-md { grid-column: span 1 !important; grid-row: span 1 !important; }
       .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .diensten-grid { grid-template-columns: 1fr !important; }
       .diensten-grid .dienst-card[style*="grid-column:1/-1"] { flex-direction: column !important; }
@@ -430,56 +422,6 @@
       transform: translateY(0);
       opacity: 1;
     }
-
-    /* ── LIGHTBOX ── */
-    #lightbox {
-      position: fixed; inset: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease, background 0.3s ease;
-    }
-    #lightbox.lb-open {
-      opacity: 1; pointer-events: auto;
-      background: rgba(0,0,0,0.93);
-    }
-    #lb-img {
-      max-width: min(88vw, 1100px);
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: 3px;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.8);
-      transform: scale(0.94);
-      opacity: 0;
-      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
-      display: block;
-    }
-    #lightbox.lb-open #lb-img { transform: scale(1); opacity: 1; }
-    #lb-close {
-      position: absolute; top: 24px; right: 28px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      color: #f0ede8; font-size: 1.1rem; width: 40px; height: 40px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s ease;
-    }
-    #lb-close:hover { background: rgba(255,140,0,0.2); border-color: rgba(255,140,0,0.4); }
-    .lb-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      color: #f0ede8; font-size: 1.1rem; width: 48px; height: 48px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s ease;
-    }
-    .lb-nav:hover { background: rgba(255,140,0,0.2); border-color: rgba(255,140,0,0.4); }
-    #lb-prev { left: 24px; }
-    #lb-next { right: 24px; }
-    #lb-info {
-      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-      text-align: center; pointer-events: none;
-    }
-    #lb-cat { font-size: 0.6rem; color: #ff8c00; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
-    #lb-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #f0ede8; letter-spacing: 0.04em; }
-    #lb-counter { font-size: 0.65rem; color: rgba(240,237,232,0.4); margin-top: 6px; letter-spacing: 0.1em; }
 
     /* ── WHATSAPP FLOATING BUTTON ── */
     #wa-btn {
@@ -1375,20 +1317,6 @@
     <span id="wa-label">WhatsApp</span>
   </a>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto weergave" onclick="closeLightbox()">
-    <button id="lb-close" aria-label="Lightbox sluiten" onclick="closeLightbox()">✕</button>
-    <button class="lb-nav" id="lb-prev" aria-label="Vorige foto" onclick="event.stopPropagation();lightboxNav(-1)">←</button>
-    <button class="lb-nav" id="lb-next" aria-label="Volgende foto" onclick="event.stopPropagation();lightboxNav(1)">→</button>
-    <div onclick="event.stopPropagation()" style="display:flex;flex-direction:column;align-items:center;">
-      <img id="lb-img" alt="">
-      <div id="lb-info">
-        <div id="lb-cat"></div>
-        <div id="lb-title"></div>
-        <div id="lb-counter"></div>
-      </div>
-    </div>
-  </div>
 
   <script>
     const PAKKETTEN = {
@@ -1572,47 +1500,6 @@
       });
     });
 
-    // Portfolio hover
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      const overlay = item.querySelector('.portfolio-overlay');
-      const img = item.querySelector('img');
-      item.addEventListener('mouseenter', () => {
-        if (overlay) overlay.style.opacity = '1';
-        if (img) img.style.transform = 'scale(1.07)';
-      });
-      item.addEventListener('mouseleave', () => {
-        if (overlay) overlay.style.opacity = '0';
-        if (img) img.style.transform = 'scale(1)';
-      });
-      // Keyboard toegankelijkheid voor portfolio items
-      item.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openLightbox(item);
-        }
-      });
-    });
-
-    // Portfolio filter — update ook aria-pressed
-    function filterPortfolio(category, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.style.background = 'transparent';
-        b.style.color = 'var(--text-secondary)';
-        b.style.borderColor = 'var(--border)';
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.style.background = 'var(--orange)';
-      btn.style.color = '#000';
-      btn.style.borderColor = 'var(--orange)';
-      btn.setAttribute('aria-pressed', 'true');
-
-      document.querySelectorAll('.portfolio-item').forEach(item => {
-        const show = category === 'all' || item.dataset.category === category;
-        item.style.opacity = show ? '1' : '0.15';
-        item.style.pointerEvents = show ? 'auto' : 'none';
-      });
-    }
-
     // Scroll-indicator: verberg op mobiel zodra hero uit beeld scrolt
     (function initScrollHint() {
       if (window.innerWidth > 768) return;
@@ -1645,7 +1532,6 @@
       const targets = [
         ...document.querySelectorAll(
           '#diensten h2, #diensten p,' +
-          '#portfolio h2, #portfolio #portfolio-filters, #portfolio #portfolio-grid,' +
           '#over .over-grid > div:last-child, #over .over-stats-balk,' +
           '#contact .contact-grid,' +
           'footer .footer-grid, footer > div > div:last-child'
@@ -1710,57 +1596,6 @@
       }, { threshold: 0.6 });
       statEls.forEach(el => obs.observe(el));
     })();
-
-    // ── LIGHTBOX ──
-    let lbItems = [];
-    let lbIndex = 0;
-
-    function openLightbox(el) {
-      lbItems = [...document.querySelectorAll('.portfolio-item[data-src]')];
-      lbIndex = lbItems.indexOf(el);
-      showLbItem(lbIndex);
-      document.getElementById('lightbox').classList.add('lb-open');
-      document.body.style.overflow = 'hidden';
-      // Focus op de sluitknop voor toegankelijkheid
-      setTimeout(() => document.getElementById('lb-close').focus(), 50);
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('lb-open');
-      document.body.style.overflow = '';
-    }
-
-    function lightboxNav(dir) {
-      lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
-      showLbItem(lbIndex);
-    }
-
-    function showLbItem(index) {
-      const el = lbItems[index];
-      if (!el) return;
-      const img = document.getElementById('lb-img');
-      img.style.opacity = '0';
-      img.style.transform = 'scale(0.96)';
-      setTimeout(() => {
-        const src = el.dataset.src || '';
-        // Fix: accepteer ook relatieve paden zonder ./ prefix
-        img.src = src || '';
-        img.alt = el.dataset.title || '';
-        document.getElementById('lb-cat').textContent = el.dataset.cat || '';
-        document.getElementById('lb-title').textContent = el.dataset.title || '';
-        document.getElementById('lb-counter').textContent = (index + 1) + ' / ' + lbItems.length;
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1)';
-      }, 120);
-    }
-
-    document.addEventListener('keydown', e => {
-      const lb = document.getElementById('lightbox');
-      if (!lb.classList.contains('lb-open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lightboxNav(-1);
-      if (e.key === 'ArrowRight') lightboxNav(1);
-    });
 
     // Form field validation checkmarks
     function validateField(fieldId, checkId, testFn) {
