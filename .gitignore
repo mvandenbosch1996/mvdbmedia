@@ -17,6 +17,7 @@ screenshot.mjs
 screenshot-mobile.mjs
 convert-webp.mjs
 update-html-webp.mjs
+perf-pass2.mjs
 
 # IDE / editor
 .claude/
