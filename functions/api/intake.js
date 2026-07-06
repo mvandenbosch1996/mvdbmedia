@@ -9,6 +9,9 @@
 //                    geverifieerd zijn in Resend)
 
 const MAX_ATTACH_BYTES = 15 * 1024 * 1024; // 15 MB totaal
+const MAX_ATTACH_COUNT = 5; // max aantal logobestanden
+// Toegestane logobestanden: afbeeldingen + vector/ontwerpformaten
+const ALLOWED_EXT = /\.(png|jpe?g|webp|gif|svg|pdf|ai|eps)$/i;
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -30,8 +33,9 @@ export async function onRequestPost(context) {
   }
 
   const summary = String(form.get("summary") || "").trim();
-  const bedrijf = String(form.get("bedrijf") || "").trim();
-  const email = String(form.get("email") || "").trim();
+  // bedrijf gaat in de mail-subject: newlines strippen + lengte begrenzen
+  const bedrijf = String(form.get("bedrijf") || "").replace(/[\r\n]+/g, " ").trim().slice(0, 200);
+  const email = String(form.get("email") || "").trim().slice(0, 254);
 
   if (!summary) {
     return json({ error: "Het formulier is leeg." }, 400);
@@ -45,13 +49,20 @@ export async function onRequestPost(context) {
   let total = 0;
   for (const entry of form.getAll("logo")) {
     if (typeof entry === "string" || !entry || !entry.size) continue;
+    if (attachments.length >= MAX_ATTACH_COUNT) {
+      return json({ error: `Te veel bestanden — maximaal ${MAX_ATTACH_COUNT} logobestanden.` }, 413);
+    }
+    const name = entry.name || "logo";
+    if (!ALLOWED_EXT.test(name)) {
+      return json({ error: "Bestandstype niet toegestaan — alleen afbeeldingen (PNG, JPG, WebP, GIF, SVG) of ontwerpbestanden (PDF, AI, EPS)." }, 415);
+    }
     total += entry.size;
     if (total > MAX_ATTACH_BYTES) {
       return json({ error: "Logobestand(en) te groot — maximaal 15 MB totaal." }, 413);
     }
     const buf = await entry.arrayBuffer();
     attachments.push({
-      filename: sanitizeFilename(entry.name || "logo"),
+      filename: sanitizeFilename(name),
       content: toBase64(buf),
     });
   }
@@ -66,14 +77,21 @@ export async function onRequestPost(context) {
   if (attachments.length) payload.attachments = attachments;
   if (isEmail(email)) payload.reply_to = email;
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
+  // try/catch: netwerkfout naar Resend mag geen kale 500-pagina opleveren
+  let res;
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.error("Resend fetch failed:", err);
+    return json({ error: "Versturen mislukt — probeer het later opnieuw." }, 502);
+  }
 
   if (!res.ok) {
     console.error("Resend error:", res.status, await res.text());
