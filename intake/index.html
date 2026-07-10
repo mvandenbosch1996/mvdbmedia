@@ -453,8 +453,6 @@
     <p>Uw antwoorden (en logo) worden direct naar MVDBmedia gestuurd. U ontvangt hieronder een bevestiging.</p>
     <input type="text" name="website_hp" id="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button type="button" class="btn-main" id="btnSend">Verstuur formulier</button>
-    <button type="button" class="btn-ghost" id="btnCopy">Kopieer antwoorden</button>
-    <button type="button" class="btn-ghost" id="btnDownload">Download als bestand</button>
     <div class="notice" id="notice"></div>
   </div>
 
@@ -644,7 +642,7 @@
           sending = false;
           btn.disabled = false;
           btn.textContent = oldLabel;
-          notify((r.data && r.data.error) ? r.data.error : "Versturen mislukt — probeer het opnieuw of gebruik 'Kopieer antwoorden'.");
+          notify((r.data && r.data.error) ? r.data.error : "Versturen mislukt — probeer het opnieuw of mail naar " + MAIL_TO + ".");
         }
       })
       .catch(function(){
@@ -653,38 +651,6 @@
         btn.textContent = oldLabel;
         mailtoFallback();
       });
-  });
-
-  document.getElementById("btnCopy").addEventListener("click", function(){
-    var text = buildSummary();
-    function fallback(){
-      var ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try{ document.execCommand("copy"); notify("Antwoorden gekopieerd — plak ze in een e-mail aan " + MAIL_TO + "."); }
-      catch(e){ notify("Kopiëren lukte niet — gebruik 'Download als bestand'."); }
-      document.body.removeChild(ta);
-    }
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(function(){
-        notify("Antwoorden gekopieerd — plak ze in een e-mail aan " + MAIL_TO + ".");
-      }).catch(fallback);
-    } else { fallback(); }
-  });
-
-  document.getElementById("btnDownload").addEventListener("click", function(){
-    var text = buildSummary();
-    var bedrijf = document.getElementById("bedrijf").value.trim().replace(/[^a-z0-9]+/gi,"-").toLowerCase();
-    var blob = new Blob([text], {type:"text/plain;charset=utf-8"});
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "website-intake" + (bedrijf ? "-" + bedrijf : "") + ".txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(a.href);
-    notify("Bestand gedownload — stuur het als bijlage naar " + MAIL_TO + ".");
   });
 })();
 </script>
