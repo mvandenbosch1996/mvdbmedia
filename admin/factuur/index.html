@@ -44,12 +44,16 @@
     input:focus, select:focus { border-color:var(--orange); }
     .rij2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     .veld { margin-bottom:12px; }
+    .dienstgroep { margin-bottom:16px; }
+    .dienstgroep-kop { font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+                       color:var(--dim); margin-bottom:7px; padding-bottom:4px; border-bottom:1px solid var(--border); }
     .kaarten { display:flex; flex-wrap:wrap; gap:7px; }
     .dienstkaart { background:var(--card); border:1px solid var(--border); border-radius:5px;
-                   padding:8px 11px; cursor:pointer; font-size:0.76rem; transition:border-color 0.15s ease, background 0.15s ease, transform 0.15s ease; }
+                   padding:8px 11px; cursor:pointer; font-size:0.78rem; white-space:nowrap;
+                   transition:border-color 0.15s ease, background 0.15s ease, transform 0.15s ease; }
     .dienstkaart:hover { border-color:var(--orange); background:var(--float); transform:translateY(-1px); }
     .dienstkaart:active { transform:translateY(0); }
-    .dienstkaart .k-groep { color:var(--dim); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; }
+    .dienstkaart:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
     .dienstkaart .k-label { color:var(--text); font-weight:500; }
     .dienstkaart .k-prijs { color:var(--orange); font-weight:600; }
     .regel { display:grid; grid-template-columns:22px 1fr 58px 84px 84px 30px; gap:8px; align-items:center;
@@ -280,19 +284,58 @@
   }
 
   // ===================== RENDER: dienstkaarten =====================
+  // Categorie van een pakket: 'Drone' splitst in Drone-constructie / Drone-auto op basis van het label.
+  function categorieVan(p) {
+    if (p.groep === "Drone") {
+      if (/^Constructie/i.test(p.label)) return "Drone-constructie";
+      if (/^Auto/i.test(p.label)) return "Drone-auto";
+    }
+    return p.groep;
+  }
+  // Kaartnaam zonder categorie-prefix ("Constructie — Start" -> "Start", "Auto — Strak" -> "Strak").
+  function kaartNaam(p) {
+    return p.label.replace(/^(Constructie|Auto)\s*—\s*/i, "");
+  }
+  const CATEGORIE_VOLGORDE = ["Portret", "Groep", "Vastgoed", "Webdesign", "Drone-constructie", "Drone-auto", "Events"];
+
   function renderDienstkaarten() {
     const wrap = document.getElementById("dienstkaarten");
     wrap.innerHTML = "";
+
+    // Groepeer pakketten per categorie.
+    const perCategorie = {};
     PAKKETTEN.forEach((p) => {
-      const el = document.createElement("button");
-      el.type = "button";
-      el.className = "dienstkaart";
-      el.innerHTML = `<div class="k-groep">${esc(p.groep)}</div><div class="k-label">${esc(p.label)} · <span class="k-prijs">${euro(p.prijs)}</span></div>`;
-      el.addEventListener("click", () => {
-        state.regels.push({ id: nieuwId(), omschrijving: p.omschrijving, aantal: 1, stukprijs: p.prijs });
-        renderRegels(); renderPreview(); bewaarConcept();
+      const cat = categorieVan(p);
+      (perCategorie[cat] = perCategorie[cat] || []).push(p);
+    });
+
+    // Behoud de gewenste volgorde; onbekende categorieën komen erachteraan.
+    const categorieen = [...CATEGORIE_VOLGORDE.filter((c) => perCategorie[c]),
+                         ...Object.keys(perCategorie).filter((c) => !CATEGORIE_VOLGORDE.includes(c))];
+
+    categorieen.forEach((cat) => {
+      const groepEl = document.createElement("div");
+      groepEl.className = "dienstgroep";
+      const kop = document.createElement("div");
+      kop.className = "dienstgroep-kop";
+      kop.textContent = cat;
+      groepEl.appendChild(kop);
+
+      const rij = document.createElement("div");
+      rij.className = "kaarten";
+      perCategorie[cat].forEach((p) => {
+        const el = document.createElement("button");
+        el.type = "button";
+        el.className = "dienstkaart";
+        el.innerHTML = `<span class="k-label">${esc(kaartNaam(p))}</span> · <span class="k-prijs">${euro(p.prijs)}</span>`;
+        el.addEventListener("click", () => {
+          state.regels.push({ id: nieuwId(), omschrijving: p.omschrijving, aantal: 1, stukprijs: p.prijs });
+          renderRegels(); renderPreview(); bewaarConcept();
+        });
+        rij.appendChild(el);
       });
-      wrap.appendChild(el);
+      groepEl.appendChild(rij);
+      wrap.appendChild(groepEl);
     });
   }
 
