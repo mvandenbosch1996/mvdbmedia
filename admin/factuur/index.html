@@ -621,7 +621,10 @@
       rij("Subtotaal na korting", pdfEuro(c.naKorting));
     }
     rij(state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%", state.btwVerlegd ? "verlegd" : pdfEuro(c.btwBedrag));
-    doc.setDrawColor(...oranje); doc.setLineWidth(1); doc.line(400, y - 6, 547, y - 6);
+    // Scheidingsstreep exact tussen de Btw-regel en de Totaal-regel.
+    // Btw-baseline = y-16, Totaal-baseline = y; regelafstand 16 -> midden op y-8.
+    doc.setDrawColor(...oranje); doc.setLineWidth(1); doc.line(400, y - 8, 547, y - 8);
+    y += 2; // iets extra lucht onder de streep vóór de Totaal-regel
     rij("Totaal", pdfEuro(c.totaal), true);
 
     // Voettekst: direct onder de totalen, niet op een vaste bodempositie
