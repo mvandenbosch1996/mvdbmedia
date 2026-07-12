@@ -102,6 +102,15 @@
     <div class="form-kol">
       <div class="sectie">
         <h2>Klantgegevens</h2>
+        <div class="veld">
+          <label>Opgeslagen klant</label>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <select id="klant-select" style="flex:1;">
+              <option value="">— Nieuwe klant —</option>
+            </select>
+            <button class="btn btn-ghost btn-klein" id="klant-verwijder" type="button" style="white-space:nowrap;" disabled>Verwijder</button>
+          </div>
+        </div>
         <div class="veld"><label>Bedrijfsnaam</label><input id="k-bedrijf" data-klant="bedrijf"></div>
         <div class="rij2">
           <div class="veld"><label>Contactpersoon</label><input id="k-contact" data-klant="contact"></div>
@@ -508,6 +517,73 @@
     return null;
   }
 
+  // ===================== KLANTENBESTAND (KV) =====================
+  let klantenCache = []; // [{id, bedrijf, contact, adres, postcodePlaats, email, kvkBtw}]
+
+  async function laadKlanten() {
+    try {
+      const res = await fetch("/api/klanten");
+      if (!res.ok) return;
+      klantenCache = (await res.json()).klanten || [];
+      vulKlantSelect();
+    } catch {}
+  }
+
+  function vulKlantSelect() {
+    const sel = document.getElementById("klant-select");
+    const huidig = sel.value;
+    sel.innerHTML = '<option value="">— Nieuwe klant —</option>';
+    klantenCache.forEach((k) => {
+      const opt = document.createElement("option");
+      opt.value = k.id;
+      const naam = k.bedrijf || k.contact || k.email || "(naamloos)";
+      opt.textContent = k.email ? `${naam} — ${k.email}` : naam;
+      sel.appendChild(opt);
+    });
+    if ([...sel.options].some((o) => o.value === huidig)) sel.value = huidig;
+    document.getElementById("klant-verwijder").disabled = !sel.value;
+  }
+
+  function kiesKlant(id) {
+    const k = klantenCache.find((x) => x.id === id);
+    if (!k) return;
+    ["bedrijf", "contact", "adres", "postcodePlaats", "email", "kvkBtw"].forEach((v) => {
+      state.klant[v] = k[v] || "";
+    });
+    // inputvelden bijwerken
+    document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
+    renderPreview(); bewaarConcept();
+  }
+
+  async function verwijderKlant(id) {
+    const k = klantenCache.find((x) => x.id === id);
+    const naam = k ? (k.bedrijf || k.email || "deze klant") : "deze klant";
+    if (!confirm(`Klant "${naam}" verwijderen uit het klantenbestand?`)) return;
+    try {
+      const res = await fetch("/api/klanten", {
+        method: "DELETE", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (res.ok) {
+        klantenCache = klantenCache.filter((x) => x.id !== id);
+        document.getElementById("klant-select").value = "";
+        vulKlantSelect();
+      }
+    } catch {}
+  }
+
+  // Sla de huidige klant op / werk bij (match op bedrijf+email server-side). Ververst de lijst.
+  async function bewaarKlant() {
+    if (!state.klant.bedrijf.trim() && !state.klant.email.trim()) return;
+    try {
+      const res = await fetch("/api/klanten", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ klant: state.klant }),
+      });
+      if (res.ok) { await laadKlanten(); }
+    } catch {}
+  }
+
   // ===================== INIT =====================
   function init() {
     laadConcept();
@@ -515,12 +591,21 @@
     renderRegels();
     bindVelden();
     renderPreview();
+    laadKlanten();
 
     document.getElementById("regel-toevoegen").addEventListener("click", () => {
       state.regels.push({ id: nieuwId(), omschrijving: "", aantal: 1, stukprijs: 0 });
       renderRegels(); renderPreview(); bewaarConcept();
     });
     document.getElementById("reserveer-knop").addEventListener("click", reserveerNummer);
+    document.getElementById("klant-select").addEventListener("change", (e) => {
+      document.getElementById("klant-verwijder").disabled = !e.target.value;
+      if (e.target.value) kiesKlant(e.target.value);
+    });
+    document.getElementById("klant-verwijder").addEventListener("click", () => {
+      const id = document.getElementById("klant-select").value;
+      if (id) verwijderKlant(id);
+    });
     document.getElementById("logout-knop").addEventListener("click", async () => {
       await fetch("/api/logout", { method: "POST" });
       window.location.href = "/admin/login/";
@@ -639,6 +724,9 @@
     const veiligeKlant = (state.klant.bedrijf || state.klant.contact || "klant")
       .replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "klant";
     doc.save(`Factuur-${state.factuur.nummer}-${veiligeKlant}.pdf`);
+
+    // Klant automatisch opslaan/bijwerken in het klantenbestand (match op bedrijf+email).
+    bewaarKlant();
   }
 
   init();
