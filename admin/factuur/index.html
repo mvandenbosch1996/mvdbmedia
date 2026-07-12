@@ -1,1 +1,484 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow, noarchive"><title>GEHEIM</title></head><body><h1>GEHEIM</h1></body></html>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Factuur maken — MVDBmedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0d0d0d; --elev:#161616; --float:#1f1f1f; --card:#1a1a1a; --border:#2a2a2a;
+            --border-light:#333; --orange:#ff8c00; --orange-dim:#c96e00; --text:#f0ede8;
+            --muted:#a09890; --dim:#7a736e; --font-display:'Bebas Neue',sans-serif;
+            --font-body:'Inter',sans-serif; }
+    * { box-sizing:border-box; margin:0; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:14px;
+           line-height:1.5; padding:0; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; padding:16px 24px;
+              border-bottom:1px solid var(--border); background:var(--elev); position:sticky; top:0; z-index:10; }
+    .logo { font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.06em; }
+    .logo span { color:var(--orange); }
+    .btn { border:none; border-radius:4px; font-family:var(--font-body); font-weight:600;
+           font-size:0.8rem; cursor:pointer; padding:9px 16px; transition:transform 0.15s ease, opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+    .btn:active { transform:translateY(1px); }
+    .btn:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+    .btn-oranje { background:var(--orange); color:#000; }
+    .btn-oranje:hover { opacity:0.92; }
+    .btn-ghost { background:transparent; color:var(--muted); border:1px solid var(--border); }
+    .btn-ghost:hover { color:var(--text); border-color:var(--border-light); }
+    .btn-klein { padding:6px 10px; font-size:0.72rem; }
+    .layout { display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:start; }
+    .form-kol { padding:24px; border-right:1px solid var(--border); }
+    .preview-kol { padding:24px; position:sticky; top:69px; }
+    @media (max-width:900px){ .layout{grid-template-columns:1fr;} .form-kol{border-right:none;border-bottom:1px solid var(--border);} .preview-kol{position:static;} }
+    h2 { font-family:var(--font-display); font-size:1.15rem; letter-spacing:0.05em; color:var(--text);
+         margin:0 0 14px; font-weight:400; }
+    .sectie { margin-bottom:28px; }
+    label { display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase;
+            color:var(--muted); margin-bottom:5px; }
+    input, select { width:100%; padding:9px 11px; background:var(--bg); border:1px solid var(--border);
+            border-radius:4px; color:var(--text); font-size:0.85rem; font-family:var(--font-body);
+            outline:none; transition:border-color 0.2s ease; }
+    input:focus, select:focus { border-color:var(--orange); }
+    .rij2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .veld { margin-bottom:12px; }
+    .kaarten { display:flex; flex-wrap:wrap; gap:7px; }
+    .dienstkaart { background:var(--card); border:1px solid var(--border); border-radius:5px;
+                   padding:8px 11px; cursor:pointer; font-size:0.76rem; transition:border-color 0.15s ease, background 0.15s ease, transform 0.15s ease; }
+    .dienstkaart:hover { border-color:var(--orange); background:var(--float); transform:translateY(-1px); }
+    .dienstkaart:active { transform:translateY(0); }
+    .dienstkaart .k-groep { color:var(--dim); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; }
+    .dienstkaart .k-label { color:var(--text); font-weight:500; }
+    .dienstkaart .k-prijs { color:var(--orange); font-weight:600; }
+    .regel { display:grid; grid-template-columns:22px 1fr 58px 84px 84px 30px; gap:8px; align-items:center;
+             padding:8px; background:var(--card); border:1px solid var(--border); border-radius:5px; margin-bottom:7px; }
+    .regel.sleep-over { border-color:var(--orange); }
+    .regel input { padding:7px 9px; font-size:0.8rem; }
+    .regel .greep { cursor:grab; color:var(--dim); text-align:center; user-select:none; }
+    .regel .regeltotaal { text-align:right; font-weight:600; color:var(--text); font-size:0.82rem; padding-right:4px; }
+    .regel .verwijder { background:transparent; border:none; color:var(--dim); cursor:pointer; font-size:1rem; padding:0; transition:color 0.15s ease; }
+    .regel .verwijder:hover { color:#ff6b6b; }
+    .regelkop { display:grid; grid-template-columns:22px 1fr 58px 84px 84px 30px; gap:8px;
+                font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--dim); padding:0 8px 4px; }
+    .korting-opties { display:flex; gap:14px; margin-bottom:10px; }
+    .korting-opties label { display:flex; align-items:center; gap:5px; text-transform:none; letter-spacing:0; font-size:0.8rem; color:var(--text); margin:0; cursor:pointer; }
+    .korting-opties input[type=radio] { width:auto; }
+    /* preview */
+    .preview { background:#fff; color:#111; border-radius:6px; padding:32px; font-size:12px; box-shadow:0 20px 50px rgba(0,0,0,0.5); }
+    .pv-kop { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; }
+    .pv-logo { font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.04em; color:#111; }
+    .pv-logo span { color:var(--orange); }
+    .pv-titel { font-family:var(--font-display); font-size:1.8rem; letter-spacing:0.04em; color:#111; }
+    .pv-meta-blok { display:flex; justify-content:space-between; margin-bottom:20px; gap:20px; }
+    .pv-label { color:#888; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; }
+    .pv-tabel { width:100%; border-collapse:collapse; margin:16px 0; }
+    .pv-tabel th { background:#111; color:#fff; text-align:left; padding:7px 9px; font-size:10px; font-weight:600; }
+    .pv-tabel th.r, .pv-tabel td.r { text-align:right; }
+    .pv-tabel td { padding:7px 9px; border-bottom:1px solid #eee; }
+    .pv-tot { margin-left:auto; width:55%; }
+    .pv-tot .tr { display:flex; justify-content:space-between; padding:4px 0; }
+    .pv-tot .tr.groot { font-weight:700; font-size:14px; border-top:2px solid var(--orange); padding-top:8px; margin-top:4px; }
+    .pv-voet { margin-top:24px; padding-top:14px; border-top:1px solid #eee; color:#666; font-size:10px; line-height:1.6; }
+    .waarschuwing { color:#ff6b6b; font-size:0.72rem; margin-top:5px; min-height:1em; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">MVDB<span>media</span> · Factuur</div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-oranje" id="pdf-knop" type="button">Factuur genereren (PDF)</button>
+      <button class="btn btn-ghost" id="logout-knop" type="button">Uitloggen</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- FORMULIER -->
+    <div class="form-kol">
+      <div class="sectie">
+        <h2>Klantgegevens</h2>
+        <div class="veld"><label>Bedrijfsnaam</label><input id="k-bedrijf" data-klant="bedrijf"></div>
+        <div class="rij2">
+          <div class="veld"><label>Contactpersoon</label><input id="k-contact" data-klant="contact"></div>
+          <div class="veld"><label>E-mail</label><input id="k-email" data-klant="email" type="email"></div>
+        </div>
+        <div class="veld"><label>Adres</label><input id="k-adres" data-klant="adres"></div>
+        <div class="rij2">
+          <div class="veld"><label>Postcode + plaats</label><input id="k-pcplaats" data-klant="postcodePlaats"></div>
+          <div class="veld"><label>KvK / btw (optioneel)</label><input id="k-kvkbtw" data-klant="kvkBtw"></div>
+        </div>
+      </div>
+
+      <div class="sectie">
+        <h2>Factuurgegevens</h2>
+        <div class="rij2">
+          <div class="veld">
+            <label>Factuurnummer</label>
+            <div style="display:flex; gap:6px;">
+              <input id="f-nummer" data-factuur="nummer" placeholder="2026-001">
+              <button class="btn btn-ghost btn-klein" id="reserveer-knop" type="button" style="white-space:nowrap;">Reserveer</button>
+            </div>
+            <div class="waarschuwing" id="nummer-waarschuwing"></div>
+          </div>
+          <div class="veld"><label>Referentie / project (optioneel)</label><input id="f-ref" data-factuur="referentie"></div>
+        </div>
+        <div class="rij2">
+          <div class="veld"><label>Factuurdatum</label><input id="f-datum" data-factuur="datum" type="date"></div>
+          <div class="veld"><label>Vervaldatum</label><input id="f-vervaldatum" data-factuur="vervaldatum" type="date"></div>
+        </div>
+      </div>
+
+      <div class="sectie">
+        <h2>Diensten</h2>
+        <div class="kaarten" id="dienstkaarten"></div>
+      </div>
+
+      <div class="sectie">
+        <h2>Regels</h2>
+        <div class="regelkop"><span></span><span>Omschrijving</span><span>Aantal</span><span>Stukprijs</span><span style="text-align:right;">Totaal</span><span></span></div>
+        <div id="regels"></div>
+        <button class="btn btn-ghost btn-klein" id="regel-toevoegen" type="button" style="margin-top:6px;">+ Regel toevoegen</button>
+      </div>
+
+      <div class="sectie">
+        <h2>Korting</h2>
+        <div class="korting-opties">
+          <label><input type="radio" name="korting-type" value="geen" checked> Geen</label>
+          <label><input type="radio" name="korting-type" value="bedrag"> Vast bedrag</label>
+          <label><input type="radio" name="korting-type" value="percentage"> Percentage</label>
+        </div>
+        <div class="rij2" id="korting-velden" style="display:none;">
+          <div class="veld"><label id="korting-waarde-label">Bedrag (€)</label><input id="korting-waarde" type="number" min="0" step="0.01" value="0"></div>
+          <div class="veld"><label>Omschrijving</label><input id="korting-omschrijving" placeholder="bijv. Introductiekorting"></div>
+        </div>
+      </div>
+
+      <div class="sectie">
+        <h2>Btw</h2>
+        <div class="veld">
+          <select id="btw-select">
+            <option value="21">21% (standaard)</option>
+            <option value="0">0%</option>
+            <option value="verlegd">Btw verlegd</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-kol">
+      <div class="preview" id="preview"></div>
+    </div>
+  </div>
+
+  <script src="/admin/vendor/jspdf.umd.min.js"></script>
+  <script src="/admin/vendor/jspdf.plugin.autotable.min.js"></script>
+  <script src="/admin/vendor/bebas-font.js"></script>
+  <script>
+  // ===================== CONFIG =====================
+  const AFZENDER = {
+    naam: "MVDBmedia",
+    contact: "Michael van den Bosch",
+    adres: "Dagpauwoog 15",
+    postcodePlaats: "8607 HN Sneek",
+    kvk: "42084901",
+    btw: "NL005483105B05",
+    iban: "NL93BUNQ2199250679",
+    tel: "+31 6 24 81 92 78",
+    email: "info@mvdbmedia.nl",
+    web: "mvdbmedia.nl",
+  };
+
+  // prijs in hele euro's (ex. btw). omschrijving = standaardtekst op de factuurregel.
+  const PAKKETTEN = [
+    { groep: "Portret",  label: "Solo",       prijs: 95,   omschrijving: "Portretfotografie — Solo" },
+    { groep: "Portret",  label: "Signatuur",  prijs: 195,  omschrijving: "Portretfotografie — Signatuur" },
+    { groep: "Portret",  label: "Verhaal",    prijs: 345,  omschrijving: "Portretfotografie — Verhaal" },
+    { groep: "Groep",    label: "Klein",      prijs: 125,  omschrijving: "Groepsfotografie — Klein" },
+    { groep: "Groep",    label: "Groep",      prijs: 195,  omschrijving: "Groepsfotografie — Groep" },
+    { groep: "Groep",    label: "Uitgebreid", prijs: 345,  omschrijving: "Groepsfotografie — Uitgebreid" },
+    { groep: "Groep",    label: "Zakelijk",   prijs: 595,  omschrijving: "Groepsfotografie — Zakelijk" },
+    { groep: "Vastgoed", label: "Compact",    prijs: 175,  omschrijving: "Vastgoedfotografie — Compact" },
+    { groep: "Vastgoed", label: "Standaard",  prijs: 295,  omschrijving: "Vastgoedfotografie — Standaard" },
+    { groep: "Vastgoed", label: "Premium",    prijs: 495,  omschrijving: "Vastgoedfotografie — Premium" },
+    { groep: "Webdesign",label: "Starter",    prijs: 499,  omschrijving: "Website Starter-pakket" },
+    { groep: "Webdesign",label: "Business",   prijs: 999,  omschrijving: "Website Business-pakket" },
+    { groep: "Drone",    label: "Constructie — Start",   prijs: 295,  omschrijving: "Drone constructiefotografie — Start" },
+    { groep: "Drone",    label: "Constructie — Progres", prijs: 795,  omschrijving: "Drone constructiefotografie — Progres" },
+    { groep: "Drone",    label: "Constructie — Archief", prijs: 1495, omschrijving: "Drone constructiefotografie — Archief" },
+    { groep: "Drone",    label: "Auto — Strak",      prijs: 125,  omschrijving: "Drone autovideo — Strak" },
+    { groep: "Drone",    label: "Auto — Reveal",     prijs: 225,  omschrijving: "Drone autovideo — Reveal" },
+    { groep: "Drone",    label: "Auto — Cinematic",  prijs: 395,  omschrijving: "Drone autovideo — Cinematic" },
+    { groep: "Events",   label: "Kort",       prijs: 295,  omschrijving: "Evenementfotografie — Kort" },
+    { groep: "Events",   label: "Halve dag",  prijs: 595,  omschrijving: "Evenementfotografie — Halve dag" },
+    { groep: "Events",   label: "Volledig",   prijs: 995,  omschrijving: "Evenementfotografie — Volledig" },
+    // TODO Michael: prijs aanleveren — nog niet op de site:
+    //   { groep:"Webdesign", label:"Premium",   prijs:0, omschrijving:"Website Premium-pakket" },
+    //   { groep:"Video",     label:"Videografie", prijs:0, omschrijving:"Videografie" },
+    //   { groep:"Onderhoud", label:"Onderhoud/hosting", prijs:0, omschrijving:"Onderhoud & hosting" },
+  ];
+
+  const BTW_STANDAARD = 21;
+
+  // ===================== STATE =====================
+  function vandaag() { return new Date().toISOString().slice(0, 10); }
+  function overVeertienDagen() {
+    const d = new Date(); d.setDate(d.getDate() + 14); return d.toISOString().slice(0, 10);
+  }
+  let idTeller = 0;
+  function nieuwId() { return "r" + (++idTeller) + "-" + Date.now(); }
+
+  const state = {
+    klant: { bedrijf:"", contact:"", adres:"", postcodePlaats:"", email:"", kvkBtw:"" },
+    factuur: { nummer:"", datum:vandaag(), vervaldatum:overVeertienDagen(), referentie:"" },
+    regels: [], // { id, omschrijving, aantal, stukprijs }
+    korting: { type:"geen", waarde:0, omschrijving:"" },
+    btwTarief: BTW_STANDAARD,
+    btwVerlegd: false,
+  };
+
+  const OPSLAG_KEY = "mvdb-factuur-concept";
+  function bewaarConcept() { localStorage.setItem(OPSLAG_KEY, JSON.stringify(state)); }
+  function laadConcept() {
+    try {
+      const opgeslagen = JSON.parse(localStorage.getItem(OPSLAG_KEY));
+      if (opgeslagen) {
+        Object.assign(state.klant, opgeslagen.klant || {});
+        Object.assign(state.factuur, opgeslagen.factuur || {});
+        state.regels = Array.isArray(opgeslagen.regels) ? opgeslagen.regels : [];
+        Object.assign(state.korting, opgeslagen.korting || {});
+        state.btwTarief = opgeslagen.btwTarief ?? BTW_STANDAARD;
+        state.btwVerlegd = !!opgeslagen.btwVerlegd;
+      }
+    } catch {}
+  }
+
+  // ===================== BEREKENING =====================
+  function bereken() {
+    const subtotaal = state.regels.reduce((s, r) => s + ((Number(r.aantal)||0) * (Number(r.stukprijs)||0)), 0);
+    let kortingBedrag = 0;
+    if (state.korting.type === "bedrag") kortingBedrag = Number(state.korting.waarde) || 0;
+    else if (state.korting.type === "percentage") kortingBedrag = subtotaal * (Number(state.korting.waarde) || 0) / 100;
+    kortingBedrag = Math.min(kortingBedrag, subtotaal);
+    const naKorting = Math.max(0, subtotaal - kortingBedrag);
+    const btwBedrag = state.btwVerlegd ? 0 : naKorting * (state.btwTarief / 100);
+    const totaal = naKorting + btwBedrag;
+    return { subtotaal, kortingBedrag, naKorting, btwBedrag, totaal };
+  }
+  function euro(n) { return "€ " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function esc(s) { return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  // ===================== RENDER: dienstkaarten =====================
+  function renderDienstkaarten() {
+    const wrap = document.getElementById("dienstkaarten");
+    wrap.innerHTML = "";
+    PAKKETTEN.forEach((p) => {
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = "dienstkaart";
+      el.innerHTML = `<div class="k-groep">${esc(p.groep)}</div><div class="k-label">${esc(p.label)} · <span class="k-prijs">${euro(p.prijs)}</span></div>`;
+      el.addEventListener("click", () => {
+        state.regels.push({ id: nieuwId(), omschrijving: p.omschrijving, aantal: 1, stukprijs: p.prijs });
+        renderRegels(); renderPreview(); bewaarConcept();
+      });
+      wrap.appendChild(el);
+    });
+  }
+
+  // ===================== RENDER: regels =====================
+  let sleepId = null;
+  function renderRegels() {
+    const wrap = document.getElementById("regels");
+    wrap.innerHTML = "";
+    state.regels.forEach((r) => {
+      const rij = document.createElement("div");
+      rij.className = "regel";
+      rij.draggable = true;
+      rij.dataset.id = r.id;
+      const totaal = (Number(r.aantal)||0) * (Number(r.stukprijs)||0);
+      rij.innerHTML = `
+        <span class="greep" title="Sleep om te herordenen">⠿</span>
+        <input class="r-oms" value="${esc(r.omschrijving)}" placeholder="Omschrijving">
+        <input class="r-aantal" type="number" min="0" step="1" value="${esc(r.aantal)}">
+        <input class="r-prijs" type="number" min="0" step="0.01" value="${esc(r.stukprijs)}">
+        <span class="regeltotaal">${euro(totaal)}</span>
+        <button class="verwijder" title="Verwijder regel" type="button">✕</button>`;
+
+      rij.querySelector(".r-oms").addEventListener("input", (e) => { r.omschrijving = e.target.value; renderPreview(); bewaarConcept(); });
+      rij.querySelector(".r-aantal").addEventListener("input", (e) => { r.aantal = e.target.value; rij.querySelector(".regeltotaal").textContent = euro((Number(r.aantal)||0)*(Number(r.stukprijs)||0)); renderPreview(); bewaarConcept(); });
+      rij.querySelector(".r-prijs").addEventListener("input", (e) => { r.stukprijs = e.target.value; rij.querySelector(".regeltotaal").textContent = euro((Number(r.aantal)||0)*(Number(r.stukprijs)||0)); renderPreview(); bewaarConcept(); });
+      rij.querySelector(".verwijder").addEventListener("click", () => { state.regels = state.regels.filter((x) => x.id !== r.id); renderRegels(); renderPreview(); bewaarConcept(); });
+
+      rij.addEventListener("dragstart", () => { sleepId = r.id; });
+      rij.addEventListener("dragover", (e) => { e.preventDefault(); rij.classList.add("sleep-over"); });
+      rij.addEventListener("dragleave", () => rij.classList.remove("sleep-over"));
+      rij.addEventListener("drop", (e) => {
+        e.preventDefault(); rij.classList.remove("sleep-over");
+        if (sleepId === null || sleepId === r.id) return;
+        const van = state.regels.findIndex((x) => x.id === sleepId);
+        const naar = state.regels.findIndex((x) => x.id === r.id);
+        const [verplaatst] = state.regels.splice(van, 1);
+        state.regels.splice(naar, 0, verplaatst);
+        sleepId = null; renderRegels(); renderPreview(); bewaarConcept();
+      });
+
+      wrap.appendChild(rij);
+    });
+  }
+
+  // ===================== RENDER: preview =====================
+  function renderPreview() {
+    const c = bereken();
+    const k = state.klant, f = state.factuur;
+    const klantregels = [k.bedrijf, k.contact, k.adres, k.postcodePlaats, k.email, k.kvkBtw].filter(Boolean).map(esc).join("<br>");
+    const regelsHtml = state.regels.map((r) => {
+      const t = (Number(r.aantal)||0)*(Number(r.stukprijs)||0);
+      return `<tr><td>${esc(r.omschrijving)}</td><td class="r">${esc(r.aantal)}</td><td class="r">${euro(r.stukprijs)}</td><td class="r">${euro(t)}</td></tr>`;
+    }).join("") || `<tr><td colspan="4" style="color:#bbb;">Nog geen regels</td></tr>`;
+
+    let totRijen = `<div class="tr"><span>Subtotaal</span><span>${euro(c.subtotaal)}</span></div>`;
+    if (c.kortingBedrag > 0) {
+      totRijen += `<div class="tr"><span>Korting${state.korting.omschrijving ? " — " + esc(state.korting.omschrijving) : ""}</span><span>−${euro(c.kortingBedrag)}</span></div>`;
+      totRijen += `<div class="tr"><span>Subtotaal na korting</span><span>${euro(c.naKorting)}</span></div>`;
+    }
+    totRijen += `<div class="tr"><span>${state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%"}</span><span>${state.btwVerlegd ? "verlegd" : euro(c.btwBedrag)}</span></div>`;
+    totRijen += `<div class="tr groot"><span>Totaal</span><span>${euro(c.totaal)}</span></div>`;
+
+    document.getElementById("preview").innerHTML = `
+      <div class="pv-kop">
+        <div class="pv-logo">MVDB<span>media</span></div>
+        <div class="pv-titel">FACTUUR</div>
+      </div>
+      <div class="pv-meta-blok">
+        <div>
+          <div class="pv-label">Factuur aan</div>
+          <div>${klantregels || '<span style="color:#bbb;">Klantgegevens…</span>'}</div>
+        </div>
+        <div style="text-align:right;">
+          <div><span class="pv-label">Nummer</span> ${esc(f.nummer) || "—"}</div>
+          <div><span class="pv-label">Datum</span> ${esc(f.datum)}</div>
+          <div><span class="pv-label">Vervalt</span> ${esc(f.vervaldatum)}</div>
+          ${f.referentie ? `<div><span class="pv-label">Ref.</span> ${esc(f.referentie)}</div>` : ""}
+        </div>
+      </div>
+      <table class="pv-tabel">
+        <thead><tr><th>Omschrijving</th><th class="r">Aantal</th><th class="r">Stukprijs</th><th class="r">Totaal</th></tr></thead>
+        <tbody>${regelsHtml}</tbody>
+      </table>
+      <div class="pv-tot">${totRijen}</div>
+      <div class="pv-voet">
+        Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer${f.nummer ? " " + esc(f.nummer) : ""}.<br>
+        ${AFZENDER.naam} · ${AFZENDER.adres}, ${AFZENDER.postcodePlaats} · KvK ${AFZENDER.kvk} · BTW ${AFZENDER.btw} · ${AFZENDER.tel} · ${AFZENDER.email}
+      </div>`;
+  }
+
+  // ===================== INPUT-BINDINGEN =====================
+  function bindVelden() {
+    document.querySelectorAll("[data-klant]").forEach((el) => {
+      el.value = state.klant[el.dataset.klant] || "";
+      el.addEventListener("input", () => { state.klant[el.dataset.klant] = el.value; renderPreview(); bewaarConcept(); });
+    });
+    document.querySelectorAll("[data-factuur]").forEach((el) => {
+      el.value = state.factuur[el.dataset.factuur] || "";
+      el.addEventListener("input", () => {
+        state.factuur[el.dataset.factuur] = el.value; renderPreview(); bewaarConcept();
+        if (el.dataset.factuur === "nummer") controleerNummer(el.value);
+      });
+    });
+
+    // korting
+    document.querySelectorAll("input[name=korting-type]").forEach((radio) => {
+      if (radio.value === state.korting.type) radio.checked = true;
+      radio.addEventListener("change", () => {
+        state.korting.type = radio.value;
+        toonKortingVelden();
+        renderPreview(); bewaarConcept();
+      });
+    });
+    const kw = document.getElementById("korting-waarde");
+    kw.value = state.korting.waarde || 0;
+    kw.addEventListener("input", () => { state.korting.waarde = kw.value; renderPreview(); bewaarConcept(); });
+    const ko = document.getElementById("korting-omschrijving");
+    ko.value = state.korting.omschrijving || "";
+    ko.addEventListener("input", () => { state.korting.omschrijving = ko.value; renderPreview(); bewaarConcept(); });
+    toonKortingVelden();
+
+    // btw
+    const btw = document.getElementById("btw-select");
+    btw.value = state.btwVerlegd ? "verlegd" : String(state.btwTarief);
+    btw.addEventListener("change", () => {
+      if (btw.value === "verlegd") { state.btwVerlegd = true; }
+      else { state.btwVerlegd = false; state.btwTarief = Number(btw.value); }
+      renderPreview(); bewaarConcept();
+    });
+  }
+
+  function toonKortingVelden() {
+    const velden = document.getElementById("korting-velden");
+    const label = document.getElementById("korting-waarde-label");
+    velden.style.display = state.korting.type === "geen" ? "none" : "grid";
+    label.textContent = state.korting.type === "percentage" ? "Percentage (%)" : "Bedrag (€)";
+  }
+
+  // ===================== FACTUURNUMMER =====================
+  async function controleerNummer(nummer) {
+    const w = document.getElementById("nummer-waarschuwing");
+    w.textContent = "";
+    if (!nummer.trim()) return;
+    try {
+      const res = await fetch("/api/factuurnummer", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nummer: nummer.trim() }),
+      });
+      if (res.ok) {
+        const { bestaat } = await res.json();
+        w.textContent = bestaat ? "⚠ Dit factuurnummer is al eerder uitgegeven." : "";
+      }
+    } catch {}
+  }
+
+  async function reserveerNummer() {
+    try {
+      const res = await fetch("/api/factuurnummer");
+      if (res.ok) {
+        const { nummer } = await res.json();
+        state.factuur.nummer = nummer;
+        document.getElementById("f-nummer").value = nummer;
+        document.getElementById("nummer-waarschuwing").textContent = "";
+        renderPreview(); bewaarConcept();
+        return nummer;
+      }
+      const err = await res.json().catch(() => ({}));
+      alert("Kon geen nummer reserveren: " + (err.error || res.status));
+    } catch { alert("Kon geen nummer reserveren (netwerkfout)."); }
+    return null;
+  }
+
+  // ===================== INIT =====================
+  function init() {
+    laadConcept();
+    renderDienstkaarten();
+    renderRegels();
+    bindVelden();
+    renderPreview();
+
+    document.getElementById("regel-toevoegen").addEventListener("click", () => {
+      state.regels.push({ id: nieuwId(), omschrijving: "", aantal: 1, stukprijs: 0 });
+      renderRegels(); renderPreview(); bewaarConcept();
+    });
+    document.getElementById("reserveer-knop").addEventListener("click", reserveerNummer);
+    document.getElementById("logout-knop").addEventListener("click", async () => {
+      await fetch("/api/logout", { method: "POST" });
+      window.location.href = "/admin/login/";
+    });
+    document.getElementById("pdf-knop").addEventListener("click", genereerPdf);
+  }
+
+  // PDF-functie wordt in Task 8 gevuld; voorlopig stub zodat de knop niet faalt.
+  async function genereerPdf() { alert("PDF-generatie volgt."); }
+
+  init();
+  </script>
+</body>
+</html>
