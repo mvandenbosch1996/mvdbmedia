@@ -1,6 +1,9 @@
 # Hosting / CI cache
 .netlify/
 
+# Cloudflare Pages lokale env vars (bevat wachtwoord-hash + secret)
+.dev.vars
+
 # Dev tools
 node_modules/
 temporary screenshots/
