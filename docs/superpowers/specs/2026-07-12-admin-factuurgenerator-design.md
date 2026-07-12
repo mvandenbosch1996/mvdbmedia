@@ -47,7 +47,7 @@ Deze drie voegt Michael later toe via de config, of per factuur via "Regel toevo
 | Onderwerp | Keuze |
 |---|---|
 | Huisstijl PDF & UI | Echte site: oranje `#ff8c00` + Bebas Neue/Inter |
-| PDF-library | jsPDF + jsPDF-autotable **lokaal gehost** in `/admin/vendor/` (CSP-safe) |
+| PDF-library | jsPDF + jsPDF-autotable **lokaal gehost** in `/admin/vendor/` — valt onder `script-src 'self'`, geen CSP-versoepeling |
 | PDF-font koppen | Bebas Neue **embedden** in jsPDF (exacte match met site) |
 | Login rate-limiting | Oplopende vertraging (in-memory per isolate), **geen KV** |
 | Factuurnummer-teller | **Cloudflare KV**, gedeeld over apparaten |
@@ -73,8 +73,12 @@ admin/
 scripts/genereer-wachtwoord-hash.js   lokaal Node-script: print salt+hash
 ```
 
-Aangepast: `_headers` (X-Robots-Tag + CSP-uitzondering /admin/), `robots.txt` (Disallow /admin/).
+Aangepast: `_headers` (**alleen** X-Robots-Tag voor /admin/*), `robots.txt` (Disallow /admin/).
 `sitemap.xml`: /admin staat er niet in — geen wijziging nodig, valt al buiten.
+
+**CSP:** geen wijziging. jsPDF lokaal → `script-src 'self'` dekt het. PDF-download via
+`doc.save()` triggert een directe download (geen `blob:`-preview in iframe/object), dus geen
+`object-src`/`connect-src`/`img-src` aanpassing nodig. `script-src` blijft dicht.
 
 ## Deel 1 — Login & beveiliging
 
@@ -150,7 +154,8 @@ verwijderbaar en herordenbaar (drag).
 - Oranje `#ff8c00` accent, near-black koptekst, veel witruimte, tekst-logo bovenaan.
 - Afzenderblok (AFZENDER-config) + betalingsvoorwaarden onderaan:
   "Gelieve het bedrag binnen 14 dagen over te maken op IBAN NL93BUNQ2199250679 o.v.v. het factuurnummer."
-- Download `Factuur-{factuurnummer}-{klantnaam}.pdf` (klantnaam ge-sanitized).
+- Download via `doc.save(...)` (directe download, geen blob-preview) →
+  `Factuur-{factuurnummer}-{klantnaam}.pdf` (klantnaam ge-sanitized). Geen CSP-impact.
 
 ## Deel 5 — Factuurnummer (KV)
 
