@@ -268,6 +268,16 @@
   }
   function euro(n) { return "€ " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
   function esc(s) { return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  // Kortinglabel: bij percentage het % erbij, bij vast bedrag niet. Gedeeld door preview + PDF.
+  function kortingLabel() {
+    const oms = state.korting.omschrijving ? state.korting.omschrijving.trim() : "";
+    const basis = oms || "Korting";
+    if (state.korting.type === "percentage") {
+      const pct = Number(state.korting.waarde) || 0;
+      return `${basis} (${pct}%)`;
+    }
+    return basis;
+  }
 
   // ===================== RENDER: dienstkaarten =====================
   function renderDienstkaarten() {
@@ -339,7 +349,7 @@
 
     let totRijen = `<div class="tr"><span>Subtotaal</span><span>${euro(c.subtotaal)}</span></div>`;
     if (c.kortingBedrag > 0) {
-      totRijen += `<div class="tr"><span>Korting${state.korting.omschrijving ? " — " + esc(state.korting.omschrijving) : ""}</span><span>−${euro(c.kortingBedrag)}</span></div>`;
+      totRijen += `<div class="tr"><span>${esc(kortingLabel())}</span><span>−${euro(c.kortingBedrag)}</span></div>`;
       totRijen += `<div class="tr"><span>Subtotaal na korting</span><span>${euro(c.naKorting)}</span></div>`;
     }
     totRijen += `<div class="tr"><span>${state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%"}</span><span>${state.btwVerlegd ? "verlegd" : euro(c.btwBedrag)}</span></div>`;
@@ -476,7 +486,7 @@
   }
 
   // ===================== PDF =====================
-  function pdfEuro(n) { return "EUR " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function pdfEuro(n) { return "€ " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
   async function genereerPdf() {
     if (state.regels.length === 0) { alert("Voeg minstens één factuurregel toe."); return; }
@@ -510,29 +520,34 @@
     doc.setTextColor(...donker); doc.setFontSize(30);
     doc.text("FACTUUR", 547, 60, { align: "right" });
 
-    // Afzender rechtsboven
+    // Afzender links onder de logo-kop (eigen kolom, geen overlap met meta)
     doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
     [AFZENDER.naam, AFZENDER.adres, AFZENDER.postcodePlaats, AFZENDER.email, AFZENDER.tel]
-      .forEach((r, i) => doc.text(r, 547, 78 + i * 11, { align: "right" }));
+      .forEach((r, i) => doc.text(r, M, 84 + i * 11, { align: "left" }));
 
-    // Klant links
-    doc.setTextColor(...donker); doc.setFontSize(9);
-    doc.text("Factuur aan:", M, 110);
-    const klant = [state.klant.bedrijf, state.klant.contact, state.klant.adres,
-                   state.klant.postcodePlaats, state.klant.email, state.klant.kvkBtw].filter(Boolean);
-    klant.forEach((r, i) => doc.text(String(r), M, 124 + i * 12));
-
-    // Factuurmeta rechts
+    // Factuurmeta rechts (label links van de waarde, allebei binnen de rechterkolom)
     const meta = [
       ["Factuurnummer", state.factuur.nummer],
       ["Factuurdatum", state.factuur.datum],
       ["Vervaldatum", state.factuur.vervaldatum],
     ];
     if (state.factuur.referentie) meta.push(["Referentie", state.factuur.referentie]);
+    doc.setTextColor(...donker); doc.setFontSize(9);
     meta.forEach((r, i) => {
-      doc.text(r[0], 400, 124 + i * 12);
-      doc.text(String(r[1] || ""), 547, 124 + i * 12, { align: "right" });
+      doc.text(r[0], 400, 84 + i * 13);
+      doc.text(String(r[1] || ""), 547, 84 + i * 13, { align: "right" });
     });
+
+    // Klant links, onder het afzenderblok
+    doc.setTextColor(...donker); doc.setFontSize(9);
+    doc.text("Factuur aan:", M, 158);
+    const klant = [state.klant.bedrijf, state.klant.contact, state.klant.adres,
+                   state.klant.postcodePlaats, state.klant.email, state.klant.kvkBtw].filter(Boolean);
+    klant.forEach((r, i) => doc.text(String(r), M, 172 + i * 12));
+
+    // Regeltabel begint onder het langste bovenblok
+    const klantHoogte = 172 + klant.length * 12;
+    const tabelStart = Math.max(klantHoogte + 10, 210);
 
     // Regeltabel
     const c = bereken();
@@ -541,7 +556,7 @@
       pdfEuro(r.stukprijs), pdfEuro((Number(r.aantal)||0) * (Number(r.stukprijs)||0)),
     ]);
     doc.autoTable({
-      startY: 210,
+      startY: tabelStart,
       head: [["Omschrijving", "Aantal", "Stukprijs", "Totaal"]],
       body,
       theme: "plain",
@@ -559,16 +574,19 @@
     };
     rij("Subtotaal", pdfEuro(c.subtotaal));
     if (c.kortingBedrag > 0) {
-      rij("Korting" + (state.korting.omschrijving ? " - " + state.korting.omschrijving : ""), "-" + pdfEuro(c.kortingBedrag));
+      rij(kortingLabel(), "-" + pdfEuro(c.kortingBedrag));
       rij("Subtotaal na korting", pdfEuro(c.naKorting));
     }
     rij(state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%", state.btwVerlegd ? "verlegd" : pdfEuro(c.btwBedrag));
     doc.setDrawColor(...oranje); doc.setLineWidth(1); doc.line(400, y - 6, 547, y - 6);
     rij("Totaal", pdfEuro(c.totaal), true);
 
-    // Voettekst
+    // Voettekst: direct onder de totalen, niet op een vaste bodempositie
+    // (voorkomt een leeg gat / tweede pagina bij een korte factuur).
     doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(90);
-    const voet = 780;
+    const bodem = doc.internal.pageSize.getHeight() - 40; // 802 op A4
+    let voet = y + 30;
+    if (voet > bodem - 40) voet = bodem - 40; // val terug binnen de pagina als het lang is
     doc.text(`Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer ${state.factuur.nummer}.`, M, voet, { maxWidth: 499 });
     doc.text(`${AFZENDER.naam}  |  KvK ${AFZENDER.kvk}  |  BTW ${AFZENDER.btw}  |  ${AFZENDER.web}`, M, voet + 24);
 
