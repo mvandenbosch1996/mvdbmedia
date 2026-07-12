@@ -26,3 +26,6 @@ perf-pass2.mjs
 .claude/
 .superpowers/
 docs/
+
+# Cloudflare wrangler lokale cache
+.wrangler/
