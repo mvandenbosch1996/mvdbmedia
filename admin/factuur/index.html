@@ -475,8 +475,107 @@
     document.getElementById("pdf-knop").addEventListener("click", genereerPdf);
   }
 
-  // PDF-functie wordt in Task 8 gevuld; voorlopig stub zodat de knop niet faalt.
-  async function genereerPdf() { alert("PDF-generatie volgt."); }
+  // ===================== PDF =====================
+  function pdfEuro(n) { return "EUR " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  async function genereerPdf() {
+    if (state.regels.length === 0) { alert("Voeg minstens één factuurregel toe."); return; }
+
+    // Reserveer nummer als het veld nog leeg is.
+    if (!state.factuur.nummer) {
+      const nr = await reserveerNummer();
+      if (!nr) return;
+    }
+
+    if (!window.jspdf || !window.jspdf.jsPDF) { alert("PDF-bibliotheek niet geladen."); return; }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+    let displayFont = "helvetica";
+    if (window.BEBAS_TTF_B64) {
+      doc.addFileToVFS("Bebas.ttf", window.BEBAS_TTF_B64);
+      doc.addFont("Bebas.ttf", "Bebas", "normal");
+      displayFont = "Bebas";
+    }
+
+    const oranje = [255, 140, 0];
+    const donker = [13, 13, 13];
+    const M = 48;
+
+    // Kop
+    doc.setFont(displayFont, "normal"); doc.setFontSize(28); doc.setTextColor(...donker);
+    doc.text("MVDB", M, 60);
+    const wMvdb = doc.getTextWidth("MVDB");
+    doc.setTextColor(...oranje); doc.text("media", M + wMvdb + 2, 60);
+    doc.setTextColor(...donker); doc.setFontSize(30);
+    doc.text("FACTUUR", 547, 60, { align: "right" });
+
+    // Afzender rechtsboven
+    doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
+    [AFZENDER.naam, AFZENDER.adres, AFZENDER.postcodePlaats, AFZENDER.email, AFZENDER.tel]
+      .forEach((r, i) => doc.text(r, 547, 78 + i * 11, { align: "right" }));
+
+    // Klant links
+    doc.setTextColor(...donker); doc.setFontSize(9);
+    doc.text("Factuur aan:", M, 110);
+    const klant = [state.klant.bedrijf, state.klant.contact, state.klant.adres,
+                   state.klant.postcodePlaats, state.klant.email, state.klant.kvkBtw].filter(Boolean);
+    klant.forEach((r, i) => doc.text(String(r), M, 124 + i * 12));
+
+    // Factuurmeta rechts
+    const meta = [
+      ["Factuurnummer", state.factuur.nummer],
+      ["Factuurdatum", state.factuur.datum],
+      ["Vervaldatum", state.factuur.vervaldatum],
+    ];
+    if (state.factuur.referentie) meta.push(["Referentie", state.factuur.referentie]);
+    meta.forEach((r, i) => {
+      doc.text(r[0], 400, 124 + i * 12);
+      doc.text(String(r[1] || ""), 547, 124 + i * 12, { align: "right" });
+    });
+
+    // Regeltabel
+    const c = bereken();
+    const body = state.regels.map((r) => [
+      r.omschrijving, String(r.aantal),
+      pdfEuro(r.stukprijs), pdfEuro((Number(r.aantal)||0) * (Number(r.stukprijs)||0)),
+    ]);
+    doc.autoTable({
+      startY: 210,
+      head: [["Omschrijving", "Aantal", "Stukprijs", "Totaal"]],
+      body,
+      theme: "plain",
+      headStyles: { fillColor: donker, textColor: [255, 255, 255], fontSize: 9 },
+      bodyStyles: { fontSize: 9, textColor: donker },
+      columnStyles: { 1: { halign: "right" }, 2: { halign: "right" }, 3: { halign: "right" } },
+      margin: { left: M, right: M },
+    });
+
+    // Totalen
+    let y = doc.lastAutoTable.finalY + 20;
+    const rij = (label, waarde, vet) => {
+      doc.setFont("helvetica", vet ? "bold" : "normal");
+      doc.text(label, 400, y); doc.text(waarde, 547, y, { align: "right" }); y += 16;
+    };
+    rij("Subtotaal", pdfEuro(c.subtotaal));
+    if (c.kortingBedrag > 0) {
+      rij("Korting" + (state.korting.omschrijving ? " - " + state.korting.omschrijving : ""), "-" + pdfEuro(c.kortingBedrag));
+      rij("Subtotaal na korting", pdfEuro(c.naKorting));
+    }
+    rij(state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%", state.btwVerlegd ? "verlegd" : pdfEuro(c.btwBedrag));
+    doc.setDrawColor(...oranje); doc.setLineWidth(1); doc.line(400, y - 6, 547, y - 6);
+    rij("Totaal", pdfEuro(c.totaal), true);
+
+    // Voettekst
+    doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(90);
+    const voet = 780;
+    doc.text(`Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer ${state.factuur.nummer}.`, M, voet, { maxWidth: 499 });
+    doc.text(`${AFZENDER.naam}  |  KvK ${AFZENDER.kvk}  |  BTW ${AFZENDER.btw}  |  ${AFZENDER.web}`, M, voet + 24);
+
+    const veiligeKlant = (state.klant.bedrijf || state.klant.contact || "klant")
+      .replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "klant";
+    doc.save(`Factuur-${state.factuur.nummer}-${veiligeKlant}.pdf`);
+  }
 
   init();
   </script>
