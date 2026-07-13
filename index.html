@@ -1696,14 +1696,17 @@
       }, { passive: true });
     })();
 
-    // Tijdstempel voor timing-check bij submit
-    const _formLoadedAt = Date.now();
+    // Tijdstempel voor timing-check bij submit — reset na elke geslaagde verzending
+    let _formLoadedAt = Date.now();
 
     // Contact form submit — stuurt berichten naar info@mvdbmedia.nl via Formspree
     async function handleFormSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submit-btn');
       const form = e.target;
+
+      // Voorkom dubbele verzending terwijl er al een loopt
+      if (btn.disabled) return;
 
       // Timing-check: bots submitten direct, mensen doen er minstens 1,5s over
       if (Date.now() - _formLoadedAt < 1500) return;
@@ -1748,6 +1751,12 @@
           btn.style.background = '#1a4d1a';
           btn.style.color = '#7dfa7d';
           form.reset();
+          // Rode randen van eerdere validatie wissen zodat een nieuw bericht direct kan
+          form.querySelectorAll('input, select, textarea').forEach(el => {
+            el.style.borderColor = 'var(--border)';
+          });
+          // Timing-klok opnieuw starten voor de volgende invulling
+          _formLoadedAt = Date.now();
           setTimeout(() => {
             btn.textContent = 'Verstuur aanvraag of vraag';
             btn.style.background = 'var(--orange)';
