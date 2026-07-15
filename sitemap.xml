@@ -97,4 +97,10 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://mvdbmedia.nl/algemene-voorwaarden</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
