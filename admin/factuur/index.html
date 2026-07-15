@@ -201,6 +201,7 @@
     tel: "+31 6 24 81 92 78",
     email: "info@mvdbmedia.nl",
     web: "mvdbmedia.nl",
+    voorwaarden: "mvdbmedia.nl/algemene-voorwaarden",
   };
 
   // prijs in hele euro's (ex. btw). omschrijving = standaardtekst op de factuurregel.
@@ -431,6 +432,7 @@
       <div class="pv-tot">${totRijen}</div>
       <div class="pv-voet">
         Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer${f.nummer ? " " + esc(f.nummer) : ""}.<br>
+        Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.<br>
         ${AFZENDER.naam} · ${AFZENDER.adres}, ${AFZENDER.postcodePlaats} · KvK ${AFZENDER.kvk} · BTW ${AFZENDER.btw} · ${AFZENDER.tel} · ${AFZENDER.email}
       </div>`;
   }
@@ -719,7 +721,8 @@
     let voet = y + 30;
     if (voet > bodem - 40) voet = bodem - 40; // val terug binnen de pagina als het lang is
     doc.text(`Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer ${state.factuur.nummer}.`, M, voet, { maxWidth: 499 });
-    doc.text(`${AFZENDER.naam}  |  KvK ${AFZENDER.kvk}  |  BTW ${AFZENDER.btw}  |  ${AFZENDER.web}`, M, voet + 24);
+    doc.text(`Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.`, M, voet + 12, { maxWidth: 499 });
+    doc.text(`${AFZENDER.naam}  |  KvK ${AFZENDER.kvk}  |  BTW ${AFZENDER.btw}  |  ${AFZENDER.web}`, M, voet + 30);
 
     const veiligeKlant = (state.klant.bedrijf || state.klant.contact || "klant")
       .replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "klant";
