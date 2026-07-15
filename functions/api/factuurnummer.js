@@ -17,21 +17,26 @@ async function geautoriseerd(request, env) {
 }
 
 function jaar() { return new Date().getFullYear(); }
-function formatteer(j, n) { return `${j}-${String(n).padStart(3, "0")}`; }
+function formatteer(type, j, n) {
+  const kern = `${j}-${String(n).padStart(3, "0")}`;
+  return type === "offerte" ? `OFF-${kern}` : kern;
+}
 
 export async function onRequestGet(context) {
   const { request, env } = context;
   if (!(await geautoriseerd(request, env))) return json({ error: "Niet ingelogd." }, 401);
   if (!env.FACTUREN) return json({ error: "KV niet geconfigureerd." }, 500);
 
+  const url = new URL(request.url);
+  const type = url.searchParams.get("type") === "offerte" ? "offerte" : "factuur";
+
   const j = jaar();
-  const tellerKey = `factuurteller-${j}`;
+  const tellerKey = type === "offerte" ? `offerteteller-${j}` : `factuurteller-${j}`;
   const huidig = parseInt((await env.FACTUREN.get(tellerKey)) || "0", 10);
   const volgend = huidig + 1;
   await env.FACTUREN.put(tellerKey, String(volgend));
 
-  const nummer = formatteer(j, volgend);
-  // Registreer als uitgegeven (individuele key per nummer = eenvoudige set).
+  const nummer = formatteer(type, j, volgend);
   await env.FACTUREN.put(`uitgegeven-${nummer}`, "1");
 
   return json({ nummer });
