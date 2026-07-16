@@ -622,14 +622,16 @@
   function wisselModus(nieuw) {
     if (state.docType === nieuw) return;
     const oudeDefault = state.docType === "offerte" ? overDertigDagen() : overVeertienDagen();
+    const nieuweDefault = nieuw === "offerte" ? overDertigDagen() : overVeertienDagen();
     state.docType = nieuw;
     // datum-default bijwerken alleen als de gebruiker 'm niet handmatig zette
     if (!state.factuur.vervaldatum || state.factuur.vervaldatum === oudeDefault) {
-      state.factuur.vervaldatum = nieuw === "offerte" ? overDertigDagen() : overVeertienDagen();
+      state.factuur.vervaldatum = nieuweDefault;
       const vd = document.querySelector('[data-factuur="vervaldatum"]');
       if (vd) vd.value = state.factuur.vervaldatum;
     }
-    pasModusToe(); bewaarConcept();
+    pasModusToe();
+    bewaarConcept();
   }
 
   // ===================== INIT =====================
