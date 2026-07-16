@@ -818,6 +818,18 @@
     });
     document.getElementById("omzet-knop").addEventListener("click", zetOmNaarFactuur);
     pasModusToe();
+
+    // Deeplink vanuit het overzicht: /admin/factuur?doc=<nummer> opent dat document.
+    const docParam = new URLSearchParams(location.search).get("doc");
+    if (docParam) {
+      laadDocument(docParam).then((res) => {
+        if (!res.ok) {
+          alert("Document '" + docParam + "' kon niet worden geopend (" + res.reden + "). Je begint met een leeg document.");
+        }
+        // URL opschonen zodat een refresh niet opnieuw laadt/foutmeldt.
+        history.replaceState(null, "", "/admin/factuur");
+      });
+    }
   }
 
   // ===================== PDF =====================
