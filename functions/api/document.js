@@ -40,6 +40,12 @@ export async function onRequestPost(context) {
     if (bestaand.type === "factuur" && !overwrite) {
       return json({ error: "Factuur bestaat al.", bestaat: true }, 409);
     }
+    // Behoud een reeds gezette omzet-markering: het overschrijvende document
+    // (bijv. een offerte die opnieuw gegenereerd wordt) draagt omgezet_naar niet
+    // mee, maar de conversie-koppeling naar de factuur mag niet stil verdwijnen.
+    if (bestaand.omgezet_naar && !doc.omgezet_naar) {
+      doc.omgezet_naar = bestaand.omgezet_naar;
+    }
   }
 
   doc.opgeslagen = new Date().toISOString();
