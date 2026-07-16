@@ -29,3 +29,4 @@ docs/
 
 # Cloudflare wrangler lokale cache
 .wrangler/
+_wrangler*.log
