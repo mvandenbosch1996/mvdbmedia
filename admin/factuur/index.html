@@ -671,8 +671,14 @@
         }
         return false;
       }
+      if (!res.ok) {
+        alert("Archiveren in het archief mislukt. De PDF is wél gedownload.");
+      }
       return res.ok;
-    } catch { return false; }
+    } catch {
+      alert("Archiveren mislukt (netwerkfout). De PDF is wél gedownload.");
+      return false;
+    }
   }
 
   // ===================== INIT =====================
@@ -828,7 +834,7 @@
     // Document (factuur/offerte) archiveren in KV, daarna klant bijwerken.
     await bewaarDocument();
     // Klant automatisch opslaan/bijwerken in het klantenbestand (match op bedrijf+email).
-    bewaarKlant();
+    bewaarKlant(); // bewust fire-and-forget: bijzaak, PDF is al gedownload
   }
 
   init();
