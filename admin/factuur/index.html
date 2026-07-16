@@ -90,8 +90,15 @@
 </head>
 <body>
   <div class="topbar">
-    <div class="logo">MVDB<span>media</span> · Factuur</div>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="logo">MVDB<span>media</span> · <span id="topbar-type">Factuur</span></div>
+      <div style="display:flex; gap:0; border:1px solid var(--border); border-radius:5px; overflow:hidden;">
+        <button class="btn btn-klein" id="toggle-factuur" type="button" style="border-radius:0;">Factuur</button>
+        <button class="btn btn-klein" id="toggle-offerte" type="button" style="border-radius:0;">Offerte</button>
+      </div>
+    </div>
     <div style="display:flex; gap:10px;">
+      <button class="btn btn-ghost" id="omzet-knop" type="button" style="display:none;">Zet om naar factuur</button>
       <button class="btn btn-oranje" id="pdf-knop" type="button">Factuur genereren (PDF)</button>
       <button class="btn btn-ghost" id="logout-knop" type="button">Uitloggen</button>
     </div>
@@ -240,6 +247,9 @@
   function overVeertienDagen() {
     const d = new Date(); d.setDate(d.getDate() + 14); return d.toISOString().slice(0, 10);
   }
+  function overDertigDagen() {
+    const d = new Date(); d.setDate(d.getDate() + 30); return d.toISOString().slice(0, 10);
+  }
   let idTeller = 0;
   function nieuwId() { return "r" + (++idTeller) + "-" + Date.now(); }
 
@@ -250,6 +260,7 @@
     korting: { type:"geen", waarde:0, omschrijving:"" },
     btwTarief: BTW_STANDAARD,
     btwVerlegd: false,
+    docType: "factuur", // "factuur" | "offerte"
   };
 
   const OPSLAG_KEY = "mvdb-factuur-concept";
@@ -264,6 +275,7 @@
         Object.assign(state.korting, opgeslagen.korting || {});
         state.btwTarief = opgeslagen.btwTarief ?? BTW_STANDAARD;
         state.btwVerlegd = !!opgeslagen.btwVerlegd;
+        state.docType = opgeslagen.docType === "offerte" ? "offerte" : "factuur";
       }
     } catch {}
   }
@@ -586,6 +598,40 @@
     } catch {}
   }
 
+  // ===================== MODUS =====================
+  function isOfferte() { return state.docType === "offerte"; }
+
+  function pasModusToe() {
+    const off = isOfferte();
+    document.getElementById("topbar-type").textContent = off ? "Offerte" : "Factuur";
+    document.getElementById("toggle-factuur").className = "btn btn-klein " + (off ? "btn-ghost" : "btn-oranje");
+    document.getElementById("toggle-offerte").className = "btn btn-klein " + (off ? "btn-oranje" : "btn-ghost");
+    document.getElementById("omzet-knop").style.display = off ? "" : "none";
+    document.getElementById("pdf-knop").textContent = off ? "Offerte genereren (PDF)" : "Factuur genereren (PDF)";
+    const secKop = document.getElementById("sectie-doc-kop");
+    if (secKop) secKop.textContent = off ? "Offertegegevens" : "Factuurgegevens";
+    const nrLabel = document.getElementById("label-nummer");
+    if (nrLabel) nrLabel.textContent = off ? "Offertenummer" : "Factuurnummer";
+    const datumLabel = document.getElementById("label-vervaldatum");
+    if (datumLabel) datumLabel.textContent = off ? "Geldig tot" : "Vervaldatum";
+    const ophaal = document.getElementById("ophaal-blok");
+    if (ophaal) ophaal.style.display = off ? "" : "none";
+    renderPreview();
+  }
+
+  function wisselModus(nieuw) {
+    if (state.docType === nieuw) return;
+    const oudeDefault = state.docType === "offerte" ? overDertigDagen() : overVeertienDagen();
+    state.docType = nieuw;
+    // datum-default bijwerken alleen als de gebruiker 'm niet handmatig zette
+    if (!state.factuur.vervaldatum || state.factuur.vervaldatum === oudeDefault) {
+      state.factuur.vervaldatum = nieuw === "offerte" ? overDertigDagen() : overVeertienDagen();
+      const vd = document.querySelector('[data-factuur="vervaldatum"]');
+      if (vd) vd.value = state.factuur.vervaldatum;
+    }
+    pasModusToe(); bewaarConcept();
+  }
+
   // ===================== INIT =====================
   function init() {
     laadConcept();
@@ -613,6 +659,9 @@
       window.location.href = "/admin/login/";
     });
     document.getElementById("pdf-knop").addEventListener("click", genereerPdf);
+    document.getElementById("toggle-factuur").addEventListener("click", () => wisselModus("factuur"));
+    document.getElementById("toggle-offerte").addEventListener("click", () => wisselModus("offerte"));
+    pasModusToe();
   }
 
   // ===================== PDF =====================
