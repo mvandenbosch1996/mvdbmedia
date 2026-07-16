@@ -143,6 +143,14 @@
           </div>
           <div class="veld"><label>Referentie / project (optioneel)</label><input id="f-ref" data-factuur="referentie"></div>
         </div>
+        <div class="veld" id="ophaal-blok" style="display:none;">
+          <label>Bestaande offerte ophalen</label>
+          <div style="display:flex; gap:6px;">
+            <input id="ophaal-nummer" placeholder="OFF-2026-001">
+            <button class="btn btn-ghost btn-klein" id="ophaal-knop" type="button" style="white-space:nowrap;">Offerte ophalen</button>
+          </div>
+          <div class="waarschuwing" id="ophaal-waarschuwing"></div>
+        </div>
         <div class="rij2">
           <div class="veld"><label>Factuurdatum</label><input id="f-datum" data-factuur="datum" type="date"></div>
           <div class="veld"><label id="label-vervaldatum">Vervaldatum</label><input id="f-vervaldatum" data-factuur="vervaldatum" type="date"></div>
@@ -681,6 +689,38 @@
     }
   }
 
+  // ===================== OFFERTE OPHALEN =====================
+  async function haalOfferteOp(nummer) {
+    const w = document.getElementById("ophaal-waarschuwing");
+    w.textContent = "";
+    nummer = (nummer || "").trim();
+    if (!nummer) return;
+    try {
+      const res = await fetch("/api/document?nummer=" + encodeURIComponent(nummer));
+      if (res.status === 404) { w.textContent = "Geen offerte met dit nummer gevonden."; return; }
+      if (!res.ok) { w.textContent = "Ophalen mislukt."; return; }
+      const { doc } = await res.json();
+      if (doc.type !== "offerte") { w.textContent = "Dit nummer is geen offerte."; return; }
+      state.docType = "offerte";
+      Object.assign(state.klant, doc.klant || {});
+      state.factuur.nummer = doc.nummer || "";
+      state.factuur.datum = doc.datum || vandaag();
+      state.factuur.vervaldatum = doc.vervaldatum || overDertigDagen();
+      state.factuur.referentie = doc.referentie || "";
+      state.regels = (doc.regels || []).map((r) => ({ id: nieuwId(), omschrijving: r.omschrijving, aantal: r.aantal, stukprijs: r.stukprijs }));
+      Object.assign(state.korting, doc.korting || {});
+      state.btwTarief = doc.btwTarief ?? BTW_STANDAARD;
+      state.btwVerlegd = !!doc.btwVerlegd;
+      document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
+      document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
+      document.getElementById("btw-select").value = state.btwVerlegd ? "verlegd" : String(state.btwTarief);
+      const kw = document.getElementById("korting-waarde"); if (kw) kw.value = state.korting.waarde || 0;
+      const ko = document.getElementById("korting-omschrijving"); if (ko) ko.value = state.korting.omschrijving || "";
+      const kt = document.querySelector('input[name=korting-type][value="' + (state.korting.type || "geen") + '"]'); if (kt) kt.checked = true;
+      renderRegels(); toonKortingVelden(); pasModusToe(); bewaarConcept();
+    } catch { w.textContent = "Ophalen mislukt (netwerkfout)."; }
+  }
+
   // ===================== INIT =====================
   function init() {
     laadConcept();
@@ -710,6 +750,9 @@
     document.getElementById("pdf-knop").addEventListener("click", genereerPdf);
     document.getElementById("toggle-factuur").addEventListener("click", () => wisselModus("factuur"));
     document.getElementById("toggle-offerte").addEventListener("click", () => wisselModus("offerte"));
+    document.getElementById("ophaal-knop").addEventListener("click", () => {
+      haalOfferteOp(document.getElementById("ophaal-nummer").value);
+    });
     pasModusToe();
   }
 
