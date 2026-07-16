@@ -735,7 +735,7 @@
     state.korting = { type: dko.type || "geen", waarde: dko.waarde || 0, omschrijving: dko.omschrijving || "" };
     state.btwTarief = doc.btwTarief ?? BTW_STANDAARD;
     state.btwVerlegd = !!doc.btwVerlegd;
-    state.omgezetNaar = doc.omgezet_naar || null;
+    state.omgezetNaar = doc.omgezet_naar || null; // extra state-veld: expliciet resetten bij elk laden
     // DOM syncen.
     document.getElementById("nummer-waarschuwing").textContent = "";
     document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
@@ -811,6 +811,8 @@
     document.getElementById("pdf-knop").addEventListener("click", genereerPdf);
     document.getElementById("toggle-factuur").addEventListener("click", () => wisselModus("factuur"));
     document.getElementById("toggle-offerte").addEventListener("click", () => wisselModus("offerte"));
+    // Knop staat in offerte-modus, maar laadt bewust ELK document (factuur of offerte)
+    // via dezelfde laadDocument; een geladen factuur valt onder de read-only 409-rem.
     document.getElementById("ophaal-knop").addEventListener("click", () => {
       laadDocument(document.getElementById("ophaal-nummer").value, { viaKnop: true });
     });
