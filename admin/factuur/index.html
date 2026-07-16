@@ -16,7 +16,7 @@
     * { box-sizing:border-box; margin:0; }
     body { background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:14px;
            line-height:1.5; padding:0; }
-    .topbar { display:flex; justify-content:space-between; align-items:center; padding:16px 24px;
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:16px 24px;
               border-bottom:1px solid var(--border); background:var(--elev); position:sticky; top:0; z-index:10; }
     .logo { font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.06em; }
     .logo span { color:var(--orange); }
@@ -86,6 +86,17 @@
     .pv-tot .tr.groot { font-weight:700; font-size:14px; border-top:2px solid var(--orange); padding-top:8px; margin-top:4px; }
     .pv-voet { margin-top:24px; padding-top:14px; border-top:1px solid #eee; color:#666; font-size:10px; line-height:1.6; }
     .waarschuwing { color:#ff6b6b; font-size:0.72rem; margin-top:5px; min-height:1em; }
+    /* Smalle schermen: 2-koloms form-rijen stapelen zodat niets buiten beeld valt.
+       Staat ná de .rij2-basisregel zodat de override wint bij gelijke specificiteit. */
+    @media (max-width:560px){
+      .rij2 { grid-template-columns:1fr; }
+      .layout { grid-template-columns:minmax(0,1fr); }
+      .form-kol, .preview-kol { min-width:0; padding:16px; }
+      .preview { padding:20px; }
+      .pv-tot { width:100%; }
+      .pv-meta-blok { flex-wrap:wrap; }
+      input, select { min-width:0; }
+    }
   </style>
 </head>
 <body>
