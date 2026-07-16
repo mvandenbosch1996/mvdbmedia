@@ -702,15 +702,20 @@
       const { doc } = await res.json();
       if (doc.type !== "offerte") { w.textContent = "Dit nummer is geen offerte."; return; }
       state.docType = "offerte";
-      Object.assign(state.klant, doc.klant || {});
+      // Klant/korting volledig vervangen (niet mergen): een opgehaalde offerte mag
+      // geen restwaarden van een eerder geladen klant/korting laten staan.
+      const dk = doc.klant || {};
+      state.klant = { bedrijf:"", contact:"", adres:"", postcodePlaats:"", email:"", kvkBtw:"", ...dk };
       state.factuur.nummer = doc.nummer || "";
       state.factuur.datum = doc.datum || vandaag();
       state.factuur.vervaldatum = doc.vervaldatum || overDertigDagen();
       state.factuur.referentie = doc.referentie || "";
       state.regels = (doc.regels || []).map((r) => ({ id: nieuwId(), omschrijving: r.omschrijving, aantal: r.aantal, stukprijs: r.stukprijs }));
-      Object.assign(state.korting, doc.korting || {});
+      const dko = doc.korting || {};
+      state.korting = { type: dko.type || "geen", waarde: dko.waarde || 0, omschrijving: dko.omschrijving || "" };
       state.btwTarief = doc.btwTarief ?? BTW_STANDAARD;
       state.btwVerlegd = !!doc.btwVerlegd;
+      document.getElementById("nummer-waarschuwing").textContent = "";
       document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
       document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
       document.getElementById("btw-select").value = state.btwVerlegd ? "verlegd" : String(state.btwTarief);
