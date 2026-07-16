@@ -280,6 +280,7 @@
     btwTarief: BTW_STANDAARD,
     btwVerlegd: false,
     docType: "factuur", // "factuur" | "offerte"
+    omgezetNaar: null, // gezet bij het laden van een reeds-omgezette offerte
   };
 
   const OPSLAG_KEY = "mvdb-factuur-concept";
@@ -300,6 +301,7 @@
   }
 
   // ===================== BEREKENING =====================
+  // synced met bereken() in admin/overzicht/index.html — bij wijziging beide bijwerken.
   function bereken() {
     const subtotaal = state.regels.reduce((s, r) => s + ((Number(r.aantal)||0) * (Number(r.stukprijs)||0)), 0);
     let kortingBedrag = 0;
@@ -700,41 +702,50 @@
     }
   }
 
-  // ===================== OFFERTE OPHALEN =====================
-  async function haalOfferteOp(nummer) {
+  // ===================== DOCUMENT LADEN =====================
+  // Laadt een bestaand document (factuur of offerte) uit KV en vult de state.
+  // Volledige reset vóór vullen: geen regels/klant/korting van een vorig document
+  // blijven achter. viaKnop=true toont fouten in #ophaal-waarschuwing; anders (deeplink)
+  // gebruikt de aanroeper de returnwaarde/foutmelding zelf.
+  async function laadDocument(nummer, { viaKnop = false } = {}) {
     const w = document.getElementById("ophaal-waarschuwing");
-    w.textContent = "";
+    if (viaKnop && w) w.textContent = "";
     nummer = (nummer || "").trim();
-    if (!nummer) return;
+    if (!nummer) return { ok: false, reden: "leeg" };
+    let doc;
     try {
       const res = await fetch("/api/document?nummer=" + encodeURIComponent(nummer));
-      if (res.status === 404) { w.textContent = "Geen offerte met dit nummer gevonden."; return; }
-      if (!res.ok) { w.textContent = "Ophalen mislukt."; return; }
-      const { doc } = await res.json();
-      if (doc.type !== "offerte") { w.textContent = "Dit nummer is geen offerte."; return; }
-      state.docType = "offerte";
-      // Klant/korting volledig vervangen (niet mergen): een opgehaalde offerte mag
-      // geen restwaarden van een eerder geladen klant/korting laten staan.
-      const dk = doc.klant || {};
-      state.klant = { bedrijf:"", contact:"", adres:"", postcodePlaats:"", email:"", kvkBtw:"", ...dk };
-      state.factuur.nummer = doc.nummer || "";
-      state.factuur.datum = doc.datum || vandaag();
-      state.factuur.vervaldatum = doc.vervaldatum || overDertigDagen();
-      state.factuur.referentie = doc.referentie || "";
-      state.regels = (doc.regels || []).map((r) => ({ id: nieuwId(), omschrijving: r.omschrijving, aantal: r.aantal, stukprijs: r.stukprijs }));
-      const dko = doc.korting || {};
-      state.korting = { type: dko.type || "geen", waarde: dko.waarde || 0, omschrijving: dko.omschrijving || "" };
-      state.btwTarief = doc.btwTarief ?? BTW_STANDAARD;
-      state.btwVerlegd = !!doc.btwVerlegd;
-      document.getElementById("nummer-waarschuwing").textContent = "";
-      document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
-      document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
-      document.getElementById("btw-select").value = state.btwVerlegd ? "verlegd" : String(state.btwTarief);
-      const kw = document.getElementById("korting-waarde"); if (kw) kw.value = state.korting.waarde || 0;
-      const ko = document.getElementById("korting-omschrijving"); if (ko) ko.value = state.korting.omschrijving || "";
-      const kt = document.querySelector('input[name=korting-type][value="' + (state.korting.type || "geen") + '"]'); if (kt) kt.checked = true;
-      renderRegels(); toonKortingVelden(); pasModusToe(); bewaarConcept();
-    } catch { w.textContent = "Ophalen mislukt (netwerkfout)."; }
+      if (res.status === 404) { if (viaKnop && w) w.textContent = "Geen document met dit nummer gevonden."; return { ok: false, reden: "404" }; }
+      if (!res.ok) { if (viaKnop && w) w.textContent = "Ophalen mislukt."; return { ok: false, reden: "fout" }; }
+      doc = (await res.json()).doc;
+    } catch { if (viaKnop && w) w.textContent = "Ophalen mislukt (netwerkfout)."; return { ok: false, reden: "netwerk" }; }
+    if (!doc || (doc.type !== "factuur" && doc.type !== "offerte")) {
+      if (viaKnop && w) w.textContent = "Ongeldig document.";
+      return { ok: false, reden: "ongeldig" };
+    }
+    // Volledige state-reset.
+    state.docType = doc.type;
+    state.klant = { bedrijf:"", contact:"", adres:"", postcodePlaats:"", email:"", kvkBtw:"", ...(doc.klant || {}) };
+    state.factuur.nummer = doc.nummer || "";
+    state.factuur.datum = doc.datum || vandaag();
+    state.factuur.vervaldatum = doc.vervaldatum || (doc.type === "offerte" ? overDertigDagen() : overVeertienDagen());
+    state.factuur.referentie = doc.referentie || "";
+    state.regels = (doc.regels || []).map((r) => ({ id: nieuwId(), omschrijving: r.omschrijving, aantal: r.aantal, stukprijs: r.stukprijs }));
+    const dko = doc.korting || {};
+    state.korting = { type: dko.type || "geen", waarde: dko.waarde || 0, omschrijving: dko.omschrijving || "" };
+    state.btwTarief = doc.btwTarief ?? BTW_STANDAARD;
+    state.btwVerlegd = !!doc.btwVerlegd;
+    state.omgezetNaar = doc.omgezet_naar || null;
+    // DOM syncen.
+    document.getElementById("nummer-waarschuwing").textContent = "";
+    document.querySelectorAll("[data-klant]").forEach((el) => { el.value = state.klant[el.dataset.klant] || ""; });
+    document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
+    document.getElementById("btw-select").value = state.btwVerlegd ? "verlegd" : String(state.btwTarief);
+    const kw = document.getElementById("korting-waarde"); if (kw) kw.value = state.korting.waarde || 0;
+    const ko = document.getElementById("korting-omschrijving"); if (ko) ko.value = state.korting.omschrijving || "";
+    const kt = document.querySelector('input[name=korting-type][value="' + (state.korting.type || "geen") + '"]'); if (kt) kt.checked = true;
+    renderRegels(); toonKortingVelden(); pasModusToe(); bewaarConcept();
+    return { ok: true };
   }
 
   // ===================== OMZETTEN OFFERTE → FACTUUR =====================
@@ -801,7 +812,7 @@
     document.getElementById("toggle-factuur").addEventListener("click", () => wisselModus("factuur"));
     document.getElementById("toggle-offerte").addEventListener("click", () => wisselModus("offerte"));
     document.getElementById("ophaal-knop").addEventListener("click", () => {
-      haalOfferteOp(document.getElementById("ophaal-nummer").value);
+      laadDocument(document.getElementById("ophaal-nummer").value, { viaKnop: true });
     });
     document.getElementById("omzet-knop").addEventListener("click", zetOmNaarFactuur);
     pasModusToe();
