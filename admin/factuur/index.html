@@ -643,6 +643,38 @@
     bewaarConcept();
   }
 
+  // ===================== DOCUMENT ARCHIVEREN =====================
+  function huidigDocument() {
+    return {
+      type: state.docType,
+      nummer: state.factuur.nummer,
+      datum: state.factuur.datum,
+      vervaldatum: state.factuur.vervaldatum,
+      referentie: state.factuur.referentie,
+      klant: { ...state.klant },
+      regels: state.regels.map((r) => ({ omschrijving: r.omschrijving, aantal: r.aantal, stukprijs: r.stukprijs })),
+      korting: { ...state.korting },
+      btwTarief: state.btwTarief,
+      btwVerlegd: state.btwVerlegd,
+    };
+  }
+
+  async function bewaarDocument(overwrite = false) {
+    try {
+      const res = await fetch("/api/document", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ doc: huidigDocument(), overwrite }),
+      });
+      if (res.status === 409) {
+        if (confirm("Deze factuur bestaat al in het archief. Overschrijven?")) {
+          return bewaarDocument(true);
+        }
+        return false;
+      }
+      return res.ok;
+    } catch { return false; }
+  }
+
   // ===================== INIT =====================
   function init() {
     laadConcept();
@@ -793,6 +825,8 @@
     const prefix = isOfferte() ? "Offerte" : "Factuur";
     doc.save(`${prefix}-${state.factuur.nummer}-${veiligeKlant}.pdf`);
 
+    // Document (factuur/offerte) archiveren in KV, daarna klant bijwerken.
+    await bewaarDocument();
     // Klant automatisch opslaan/bijwerken in het klantenbestand (match op bedrijf+email).
     bewaarKlant();
   }
