@@ -131,10 +131,10 @@
       </div>
 
       <div class="sectie">
-        <h2>Factuurgegevens</h2>
+        <h2 id="sectie-doc-kop">Factuurgegevens</h2>
         <div class="rij2">
           <div class="veld">
-            <label>Factuurnummer</label>
+            <label id="label-nummer">Factuurnummer</label>
             <div style="display:flex; gap:6px;">
               <input id="f-nummer" data-factuur="nummer" placeholder="2026-001">
               <button class="btn btn-ghost btn-klein" id="reserveer-knop" type="button" style="white-space:nowrap;">Reserveer</button>
@@ -145,7 +145,7 @@
         </div>
         <div class="rij2">
           <div class="veld"><label>Factuurdatum</label><input id="f-datum" data-factuur="datum" type="date"></div>
-          <div class="veld"><label>Vervaldatum</label><input id="f-vervaldatum" data-factuur="vervaldatum" type="date"></div>
+          <div class="veld"><label id="label-vervaldatum">Vervaldatum</label><input id="f-vervaldatum" data-factuur="vervaldatum" type="date"></div>
         </div>
       </div>
 
