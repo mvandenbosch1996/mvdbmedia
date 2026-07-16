@@ -109,6 +109,7 @@
       </div>
     </div>
     <div style="display:flex; gap:10px;">
+      <a class="btn btn-ghost" href="/admin/overzicht/" style="text-decoration:none; display:inline-flex; align-items:center;">Overzicht</a>
       <button class="btn btn-ghost" id="omzet-knop" type="button" style="display:none;">Zet om naar factuur</button>
       <button class="btn btn-oranje" id="pdf-knop" type="button">Factuur genereren (PDF)</button>
       <button class="btn btn-ghost" id="logout-knop" type="button">Uitloggen</button>
@@ -751,6 +752,9 @@
   // ===================== OMZETTEN OFFERTE → FACTUUR =====================
   async function zetOmNaarFactuur() {
     if (!isOfferte()) return;
+    if (state.omgezetNaar) {
+      if (!confirm("Deze offerte is al omgezet naar factuur " + state.omgezetNaar + ". Opnieuw omzetten naar een nieuwe factuur?")) return;
+    }
     const oudNummer = (state.factuur.nummer || "").trim();
     // wissel naar factuur-modus vóór reserveren zodat een factuurnummer wordt gehaald
     state.docType = "factuur";
@@ -779,6 +783,8 @@
         });
       } catch (e) { console.info("Offerte-markering mislukt (best-effort):", e); }
     }
+    // Nieuwe koppeling in state, zodat een tweede omzet-poging opnieuw bevestiging vraagt.
+    state.omgezetNaar = nr;
     pasModusToe(); bewaarConcept();
   }
 
