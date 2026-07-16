@@ -315,7 +315,7 @@
     return { subtotaal, kortingBedrag, naKorting, btwBedrag, totaal };
   }
   function euro(n) { return "€ " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-  function esc(s) { return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function esc(s) { return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
   // Kortinglabel: bij percentage het % erbij, bij vast bedrag niet. Gedeeld door preview + PDF.
   function kortingLabel() {
     const oms = state.korting.omschrijving ? state.korting.omschrijving.trim() : "";

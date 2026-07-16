@@ -137,6 +137,7 @@
 
   async function laad() {
     const fout = document.getElementById("fout");
+    fout.style.display = "none"; // reset vorige foutmelding bij (her)laden
     try {
       const res = await fetch("/api/documenten");
       if (!res.ok) { fout.style.display = "block"; fout.textContent = "Kon documenten niet laden."; return; }
