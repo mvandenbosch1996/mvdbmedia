@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Overzicht — MVDBmedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0d0d0d; --elev:#161616; --float:#1f1f1f; --card:#1a1a1a; --border:#2a2a2a;
+            --border-light:#333; --orange:#ff8c00; --text:#f0ede8; --muted:#a09890; --dim:#7a736e;
+            --font-display:'Bebas Neue',sans-serif; --font-body:'Inter',sans-serif; }
+    * { box-sizing:border-box; margin:0; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:14px; line-height:1.5; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+              padding:16px 24px; border-bottom:1px solid var(--border); background:var(--elev); position:sticky; top:0; z-index:10; }
+    .logo { font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.06em; }
+    .logo span { color:var(--orange); }
+    .btn { border:none; border-radius:4px; font-family:var(--font-body); font-weight:600; font-size:0.8rem;
+           cursor:pointer; padding:9px 16px; transition:opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+    .btn:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+    .btn-oranje { background:var(--orange); color:#000; } .btn-oranje:hover { opacity:0.92; }
+    .btn-ghost { background:transparent; color:var(--muted); border:1px solid var(--border); text-decoration:none; display:inline-flex; align-items:center; }
+    .btn-ghost:hover { color:var(--text); border-color:var(--border-light); }
+    .wrap { max-width:1100px; margin:0 auto; padding:24px; }
+    .filters { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+    .filter-knop { background:var(--card); color:var(--muted); border:1px solid var(--border); border-radius:4px;
+                   padding:7px 14px; font-size:0.8rem; cursor:pointer; font-family:var(--font-body); }
+    .filter-knop.actief { background:var(--orange); color:#000; border-color:var(--orange); font-weight:600; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { text-align:left; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--dim);
+               padding:10px 12px; border-bottom:1px solid var(--border); }
+    thead th.r, tbody td.r { text-align:right; }
+    tbody tr { border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.12s ease; }
+    tbody tr:hover { background:var(--float); }
+    tbody td { padding:12px; vertical-align:middle; }
+    .badge { display:inline-block; font-size:0.6rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+             padding:2px 7px; border-radius:3px; margin-left:8px; }
+    .badge-factuur { background:rgba(255,140,0,0.15); color:var(--orange); }
+    .badge-offerte { background:rgba(160,152,144,0.15); color:var(--muted); }
+    .nummer { font-weight:600; color:var(--text); }
+    .status-omgezet { color:var(--orange); text-decoration:none; }
+    .status-omgezet:hover { text-decoration:underline; }
+    .leeg, .fout { padding:40px 12px; text-align:center; color:var(--dim); }
+    .fout { color:#ff6b6b; }
+    @media (max-width:640px){ tbody td, thead th { padding:8px 6px; font-size:0.78rem; } .wrap { padding:16px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">MVDB<span>media</span> · Overzicht</div>
+    <div style="display:flex; gap:10px;">
+      <a class="btn btn-oranje" href="/admin/factuur" style="text-decoration:none;">Nieuw document</a>
+      <button class="btn btn-ghost" id="logout-knop" type="button">Uitloggen</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="filters">
+      <button class="filter-knop actief" data-filter="alle" type="button">Alle</button>
+      <button class="filter-knop" data-filter="factuur" type="button">Facturen</button>
+      <button class="filter-knop" data-filter="offerte" type="button">Offertes</button>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Nummer</th><th>Klant</th><th>Datum</th><th class="r">Bedrag</th><th>Status</th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="leeg" id="leeg" style="display:none;">Nog geen documenten.</div>
+    <div class="fout" id="fout" style="display:none;"></div>
+  </div>
+
+  <script>
+  // synced met bereken() in admin/factuur/index.html — bij wijziging beide bijwerken.
+  function bereken(doc) {
+    const regels = doc.regels || [];
+    const subtotaal = regels.reduce((s, r) => s + ((Number(r.aantal)||0) * (Number(r.stukprijs)||0)), 0);
+    const korting = doc.korting || { type:"geen", waarde:0 };
+    let kortingBedrag = 0;
+    if (korting.type === "bedrag") kortingBedrag = Number(korting.waarde) || 0;
+    else if (korting.type === "percentage") kortingBedrag = subtotaal * (Number(korting.waarde) || 0) / 100;
+    kortingBedrag = Math.min(kortingBedrag, subtotaal);
+    const naKorting = Math.max(0, subtotaal - kortingBedrag);
+    const btwVerlegd = !!doc.btwVerlegd;
+    const btwTarief = doc.btwTarief ?? 21;
+    const btwBedrag = btwVerlegd ? 0 : naKorting * (btwTarief / 100);
+    return naKorting + btwBedrag;
+  }
+  function euro(n) { return "€ " + (Number(n)||0).toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function esc(s) { return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  let alleDocs = [];
+  let huidigFilter = "alle";
+
+  function klantNaam(doc) {
+    const k = doc.klant || {};
+    return k.bedrijf || k.contact || k.email || "—";
+  }
+
+  function statusHtml(doc) {
+    if (doc.type === "factuur") return "Factuur";
+    if (doc.omgezet_naar) {
+      const nr = esc(doc.omgezet_naar);
+      return '<a class="status-omgezet" href="/admin/factuur?doc=' + encodeURIComponent(doc.omgezet_naar) + '" data-stop="1">&rarr; ' + nr + '</a>';
+    }
+    return "Open";
+  }
+
+  function render() {
+    const tbody = document.getElementById("tbody");
+    const leeg = document.getElementById("leeg");
+    const docs = alleDocs.filter((d) => huidigFilter === "alle" || d.type === huidigFilter);
+    tbody.innerHTML = "";
+    leeg.style.display = docs.length ? "none" : "block";
+    for (const doc of docs) {
+      const tr = document.createElement("tr");
+      const badge = doc.type === "factuur"
+        ? '<span class="badge badge-factuur">Factuur</span>'
+        : '<span class="badge badge-offerte">Offerte</span>';
+      tr.innerHTML =
+        '<td><span class="nummer">' + esc(doc.nummer) + '</span>' + badge + '</td>' +
+        '<td>' + esc(klantNaam(doc)) + '</td>' +
+        '<td>' + esc(doc.datum || "") + '</td>' +
+        '<td class="r">' + euro(bereken(doc)) + '</td>' +
+        '<td>' + statusHtml(doc) + '</td>';
+      tr.addEventListener("click", (e) => {
+        // klik op de status-link niet dubbel afhandelen (die navigeert zelf).
+        if (e.target.closest("[data-stop]")) return;
+        location.href = "/admin/factuur?doc=" + encodeURIComponent(doc.nummer);
+      });
+      tbody.appendChild(tr);
+    }
+  }
+
+  async function laad() {
+    const fout = document.getElementById("fout");
+    try {
+      const res = await fetch("/api/documenten");
+      if (!res.ok) { fout.style.display = "block"; fout.textContent = "Kon documenten niet laden."; return; }
+      alleDocs = (await res.json()).documenten || [];
+      render();
+    } catch { fout.style.display = "block"; fout.textContent = "Kon documenten niet laden (netwerkfout)."; }
+  }
+
+  document.querySelectorAll(".filter-knop").forEach((knop) => {
+    knop.addEventListener("click", () => {
+      document.querySelectorAll(".filter-knop").forEach((k) => k.classList.remove("actief"));
+      knop.classList.add("actief");
+      huidigFilter = knop.dataset.filter;
+      render();
+    });
+  });
+  document.getElementById("logout-knop").addEventListener("click", async () => {
+    await fetch("/api/logout", { method: "POST" });
+    window.location.href = "/admin/login/";
+  });
+
+  laad();
+  </script>
+</body>
+</html>
