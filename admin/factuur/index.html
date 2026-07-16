@@ -420,20 +420,33 @@
     totRijen += `<div class="tr"><span>${state.btwVerlegd ? "Btw" : "Btw " + state.btwTarief + "%"}</span><span>${state.btwVerlegd ? "verlegd" : euro(c.btwBedrag)}</span></div>`;
     totRijen += `<div class="tr groot"><span>Totaal</span><span>${euro(c.totaal)}</span></div>`;
 
+    const off = isOfferte();
+    const titel = off ? "OFFERTE" : "FACTUUR";
+    const lblNummer = off ? "Offertenr" : "Nummer";
+    const lblDatum = off ? "Offertedatum" : "Datum";
+    const lblVerval = off ? "Geldig tot" : "Vervalt";
+    const voet = off
+      ? `Deze offerte is geldig tot ${esc(f.vervaldatum)}.<br>
+         Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.<br>
+         ${AFZENDER.naam} · ${AFZENDER.adres}, ${AFZENDER.postcodePlaats} · KvK ${AFZENDER.kvk} · BTW ${AFZENDER.btw} · ${AFZENDER.tel} · ${AFZENDER.email}`
+      : `Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer${f.nummer ? " " + esc(f.nummer) : ""}.<br>
+         Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.<br>
+         ${AFZENDER.naam} · ${AFZENDER.adres}, ${AFZENDER.postcodePlaats} · KvK ${AFZENDER.kvk} · BTW ${AFZENDER.btw} · ${AFZENDER.tel} · ${AFZENDER.email}`;
+
     document.getElementById("preview").innerHTML = `
       <div class="pv-kop">
         <div class="pv-logo">MVDB<span>media</span></div>
-        <div class="pv-titel">FACTUUR</div>
+        <div class="pv-titel">${titel}</div>
       </div>
       <div class="pv-meta-blok">
         <div>
-          <div class="pv-label">Factuur aan</div>
+          <div class="pv-label">${off ? "Offerte voor" : "Factuur aan"}</div>
           <div>${klantregels || '<span style="color:#bbb;">Klantgegevens…</span>'}</div>
         </div>
         <div style="text-align:right;">
-          <div><span class="pv-label">Nummer</span> ${esc(f.nummer) || "—"}</div>
-          <div><span class="pv-label">Datum</span> ${esc(f.datum)}</div>
-          <div><span class="pv-label">Vervalt</span> ${esc(f.vervaldatum)}</div>
+          <div><span class="pv-label">${lblNummer}</span> ${esc(f.nummer) || "—"}</div>
+          <div><span class="pv-label">${lblDatum}</span> ${esc(f.datum)}</div>
+          <div><span class="pv-label">${lblVerval}</span> ${esc(f.vervaldatum)}</div>
           ${f.referentie ? `<div><span class="pv-label">Ref.</span> ${esc(f.referentie)}</div>` : ""}
         </div>
       </div>
@@ -442,11 +455,7 @@
         <tbody>${regelsHtml}</tbody>
       </table>
       <div class="pv-tot">${totRijen}</div>
-      <div class="pv-voet">
-        Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer${f.nummer ? " " + esc(f.nummer) : ""}.<br>
-        Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.<br>
-        ${AFZENDER.naam} · ${AFZENDER.adres}, ${AFZENDER.postcodePlaats} · KvK ${AFZENDER.kvk} · BTW ${AFZENDER.btw} · ${AFZENDER.tel} · ${AFZENDER.email}
-      </div>`;
+      <div class="pv-voet">${voet}</div>`;
   }
 
   // ===================== INPUT-BINDINGEN =====================
@@ -699,7 +708,7 @@
     const wMvdb = doc.getTextWidth("MVDB");
     doc.setTextColor(...oranje); doc.text("media", M + wMvdb + 2, 60);
     doc.setTextColor(...donker); doc.setFontSize(30);
-    doc.text("FACTUUR", 547, 60, { align: "right" });
+    doc.text(isOfferte() ? "OFFERTE" : "FACTUUR", 547, 60, { align: "right" });
 
     // Afzender links onder de logo-kop (eigen kolom, geen overlap met meta)
     doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
@@ -708,9 +717,9 @@
 
     // Factuurmeta rechts (label links van de waarde, allebei binnen de rechterkolom)
     const meta = [
-      ["Factuurnummer", state.factuur.nummer],
-      ["Factuurdatum", state.factuur.datum],
-      ["Vervaldatum", state.factuur.vervaldatum],
+      [isOfferte() ? "Offertenummer" : "Factuurnummer", state.factuur.nummer],
+      [isOfferte() ? "Offertedatum" : "Factuurdatum", state.factuur.datum],
+      [isOfferte() ? "Geldig tot" : "Vervaldatum", state.factuur.vervaldatum],
     ];
     if (state.factuur.referentie) meta.push(["Referentie", state.factuur.referentie]);
     doc.setTextColor(...donker); doc.setFontSize(9);
@@ -721,7 +730,7 @@
 
     // Klant links, onder het afzenderblok
     doc.setTextColor(...donker); doc.setFontSize(9);
-    doc.text("Factuur aan:", M, 158);
+    doc.text(isOfferte() ? "Offerte voor:" : "Factuur aan:", M, 158);
     const klant = [state.klant.bedrijf, state.klant.contact, state.klant.adres,
                    state.klant.postcodePlaats, state.klant.email, state.klant.kvkBtw].filter(Boolean);
     klant.forEach((r, i) => doc.text(String(r), M, 172 + i * 12));
@@ -771,13 +780,18 @@
     const bodem = doc.internal.pageSize.getHeight() - 40; // 802 op A4
     let voet = y + 30;
     if (voet > bodem - 40) voet = bodem - 40; // val terug binnen de pagina als het lang is
-    doc.text(`Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer ${state.factuur.nummer}.`, M, voet, { maxWidth: 499 });
+    if (isOfferte()) {
+      doc.text(`Deze offerte is geldig tot ${state.factuur.vervaldatum}.`, M, voet, { maxWidth: 499 });
+    } else {
+      doc.text(`Gelieve het bedrag binnen 14 dagen over te maken op IBAN ${AFZENDER.iban} o.v.v. het factuurnummer ${state.factuur.nummer}.`, M, voet, { maxWidth: 499 });
+    }
     doc.text(`Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op ${AFZENDER.voorwaarden}.`, M, voet + 12, { maxWidth: 499 });
     doc.text(`${AFZENDER.naam}  |  KvK ${AFZENDER.kvk}  |  BTW ${AFZENDER.btw}  |  ${AFZENDER.web}`, M, voet + 30);
 
     const veiligeKlant = (state.klant.bedrijf || state.klant.contact || "klant")
       .replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "klant";
-    doc.save(`Factuur-${state.factuur.nummer}-${veiligeKlant}.pdf`);
+    const prefix = isOfferte() ? "Offerte" : "Factuur";
+    doc.save(`${prefix}-${state.factuur.nummer}-${veiligeKlant}.pdf`);
 
     // Klant automatisch opslaan/bijwerken in het klantenbestand (match op bedrijf+email).
     bewaarKlant();
