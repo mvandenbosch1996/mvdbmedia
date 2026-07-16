@@ -738,7 +738,8 @@
       // reservering mislukt: terug naar offerte-modus om dataverlies te voorkomen
       state.docType = "offerte";
       state.factuur.nummer = oudNummer;
-      pasModusToe();
+      document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
+      pasModusToe(); bewaarConcept();
       alert("Kon geen factuurnummer reserveren. Omzetten afgebroken.");
       return;
     }
@@ -754,7 +755,7 @@
           method: "PATCH", headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nummer: oudNummer, omgezet_naar: nr }),
         });
-      } catch {}
+      } catch (e) { console.info("Offerte-markering mislukt (best-effort):", e); }
     }
     pasModusToe(); bewaarConcept();
   }
