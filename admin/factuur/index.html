@@ -297,6 +297,7 @@
         state.btwTarief = opgeslagen.btwTarief ?? BTW_STANDAARD;
         state.btwVerlegd = !!opgeslagen.btwVerlegd;
         state.docType = opgeslagen.docType === "offerte" ? "offerte" : "factuur";
+        state.omgezetNaar = opgeslagen.omgezetNaar || null; // behoud heromzet-guard na kale reload
       }
     } catch {}
   }
