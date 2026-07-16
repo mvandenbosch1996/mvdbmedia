@@ -37,6 +37,7 @@ export async function onRequestGet(context) {
   await env.FACTUREN.put(tellerKey, String(volgend));
 
   const nummer = formatteer(type, j, volgend);
+  // Registreer als uitgegeven (individuele key per nummer = eenvoudige set).
   await env.FACTUREN.put(`uitgegeven-${nummer}`, "1");
 
   return json({ nummer });
