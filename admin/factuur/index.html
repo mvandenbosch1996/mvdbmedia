@@ -533,7 +533,7 @@
 
   async function reserveerNummer() {
     try {
-      const res = await fetch("/api/factuurnummer");
+      const res = await fetch("/api/factuurnummer" + (state.docType === "offerte" ? "?type=offerte" : ""));
       if (res.ok) {
         const { nummer } = await res.json();
         state.factuur.nummer = nummer;
@@ -726,6 +726,39 @@
     } catch { w.textContent = "Ophalen mislukt (netwerkfout)."; }
   }
 
+  // ===================== OMZETTEN OFFERTE → FACTUUR =====================
+  async function zetOmNaarFactuur() {
+    if (!isOfferte()) return;
+    const oudNummer = (state.factuur.nummer || "").trim();
+    // wissel naar factuur-modus vóór reserveren zodat een factuurnummer wordt gehaald
+    state.docType = "factuur";
+    state.factuur.nummer = "";
+    const nr = await reserveerNummer();
+    if (!nr) {
+      // reservering mislukt: terug naar offerte-modus om dataverlies te voorkomen
+      state.docType = "offerte";
+      state.factuur.nummer = oudNummer;
+      pasModusToe();
+      alert("Kon geen factuurnummer reserveren. Omzetten afgebroken.");
+      return;
+    }
+    state.factuur.datum = vandaag();
+    state.factuur.vervaldatum = overVeertienDagen();
+    if (oudNummer) state.factuur.referentie = "offerte " + oudNummer;
+    // DOM-velden bijwerken
+    document.querySelectorAll("[data-factuur]").forEach((el) => { el.value = state.factuur[el.dataset.factuur] || ""; });
+    // oude offerte markeren als omgezet (best-effort)
+    if (oudNummer) {
+      try {
+        await fetch("/api/document", {
+          method: "PATCH", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nummer: oudNummer, omgezet_naar: nr }),
+        });
+      } catch {}
+    }
+    pasModusToe(); bewaarConcept();
+  }
+
   // ===================== INIT =====================
   function init() {
     laadConcept();
@@ -758,6 +791,7 @@
     document.getElementById("ophaal-knop").addEventListener("click", () => {
       haalOfferteOp(document.getElementById("ophaal-nummer").value);
     });
+    document.getElementById("omzet-knop").addEventListener("click", zetOmNaarFactuur);
     pasModusToe();
   }
 
