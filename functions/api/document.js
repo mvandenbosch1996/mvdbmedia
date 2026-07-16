@@ -18,6 +18,7 @@ async function geautoriseerd(request, env) {
 }
 
 const KEY = (nummer) => `doc-${nummer}`;
+function geldigNummer(n) { return typeof n === "string" && /^[A-Za-z0-9-]+$/.test(n); }
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -28,7 +29,7 @@ export async function onRequestPost(context) {
   try { body = await request.json(); } catch { return json({ error: "Ongeldig verzoek." }, 400); }
   const doc = body && body.doc;
   const overwrite = body && body.overwrite === true;
-  if (!doc || !doc.nummer || (doc.type !== "factuur" && doc.type !== "offerte")) {
+  if (!doc || !geldigNummer(doc.nummer) || (doc.type !== "factuur" && doc.type !== "offerte")) {
     return json({ error: "Ongeldig document." }, 400);
   }
 
@@ -53,11 +54,13 @@ export async function onRequestGet(context) {
 
   const url = new URL(request.url);
   const nummer = (url.searchParams.get("nummer") || "").trim();
-  if (!nummer) return json({ error: "Geen nummer opgegeven." }, 400);
+  if (!geldigNummer(nummer)) return json({ error: "Ongeldig nummer." }, 400);
 
   const raw = await env.FACTUREN.get(KEY(nummer));
   if (!raw) return json({ error: "Niet gevonden." }, 404);
-  return json({ doc: JSON.parse(raw) });
+  let doc;
+  try { doc = JSON.parse(raw); } catch { return json({ error: "Document beschadigd." }, 500); }
+  return json({ doc });
 }
 
 export async function onRequestPatch(context) {
@@ -68,11 +71,12 @@ export async function onRequestPatch(context) {
   let body;
   try { body = await request.json(); } catch { return json({ error: "Ongeldig verzoek." }, 400); }
   const nummer = (body.nummer || "").trim();
-  if (!nummer) return json({ error: "Geen nummer opgegeven." }, 400);
+  if (!geldigNummer(nummer)) return json({ error: "Ongeldig nummer." }, 400);
 
   const raw = await env.FACTUREN.get(KEY(nummer));
   if (!raw) return json({ error: "Niet gevonden." }, 404);
-  const doc = JSON.parse(raw);
+  let doc;
+  try { doc = JSON.parse(raw); } catch { return json({ error: "Document beschadigd." }, 500); }
   doc.omgezet_naar = body.omgezet_naar || null;
   doc.opgeslagen = new Date().toISOString();
   await env.FACTUREN.put(KEY(nummer), JSON.stringify(doc));
