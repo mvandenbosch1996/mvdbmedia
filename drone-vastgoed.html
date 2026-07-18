@@ -126,7 +126,7 @@
       .packages-grid { grid-template-columns: 1fr 1fr !important; }
       .footer-grid { grid-template-columns: 1fr 1fr !important; }
     }
-    .nav-link { font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; }
+    .nav-link { font-size: 0.92rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; }
     .nav-link:hover { color: var(--text-primary); }
     .btn-orange { background: var(--orange); color: #000; font-size: 0.68rem; font-weight: 800; padding: 14px 28px; border-radius: 3px; text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 4px 20px rgba(255,140,0,0.28), 0 2px 6px rgba(0,0,0,0.5); transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease; display: inline-block; border: none; cursor: pointer; }
     .btn-orange:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,140,0,0.4), 0 4px 10px rgba(0,0,0,0.5); }
@@ -197,7 +197,10 @@
   <nav id="nav" class="nav-pad" style="position:sticky;top:0;z-index:50;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.3s ease,box-shadow 0.3s ease;">
     <a href="/" style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;">MVDB<span style="color:var(--orange);">media</span></a>
     <div id="nav-links" style="display:flex;gap:32px;align-items:center;">
-      <a href="/#diensten" class="nav-link">Diensten</a>
+      <a href="/portret-groepsfotografie" class="nav-link">Portret</a>
+      <a href="/vastgoedfotografie" class="nav-link">Vastgoed</a>
+      <a href="/dronevisuals" class="nav-link" style="color:var(--orange);">Drone</a>
+      <a href="/webdesignopmaat" class="nav-link">Webdesign</a>
       <a href="/portfolio" class="nav-link">Portfolio</a>
       <a href="/#over" class="nav-link">Over mij</a>
       <a href="/#contact" class="nav-link">Contact</a>
@@ -211,7 +214,10 @@
   </nav>
   <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
   <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
-    <a href="/#diensten" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Diensten</a>
+    <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
+    <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
+    <a href="/dronevisuals" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
+    <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
     <a href="/portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
     <a href="/#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
     <a href="/#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
