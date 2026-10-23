@@ -375,7 +375,7 @@
       .audience-card { padding:14px 10px !important; gap:8px !important; }
       .audience-card .icon-box { width:36px !important; height:36px !important; flex-shrink:0; }
       .audience-card [style*="font-family:var(--font-display)"] { font-size:0.9rem !important; word-break:break-word; overflow-wrap:break-word; }
-      .audience-grid { gap:8px !important; }
+      .audience-grid { gap:8px !important; } .portfolio-grid > * { grid-column:1 / -1 !important; min-width:0; }
     }
     @media (min-width:769px) and (max-width:1024px) {
       .features-grid { grid-template-columns:1fr 1fr !important; }
@@ -383,6 +383,7 @@
       .audience-grid { grid-template-columns:1fr 1fr !important; }
     }
   </style>
+  <style>/*kb-patch*/@media(max-width:1180px){#nav-links{gap:18px!important}}@media(min-width:769px) and (max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:768px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important}.usp-grid{grid-template-columns:minmax(0,1fr)!important}.stats-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}.stats-row>*,.usp-grid>*{min-width:0;overflow-wrap:anywhere}}</style>
 </head>
 <body>
 
@@ -397,6 +398,7 @@
       <a href="/vastgoedfotografie" class="nav-link">Vastgoed</a>
       <a href="/dronevisuals" class="nav-link">Drone</a>
       <a href="/portfolio" class="nav-link">Portfolio</a>
+      <a href="/kennisbank" class="nav-link">Kennisbank</a>
       <a href="/#over" class="nav-link">Over mij</a>
       <a href="/#contact" class="nav-link">Contact</a>
     </div>
@@ -416,6 +418,7 @@
     <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
     <a href="/dronevisuals" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
     <a href="/portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="/kennisbank" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Kennisbank</a>
     <a href="/#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
     <a href="/#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
   <a href="/#contact" onclick="toggleMenu()" style="display:block;text-align:center;margin-top:8px;background:var(--orange);color:#000;font-size:0.8rem;font-weight:800;padding:12px;border-radius:3px;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">Offerte aanvragen</a>
@@ -1214,7 +1217,7 @@
 <!-- FOOTER -->
 <footer style="background:var(--bg-base);border-top:1px solid var(--border);padding:56px 64px 32px;" class="nav-pad">
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:48px;">
 
       <div>
         <a href="/" style="font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;display:block;margin-bottom:16px;">MVDB<span style="color:var(--orange);">media</span></a>
@@ -1258,6 +1261,16 @@
         </div>
       </div>
 
+      <div>
+        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-primary);margin-bottom:16px;">Webdesign Gidsen</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="/webdesign-kosten-friesland" class="footer-link">Wat kost een website?</a>
+          <a href="/maatwerk-website-vs-wordpress" class="footer-link">Maatwerk vs WordPress</a>
+          <a href="/snelle-website-laten-maken" class="footer-link">Snelle website laten maken</a>
+          <a href="/website-laten-maken-sneek" class="footer-link">Webdesigner in Sneek</a>
+          <a href="/kennisbank" class="footer-link all">Bekijk alle gidsen →</a>
+        </div>
+      </div>
       <div>
         <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-primary);margin-bottom:16px;">Contact</div>
         <div style="display:flex;flex-direction:column;gap:10px;">

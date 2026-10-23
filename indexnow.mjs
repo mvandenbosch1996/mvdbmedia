@@ -22,6 +22,15 @@ const urls = [
   'https://mvdbmedia.nl/business-website-pakket',
   'https://mvdbmedia.nl/portfolio',
   'https://mvdbmedia.nl/privacybeleid',
+  'https://mvdbmedia.nl/kennisbank',
+  'undefined',
+  'undefined',
+  'undefined',
+  'undefined',
+  'undefined',
+  'undefined',
+  'undefined',
+  'undefined',
 ];
 
 const body = JSON.stringify({
