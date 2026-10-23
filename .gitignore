@@ -21,6 +21,8 @@ screenshot-mobile.mjs
 convert-webp.mjs
 update-html-webp.mjs
 perf-pass2.mjs
+_mv-schema-update.mjs
+server.log
 
 # IDE / editor
 .claude/
