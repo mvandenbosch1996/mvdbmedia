@@ -23,14 +23,14 @@ const urls = [
   'https://mvdbmedia.nl/portfolio',
   'https://mvdbmedia.nl/privacybeleid',
   'https://mvdbmedia.nl/kennisbank',
-  'undefined',
-  'undefined',
-  'undefined',
-  'undefined',
-  'undefined',
-  'undefined',
-  'undefined',
-  'undefined',
+  'https://mvdbmedia.nl/webdesign-kosten-friesland',
+  'https://mvdbmedia.nl/maatwerk-website-vs-wordpress',
+  'https://mvdbmedia.nl/snelle-website-laten-maken',
+  'https://mvdbmedia.nl/website-laten-maken-sneek',
+  'https://mvdbmedia.nl/website-beveiliging-onderhoud',
+  'https://mvdbmedia.nl/seo-webdesign-hoger-in-google',
+  'https://mvdbmedia.nl/conversie-gericht-webdesign',
+  'https://mvdbmedia.nl/webapplicatie-saas-laten-maken',
 ];
 
 const body = JSON.stringify({

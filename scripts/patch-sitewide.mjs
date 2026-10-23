@@ -97,7 +97,7 @@ for (const page of PAGES) {
 const sitemapPath = path.join(ROOT, 'sitemap.xml');
 let sitemap = fs.readFileSync(sitemapPath, 'utf8');
 const sEol = sitemap.includes('\r\n') ? '\r\n' : '\n';
-const entries = [{ loc: `${SITE}/kennisbank`, priority: '0.8' }, ...guides.map((g) => ({ loc: g.url, priority: '0.7' }))];
+const entries = [{ loc: `${SITE}/kennisbank`, priority: '0.8' }, ...guides.map((g) => ({ loc: `${SITE}/${g.slug}`, priority: '0.7' }))];
 const missing = entries.filter((e) => !sitemap.includes(`<loc>${e.loc}</loc>`));
 if (missing.length) {
   const block = missing.map((e) => `  <url>${sEol}    <loc>${e.loc}</loc>${sEol}    <lastmod>${DATE}</lastmod>${sEol}    <priority>${e.priority}</priority>${sEol}  </url>${sEol}`).join(sEol);
