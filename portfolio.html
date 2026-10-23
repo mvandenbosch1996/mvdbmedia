@@ -328,6 +328,16 @@
       margin-top: 5px; letter-spacing: 0.04em;
     }
     .proj-card:hover .proj-count { color: rgba(255,255,255,0.75); }
+    .proj-desc {
+      font-size: 0.7rem; font-weight: 400; line-height: 1.5; letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.82); margin-top: 8px; max-width: 46ch;
+    }
+    .proj-card--text .proj-overlay,
+    .proj-card--text:hover .proj-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.9) 42%, rgba(0,0,0,0.35) 68%, transparent 90%);
+    }
+    .proj-card--text .proj-desc { font-size: 0.66rem; }
+    a.proj-card:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
 
     @media (max-width: 960px) {
       #project-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -341,6 +351,23 @@
       .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
     }
   </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kampr.nl",
+  "url": "https://kampr.nl",
+  "description": "SaaS reserveringsplatform & boekingswidget voor campingeigenaren. Maatwerk webapplicatie waarmee kampeerders direct via de website van de camping kunnen reserveren.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "image": "https://mvdbmedia.nl/fotos/kampr-showcase.jpg",
+  "creator": {
+    "@type": "Person",
+    "name": "Michael van den Bosch",
+    "@id": "https://mvdbmedia.nl/#michael-van-den-bosch"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -511,15 +538,16 @@
         </div>
 
         <!-- Webdesign — kampr.nl, linkt naar live site -->
-        <a class="proj-card" data-cat="web" href="https://www.kampr.nl" target="_blank" rel="noopener" style="display:block;text-decoration:none;">
+        <a class="proj-card proj-card--text" data-cat="web" href="https://kampr.nl" target="_blank" rel="noopener" style="display:block;text-decoration:none;">
           <picture>
-            <source type="image/webp" srcset="fotos/kampr-preview-800.webp">
-            <img src="fotos/kampr-preview.jpg" alt="Kampr.nl — reserveringswebsite gebouwd door MVDBmedia" loading="lazy">
+            <source type="image/webp" srcset="fotos/kampr-showcase-800.webp 800w, fotos/kampr-showcase.webp 1440w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 33vw">
+            <img src="fotos/kampr-showcase.jpg" width="1440" height="900" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
           </picture>
           <div class="proj-badge">Live site ↗</div>
           <div class="proj-overlay">
             <div class="proj-tag">Webdesign op Maat</div>
-            <div class="proj-title">Kampr — reserveringsplatform</div>
+            <div class="proj-title">Kampr.nl</div>
+            <p class="proj-desc">SaaS reserveringsplatform &amp; boekingswidget voor campingeigenaren. Maatwerk webapplicatie waarmee kampeerders direct via de website van de camping kunnen reserveren.</p>
           </div>
         </a>
 
