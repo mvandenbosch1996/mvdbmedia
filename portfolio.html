@@ -337,7 +337,47 @@
       background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.9) 42%, rgba(0,0,0,0.35) 68%, transparent 90%);
     }
     .proj-card--text .proj-desc { font-size: 0.66rem; }
-    a.proj-card:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+    .proj-card:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+    .proj-card:active img { transform: scale(1.02); }
+
+    /* CASE STUDY */
+    .case { padding: 0 64px; background: var(--bg-base); }
+    .case-inner {
+      max-width: 1280px; margin: 0 auto; padding-top: 72px;
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 72px; align-items: start;
+    }
+    .case-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange);
+    }
+    .case-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+    .case h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(2.4rem, 4.6vw, 4.4rem); line-height: 0.92; letter-spacing: 0.02em;
+      color: var(--text-primary); margin-bottom: 28px;
+    }
+    .case-lead { font-size: 1.08rem; line-height: 1.75; color: var(--text-primary); font-weight: 400; max-width: 62ch; }
+    .case-body p { font-size: 0.92rem; line-height: 1.85; color: var(--text-secondary); font-weight: 300; margin-top: 18px; max-width: 62ch; }
+    .case-body a { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+    .case-body a:hover { color: var(--text-primary); }
+    .case-body a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    .case-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+    .case-facts {
+      position: relative; background: var(--bg-card); border: 1px solid var(--border);
+      padding: 30px 30px 10px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 24px 60px -20px rgba(255,140,0,0.12), 0 10px 30px rgba(0,0,0,0.55);
+    }
+    .case-facts::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--orange); opacity: 0.8; }
+    .case-facts-title { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em; color: var(--text-primary); margin-bottom: 22px; }
+    .case-facts dt { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); }
+    .case-facts dd { font-size: 0.9rem; line-height: 1.55; color: var(--text-primary); margin: 5px 0 20px; font-weight: 400; }
+    @media (max-width: 900px) {
+      .case-inner { grid-template-columns: 1fr; gap: 44px; padding-top: 56px; }
+    }
+    @media (max-width: 768px) {
+      .case { padding-left: 24px !important; padding-right: 24px !important; }
+    }
 
     @media (max-width: 960px) {
       #project-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -384,6 +424,111 @@
       "position": 2,
       "name": "Portfolio",
       "item": "https://mvdbmedia.nl/portfolio"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": "https://mvdbmedia.nl/portfolio#nesaclinics-fitplan",
+  "name": "Bedrijfsfotografie Fitplan & NESAclinics Sneek",
+  "description": "Bedrijfsfotografie op locatie voor Fitplan Sport-medisch Centrum en NESAclinics aan de Simmerdyk in Sneek: 8 bewerkte foto's van het gebouw, het team en de behandelkamer.",
+  "url": "https://mvdbmedia.nl/portfolio#case-nesaclinics-fitplan",
+  "inLanguage": "nl-NL",
+  "dateCreated": "2026-10-17",
+  "datePublished": "2026-10-29",
+  "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+  "publisher": { "@id": "https://mvdbmedia.nl" },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Fitplan Sport-medisch Centrum",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Simmerdyk 2",
+      "postalCode": "8601 ZP",
+      "addressLocality": "Sneek",
+      "addressRegion": "Friesland",
+      "addressCountry": "NL"
+    }
+  },
+  "about": [
+    { "@type": "Organization", "name": "Fitplan Sport-medisch Centrum" },
+    { "@type": "Organization", "name": "NESAclinics Sneek" }
+  ],
+  "image": [
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp",
+      "name": "Het team in de behandelkamer",
+      "caption": "Twee Fitplan-therapeuten poseren lachend in de blauw verlichte NESAclinics-behandelkamer in Sneek",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw.webp",
+      "name": "Fitplan Sport-medisch Centrum",
+      "caption": "Gebouw van Fitplan Sport-medisch Centrum aan de Simmerdyk in Sneek bij zonnig weer",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk.webp",
+      "name": "Simmerdyk 2",
+      "caption": "Bewegwijzeringszuil Simmerdyk 2 in Sneek met onder andere de logo's van Fitplan en NESAclinics",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner.webp",
+      "name": "Team bij de NESA-banner",
+      "caption": "Twee medewerkers van Fitplan staan naast een NESA-banner bij de voordeur van de praktijk",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek.webp",
+      "name": "In gesprek aan tafel",
+      "caption": "Twee medewerkers van Fitplan in gesprek aan een houten tafel met NESA-banner en een historische stadskaart aan de muur",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five.webp",
+      "name": "High five",
+      "caption": "Twee medewerkers van Fitplan geven elkaar een high five aan tafel bij de NESA-banner",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek.webp",
+      "name": "De behandelkamer",
+      "caption": "Behandelkamer van NESAclinics in Sneek met blauw LED-licht, behandelstoel en een scherm met natuurbeeld",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
+    },
+    {
+      "@type": "ImageObject",
+      "contentUrl": "https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan.webp",
+      "name": "Behandeling in de praktijk",
+      "caption": "Therapeut en cliënt bij de behandelstoel in de NESAclinics-behandelkamer van Fitplan in Sneek",
+      "creator": { "@id": "https://mvdbmedia.nl/#michael-van-den-bosch" },
+      "creditText": "MVDBmedia",
+      "copyrightNotice": "© 2026 MVDBmedia"
     }
   ]
 }
@@ -451,12 +596,12 @@
           </p>
           <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
             <div>
-              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">6</div>
+              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">8</div>
               <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Projecten</div>
             </div>
             <div style="width:1px;background:var(--border);"></div>
             <div>
-              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">4</div>
+              <div style="font-family:var(--font-display);font-size:2rem;color:var(--text-primary);line-height:1;">6</div>
               <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:3px;">Categorieën</div>
             </div>
           </div>
@@ -477,11 +622,23 @@
         <button class="filter-btn" data-filter="drone" onclick="filterProjects('drone',this)">Drone</button>
         <button class="filter-btn" data-filter="constructie" onclick="filterProjects('constructie',this)">Constructie</button>
         <button class="filter-btn" data-filter="groep" onclick="filterProjects('groep',this)">Groep</button>
+        <button class="filter-btn" data-filter="bedrijf" onclick="filterProjects('bedrijf',this)">Bedrijf</button>
         <button class="filter-btn" data-filter="web" onclick="filterProjects('web',this)">Webdesign</button>
       </div>
 
       <!-- Project grid — art-directed: 3 cols × 4 rows -->
       <div id="project-grid">
+
+        <!-- Nieuw: Fitplan & NESAclinics Sneek — bedrijfsfotografie -->
+        <div class="proj-card proj-card--text" data-cat="bedrijf" onclick="openProject(6)">
+          <img src="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp" srcset="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp 800w, fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp 1920w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 25vw" width="1920" height="1280" alt="Twee Fitplan-therapeuten in de blauw verlichte NESAclinics-behandelkamer in Sneek" loading="eager" decoding="async">
+          <div class="proj-badge">8 foto's</div>
+          <div class="proj-overlay">
+            <div class="proj-tag">Bedrijfsfotografie</div>
+            <div class="proj-title">Fitplan &amp; NESAclinics Sneek</div>
+            <p class="proj-desc">Gebouw, team en behandelkamer van een sport-medisch centrum, vastgelegd in een bedrijfsshoot op locatie.</p>
+          </div>
+        </div>
 
         <!-- Row 1: Marit (×2, tall hero) + Luchtfotografie -->
         <div class="proj-card" data-cat="portret" onclick="openProject(0)">
@@ -556,6 +713,41 @@
 
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- CASE: Fitplan & NESAclinics -->
+  <section class="case sp" id="case-nesaclinics-fitplan" aria-labelledby="case-nesa-title">
+    <div class="case-inner">
+      <div class="case-body">
+        <div class="case-eyebrow">Uitgelicht project &middot; Bedrijfsfotografie</div>
+        <h2 id="case-nesa-title">Fitplan &amp; NESAclinics Sneek: bedrijfsfotografie op locatie</h2>
+        <p class="case-lead">Op zaterdag 17 oktober 2026 fotografeerde ik Fitplan Sport-medisch Centrum en NESAclinics aan de Simmerdyk in Sneek. Het resultaat zijn 8 bewerkte foto's van het gebouw, het team en de behandelkamer, bruikbaar voor website, social media en drukwerk.</p>
+        <p>NESAclinics is een nieuwe behandelvorm in Friesland, en juist dan wil een bezoeker vooraf zien waar hij terechtkomt en wie hem helpt. Daarom combineerde ik drie soorten beeld: de buitenkant en bewegwijzering voor herkenbaarheid, ongedwongen teamfoto's voor de menselijke kant en de blauw verlichte behandelkamer voor de sfeer van de praktijk.</p>
+        <p>De behandelkamer is een lastige ruimte: donker, met blauw LED-licht en een scherm dat fel opvalt. In de bewerking heb ik die sfeer behouden en tegelijk gezorgd dat het team en de apparatuur goed zichtbaar blijven. Aan de tafel in de ontvangstruimte draaide het juist om natuurlijke momenten, zoals een gesprek en een high five.</p>
+        <p>Wil je ook foto's van jouw praktijk, kantoor of team? Bekijk <a href="/portret-groepsfotografie">zakelijke portret- en groepsfotografie</a> of <a href="/#contact">vraag een vrijblijvende offerte aan</a>. Ik werk vanuit Sneek, in heel Friesland en daarbuiten.</p>
+        <div class="case-actions">
+          <button type="button" class="btn-orange" style="font-family:var(--font-body);" onclick="openProject(6)">Bekijk alle 8 foto's</button>
+          <a href="/#contact" class="btn-ghost">Offerte aanvragen</a>
+        </div>
+      </div>
+
+      <aside class="case-facts" aria-label="Projectgegevens">
+        <div class="case-facts-title">Projectgegevens</div>
+        <dl>
+          <dt>Opdrachtgever</dt>
+          <dd>Fitplan Sport-medisch Centrum &amp; NESAclinics Sneek</dd>
+          <dt>Locatie</dt>
+          <dd>Simmerdyk 2, Sneek</dd>
+          <dt>Datum shoot</dt>
+          <dd><time datetime="2026-10-17">17 oktober 2026</time></dd>
+          <dt>Soort opdracht</dt>
+          <dd>Bedrijfsfotografie op locatie: gebouw, team en interieur</dd>
+          <dt>Oplevering</dt>
+          <dd>8 bewerkte foto's in hoge resolutie</dd>
+        </dl>
+      </aside>
     </div>
   </section>
 
@@ -722,6 +914,18 @@
       });
     }
 
+    // KEYBOARD ACCESS voor projectkaarten
+    document.querySelectorAll('.proj-card[onclick]').forEach(function(card) {
+      var t = card.querySelector('.proj-title');
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      if (t) card.setAttribute('aria-label', t.textContent + ' — foto\'s bekijken');
+      card.addEventListener('keydown', function(e) {
+        if (e.target !== card) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+      });
+    });
+
     // PROJECT DATA
     var projects = [
       {
@@ -786,6 +990,19 @@
           { src: 'fotos/events-groep.jpg', title: 'Event sfeerbeeld' }
         ]
       },
+      {
+        label: 'Bedrijfsfotografie', title: 'Fitplan & NESAclinics Sneek',
+        photos: [
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp', title: 'Het team in de behandelkamer', alt: 'Twee Fitplan-therapeuten poseren lachend in de blauw verlichte NESAclinics-behandelkamer in Sneek' },
+          { src: 'fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw.webp', title: 'Fitplan Sport-medisch Centrum', alt: 'Gebouw van Fitplan Sport-medisch Centrum aan de Simmerdyk in Sneek bij zonnig weer' },
+          { src: 'fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk.webp', title: 'Simmerdyk 2', alt: 'Bewegwijzeringszuil Simmerdyk 2 in Sneek met onder andere de logo\'s van Fitplan en NESAclinics' },
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner.webp', title: 'Team bij de NESA-banner', alt: 'Twee medewerkers van Fitplan staan naast een NESA-banner bij de voordeur van de praktijk' },
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek.webp', title: 'In gesprek aan tafel', alt: 'Twee medewerkers van Fitplan in gesprek aan een houten tafel met NESA-banner en een historische stadskaart aan de muur' },
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five.webp', title: 'High five', alt: 'Twee medewerkers van Fitplan geven elkaar een high five aan tafel bij de NESA-banner' },
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek.webp', title: 'De behandelkamer', alt: 'Behandelkamer van NESAclinics in Sneek met blauw LED-licht, behandelstoel en een scherm met natuurbeeld' },
+          { src: 'fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan.webp', title: 'Behandeling in de praktijk', alt: 'Therapeut en cliënt bij de behandelstoel in de NESAclinics-behandelkamer van Fitplan in Sneek' }
+        ]
+      },
     ];
 
     // LIGHTBOX
@@ -810,7 +1027,7 @@
       var item = lbItems[i];
       var imgEl = document.getElementById('lightbox-img');
       imgEl.src = item.src;
-      imgEl.alt = item.title;
+      imgEl.alt = item.alt || item.title;
       document.getElementById('lb-caption-cat').textContent = lbCurrentLabel;
       document.getElementById('lb-caption-title').textContent = item.title;
       document.getElementById('lb-counter').textContent = (i + 1) + ' / ' + lbItems.length;
