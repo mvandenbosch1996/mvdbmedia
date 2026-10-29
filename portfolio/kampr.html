@@ -258,7 +258,7 @@
     #lightbox.lb-visible { opacity: 1; }
 
     #lightbox-img {
-      max-width: 88vw; max-height: 84vh; object-fit: contain; display: block;
+      max-width: 88vw; max-height: 76vh; width: auto; height: auto; object-fit: contain; display: block;
       border-radius: 2px; box-shadow: 0 40px 100px rgba(0,0,0,0.8);
       transform: scale(0.96); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
     }
@@ -356,6 +356,7 @@
     .story-text h3::before { content: attr(data-n); display: block; font-size: 0.62rem; font-family: var(--font-body); font-weight: 700; letter-spacing: 0.22em; color: var(--orange); margin-bottom: 12px; }
     .story-fig { position: relative; }
     .story-fig img { width: 100%; height: auto; display: block; border-radius: 3px; border: 1px solid var(--border); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 28px 60px -24px rgba(255,140,0,0.16), 0 14px 36px rgba(0,0,0,0.6); }
+    .story-fig.tall { max-width: 460px; width: 100%; margin-inline: auto; }
     .story-fig figcaption { margin-top: 12px; font-size: 0.72rem; line-height: 1.5; color: var(--text-muted); letter-spacing: 0.02em; }
 
     .stats { margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; list-style: none; }
@@ -366,17 +367,16 @@
     /* GALLERY */
     .gal-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
     .gal-head p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; max-width: 46ch; line-height: 1.7; }
-    .gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .gal-item { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; overflow: hidden; font: inherit; color: inherit; border-radius: 3px; }
-    .gal-item:first-child { grid-column: 1 / -1; }
-    .gal-item img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+    .gal { columns: 2; column-gap: 8px; }
+    .gal-item { position: relative; display: block; width: 100%; margin: 0 0 8px; padding: 0; border: 1px solid var(--border); background: #111; cursor: pointer; overflow: hidden; font: inherit; color: inherit; border-radius: 3px; break-inside: avoid; }
+    .gal-item img { width: 100%; height: auto; display: block; transition: filter 0.4s ease; }
     .gal-item::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
     .gal-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 16px; text-align: left; font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--text-primary); background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
-    .gal-item:hover img { transform: scale(1.04); filter: brightness(0.82); }
+    .gal-item:hover img { filter: brightness(0.82); }
     .gal-item:hover::after, .gal-item:focus-visible::after { transform: scaleX(1); }
     .gal-item:hover .gal-cap, .gal-item:focus-visible .gal-cap { opacity: 1; transform: translateY(0); }
     .gal-item:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
-    .gal-item:active img { transform: scale(1.02); }
+    .gal-item:active img { filter: brightness(0.7); }
 
     @media (max-width: 1100px) {
       .facts dl { grid-template-columns: 1fr 1fr 1fr; }
@@ -403,7 +403,7 @@
     @media (max-width: 480px) {
       .facts dl { grid-template-columns: 1fr; }
       .pains { grid-template-columns: 1fr; }
-      .gal { grid-template-columns: 1fr; gap: 6px; }
+      .gal { columns: 1; }
       .stats li { padding: 22px 16px; }
       .hero-actions .btn-orange, .hero-actions .btn-ghost { text-align: center; flex: 1 1 100%; }
     }
@@ -560,8 +560,8 @@
             <p>Het hart van het platform is de widget. De eigenaar plaatst één regel code in WordPress, Elementor, Wix, Squarespace of eigen HTML. Gasten zien live beschikbaarheid en de prijs per nacht en boeken zonder de website van de camping te verlaten.</p>
             <p>De widget bestaat in drie niveaus, Basis (compact), Plus (breed) en Pro (zoek &amp; boek), zodat een kleine minicamping en een groot park allebei een passende ervaring krijgen.</p>
           </div>
-          <figure class="story-fig">
-            <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" srcset="/fotos/kampr/kampr-boekingswidget-basis-800.webp 800w, /fotos/kampr/kampr-boekingswidget-basis.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="500" alt="De compacte Kampr-boekingswidget met accommodatie, aankomst- en vertrekdatum en totaalprijs" loading="lazy" decoding="async">
+          <figure class="story-fig tall">
+            <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" srcset="/fotos/kampr/kampr-boekingswidget-basis-800.webp 800w, /fotos/kampr/kampr-boekingswidget-basis.webp 1092w" sizes="(max-width:900px) 100vw, 460px" width="800" height="1221" alt="De compacte Kampr-boekingswidget met accommodatie, aankomst- en vertrekdatum en totaalprijs" loading="lazy" decoding="async">
             <figcaption>De compacte widget (Basis) met live prijs en directe reservering.</figcaption>
           </figure>
         </div>
@@ -573,7 +573,7 @@
             <p>Ook het prijsmodel is bewust simpel: een vast maandbedrag vanaf €24,99 (excl. btw), 14 dagen gratis proberen en maandelijks opzegbaar. Geen setup-kosten.</p>
           </div>
           <figure class="story-fig">
-            <img src="/fotos/kampr/kampr-prijzen-800.webp" srcset="/fotos/kampr/kampr-prijzen-800.webp 800w, /fotos/kampr/kampr-prijzen.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="500" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
+            <img src="/fotos/kampr/kampr-prijzen-800.webp" srcset="/fotos/kampr/kampr-prijzen-800.webp 800w, /fotos/kampr/kampr-prijzen.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="712" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
             <figcaption>Drie abonnementen met een vast maandbedrag, zonder setup-kosten.</figcaption>
           </figure>
         </div>
@@ -618,23 +618,23 @@
           <span class="gal-cap" aria-hidden="true">Eigenaren-dashboard</span>
         </button>
         <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-boekingswidget-basis.webp" data-title="Boekingswidget Basis" data-alt="De compacte Kampr-boekingswidget met accommodatie, data en totaalprijs" aria-label="Vergroot afbeelding 3 van 7: Boekingswidget Basis" aria-haspopup="dialog">
-          <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" width="800" height="500" alt="De compacte Kampr-boekingswidget met accommodatie, data en totaalprijs" loading="lazy" decoding="async">
+          <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" width="800" height="1221" alt="De compacte Kampr-boekingswidget met accommodatie, data en totaalprijs" loading="lazy" decoding="async">
           <span class="gal-cap" aria-hidden="true">Boekingswidget Basis</span>
         </button>
         <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-boekingswidget-pro.webp" data-title="Boekingswidget Pro" data-alt="De Pro-variant van de Kampr-boekingswidget om te zoeken en te boeken" aria-label="Vergroot afbeelding 4 van 7: Boekingswidget Pro" aria-haspopup="dialog">
-          <img src="/fotos/kampr/kampr-boekingswidget-pro-800.webp" width="800" height="500" alt="De Pro-variant van de Kampr-boekingswidget om te zoeken en te boeken" loading="lazy" decoding="async">
+          <img src="/fotos/kampr/kampr-boekingswidget-pro-800.webp" width="800" height="923" alt="De Pro-variant van de Kampr-boekingswidget om te zoeken en te boeken" loading="lazy" decoding="async">
           <span class="gal-cap" aria-hidden="true">Boekingswidget Pro</span>
         </button>
         <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-functies.webp" data-title="Functies" data-alt="Functieoverzicht van Kampr.nl: slimme agenda, direct betaald, boekingswidget, inzicht en automatische mails" aria-label="Vergroot afbeelding 5 van 7: Functies" aria-haspopup="dialog">
-          <img src="/fotos/kampr/kampr-functies-800.webp" width="800" height="500" alt="Functieoverzicht van Kampr.nl: slimme agenda, direct betaald, boekingswidget, inzicht en automatische mails" loading="lazy" decoding="async">
+          <img src="/fotos/kampr/kampr-functies-800.webp" width="800" height="401" alt="Functieoverzicht van Kampr.nl: slimme agenda, direct betaald, boekingswidget, inzicht en automatische mails" loading="lazy" decoding="async">
           <span class="gal-cap" aria-hidden="true">Functies</span>
         </button>
         <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-in-vier-stappen.webp" data-title="In vier stappen live" data-alt="Kampr.nl legt uit hoe een camping in vier stappen live gaat, van abonnement tot widget" aria-label="Vergroot afbeelding 6 van 7: In vier stappen live" aria-haspopup="dialog">
-          <img src="/fotos/kampr/kampr-in-vier-stappen-800.webp" width="800" height="500" alt="Kampr.nl legt uit hoe een camping in vier stappen live gaat, van abonnement tot widget" loading="lazy" decoding="async">
+          <img src="/fotos/kampr/kampr-in-vier-stappen-800.webp" width="800" height="277" alt="Kampr.nl legt uit hoe een camping in vier stappen live gaat, van abonnement tot widget" loading="lazy" decoding="async">
           <span class="gal-cap" aria-hidden="true">In vier stappen live</span>
         </button>
         <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-prijzen.webp" data-title="Abonnementen en prijzen" data-alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" aria-label="Vergroot afbeelding 7 van 7: Abonnementen en prijzen" aria-haspopup="dialog">
-          <img src="/fotos/kampr/kampr-prijzen-800.webp" width="800" height="500" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
+          <img src="/fotos/kampr/kampr-prijzen-800.webp" width="800" height="712" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
           <span class="gal-cap" aria-hidden="true">Abonnementen en prijzen</span>
         </button>
       </div>
