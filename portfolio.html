@@ -339,6 +339,16 @@
     .proj-card--text .proj-desc { font-size: 0.66rem; }
     .proj-card:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
     .proj-card:active img { transform: scale(1.02); }
+    .proj-case-link {
+      align-self: flex-start; margin-top: 12px; padding: 7px 14px;
+      font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #000; background: var(--orange); border-radius: 3px; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(255,140,0,0.28), 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+    }
+    .proj-case-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,140,0,0.4), 0 4px 10px rgba(0,0,0,0.5); }
+    .proj-case-link:active { transform: translateY(0); }
+    .proj-case-link:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
 
     /* CASE STUDY */
     .case { padding: 0 64px; background: var(--bg-base); }
@@ -435,7 +445,7 @@
   "@id": "https://mvdbmedia.nl/portfolio#nesaclinics-fitplan",
   "name": "Bedrijfsfotografie Fitplan & NESAclinics Sneek",
   "description": "Bedrijfsfotografie op locatie voor Fitplan Sport-medisch Centrum en NESAclinics aan de Simmerdyk in Sneek: 8 bewerkte foto's van het gebouw, het team en de behandelkamer.",
-  "url": "https://mvdbmedia.nl/portfolio#case-nesaclinics-fitplan",
+  "url": "https://mvdbmedia.nl/portfolio/fitplan-nesaclinics",
   "inLanguage": "nl-NL",
   "dateCreated": "2026-10-17",
   "datePublished": "2026-10-29",
@@ -630,13 +640,14 @@
       <div id="project-grid">
 
         <!-- Nieuw: Fitplan & NESAclinics Sneek — bedrijfsfotografie -->
-        <div class="proj-card proj-card--text" data-cat="bedrijf" onclick="openProject(6)">
+        <div class="proj-card proj-card--text" data-cat="bedrijf" data-has-link onclick="openProject(6)">
           <img src="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp" srcset="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp 800w, fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp 1920w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 25vw" width="1920" height="1280" alt="Twee Fitplan-therapeuten in de blauw verlichte NESAclinics-behandelkamer in Sneek" loading="eager" decoding="async">
           <div class="proj-badge">8 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Bedrijfsfotografie</div>
             <div class="proj-title">Fitplan &amp; NESAclinics Sneek</div>
             <p class="proj-desc">Gebouw, team en behandelkamer van een sport-medisch centrum, vastgelegd in een bedrijfsshoot op locatie.</p>
+            <a class="proj-case-link" href="/portfolio/fitplan-nesaclinics" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
@@ -729,7 +740,7 @@
         <p>Wil je ook foto's van jouw praktijk, kantoor of team? Bekijk <a href="/portret-groepsfotografie">zakelijke portret- en groepsfotografie</a> of <a href="/#contact">vraag een vrijblijvende offerte aan</a>. Ik werk vanuit Sneek, in heel Friesland en daarbuiten.</p>
         <div class="case-actions">
           <button type="button" class="btn-orange" style="font-family:var(--font-body);" onclick="openProject(6)">Bekijk alle 8 foto's</button>
-          <a href="/#contact" class="btn-ghost">Offerte aanvragen</a>
+          <a href="/portfolio/fitplan-nesaclinics" class="btn-ghost">Lees de case-study &rarr;</a>
         </div>
       </div>
 
@@ -915,7 +926,7 @@
     }
 
     // KEYBOARD ACCESS voor projectkaarten
-    document.querySelectorAll('.proj-card[onclick]').forEach(function(card) {
+    document.querySelectorAll('.proj-card[onclick]:not([data-has-link])').forEach(function(card) {
       var t = card.querySelector('.proj-title');
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');

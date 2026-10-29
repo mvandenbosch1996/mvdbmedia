@@ -21,6 +21,7 @@ const urls = [
   'https://mvdbmedia.nl/starter-website-pakket',
   'https://mvdbmedia.nl/business-website-pakket',
   'https://mvdbmedia.nl/portfolio',
+  'https://mvdbmedia.nl/portfolio/fitplan-nesaclinics',
   'https://mvdbmedia.nl/privacybeleid',
   'https://mvdbmedia.nl/kennisbank',
   'https://mvdbmedia.nl/webdesign-kosten-friesland',

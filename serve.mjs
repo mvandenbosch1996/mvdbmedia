@@ -43,7 +43,7 @@ http.createServer((req, res) => {
   const ext = path.extname(filePath);
 
   fs.readFile(filePath, (err, data) => {
-    if (err && err.code === 'ENOENT' && !ext) {
+    if (err && (err.code === 'ENOENT' || err.code === 'EISDIR') && !ext) {
       const htmlPath = filePath + '.html';
       fs.readFile(htmlPath, (err2, data2) => {
         if (err2) {
