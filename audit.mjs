@@ -14,6 +14,8 @@ const pages = [
   'http://localhost:3000/evenementen.html',
   'http://localhost:3000/webdesignopmaat.html',
   'http://localhost:3000/portfolio.html',
+  'http://localhost:3000/portfolio/kampr.html',
+  'http://localhost:3000/webapplicatie-saas-laten-maken.html',
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
