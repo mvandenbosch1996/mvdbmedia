@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Kampr.nl: camping reserveringssysteem als SaaS | MVDBmedia</title>
+  <meta name="description" content="Case-study Kampr.nl: een maatwerk SaaS-webapplicatie en boekingsplatform voor campings, ontworpen en gebouwd door MVDBmedia. Probleem, oplossing en resultaat.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mvdbmedia.nl/portfolio/kampr">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mvdbmedia.nl/portfolio/kampr">
+  <meta property="og:title" content="Case Kampr.nl: camping reserveringssysteem als SaaS | MVDBmedia">
+  <meta property="og:description" content="Case-study Kampr.nl: een maatwerk SaaS-webapplicatie en boekingsplatform voor campings, ontworpen en gebouwd door MVDBmedia. Probleem, oplossing en resultaat.">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/kampr-showcase.jpg">
+  <meta property="og:image:width" content="1440">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="Homepage van Kampr.nl, het camping reserveringssysteem en de boekingswidget gebouwd door MVDBmedia">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="article:published_time" content="2026-10-29">
+  <meta property="article:author" content="Michael van den Bosch">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Case Kampr.nl: camping reserveringssysteem als SaaS | MVDBmedia">
+  <meta name="twitter:description" content="Case-study Kampr.nl: een maatwerk SaaS-webapplicatie en boekingsplatform voor campings, ontworpen en gebouwd door MVDBmedia. Probleem, oplossing en resultaat.">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/kampr-showcase.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://mvdbmedia.nl",
+  "name": "MVDBmedia",
+  "image": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
+  "logo": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
+  "description": "MVDBmedia levert professionele portret-, vastgoed- en dronefotografie, plus webdesign en webapplicaties op maat. Gevestigd in Sneek, beschikbaar in heel Friesland en Nederland.",
+  "telephone": "+31624819278",
+  "email": "info@mvdbmedia.nl",
+  "url": "https://mvdbmedia.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sneek",
+    "addressRegion": "Friesland",
+    "addressCountry": "NL"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Sneek" },
+    { "@type": "AdministrativeArea", "name": "Friesland" },
+    { "@type": "Country", "name": "Nederland" }
+  ],
+  "priceRange": "€€",
+  "sameAs": [
+    "https://www.instagram.com/mvdbmedia",
+    "https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8"
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://mvdbmedia.nl/portfolio/kampr#article",
+  "headline": "Kampr.nl: een camping reserveringssysteem als maatwerk SaaS-webapplicatie",
+  "description": "Case-study Kampr.nl: een maatwerk SaaS-webapplicatie en boekingsplatform voor campings, ontworpen en gebouwd door MVDBmedia. Probleem, oplossing en resultaat.",
+  "inLanguage": "nl-NL",
+  "articleSection": "Case-study",
+  "keywords": "camping reserveringssysteem, SaaS webapplicatie laten maken, maatwerk boekingsplatform, boekingswidget camping, Kampr.nl",
+  "datePublished": "2026-10-29",
+  "dateModified": "2026-10-29",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mvdbmedia.nl/portfolio/kampr"
+  },
+  "image": [
+    "https://mvdbmedia.nl/fotos/kampr-showcase.jpg",
+    "https://mvdbmedia.nl/fotos/kampr/kampr-dashboard-overzicht.webp"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Michael van den Bosch",
+    "@id": "https://mvdbmedia.nl/#michael-van-den-bosch"
+  },
+  "publisher": {
+    "@id": "https://mvdbmedia.nl"
+  },
+  "about": {
+    "@id": "https://mvdbmedia.nl/portfolio/kampr#software"
+  },
+  "mentions": [
+    { "@type": "Thing", "name": "Camping reserveringssysteem" },
+    { "@type": "Thing", "name": "SaaS webapplicatie" },
+    { "@type": "Thing", "name": "Maatwerk boekingsplatform" }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://mvdbmedia.nl/portfolio/kampr#software",
+  "name": "Kampr.nl",
+  "url": "https://kampr.nl",
+  "description": "SaaS reserveringsplatform en boekingswidget voor campings, minicampings, camperplaatsen en glamping. Maatwerk webapplicatie waarmee gasten 24/7 online boeken en betalen en de eigenaar alles beheert vanuit één dashboard.",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Reserveringssysteem voor campings",
+  "operatingSystem": "Web",
+  "inLanguage": "nl-NL",
+  "image": "https://mvdbmedia.nl/fotos/kampr-showcase.jpg",
+  "featureList": [
+    "Online reserveringen en beschikbaarheidskalender",
+    "Boekingswidget voor de eigen website",
+    "Online betalen via Stripe, onder andere iDEAL",
+    "Eigenaren-dashboard met omzet en bezetting",
+    "Automatische bevestigingsmails"
+  ],
+  "creator": {
+    "@type": "Person",
+    "name": "Michael van den Bosch",
+    "@id": "https://mvdbmedia.nl/#michael-van-den-bosch"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://mvdbmedia.nl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://mvdbmedia.nl/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Kampr.nl",
+      "item": "https://mvdbmedia.nl/portfolio/kampr"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is Kampr.nl en welk probleem lost het op?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kampr.nl is een camping reserveringssysteem en boekingswidget voor campings, minicampings, camperplaatsen en glamping. Het vervangt boekingen via mail en telefoon, een papieren agenda en achteraf geld innen door een eigen boekingspagina, online betaling via iDEAL en een agenda die zichzelf bijhoudt. Ik heb het platform zelf ontworpen en gebouwd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik een SaaS webapplicatie of maatwerk boekingsplatform laten maken?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Ik bouw maatwerk webapplicaties en SaaS-platformen, van boekingssystemen tot klantportalen. Een afgebakende eerste versie (MVP) kost doorgaans vanaf ca. €5.000 tot €10.000, afhankelijk van de functies. Na een vrijblijvend gesprek ontvang je binnen 24 uur een voorstel op maat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe werkt de boekingswidget op een eigen website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De eigenaar plaatst één regel code op de eigen website, bijvoorbeeld in WordPress, Elementor, Wix, Squarespace of eigen HTML. Gasten zien live beschikbaarheid en prijs per nacht, kiezen hun plek en rekenen direct af via Stripe, zonder de website van de camping te verlaten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waarom een maatwerk platform in plaats van bestaande campingsoftware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bestaande campingsoftware is vaak gebouwd voor grote parken: veel functies, een hoge prijs en een lange inwerktijd. Met maatwerk bouw je precies wat jouw doelgroep nodig heeft en niets meer, met een eigen prijsmodel en een eigen merk. Zo ontstaat een eenvoudig product dat een klant in ongeveer 15 minuten live heeft."
+      }
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap"></noscript>
+  <link rel="stylesheet" href="/faq.css">
+
+  <style>
+    :root {
+      --bg-base:        #0d0d0d;
+      --bg-elevated:    #161616;
+      --bg-card:        #1a1a1a;
+      --border:         #2a2a2a;
+      --border-light:   #333333;
+      --orange:         #ff8c00;
+      --text-primary:   #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted:     #7a736e;
+      --font-display:   'Bebas Neue', sans-serif;
+      --font-body:      'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-base); color: var(--text-primary); font-family: var(--font-body); overflow-x: hidden; }
+
+    @media (max-width: 900px) {
+      #nav-links, #nav-cta { display: none !important; }
+      #menu-btn { display: flex !important; }
+    }
+    .nav-link { font-size:0.92rem;font-weight:600;color:var(--text-secondary);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s ease; }
+    .nav-link:hover { color:var(--text-primary); }
+
+    .btn-orange {
+      background:var(--orange);color:#000;font-size:0.68rem;font-weight:800;padding:14px 28px;
+      border-radius:3px;text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;
+      box-shadow:0 4px 20px rgba(255,140,0,0.28),0 2px 6px rgba(0,0,0,0.5);
+      transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
+      display:inline-block;border:none;cursor:pointer;
+    }
+    .btn-orange:hover { transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,140,0,0.4),0 4px 10px rgba(0,0,0,0.5); }
+    .btn-orange:active { transform:translateY(0); }
+    .btn-orange:focus-visible { outline:2px solid var(--orange);outline-offset:3px; }
+
+    .btn-ghost {
+      color:var(--text-primary);font-size:0.68rem;font-weight:700;padding:13px 24px;
+      border:1px solid var(--border-light);border-radius:3px;text-decoration:none;
+      letter-spacing:0.1em;text-transform:uppercase;transition:border-color 0.2s ease,color 0.2s ease;display:inline-block;
+    }
+    .btn-ghost:hover { border-color:var(--orange);color:var(--orange); }
+    .btn-ghost:active { border-color:var(--text-primary);color:var(--text-primary); }
+    .btn-ghost:focus-visible { outline:2px solid var(--orange);outline-offset:3px; }
+
+    .footer-link { font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease; }
+    .footer-link:hover { color:var(--text-primary); }
+
+    .grain { position:absolute;inset:0;width:100%;height:100%;opacity:0.045;pointer-events:none; }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(4,4,4,0.97);
+      display: none; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s ease;
+    }
+    #lightbox.lb-open { display: flex; }
+    #lightbox.lb-visible { opacity: 1; }
+
+    #lightbox-img {
+      max-width: 88vw; max-height: 84vh; object-fit: contain; display: block;
+      border-radius: 2px; box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+      transform: scale(0.96); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    #lightbox.lb-visible #lightbox-img { transform: scale(1); }
+
+    .lb-btn {
+      position: absolute; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary);
+      cursor: pointer; border-radius: 50%; width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center; z-index: 201;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .lb-btn:hover { background: rgba(255,140,0,0.18); border-color: var(--orange); }
+    .lb-btn:active { background: rgba(255,140,0,0.3); }
+    .lb-btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    #lb-close { top: 24px; right: 24px; }
+    #lb-prev { left: 24px; top: 50%; transform: translateY(-50%); }
+    #lb-next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+    #lb-caption { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; width: calc(100% - 48px); }
+    #lb-caption-cat { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+    #lb-caption-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.04em; color: var(--text-primary); }
+    #lb-counter { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; }
+
+    /* BREADCRUMB */
+    .crumbs { background: var(--bg-base); padding: 22px 64px 0; }
+    .crumbs ol { max-width: 1280px; margin: 0 auto; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-secondary); }
+    .crumbs li + li::before { content: '/'; margin-right: 8px; color: var(--text-muted); }
+    .crumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease; }
+    .crumbs a:hover { color: var(--orange); }
+    .crumbs a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+    .crumbs [aria-current] { color: var(--text-primary); }
+
+    /* HERO */
+    .hero { position: relative; overflow: hidden; background: var(--bg-base); }
+    .hero-glow { position: absolute; right: -10%; top: 5%; width: 60%; height: 90%; background: radial-gradient(ellipse at center, rgba(255,140,0,0.10) 0%, transparent 65%); pointer-events: none; }
+    .hero-glow.l { right: auto; left: -12%; top: auto; bottom: -25%; height: 70%; background: radial-gradient(ellipse at center, rgba(255,140,0,0.06) 0%, transparent 65%); }
+    .hero-inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 64px 64px 96px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 64px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); }
+    .eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+    .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.7rem, 4.8vw, 4.9rem); line-height: 0.92; letter-spacing: 0.02em; color: var(--text-primary); margin-bottom: 26px; }
+    .hero h1 span { color: var(--orange); }
+    .hero-lead { font-size: 1.02rem; line-height: 1.75; color: var(--text-primary); font-weight: 400; max-width: 52ch; margin-bottom: 34px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .mock { position: relative; }
+    .mock::before, .mock::after { content: ''; position: absolute; width: 60px; height: 60px; z-index: 2; pointer-events: none; }
+    .mock::before { top: -16px; left: -16px; border-top: 3px solid var(--orange); border-left: 3px solid var(--orange); border-radius: 2px 0 0 0; }
+    .mock::after { bottom: -16px; right: -16px; border-bottom: 3px solid var(--orange); border-right: 3px solid var(--orange); border-radius: 0 0 2px 0; }
+    .mock-frame { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 40px 80px -30px rgba(255,140,0,0.2), 0 24px 56px rgba(0,0,0,0.65); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease; }
+    .mock-frame:hover { transform: translateY(-4px); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 48px 90px -30px rgba(255,140,0,0.3), 0 28px 60px rgba(0,0,0,0.7); }
+    .mock-frame:active { transform: translateY(-1px); }
+    .mock-frame:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+    .mock-bar { background: #111; padding: 10px 14px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border); }
+    .mock-bar i { width: 10px; height: 10px; border-radius: 50%; display: block; flex-shrink: 0; }
+    .mock-url { flex: 1; background: #1a1a1a; border-radius: 3px; height: 20px; margin-left: 8px; display: flex; align-items: center; padding: 0 10px; font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.04em; font-style: normal; }
+    .mock-frame img { width: 100%; height: auto; display: block; }
+
+    /* PROJECT FACTS */
+    .facts { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .facts dl { max-width: 1280px; margin: 0 auto; padding: 34px 64px; display: grid; grid-template-columns: 1fr 1.7fr 1.5fr 1.3fr 1fr; gap: 32px; }
+    .facts dt { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+    .facts dd { font-size: 0.9rem; line-height: 1.55; color: var(--text-primary); }
+    .facts dd a { color: var(--text-secondary); font-size: 0.78rem; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+    .facts dd a:hover { color: var(--orange); }
+    .facts dd a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    /* STORY */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
+    .block { padding-top: 104px; }
+    .block h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.4rem, 4.6vw, 4.2rem); line-height: 0.92; letter-spacing: 0.02em; color: var(--text-primary); }
+    .step-label { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 72px; align-items: start; }
+    .prose p { font-size: 0.98rem; line-height: 1.85; color: var(--text-secondary); font-weight: 300; max-width: 62ch; }
+    .prose p + p { margin-top: 18px; }
+    .prose p.lead { color: var(--text-primary); font-weight: 400; font-size: 1.08rem; }
+    .prose strong { color: var(--text-primary); font-weight: 600; }
+    .prose a { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+    .prose a:hover { color: var(--text-primary); }
+    .prose a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    .pains { margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; list-style: none; }
+    .pains li { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 26px 22px 28px; position: relative; box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 18px 40px -22px rgba(0,0,0,0.8); }
+    .pains li::before { content: attr(data-n); display: block; font-family: var(--font-display); font-size: 2rem; line-height: 1; letter-spacing: 0.04em; color: var(--orange); margin-bottom: 14px; }
+    .pains h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.35; color: var(--text-primary); margin-bottom: 8px; }
+    .pains p { font-size: 0.84rem; line-height: 1.7; color: var(--text-secondary); font-weight: 300; }
+
+    .story-rows { margin-top: 56px; display: flex; flex-direction: column; gap: 72px; }
+    .story-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 64px; align-items: center; }
+    .story-row.rev { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+    .story-row.rev .story-text { order: 2; }
+    .story-text h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 0.98; letter-spacing: 0.03em; color: var(--text-primary); margin-bottom: 16px; }
+    .story-text h3::before { content: attr(data-n); display: block; font-size: 0.62rem; font-family: var(--font-body); font-weight: 700; letter-spacing: 0.22em; color: var(--orange); margin-bottom: 12px; }
+    .story-fig { position: relative; }
+    .story-fig img { width: 100%; height: auto; display: block; border-radius: 3px; border: 1px solid var(--border); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 28px 60px -24px rgba(255,140,0,0.16), 0 14px 36px rgba(0,0,0,0.6); }
+    .story-fig figcaption { margin-top: 12px; font-size: 0.72rem; line-height: 1.5; color: var(--text-muted); letter-spacing: 0.02em; }
+
+    .stats { margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; list-style: none; }
+    .stats li { background: var(--bg-elevated); padding: 30px 24px; }
+    .stats strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 3.4vw, 3.2rem); line-height: 1; letter-spacing: 0.03em; color: var(--orange); margin-bottom: 8px; }
+    .stats span { font-size: 0.8rem; line-height: 1.55; color: var(--text-secondary); font-weight: 300; }
+
+    /* GALLERY */
+    .gal-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+    .gal-head p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; max-width: 46ch; line-height: 1.7; }
+    .gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .gal-item { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; overflow: hidden; font: inherit; color: inherit; border-radius: 3px; }
+    .gal-item:first-child { grid-column: 1 / -1; }
+    .gal-item img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+    .gal-item::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .gal-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 16px; text-align: left; font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--text-primary); background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+    .gal-item:hover img { transform: scale(1.04); filter: brightness(0.82); }
+    .gal-item:hover::after, .gal-item:focus-visible::after { transform: scaleX(1); }
+    .gal-item:hover .gal-cap, .gal-item:focus-visible .gal-cap { opacity: 1; transform: translateY(0); }
+    .gal-item:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+    .gal-item:active img { transform: scale(1.02); }
+
+    @media (max-width: 1100px) {
+      .facts dl { grid-template-columns: 1fr 1fr 1fr; }
+      .pains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 40px 24px 72px; }
+      .mock::before { top: -10px; left: -10px; width: 40px; height: 40px; }
+      .mock::after { bottom: -10px; right: -10px; width: 40px; height: 40px; }
+      .intro { grid-template-columns: 1fr; gap: 28px; }
+      .story-row, .story-row.rev { grid-template-columns: 1fr; gap: 28px; }
+      .story-row.rev .story-text { order: 0; }
+      .story-rows { gap: 56px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .sp { padding-left: 24px !important; padding-right: 24px !important; }
+      .crumbs { padding: 18px 24px 0; }
+      .wrap { padding: 0 24px; }
+      .block { padding-top: 72px; }
+      .facts dl { grid-template-columns: 1fr 1fr; padding: 28px 24px; gap: 26px 20px; }
+      .facts dl > div:nth-child(2) { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .facts dl { grid-template-columns: 1fr; }
+      .pains { grid-template-columns: 1fr; }
+      .gal { grid-template-columns: 1fr; gap: 6px; }
+      .stats li { padding: 22px 16px; }
+      .hero-actions .btn-orange, .hero-actions .btn-ghost { text-align: center; flex: 1 1 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gal-item img, .gal-cap, .gal-item::after, .btn-orange, .btn-ghost, .mock-frame, #lightbox, #lightbox-img { transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+  <style>/*kb-patch*/@media(max-width:1180px){#nav-links{gap:18px!important}}@media(min-width:769px) and (max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:768px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important}}</style>
+</head>
+<body>
+  <a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
+
+  <!-- NAV -->
+  <nav id="nav" style="position:sticky;top:0;z-index:50;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.3s ease,box-shadow 0.3s ease;">
+    <a href="/" style="font-family:var(--font-display);font-size:1.75rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;">MVDB<span style="color:var(--orange);">media</span></a>
+    <div id="nav-links" style="display:flex;gap:32px;align-items:center;">
+      <a href="/webdesignopmaat" class="nav-link">Webdesign</a>
+      <a href="/portret-groepsfotografie" class="nav-link">Portret</a>
+      <a href="/vastgoedfotografie" class="nav-link">Vastgoed</a>
+      <a href="/dronevisuals" class="nav-link">Drone</a>
+      <a href="/portfolio" class="nav-link" style="color:var(--orange);">Portfolio</a>
+      <a href="/kennisbank" class="nav-link" style="color:var(--text-secondary);">Kennisbank</a>
+      <a href="/#over" class="nav-link">Over mij</a>
+      <a href="/#contact" class="nav-link">Contact</a>
+    </div>
+    <a id="nav-cta" href="/#contact" class="btn-orange" style="font-size:0.7rem;padding:8px 20px;">Offerte aanvragen</a>
+    <button id="menu-btn" onclick="toggleMenu()" aria-label="Menu openen" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;">
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
+    <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
+    <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
+    <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
+    <a href="/dronevisuals" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
+    <a href="/portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="/kennisbank" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Kennisbank</a>
+    <a href="/#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="/#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="/#contact" onclick="toggleMenu()" style="display:block;text-align:center;margin-top:8px;background:var(--orange);color:#000;font-size:0.8rem;font-weight:800;padding:12px;border-radius:3px;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">Offerte aanvragen</a>
+  </div>
+
+  <main id="main" tabindex="-1" style="outline:none;">
+
+    <nav class="crumbs" aria-label="Kruimelpad">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li aria-current="page">Kampr.nl</li>
+      </ol>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="case-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-glow l" aria-hidden="true"></div>
+      <svg class="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <filter id="g-hero"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+        <rect width="100%" height="100%" filter="url(#g-hero)"/>
+      </svg>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="eyebrow">Case-study &middot; SaaS webapplicatie</div>
+          <h1 id="case-title">Kampr.nl: een <span>camping reserveringssysteem</span> op maat</h1>
+          <p class="hero-lead">Kampr.nl is een maatwerk boekingsplatform en boekingswidget voor campings, minicampings, camperplaatsen en glamping. Ik ontwierp en bouwde het volledig zelf: van dashboard en online betalingen tot de widget die je met één regel code op je eigen website plaatst.</p>
+          <div class="hero-actions">
+            <a href="https://kampr.nl" target="_blank" rel="noopener" class="btn-orange">Bekijk de live site &#8599;</a>
+            <a href="#galerij" class="btn-ghost">Bekijk de screenshots</a>
+          </div>
+        </div>
+        <div class="mock">
+          <a class="mock-frame" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk Kampr.nl (opent in nieuw tabblad)">
+            <div class="mock-bar" aria-hidden="true">
+              <i style="background:#ff5f56"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>
+              <em class="mock-url">kampr.nl</em>
+            </div>
+            <picture>
+              <source type="image/webp" srcset="/fotos/kampr-showcase-800.webp 800w, /fotos/kampr-showcase.webp 1440w" sizes="(max-width:900px) 100vw, 640px">
+              <img src="/fotos/kampr-showcase.jpg" width="1440" height="900" alt="Homepage van Kampr.nl, het camping reserveringssysteem en de boekingswidget gebouwd door MVDBmedia" fetchpriority="high" decoding="async">
+            </picture>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTGEGEVENS -->
+    <section class="facts" aria-label="Projectgegevens">
+      <dl>
+        <div><dt>Klant</dt><dd>Kampr.nl</dd></div>
+        <div><dt>Type</dt><dd>Maatwerk webapplicatie / SaaS reserveringssysteem</dd></div>
+        <div><dt>Technologie</dt><dd>Modern web stack, responsive widget &amp; betalingen via Stripe</dd></div>
+        <div><dt>Mijn rol</dt><dd>Ontwerp, ontwikkeling &amp; beheer<br><a href="/webapplicatie-saas-laten-maken">Webapplicatie laten maken</a></dd></div>
+        <div><dt>Status</dt><dd>Live op <a href="https://kampr.nl" target="_blank" rel="noopener">kampr.nl</a></dd></div>
+      </dl>
+    </section>
+
+    <!-- HET PROBLEEM -->
+    <section class="block wrap" id="probleem" aria-labelledby="probleem-title">
+      <div class="intro">
+        <div>
+          <span class="step-label">01 &middot; Het probleem</span>
+          <h2 id="probleem-title">Campingsoftware die te duur en te ingewikkeld is</h2>
+        </div>
+        <div class="prose">
+          <p class="lead">Wie een kleine camping, camperplaats of glamping runt, wil gasten laten boeken zonder er avonden aan kwijt te zijn. Toch regelen veel eigenaren dat nog steeds met losse berichten, een papieren agenda en handmatige betalingen.</p>
+          <p>De bestaande reserveringssoftware is vaak gebouwd voor grote parken: veel functies, een hoge prijs en een lange inwerktijd. Voor een minicamping of boerencamping is dat overkill. De vraag was daarom helder: kan het eenvoudiger, goedkoper en toch professioneel?</p>
+        </div>
+      </div>
+      <ul class="pains" aria-label="Knelpunten van campingeigenaren">
+        <li data-n="A">
+          <h3>Boekingen via mail &amp; telefoon</h3>
+          <p>Losse berichtjes op vijf plekken, en altijd de angst er één te missen.</p>
+        </li>
+        <li data-n="B">
+          <h3>Een agenda op papier</h3>
+          <p>Dubbele boekingen, doorgestreepte data en zoeken naar wie wanneer komt.</p>
+        </li>
+        <li data-n="C">
+          <h3>Achteraf geld innen</h3>
+          <p>Aanmaningen sturen, no-shows en geld dat te laat of nooit binnenkomt.</p>
+        </li>
+        <li data-n="D">
+          <h3>Zware, dure software</h3>
+          <p>Functies die je niet gebruikt, een maandbedrag dat past bij een groot park en een lange leercurve.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- DE OPLOSSING -->
+    <section class="block wrap" id="oplossing" aria-labelledby="oplossing-title">
+      <span class="step-label">02 &middot; De oplossing</span>
+      <h2 id="oplossing-title">Eén eenvoudig boekingsplatform met widget</h2>
+      <div class="story-rows">
+
+        <div class="story-row">
+          <div class="story-text prose">
+            <h3 data-n="A">Eén dashboard in plaats van vijf plekken</h3>
+            <p>Alle reserveringen komen samen in een eigenaren-dashboard met een slimme agenda: beschikbaarheid per plek, blokkades en, bij hogere abonnementen, seizoensprijzen. Omzet, bezetting en piekweken zie je in heldere cijfers, zonder spreadsheets.</p>
+            <p>Bevestiging, herinnering en bedankje gaan automatisch naar de gast. Het dashboard werkt op elk scherm, dus ook vanaf de bank of bij de receptie.</p>
+          </div>
+          <figure class="story-fig">
+            <img src="/fotos/kampr/kampr-dashboard-overzicht-800.webp" srcset="/fotos/kampr/kampr-dashboard-overzicht-800.webp 800w, /fotos/kampr/kampr-dashboard-overzicht.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="500" alt="Eigenaren-dashboard van Kampr.nl met omzet, boekingen en bezetting in één overzicht" loading="lazy" decoding="async">
+            <figcaption>Het eigenaren-dashboard: omzet, boekingen en bezetting in één blik.</figcaption>
+          </figure>
+        </div>
+
+        <div class="story-row rev">
+          <div class="story-text prose">
+            <h3 data-n="B">Een boekingswidget op je eigen website</h3>
+            <p>Het hart van het platform is de widget. De eigenaar plaatst één regel code in WordPress, Elementor, Wix, Squarespace of eigen HTML. Gasten zien live beschikbaarheid en de prijs per nacht en boeken zonder de website van de camping te verlaten.</p>
+            <p>De widget bestaat in drie niveaus, Basis (compact), Plus (breed) en Pro (zoek &amp; boek), zodat een kleine minicamping en een groot park allebei een passende ervaring krijgen.</p>
+          </div>
+          <figure class="story-fig">
+            <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" srcset="/fotos/kampr/kampr-boekingswidget-basis-800.webp 800w, /fotos/kampr/kampr-boekingswidget-basis.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="500" alt="De compacte Kampr-boekingswidget met accommodatie, aankomst- en vertrekdatum en totaalprijs" loading="lazy" decoding="async">
+            <figcaption>De compacte widget (Basis) met live prijs en directe reservering.</figcaption>
+          </figure>
+        </div>
+
+        <div class="story-row">
+          <div class="story-text prose">
+            <h3 data-n="C">Direct betaald en eenvoudig geprijsd</h3>
+            <p>Gasten rekenen online af via Stripe, onder andere met iDEAL. Het geld komt rechtstreeks op de rekening van de eigenaar, Kampr houdt zelf niets in op boekingen.</p>
+            <p>Ook het prijsmodel is bewust simpel: een vast maandbedrag vanaf €24,99 (excl. btw), 14 dagen gratis proberen en maandelijks opzegbaar. Geen setup-kosten.</p>
+          </div>
+          <figure class="story-fig">
+            <img src="/fotos/kampr/kampr-prijzen-800.webp" srcset="/fotos/kampr/kampr-prijzen-800.webp 800w, /fotos/kampr/kampr-prijzen.webp 1440w" sizes="(max-width:900px) 100vw, 640px" width="800" height="500" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
+            <figcaption>Drie abonnementen met een vast maandbedrag, zonder setup-kosten.</figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HET RESULTAAT -->
+    <section class="block wrap" id="resultaat" aria-labelledby="resultaat-title">
+      <div class="intro">
+        <div>
+          <span class="step-label">03 &middot; Het resultaat</span>
+          <h2 id="resultaat-title">Een live SaaS-product dat een camping in 15 minuten start</h2>
+        </div>
+        <div class="prose">
+          <p class="lead">Kampr.nl draait als zelfstandig SaaS-platform: een eigenaar meldt zich aan, koppelt Stripe, voert plekken en prijzen in en plaatst de widget. Daarna kan de eerste reservering binnenkomen.</p>
+          <p>Dat is precies wat een goed <strong>maatwerk boekingsplatform</strong> doet: één duidelijk probleem oplossen voor één doelgroep, met een product dat snel werkt, mobiel-first is en geen technische kennis vraagt van de gebruiker.</p>
+          <p>Wil je zelf een <a href="/webapplicatie-saas-laten-maken">SaaS webapplicatie laten maken</a> of heb je een boekingssysteem nodig dat past bij jouw werkproces? Lees hoe zo&#39;n traject verloopt in mijn gids, of bekijk mijn aanpak voor <a href="/webdesignopmaat">webdesign op maat</a> en waarom <a href="/maatwerk-website-vs-wordpress">maatwerk vaak beter werkt dan WordPress</a>.</p>
+        </div>
+      </div>
+      <ul class="stats" aria-label="Kampr.nl in cijfers">
+        <li><strong>15 min</strong><span>van aanmelding tot eerste reservering</span></li>
+        <li><strong>24/7</strong><span>online boeken en betalen door gasten</span></li>
+        <li><strong>3</strong><span>widgetniveaus: Basis, Plus en Pro</span></li>
+        <li><strong>&euro;24,99</strong><span>per maand vanaf, 14 dagen gratis proberen</span></li>
+      </ul>
+    </section>
+
+    <!-- GALERIJ -->
+    <section class="block wrap" id="galerij" aria-labelledby="galerij-title">
+      <div class="gal-head">
+        <h2 id="galerij-title">Screenshots van het platform</h2>
+        <p>Klik op een afbeelding om te vergroten. Met de pijltjestoetsen of door te vegen bladeren je door de serie.</p>
+      </div>
+      <div class="gal">
+        <button type="button" class="gal-item" data-full="/fotos/kampr-showcase.webp" data-title="Homepage Kampr.nl" data-alt="Homepage van Kampr.nl, het camping reserveringssysteem en de boekingswidget" aria-label="Vergroot afbeelding 1 van 7: Homepage Kampr.nl" aria-haspopup="dialog">
+          <img src="/fotos/kampr-showcase-800.webp" width="800" height="500" alt="Homepage van Kampr.nl, het camping reserveringssysteem en de boekingswidget" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Homepage Kampr.nl</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-dashboard-overzicht.webp" data-title="Eigenaren-dashboard" data-alt="Eigenaren-dashboard van Kampr.nl met omzet, boekingen en bezetting" aria-label="Vergroot afbeelding 2 van 7: Eigenaren-dashboard" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-dashboard-overzicht-800.webp" width="800" height="500" alt="Eigenaren-dashboard van Kampr.nl met omzet, boekingen en bezetting" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Eigenaren-dashboard</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-boekingswidget-basis.webp" data-title="Boekingswidget Basis" data-alt="De compacte Kampr-boekingswidget met accommodatie, data en totaalprijs" aria-label="Vergroot afbeelding 3 van 7: Boekingswidget Basis" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-boekingswidget-basis-800.webp" width="800" height="500" alt="De compacte Kampr-boekingswidget met accommodatie, data en totaalprijs" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Boekingswidget Basis</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-boekingswidget-pro.webp" data-title="Boekingswidget Pro" data-alt="De Pro-variant van de Kampr-boekingswidget om te zoeken en te boeken" aria-label="Vergroot afbeelding 4 van 7: Boekingswidget Pro" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-boekingswidget-pro-800.webp" width="800" height="500" alt="De Pro-variant van de Kampr-boekingswidget om te zoeken en te boeken" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Boekingswidget Pro</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-functies.webp" data-title="Functies" data-alt="Functieoverzicht van Kampr.nl: slimme agenda, direct betaald, boekingswidget, inzicht en automatische mails" aria-label="Vergroot afbeelding 5 van 7: Functies" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-functies-800.webp" width="800" height="500" alt="Functieoverzicht van Kampr.nl: slimme agenda, direct betaald, boekingswidget, inzicht en automatische mails" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Functies</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-in-vier-stappen.webp" data-title="In vier stappen live" data-alt="Kampr.nl legt uit hoe een camping in vier stappen live gaat, van abonnement tot widget" aria-label="Vergroot afbeelding 6 van 7: In vier stappen live" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-in-vier-stappen-800.webp" width="800" height="500" alt="Kampr.nl legt uit hoe een camping in vier stappen live gaat, van abonnement tot widget" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">In vier stappen live</span>
+        </button>
+        <button type="button" class="gal-item" data-full="/fotos/kampr/kampr-prijzen.webp" data-title="Abonnementen en prijzen" data-alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" aria-label="Vergroot afbeelding 7 van 7: Abonnementen en prijzen" aria-haspopup="dialog">
+          <img src="/fotos/kampr/kampr-prijzen-800.webp" width="800" height="500" alt="Prijsoverzicht van Kampr.nl met de abonnementen Basis, Plus en Pro" loading="lazy" decoding="async">
+          <span class="gal-cap" aria-hidden="true">Abonnementen en prijzen</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FAQ -->
+  <section class="mv-faq" id="mv-faq" aria-labelledby="mv-faq-title" style="margin-top:104px;">
+    <div class="mv-faq-glow" aria-hidden="true"></div>
+    <div class="mv-faq-inner">
+      <div class="mv-faq-label">Veelgestelde vragen</div>
+      <h2 class="mv-faq-title" id="mv-faq-title">VRAGEN OVER<br><span>DEZE CASE</span></h2>
+      <div>
+        <details class="mv-faq-item">
+          <summary class="mv-faq-summary"><span class="mv-faq-q">Wat is Kampr.nl en welk probleem lost het op?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
+          <p class="mv-faq-a">Kampr.nl is een camping reserveringssysteem en boekingswidget voor campings, minicampings, camperplaatsen en glamping. Het vervangt boekingen via mail en telefoon, een papieren agenda en achteraf geld innen door een eigen boekingspagina, online betaling via iDEAL en een agenda die zichzelf bijhoudt. Ik heb het platform zelf ontworpen en gebouwd.</p>
+        </details>
+        <details class="mv-faq-item">
+          <summary class="mv-faq-summary"><span class="mv-faq-q">Kan ik een SaaS webapplicatie of maatwerk boekingsplatform laten maken?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
+          <p class="mv-faq-a">Ja. Ik bouw maatwerk webapplicaties en SaaS-platformen, van boekingssystemen tot klantportalen. Een afgebakende eerste versie (MVP) kost doorgaans vanaf ca. €5.000 tot €10.000, afhankelijk van de functies. Na een vrijblijvend gesprek ontvang je binnen 24 uur een voorstel op maat.</p>
+        </details>
+        <details class="mv-faq-item">
+          <summary class="mv-faq-summary"><span class="mv-faq-q">Hoe werkt de boekingswidget op een eigen website?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
+          <p class="mv-faq-a">De eigenaar plaatst één regel code op de eigen website, bijvoorbeeld in WordPress, Elementor, Wix, Squarespace of eigen HTML. Gasten zien live beschikbaarheid en prijs per nacht, kiezen hun plek en rekenen direct af via Stripe, zonder de website van de camping te verlaten.</p>
+        </details>
+        <details class="mv-faq-item">
+          <summary class="mv-faq-summary"><span class="mv-faq-q">Waarom een maatwerk platform in plaats van bestaande campingsoftware?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
+          <p class="mv-faq-a">Bestaande campingsoftware is vaak gebouwd voor grote parken: veel functies, een hoge prijs en een lange inwerktijd. Met maatwerk bouw je precies wat jouw doelgroep nodig heeft en niets meer, met een eigen prijsmodel en een eigen merk. Zo ontstaat een eenvoudig product dat een klant in ongeveer 15 minuten live heeft.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--bg-elevated);padding:100px 64px;text-align:center;position:relative;overflow:hidden;" class="sp">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;height:140%;background:radial-gradient(ellipse,rgba(255,140,0,0.09) 0%,transparent 60%);pointer-events:none;"></div>
+    <svg class="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <filter id="g-cta"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <rect width="100%" height="100%" filter="url(#g-cta)"/>
+    </svg>
+    <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;justify-content:center;">
+        <span style="display:block;width:20px;height:1px;background:var(--orange);"></span>Jouw project
+      </div>
+      <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(3rem,6vw,6rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin-bottom:24px;">
+        JOUW EIGEN<br><span style="color:var(--orange);">WEBAPPLICATIE?</span>
+      </h2>
+      <p style="font-size:0.95rem;line-height:1.75;color:var(--text-secondary);margin-bottom:44px;font-weight:300;">
+        Laat een maatwerk webapplicatie, SaaS-platform of boekingssysteem bouwen. Vertel me over je idee en ik stuur je binnen 24 uur een persoonlijk voorstel.
+      </p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/#contact" class="btn-orange">Offerte aanvragen</a>
+        <a href="/webapplicatie-saas-laten-maken" class="btn-ghost">Webapplicatie laten maken</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
+        <div>
+          <a href="/" style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.06em;color:var(--text-primary);text-decoration:none;line-height:1;display:inline-block;margin-bottom:14px;">MVDB<span style="color:var(--orange);">media</span></a>
+          <p style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);max-width:240px;margin:0;">Professionele fotografie en videoproductie in Nederland. Van portret tot drone.</p>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin:24px 0 14px;">Algemeen</div>
+          <address style="font-size:0.78rem;line-height:1.72;color:var(--text-muted);font-style:normal;margin:0;">
+            Dagpauwoog 15<br>
+            8607 HN Sneek<br><br>
+            KVK: 42084901<br>
+            BTW: NL005483105B05
+          </address>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="/webdesignopmaat" class="footer-link">Webdesign op maat</a>
+            <a href="/portret-groepsfotografie" class="footer-link">Portret &amp; Groepsfotografie</a>
+            <a href="/vastgoedfotografie" class="footer-link">Vastgoedfotografie</a>
+            <a href="/dronevisuals" class="footer-link">Drone Visuals</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="/portfolio" class="footer-link" style="color:var(--orange);">Portfolio</a>
+            <a href="/#over" class="footer-link">Over mij</a>
+            <a href="/#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Webdesign Gidsen</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="/webdesign-kosten-friesland" class="footer-link">Wat kost een website?</a>
+            <a href="/maatwerk-website-vs-wordpress" class="footer-link">Maatwerk vs WordPress</a>
+            <a href="/snelle-website-laten-maken" class="footer-link">Snelle website laten maken</a>
+            <a href="/website-laten-maken-sneek" class="footer-link">Webdesigner in Sneek</a>
+            <a href="/kennisbank" class="footer-link all">Bekijk alle gidsen →</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+            <a href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer" class="footer-link"><span style="color:var(--orange);">★</span> Laat een review achter</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">© 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+        <a href="/privacybeleid" style="font-size:0.7rem;color:var(--orange);text-decoration:none;">Privacybeleid</a>
+        <a href="/algemene-voorwaarden" style="font-size:0.7rem;color:var(--orange);text-decoration:none;">Algemene voorwaarden</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Afbeelding weergave">
+    <button class="lb-btn" id="lb-close" onclick="closeLightbox()" aria-label="Sluiten">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lb-btn" id="lb-prev" onclick="lbPrev()" aria-label="Vorige afbeelding">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img loading="lazy" decoding="async" id="lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="">
+    <button class="lb-btn" id="lb-next" onclick="lbNext()" aria-label="Volgende afbeelding">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div id="lb-counter"></div>
+    <div id="lb-caption">
+      <div id="lb-caption-cat"></div>
+      <div id="lb-caption-title"></div>
+    </div>
+  </div>
+
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/31624819278" target="_blank" rel="noopener" aria-label="WhatsApp contact" style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+
+  <script>
+    // NAV
+    function toggleMenu() {
+      var m = document.getElementById('mobile-menu');
+      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+    }
+    function handleResize() {
+      var w = window.innerWidth;
+      var nl = document.getElementById('nav-links');
+      var nc = document.getElementById('nav-cta');
+      var mb = document.getElementById('menu-btn');
+      if (nl) nl.style.display = w <= 900 ? 'none' : 'flex';
+      if (nc) nc.style.display = w <= 900 ? 'none' : 'inline-block';
+      if (mb) mb.style.display = w <= 900 ? 'flex' : 'none';
+      if (w > 900) document.getElementById('mobile-menu').style.display = 'none';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    (function() {
+      var nav = document.getElementById('nav');
+      var t = false;
+      window.addEventListener('scroll', function() {
+        if (t) return; t = true;
+        requestAnimationFrame(function() {
+          if (window.scrollY > 20) {
+            nav.style.background = 'rgba(13,13,13,0.96)';
+            nav.style.backdropFilter = 'blur(12px)';
+            nav.style.boxShadow = '0 1px 0 rgba(255,255,255,0.04),0 4px 24px rgba(0,0,0,0.5)';
+          } else {
+            nav.style.background = 'var(--bg-elevated)';
+            nav.style.backdropFilter = 'none';
+            nav.style.boxShadow = 'none';
+          }
+          t = false;
+        });
+      });
+    })();
+
+    // GALERIJ + LIGHTBOX
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
+      var lb = document.getElementById('lightbox');
+      var imgEl = document.getElementById('lightbox-img');
+      var idx = 0, opener = null, touchX = null;
+
+      function show(i) {
+        idx = (i + items.length) % items.length;
+        var it = items[idx];
+        imgEl.src = it.getAttribute('data-full');
+        imgEl.alt = it.getAttribute('data-alt');
+        document.getElementById('lb-caption-cat').textContent = 'Kampr.nl';
+        document.getElementById('lb-caption-title').textContent = it.getAttribute('data-title');
+        document.getElementById('lb-counter').textContent = (idx + 1) + ' / ' + items.length;
+      }
+      function open(i, el) {
+        opener = el;
+        show(i);
+        lb.classList.add('lb-open');
+        requestAnimationFrame(function () { requestAnimationFrame(function () { lb.classList.add('lb-visible'); }); });
+        document.body.style.overflow = 'hidden';
+        document.getElementById('lb-close').focus();
+      }
+      window.closeLightbox = function () {
+        lb.classList.remove('lb-visible');
+        setTimeout(function () {
+          lb.classList.remove('lb-open');
+          document.body.style.overflow = '';
+          if (opener) opener.focus();
+        }, 250);
+      };
+      window.lbPrev = function () { show(idx - 1); };
+      window.lbNext = function () { show(idx + 1); };
+
+      items.forEach(function (el, i) { el.addEventListener('click', function () { open(i, el); }); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) window.closeLightbox(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('lb-open')) return;
+        if (e.key === 'Escape') window.closeLightbox();
+        if (e.key === 'ArrowLeft') window.lbPrev();
+        if (e.key === 'ArrowRight') window.lbNext();
+        if (e.key === 'Tab') {
+          var f = [document.getElementById('lb-close'), document.getElementById('lb-prev'), document.getElementById('lb-next')];
+          var i = f.indexOf(document.activeElement);
+          e.preventDefault();
+          f[(i + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus();
+        }
+      });
+      lb.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        if (Math.abs(dx) > 50) { dx < 0 ? window.lbNext() : window.lbPrev(); }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

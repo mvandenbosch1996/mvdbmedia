@@ -300,6 +300,11 @@
       padding: 3px 9px; border-radius: 20px;
     }
 
+    .proj-badge--link { z-index: 3; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+    .proj-badge--link:hover { background: var(--orange); color: #000; border-color: var(--orange); }
+    .proj-badge--link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+    .proj-badge--link:active { background: rgba(255,140,0,0.8); }
+
     /* Overlay — always visible */
     .proj-overlay {
       position: absolute; inset: 0; z-index: 2;
@@ -708,19 +713,20 @@
           </div>
         </div>
 
-        <!-- Webdesign — kampr.nl, linkt naar live site -->
-        <a class="proj-card proj-card--text" data-cat="web" href="https://kampr.nl" target="_blank" rel="noopener" style="display:block;text-decoration:none;">
+        <!-- Webdesign — kampr.nl, case-study + live site -->
+        <div class="proj-card proj-card--text" data-cat="web" data-has-link onclick="location.href='/portfolio/kampr'">
           <picture>
             <source type="image/webp" srcset="fotos/kampr-showcase-800.webp 800w, fotos/kampr-showcase.webp 1440w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 33vw">
             <img src="fotos/kampr-showcase.jpg" width="1440" height="900" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
           </picture>
-          <div class="proj-badge">Live site ↗</div>
+          <a class="proj-badge proj-badge--link" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk de live site Kampr.nl (opent in nieuw tabblad)" onclick="event.stopPropagation()">Live site ↗</a>
           <div class="proj-overlay">
             <div class="proj-tag">Webdesign op Maat</div>
             <div class="proj-title">Kampr.nl</div>
             <p class="proj-desc">SaaS reserveringsplatform &amp; boekingswidget voor campingeigenaren. Maatwerk webapplicatie waarmee kampeerders direct via de website van de camping kunnen reserveren.</p>
+            <a class="proj-case-link" href="/portfolio/kampr" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
           </div>
-        </a>
+        </div>
 
 
       </div>
