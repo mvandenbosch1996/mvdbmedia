@@ -8,7 +8,8 @@ const get = (p, opts = {}) => fetch(bust(p), { redirect: 'manual', ...opts });
 const check = (cond, msg) => { console.log(`${cond ? 'ok' : 'xx'}  ${msg}`); if (!cond) failures.push(msg); };
 
 // Security headers + CSP op de homepage
-const home = await get('/');
+// Accept: text/html is nodig: Cloudflare voegt de analytics-beacon alleen toe bij HTML-verzoeken van een browser.
+const home = await get('/', { headers: { Accept: 'text/html,application/xhtml+xml' } });
 check(home.status === 200, `/ geeft 200 (was ${home.status})`);
 const csp = home.headers.get('content-security-policy') ?? '';
 check(csp && !csp.includes(','), 'precies één CSP-header op /');
