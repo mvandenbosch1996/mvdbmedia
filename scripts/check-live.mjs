@@ -20,7 +20,12 @@ for (const [h, re] of [['strict-transport-security', /max-age=\d{7,}/], ['x-cont
 
 // Scripts staan extern en laden
 const html = await home.text();
-check(!/<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>/i.test(html), 'homepage bevat geen inline <script>');
+// Cloudflare Bot Fight Mode (JavaScript detections) injecteert aan de edge een inline loader (__CF$cv$params).
+// Onze CSP blokkeert die: uitzetten via dashboard > Security > Settings > Bot traffic > JavaScript detections.
+const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]);
+const own = inline.filter((s) => !s.includes('__CF$cv$params'));
+check(own.length === 0, 'homepage bevat geen eigen inline <script>');
+if (inline.length > own.length) console.log('!!  Cloudflare JS-detections inline script aanwezig (geblokkeerd door CSP, console-error). Zet "JavaScript detections" uit in het dashboard.');
 const ui = await get('/js/ui.js');
 check(ui.status === 200 && /javascript/.test(ui.headers.get('content-type') ?? ''), '/js/ui.js 200 + javascript content-type');
 
