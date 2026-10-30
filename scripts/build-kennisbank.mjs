@@ -30,7 +30,6 @@ const NAV_LINKS = [
   ['/vastgoedfotografie', 'Vastgoed'],
   ['/dronevisuals', 'Drone'],
   ['/portfolio', 'Portfolio'],
-  ['/kennisbank', 'Kennisbank'],
   ['/#over', 'Over mij'],
   ['/#contact', 'Contact'],
 ];
@@ -40,13 +39,13 @@ const navHtml = () => `
   <nav id="nav" class="nav-pad" aria-label="Hoofdnavigatie">
     <a href="/" class="nav-logo" aria-label="MVDBmedia, naar de homepage">MVDB<span>media</span></a>
     <div id="nav-links">
-${NAV_LINKS.map(([h, t]) => `      <a href="${h}" class="nav-link"${h === '/kennisbank' ? ' aria-current="page"' : ''}>${t}</a>`).join('\n')}
+${NAV_LINKS.map(([h, t]) => `      <a href="${h}" class="nav-link">${t}</a>`).join('\n')}
     </div>
     <a id="nav-cta" href="/#contact" class="btn-orange">Offerte aanvragen</a>
     <button id="menu-btn" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </nav>
   <div id="mobile-menu">
-${NAV_LINKS.map(([h, t]) => `    <a href="${h}"${h === '/kennisbank' ? ' aria-current="page"' : ''}>${t}</a>`).join('\n')}
+${NAV_LINKS.map(([h, t]) => `    <a href="${h}">${t}</a>`).join('\n')}
     <a href="/#contact" class="mobile-cta">Offerte aanvragen</a>
   </div>`;
 

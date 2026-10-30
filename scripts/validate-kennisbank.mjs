@@ -86,7 +86,6 @@ for (const page of ALL) {
   for (const l of ['/webdesign-kosten-friesland', '/maatwerk-website-vs-wordpress', '/snelle-website-laten-maken', '/website-laten-maken-sneek', '/kennisbank']) {
     if (!html.includes(`href="${l}"`)) problems.push(`footer/nav-link ${l} ontbreekt`);
   }
-  if (!/>Kennisbank<\/a>/.test(html)) problems.push('nav "Kennisbank" ontbreekt');
 
   console.log(`${problems.length ? '✗' : '✓'} ${page}.html (${blocks.length} JSON-LD, ${hrefs.length} links)`);
   problems.forEach(fail);
