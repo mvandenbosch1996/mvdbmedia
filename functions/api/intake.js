@@ -7,11 +7,19 @@
 //   INTAKE_TO       (optioneel, standaard info@mvdbmedia.nl)
 //   INTAKE_FROM     (optioneel, standaard intake@mvdbmedia.nl — domein moet
 //                    geverifieerd zijn in Resend)
+//   TURNSTILE_SITE_KEY + TURNSTILE_SECRET_KEY  (optioneel; beide zetten
+//                    activeert Cloudflare Turnstile op dit formulier)
+
+import { isCrossSite, createLimiter, turnstileEnabled, verifyTurnstile, clientIp } from "../_lib/abuse.js";
+
+// Per IP (in-memory per isolate): extra laag naast de Cloudflare rate-limit-regel.
+const verzoeken = createLimiter({ max: 8, windowMs: 60 * 60 * 1000 });
 
 const MAX_ATTACH_BYTES = 15 * 1024 * 1024; // 15 MB totaal
 const MAX_ATTACH_COUNT = 5; // max aantal logobestanden
 // Toegestane logobestanden: afbeeldingen + vector/ontwerpformaten
 const ALLOWED_EXT = /\.(png|jpe?g|webp|gif|svg|pdf|ai|eps)$/i;
+const MAX_BODY_BYTES = MAX_ATTACH_BYTES + 1024 * 1024; // bijlagen + formuliertekst
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -19,6 +27,26 @@ export async function onRequestPost(context) {
   if (!env.RESEND_API_KEY) {
     return json({ error: "Server niet geconfigureerd (RESEND_API_KEY ontbreekt)." }, 500);
   }
+
+  if (isCrossSite(request)) {
+    return json({ error: "Verzoek geweigerd." }, 403);
+  }
+
+  const declared = Number(request.headers.get("Content-Length") || 0);
+  if (declared > MAX_BODY_BYTES) {
+    return json({ error: "Het formulier is te groot." }, 413);
+  }
+
+  const ip = clientIp(request);
+  const limiet = verzoeken.check(ip);
+  if (!limiet.ok) {
+    return json(
+      { error: "Te veel verzoeken — probeer het later opnieuw." },
+      429,
+      { "Retry-After": String(limiet.retryAfter) }
+    );
+  }
+  verzoeken.hit(ip);
 
   let form;
   try {
@@ -30,6 +58,19 @@ export async function onRequestPost(context) {
   // Honeypot: onzichtbaar veld dat mensen leeg laten, bots vullen het in.
   if (form.get("website_hp")) {
     return json({ ok: true }); // spam stilletjes accepteren
+  }
+
+  // Turnstile (alleen als geconfigureerd)
+  if (turnstileEnabled(env)) {
+    const ts = await verifyTurnstile(env, String(form.get("cf-turnstile-response") || ""), ip);
+    if (!ts.ok) {
+      return json(
+        { error: ts.reason === "unavailable"
+            ? "Beveiligingscontrole tijdelijk niet beschikbaar — probeer het zo opnieuw."
+            : "Beveiligingscontrole mislukt — ververs de pagina en probeer opnieuw." },
+        ts.reason === "unavailable" ? 503 : 403
+      );
+    }
   }
 
   const summary = String(form.get("summary") || "").trim();
