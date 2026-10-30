@@ -60,7 +60,7 @@ export default {
           <a class="kb-case-shot" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk Kampr.nl (opent in nieuw tabblad)">
             <picture>
               <source type="image/webp" srcset="/fotos/kampr-showcase-800.webp 800w, /fotos/kampr-showcase.webp 1440w" sizes="(max-width:768px) 100vw, 760px">
-              <img src="/fotos/kampr-showcase.jpg" width="1440" height="900" alt="Kampr.nl, SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
+              <img src="/fotos/kampr-showcase.webp" width="1440" height="900" alt="Kampr.nl, SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
             </picture>
           </a>
           <div class="kb-case-body">

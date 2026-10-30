@@ -5,9 +5,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, DATE, PERSON, TOP4, ALL_GUIDES_LINK, GUIDES_LABEL } from './kennisbank/shared.mjs';
 import guides from './kennisbank/content/index.mjs';
+import { ogUrl, ogAlt } from './og-images.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OG_IMAGE = `${SITE}/fotos/kampr-showcase.jpg`;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const stripTags = (s) => String(s).replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -103,9 +103,7 @@ ${TOP4.map((l) => `            <a href="${l.href}" class="footer-link">${l.text}
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   </a>`;
 
-const FONTS = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap';
-
-const headHtml = ({ title, description, url, ogType, extraMeta = '', schema }) => `<!DOCTYPE html>
+const headHtml = ({ title, description, url, ogType, ogSlug, extraMeta = '', schema }) => `<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -120,13 +118,18 @@ const headHtml = ({ title, description, url, ogType, extraMeta = '', schema }) =
   <meta property="og:url" content="${url}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:image" content="${ogUrl(ogSlug)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="${esc(ogAlt(ogSlug))}">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:site_name" content="MVDBmedia">${extraMeta}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <meta name="twitter:image" content="${OG_IMAGE}">
+  <meta name="twitter:image" content="${ogUrl(ogSlug)}">
+  <meta name="twitter:image:alt" content="${esc(ogAlt(ogSlug))}">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -136,11 +139,10 @@ const headHtml = ({ title, description, url, ogType, extraMeta = '', schema }) =
 
 ${schema.map(jsonLd).join('\n')}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="${FONTS}">
-  <link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="${FONTS}"><style>.scroll-reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <noscript><style>.scroll-reveal{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/kennisbank.css">
   <link rel="stylesheet" href="/faq.css">
 </head>`;
@@ -197,7 +199,7 @@ function articlePage(g) {
         ${s.html.replace('{{CTA}}', CTA_INLINE(cta))}`).join('\n');
 
   const related = g.related.map((slug) => guides.find((x) => x.slug === slug));
-  const imageObj = { '@type': 'ImageObject', url: OG_IMAGE, width: 1440, height: 900 };
+  const imageObj = { '@type': 'ImageObject', license: `${SITE}/algemene-voorwaarden`, acquireLicensePage: `${SITE}/#contact`, url: ogUrl(g.slug), width: 1200, height: 630 };
   const webpageId = `${g.url}#webpage`;
 
   const schema = [
@@ -249,6 +251,7 @@ function articlePage(g) {
     description: g.metaDescription,
     url: g.url,
     ogType: 'article',
+    ogSlug: g.slug,
     extraMeta: `\n  <meta property="article:published_time" content="${DATE}">\n  <meta property="article:modified_time" content="${DATE}">\n  <meta property="article:author" content="Michael van den Bosch">\n  <meta property="article:section" content="${esc(g.category)}">`,
     schema,
   })}
@@ -351,7 +354,7 @@ function overviewPage() {
           description,
           inLanguage: 'nl-NL',
           breadcrumb: { '@id': `${url}#breadcrumb` },
-          primaryImageOfPage: { '@type': 'ImageObject', url: OG_IMAGE, width: 1440, height: 900 },
+          primaryImageOfPage: { '@type': 'ImageObject', license: `${SITE}/algemene-voorwaarden`, acquireLicensePage: `${SITE}/#contact`, url: ogUrl('kennisbank'), width: 1200, height: 630 },
           datePublished: DATE,
           dateModified: DATE,
           author: PERSON,
@@ -370,7 +373,7 @@ function overviewPage() {
     },
   ];
 
-  return `${headHtml({ title, description, url, ogType: 'website', schema })}
+  return `${headHtml({ title, description, url, ogType: 'website', ogSlug: 'kennisbank', schema })}
 <body>
 ${navHtml()}
 
