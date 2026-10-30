@@ -37,6 +37,23 @@ for (const p of ['/intake/', '/admin/login/']) {
   check(!/unsafe-inline/.test(/script-src([^;]*)/.exec(c)?.[1] ?? ''), `${p}: script-src zonder unsafe-inline`);
 }
 
+// Turnstile: sitekey aanwezig (beide env vars gezet) en server weigert POST zonder token.
+// Alleen met same-origin Origin, anders test je de cross-site-blokkade i.p.v. Turnstile.
+const ts = await get('/api/turnstile');
+const tsBody = await ts.json().catch(() => ({}));
+check(ts.status === 200 && /^0x[0-9A-Za-z_-]{10,}$/.test(tsBody.sitekey ?? ''), '/api/turnstile geeft een sitekey (TURNSTILE_SITE_KEY + SECRET_KEY gezet?)');
+check((ts.headers.get('cache-control') ?? '').includes('no-store'), '/api/turnstile is no-store');
+const sameSite = { Origin: BASE };
+const tsLogin = await get('/api/login', { method: 'POST', headers: { ...sameSite, 'Content-Type': 'application/json' }, body: JSON.stringify({ wachtwoord: 'check-live' }) });
+const tsIntake = await get('/api/intake', { method: 'POST', headers: sameSite, body: new FormData() });
+for (const [name, r] of [['/api/login', tsLogin], ['/api/intake', tsIntake]]) {
+  if (r.status === 429) console.log(`!!  ${name} gaf 429 (rate limit): Turnstile-weigering niet gecontroleerd, probeer later opnieuw`);
+  else check(r.status === 403, `${name} zonder Turnstile-token → 403 (was ${r.status})`);
+}
+
+// Cookieloze analytics: informatief, geen fout (aan/uit staat in het Cloudflare-dashboard)
+console.log(/static\.cloudflareinsights\.com\/beacon/.test(html) ? 'ok  Web Analytics beacon aanwezig in homepage' : '!!  Web Analytics beacon niet in homepage (dashboard: Web Analytics aanzetten); privacybeleid noemt het wel');
+
 // Afgeschermde bestanden en 404's
 for (const p of ['/package.json', '/CLAUDE.md', '/audit.mjs', '/scripts/check.mjs', '/docs/x', '/_headers', '/zeker-niet-bestaand-' + Date.now()]) {
   const r = await get(p);
