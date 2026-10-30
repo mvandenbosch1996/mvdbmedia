@@ -3,7 +3,7 @@ export default {
   title: 'Lokale webdesigner in Sneek & Friesland: persoonlijke aanpak',
   crumb: 'Webdesigner Sneek',
   h1: 'LOKALE <em>WEBDESIGNER</em> IN SNEEK &amp; FRIESLAND',
-  metaTitle: 'Website laten maken in Sneek & Friesland: lokale webdesigner | MVDBmedia',
+  metaTitle: 'Website laten maken in Sneek & Friesland | MVDBmedia',
   metaDescription: 'Website laten maken in Sneek of elders in Friesland? Persoonlijk contact, maatwerk en lokale kennis van webdesigner Michael van den Bosch. Reactie binnen 24 uur.',
   category: 'Lokaal & Persoonlijk',
   tags: ['Sneek', 'Friesland', 'Lokaal'],

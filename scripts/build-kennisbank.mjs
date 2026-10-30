@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE, DATE, PERSON, TOP4, ALL_GUIDES_LINK, GUIDES_LABEL } from './kennisbank/shared.mjs';
 import guides from './kennisbank/content/index.mjs';
 import { ogUrl, ogAlt } from './og-images.mjs';
+import { GUIDE_SERVICES, serviceCards, relatedSection } from './kennisbank/related.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -144,6 +145,7 @@ ${schema.map(jsonLd).join('\n')}
   <link rel="stylesheet" href="/fonts/fonts.css">
   <noscript><style>.scroll-reveal{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/kennisbank.css">
+  <link rel="stylesheet" href="/related.css">
   <link rel="stylesheet" href="/faq.css">
 </head>`;
 
@@ -327,6 +329,7 @@ ${g.faq.map((f) => `          <details class="mv-faq-item">
         </ul>
       </div>
     </section>
+${relatedSection({ id: 'services-title', label: 'Passende diensten', titleHtml: 'DIT KAN IK <span class="rel-accent">VOOR JE BOUWEN</span>', cardsHtml: serviceCards(GUIDE_SERVICES[g.slug]), allLink: false })}
 ${finalCta(g.finalCtaTitle ?? 'WEBSITE DIE<br><em>RESULTAAT OPLEVERT?</em>', g.finalCtaText ?? 'Vertel me over jouw project. Ik maak een vrijblijvende offerte op maat — meestal binnen 24 uur.')}
   </main>
 ${footerHtml()}
@@ -340,8 +343,8 @@ ${footerHtml()}
 // ── Overzichtspagina ────────────────────────────────────────────────────────
 function overviewPage() {
   const url = `${SITE}/kennisbank`;
-  const title = 'Webdesign Kennisbank: 8 Gidsen over Websites, SEO & GEO | MVDBmedia';
-  const description = 'Acht diepgaande gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, beveiliging, SEO & GEO, conversie en webapplicaties. Door webdesigner Michael van den Bosch uit Sneek.';
+  const title = 'Webdesign Kennisbank: 8 gidsen over websites & SEO | MVDBmedia';
+  const description = 'Acht gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, beveiliging, SEO & GEO, conversie en webapps. Door Michael van den Bosch, Sneek.';
   const schema = [
     {
       '@context': 'https://schema.org',

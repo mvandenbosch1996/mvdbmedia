@@ -18,7 +18,7 @@ export const TOP4 = [
 export const ALL_GUIDES_LINK = { href: '/kennisbank', text: 'Bekijk alle gidsen →' };
 
 const INLINE_LINK_STYLE = 'font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;';
-const INLINE_HOVER = `onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'"`;
+const INLINE_HOVER = `data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'"`;
 
 export function guidesColumn({ labelOpen, gap = 11, useClass = true, indent = '        ', eol = '\n' } = {}) {
   const link = ({ href, text }, extra = '') =>

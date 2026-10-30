@@ -3,7 +3,7 @@ export default {
   title: 'Webapplicatie of SaaS platform laten bouwen: aanpak, kosten en case study Kampr.nl',
   crumb: 'Webapplicatie & SaaS',
   h1: 'WEBAPPLICATIE OF <em>SAAS PLATFORM</em> LATEN BOUWEN',
-  metaTitle: 'Webapplicatie of SaaS platform laten bouwen | Case Kampr.nl | MVDBmedia',
+  metaTitle: 'Webapplicatie of SaaS laten bouwen | Case Kampr | MVDBmedia',
   metaDescription: 'Een webapplicatie of SaaS-platform laten bouwen? Wanneer maatwerk loont, hoe het traject verloopt en wat het kost. Inclusief case study Kampr.nl.',
   category: 'Webapplicaties & SaaS',
   tags: ['Webapplicatie', 'SaaS', 'Case study'],

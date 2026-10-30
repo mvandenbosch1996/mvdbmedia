@@ -1,76 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://mvdbmedia.nl/</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-fort.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ollie.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-kasteel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/events-groep.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/vastgoed-huis.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-eiland.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ziggy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-park.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotos/IMG-20251109-WA0012.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/webdesign-op-maat-mvdb-media.jpg.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/vastgoed-stock.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portret-groepsfotografie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/groepsfoto%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up-800.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portretfotografie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ollie.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ziggy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-bospad-800.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/groepsfotografie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/groepsfoto%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/groepsfoto%202.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/vastgoedfotografie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/vastgoed-stock.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-eiland.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/dronevisuals</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-kasteel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-bouwplaats.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-event-stock.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-auto-stock.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/drone-vastgoed</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-fort.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-park.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/drone-constructie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-eiland.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-kasteel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie-800.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/drone-events</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-kasteel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-fort.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/drone-auto</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-park.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-eiland.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/evenementen</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/events-groep.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/webdesignopmaat</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/webdesign-op-maat-mvdb-media.jpg.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
@@ -89,60 +236,507 @@
     <loc>https://mvdbmedia.nl/portfolio</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotos/eiland.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ollie.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret-ziggy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-bouwplaats.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/groepsfoto%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%202.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%203.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%204.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/marit/marit%205.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret%20honden/ollie%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret%20honden/ollie%202.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret%20honden/ziggy%201.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portret%20honden/ziggy%202.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-eiland.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-fort.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-kasteel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/drone-park.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotos/IMG-20251109-WA0016.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotos/IMG-20251109-WA0017.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotos/IMG-20251109-WA0019.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0021.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0022.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0023.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0025.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0026.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0028.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0030.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0036.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0037.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0038.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0039.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwplaats%20drone/IMG-20251109-WA0042.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/groepsfoto%202.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/events-groep.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/fitplan-nesaclinics</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/kampr</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-dashboard-overzicht-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-boekingswidget-basis-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-prijzen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-boekingswidget-pro-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-functies-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-in-vier-stappen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-dashboard-overzicht.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-boekingswidget-basis.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-boekingswidget-pro.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-functies.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-in-vier-stappen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr/kampr-prijzen.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/portretshoot-marit</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-pad-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-waterkant-stenen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-skateboard-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-roze-tulpen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-pad.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-roze-tulpen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-waterkant-stenen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-skateboard.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/luchtfotografie-bled-slovenie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-stervormig-fort-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-hoefijzervormig-eiland-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-landhuis-herfst-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-park-herfstkleuren-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-stervormig-fort.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-hoefijzervormig-eiland.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-landhuis-herfst.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfoto-park-herfstkleuren.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/hondenfotos-ollie</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-rennend-heidepad-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-bospad-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-rennend-heidepad.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/hondenfotos-ziggy</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-bospad-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-mist-weiland-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ollie/hondenfotografie-ollie-close-up-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-bospad.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/hondenfotos-ziggy/hondenfotografie-ziggy-mist-weiland.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/bouwbedrijf-vellinga-bouwplaats</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-casco-blauwe-folie-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rieten-dak-detail-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-houtskeletbouw-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-woningen-in-aanbouw-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-luchtfoto-water-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-grondwerk-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-grondwerk-bovenaanzicht-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-haven-overzicht-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-bovenaanzicht-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rieten-daken-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-woningen-luifel-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rij-woningen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-casco-blauwe-folie.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-houtskeletbouw.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-woningen-in-aanbouw.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-luchtfoto-water.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-grondwerk.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-grondwerk-bovenaanzicht.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-haven-overzicht.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-bovenaanzicht.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rieten-daken.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rieten-dak-detail.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-woningen-luifel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-rij-woningen.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/portfolio/friesland-ontruimingen-groepsfoto</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://mvdbmedia.nl/algemene-voorwaarden</loc>
-    <lastmod>2026-10-30</lastmod>
-    <priority>0.3</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-een-rij-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/portretshoot-marit/portretshoot-marit-tulpenveld-armen-wijd-800.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-twee-rijen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/friesland-ontruimingen/groepsfoto-friesland-ontruimingen-team-een-rij.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
@@ -155,48 +749,75 @@
     <loc>https://mvdbmedia.nl/webdesign-kosten-friesland</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/maatwerk-website-vs-wordpress</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/snelle-website-laten-maken</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/website-laten-maken-sneek</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/website-beveiliging-onderhoud</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/seo-webdesign-hoger-in-google</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/conversie-gericht-webdesign</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/webapplicatie-saas-laten-maken</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
   </url>
 
 </urlset>

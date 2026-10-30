@@ -571,7 +571,7 @@
   <style>/*kb-patch*/@media(max-width:1180px){#nav-links{gap:18px!important}}@media(min-width:769px) and (max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:768px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important}}</style>
 </head>
 <body>
-  <a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
+  <a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;" data-s-focus="this.style.left='16px'" data-s-blur="this.style.left='-9999px'">Naar hoofdinhoud</a>
 
   <!-- NAV -->
   <nav id="nav" style="position:sticky;top:0;z-index:50;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.3s ease,box-shadow 0.3s ease;">
@@ -586,7 +586,7 @@
       <a href="/#contact" class="nav-link">Contact</a>
     </div>
     <a id="nav-cta" href="/#contact" class="btn-orange" style="font-size:0.7rem;padding:8px 20px;">Offerte aanvragen</a>
-    <button id="menu-btn" onclick="toggleMenu()" aria-label="Menu openen" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;">
+    <button id="menu-btn" data-a-click="toggleMenu" aria-label="Menu openen" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;">
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
@@ -595,14 +595,14 @@
 <main id="main" tabindex="-1" style="outline:none;">
 
   <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
-    <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
-    <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
-    <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
-    <a href="/dronevisuals" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
-    <a href="/portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
-    <a href="/#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
-    <a href="/#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
-    <a href="/#contact" onclick="toggleMenu()" style="display:block;text-align:center;margin-top:8px;background:var(--orange);color:#000;font-size:0.8rem;font-weight:800;padding:12px;border-radius:3px;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">Offerte aanvragen</a>
+    <a href="/webdesignopmaat" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
+    <a href="/portret-groepsfotografie" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
+    <a href="/vastgoedfotografie" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
+    <a href="/dronevisuals" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
+    <a href="/portfolio" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="/#over" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="/#contact" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="/#contact" data-a-click="toggleMenu" style="display:block;text-align:center;margin-top:8px;background:var(--orange);color:#000;font-size:0.8rem;font-weight:800;padding:12px;border-radius:3px;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">Offerte aanvragen</a>
   </div>
 
 
@@ -650,111 +650,111 @@
 
       <!-- Filter tabs -->
       <div id="filter-bar" style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
-        <button class="filter-btn is-active" data-filter="all" onclick="filterProjects('all',this)">Alles</button>
-        <button class="filter-btn" data-filter="portret" onclick="filterProjects('portret',this)">Portret</button>
-        <button class="filter-btn" data-filter="drone" onclick="filterProjects('drone',this)">Drone</button>
-        <button class="filter-btn" data-filter="constructie" onclick="filterProjects('constructie',this)">Constructie</button>
-        <button class="filter-btn" data-filter="groep" onclick="filterProjects('groep',this)">Groep</button>
-        <button class="filter-btn" data-filter="bedrijf" onclick="filterProjects('bedrijf',this)">Bedrijf</button>
-        <button class="filter-btn" data-filter="web" onclick="filterProjects('web',this)">Webdesign</button>
+        <button class="filter-btn is-active" data-filter="all" data-a-click="filterProjects" data-args-click='["all","@this"]'>Alles</button>
+        <button class="filter-btn" data-filter="portret" data-a-click="filterProjects" data-args-click='["portret","@this"]'>Portret</button>
+        <button class="filter-btn" data-filter="drone" data-a-click="filterProjects" data-args-click='["drone","@this"]'>Drone</button>
+        <button class="filter-btn" data-filter="constructie" data-a-click="filterProjects" data-args-click='["constructie","@this"]'>Constructie</button>
+        <button class="filter-btn" data-filter="groep" data-a-click="filterProjects" data-args-click='["groep","@this"]'>Groep</button>
+        <button class="filter-btn" data-filter="bedrijf" data-a-click="filterProjects" data-args-click='["bedrijf","@this"]'>Bedrijf</button>
+        <button class="filter-btn" data-filter="web" data-a-click="filterProjects" data-args-click='["web","@this"]'>Webdesign</button>
       </div>
 
       <!-- Project grid — art-directed: 3 cols × 4 rows -->
       <div id="project-grid">
 
         <!-- Nieuw: Fitplan & NESAclinics Sneek — bedrijfsfotografie -->
-        <div class="proj-card proj-card--text" data-cat="bedrijf" data-has-link onclick="openProject(6)">
+        <div class="proj-card proj-card--text" data-cat="bedrijf" data-has-link data-a-click="openProject" data-args-click='[6]'>
           <img src="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp" srcset="fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer-800.webp 800w, fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp 1920w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 25vw" width="1920" height="1280" alt="Twee Fitplan-therapeuten in de blauw verlichte NESAclinics-behandelkamer in Sneek" loading="eager" decoding="async">
           <div class="proj-badge">8 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Bedrijfsfotografie</div>
             <div class="proj-title">Fitplan &amp; NESAclinics Sneek</div>
             <p class="proj-desc">Gebouw, team en behandelkamer van een sport-medisch centrum, vastgelegd in een bedrijfsshoot op locatie.</p>
-            <a class="proj-case-link" href="/portfolio/fitplan-nesaclinics" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/fitplan-nesaclinics" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
         <!-- Row 1: Marit (×2, tall hero) + Luchtfotografie -->
-        <div class="proj-card proj-card--text" data-cat="portret" data-has-link onclick="openProject(0)">
+        <div class="proj-card proj-card--text" data-cat="portret" data-has-link data-a-click="openProject" data-args-click='[0]'>
           <img src="fotos/marit/marit%201.webp" alt="Portretshoot Marit" loading="eager">
           <div class="proj-badge">5 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Portretshoot Marit</div>
             <p class="proj-desc">Ontspannen buitenportretten tussen de tulpenvelden en aan het water: 5 bewerkte foto's.</p>
-            <a class="proj-case-link" href="/portfolio/portretshoot-marit" aria-label="Bekijk case-study: Portretshoot Marit" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/portretshoot-marit" aria-label="Bekijk case-study: Portretshoot Marit" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
-        <div class="proj-card proj-card--text" data-cat="drone" data-has-link onclick="openProject(3)">
+        <div class="proj-card proj-card--text" data-cat="drone" data-has-link data-a-click="openProject" data-args-click='[3]'>
           <img src="fotos/luchtfotos/eiland.webp" alt="Luchtfotografie" loading="eager">
           <div class="proj-badge">8 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Drone Visuals</div>
             <div class="proj-title">Luchtfotografie Bled &amp; meer</div>
             <p class="proj-desc">Het eiland in het Meer van Bled vanuit de lucht, plus ander drone-werk.</p>
-            <a class="proj-case-link" href="/portfolio/luchtfotografie-bled-slovenie" aria-label="Bekijk case-study: Luchtfotografie Bled en meer" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/luchtfotografie-bled-slovenie" aria-label="Bekijk case-study: Luchtfotografie Bled en meer" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
         <!-- Row 2: Ollie -->
-        <div class="proj-card proj-card--text" data-cat="portret" data-has-link onclick="openProject(1)">
+        <div class="proj-card proj-card--text" data-cat="portret" data-has-link data-a-click="openProject" data-args-click='[1]'>
           <img src="fotos/portret-ollie.webp" alt="Hondenfotografie Ollie" loading="lazy">
           <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Hondenfoto's — Ollie</div>
             <p class="proj-desc">Jack Russell Terriër Ollie in herfstlicht: een close-up en een portret in beweging.</p>
-            <a class="proj-case-link" href="/portfolio/hondenfotos-ollie" aria-label="Bekijk case-study: Hondenfoto's — Ollie" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/hondenfotos-ollie" aria-label="Bekijk case-study: Hondenfoto's — Ollie" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
         <!-- Row 3: Ziggy + Constructie drone + Groep -->
-        <div class="proj-card proj-card--text" data-cat="portret" data-has-link onclick="openProject(2)">
+        <div class="proj-card proj-card--text" data-cat="portret" data-has-link data-a-click="openProject" data-args-click='[2]'>
           <img src="fotos/portret-ziggy.webp" alt="Hondenfotografie Ziggy" loading="lazy">
           <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Portretfotografie</div>
             <div class="proj-title">Hondenfoto's — Ziggy</div>
             <p class="proj-desc">Australian Shepherd Ziggy in zacht herfstlicht en mist: twee rustige hondenportretten.</p>
-            <a class="proj-case-link" href="/portfolio/hondenfotos-ziggy" aria-label="Bekijk case-study: Hondenfoto's — Ziggy" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/hondenfotos-ziggy" aria-label="Bekijk case-study: Hondenfoto's — Ziggy" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
-        <div class="proj-card proj-card--text" data-cat="constructie" data-has-link onclick="openProject(4)">
+        <div class="proj-card proj-card--text" data-cat="constructie" data-has-link data-a-click="openProject" data-args-click='[4]'>
           <img src="fotos/drone-bouwplaats.webp" alt="Bouwplaats — Bouwbedrijf Vellinga" loading="lazy">
           <div class="proj-badge">13 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Constructie in Beeld</div>
             <div class="proj-title">Bouwplaats — Bouwbedrijf Vellinga</div>
             <p class="proj-desc">13 luchtfoto's van een nieuwbouwproject aan het water, van grondwerk tot rieten daken.</p>
-            <a class="proj-case-link" href="/portfolio/bouwbedrijf-vellinga-bouwplaats" aria-label="Bekijk case-study: Bouwplaats — Bouwbedrijf Vellinga" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/bouwbedrijf-vellinga-bouwplaats" aria-label="Bekijk case-study: Bouwplaats — Bouwbedrijf Vellinga" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
-        <div class="proj-card proj-card--text" data-cat="groep" data-has-link onclick="openProject(5)">
+        <div class="proj-card proj-card--text" data-cat="groep" data-has-link data-a-click="openProject" data-args-click='[5]'>
           <img src="fotos/groepsfoto%201.webp" alt="Groepsfotografie" loading="lazy">
           <div class="proj-badge">2 foto's</div>
           <div class="proj-overlay">
             <div class="proj-tag">Groepsfotografie</div>
             <div class="proj-title">Groepsfoto — Friesland Ontruimingen</div>
             <p class="proj-desc">Zakelijke teamfoto buiten op locatie: het hele team in beeld.</p>
-            <a class="proj-case-link" href="/portfolio/friesland-ontruimingen-groepsfoto" aria-label="Bekijk case-study: Groepsfoto — Friesland Ontruimingen" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/friesland-ontruimingen-groepsfoto" aria-label="Bekijk case-study: Groepsfoto — Friesland Ontruimingen" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
         <!-- Webdesign — kampr.nl, case-study + live site -->
-        <div class="proj-card proj-card--text" data-cat="web" data-has-link onclick="location.href='/portfolio/kampr'">
+        <div class="proj-card proj-card--text" data-cat="web" data-has-link data-a-click="@goto" data-args-click='["/portfolio/kampr"]'>
           <picture>
             <source type="image/webp" srcset="fotos/kampr-showcase-800.webp 800w, fotos/kampr-showcase.webp 1440w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 33vw">
             <img src="fotos/kampr-showcase.webp" width="1440" height="900" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
           </picture>
-          <a class="proj-badge proj-badge--link" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk de live site Kampr.nl (opent in nieuw tabblad)" onclick="event.stopPropagation()">Live site ↗</a>
+          <a class="proj-badge proj-badge--link" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk de live site Kampr.nl (opent in nieuw tabblad)" data-a-click="@stop">Live site ↗</a>
           <div class="proj-overlay">
             <div class="proj-tag">Webdesign op Maat</div>
             <div class="proj-title">Kampr.nl</div>
             <p class="proj-desc">SaaS reserveringsplatform &amp; boekingswidget voor campingeigenaren. Maatwerk webapplicatie waarmee kampeerders direct via de website van de camping kunnen reserveren.</p>
-            <a class="proj-case-link" href="/portfolio/kampr" onclick="event.stopPropagation()">Bekijk case-study &rarr;</a>
+            <a class="proj-case-link" href="/portfolio/kampr" data-a-click="@stop">Bekijk case-study &rarr;</a>
           </div>
         </div>
 
@@ -775,7 +775,7 @@
         <p>De behandelkamer is een lastige ruimte: donker, met blauw LED-licht en een scherm dat fel opvalt. In de bewerking heb ik die sfeer behouden en tegelijk gezorgd dat het team en de apparatuur goed zichtbaar blijven. Aan de tafel in de ontvangstruimte draaide het juist om natuurlijke momenten, zoals een gesprek en een high five.</p>
         <p>Wil je ook foto's van jouw praktijk, kantoor of team? Bekijk <a href="/portret-groepsfotografie">zakelijke portret- en groepsfotografie</a> of <a href="/#contact">vraag een vrijblijvende offerte aan</a>. Ik werk vanuit Sneek, in heel Friesland en daarbuiten.</p>
         <div class="case-actions">
-          <button type="button" class="btn-orange" style="font-family:var(--font-body);" onclick="openProject(6)">Bekijk alle 8 foto's</button>
+          <button type="button" class="btn-orange" style="font-family:var(--font-body);" data-a-click="openProject" data-args-click='[6]'>Bekijk alle 8 foto's</button>
           <a href="/portfolio/fitplan-nesaclinics" class="btn-ghost">Lees de case-study &rarr;</a>
         </div>
       </div>
@@ -886,14 +886,14 @@
 
   <!-- LIGHTBOX -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto weergave">
-    <button class="lb-btn" id="lb-close" onclick="closeLightbox()" aria-label="Sluiten">
+    <button class="lb-btn" id="lb-close" data-a-click="closeLightbox" aria-label="Sluiten">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <button class="lb-btn" id="lb-prev" onclick="lbPrev()" aria-label="Vorige foto">
+    <button class="lb-btn" id="lb-prev" data-a-click="lbPrev" aria-label="Vorige foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <img decoding="async" id="lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="">
-    <button class="lb-btn" id="lb-next" onclick="lbNext()" aria-label="Volgende foto">
+    <button class="lb-btn" id="lb-next" data-a-click="lbNext" aria-label="Volgende foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
     <div id="lb-counter"></div>
@@ -905,211 +905,12 @@
 
 
   <!-- WHATSAPP -->
-  <a href="https://wa.me/31624819278" target="_blank" rel="noopener" aria-label="WhatsApp contact" style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+  <a href="https://wa.me/31624819278" target="_blank" rel="noopener" aria-label="WhatsApp contact" style="position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;" data-s-mouseover="this.style.transform='scale(1.12)'" data-s-mouseout="this.style.transform='scale(1)'">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   </a>
 
 
-  <script>
-    // NAV
-    function toggleMenu() {
-      var m = document.getElementById('mobile-menu');
-      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-    }
-    function handleResize() {
-      var w = window.innerWidth;
-      var nl = document.getElementById('nav-links');
-      var nc = document.getElementById('nav-cta');
-      var mb = document.getElementById('menu-btn');
-      if (nl) nl.style.display = w <= 900 ? 'none' : 'flex';
-      if (nc) nc.style.display = w <= 900 ? 'none' : 'inline-block';
-      if (mb) mb.style.display = w <= 900 ? 'flex' : 'none';
-      if (w > 900) document.getElementById('mobile-menu').style.display = 'none';
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    (function() {
-      var nav = document.getElementById('nav');
-      var t = false;
-      window.addEventListener('scroll', function() {
-        if (t) return; t = true;
-        requestAnimationFrame(function() {
-          if (window.scrollY > 20) {
-            nav.style.background = 'rgba(13,13,13,0.96)';
-            nav.style.backdropFilter = 'blur(12px)';
-            nav.style.boxShadow = '0 1px 0 rgba(255,255,255,0.04),0 4px 24px rgba(0,0,0,0.5)';
-          } else {
-            nav.style.background = 'var(--bg-elevated)';
-            nav.style.backdropFilter = 'none';
-            nav.style.boxShadow = 'none';
-          }
-          t = false;
-        });
-      });
-    })();
-
-    // FILTER
-    function filterProjects(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('is-active'); });
-      btn.classList.add('is-active');
-      document.querySelectorAll('.proj-card').forEach(function(card) {
-        if (cat === 'all' || card.dataset.cat === cat) {
-          card.classList.remove('is-hidden');
-        } else {
-          card.classList.add('is-hidden');
-        }
-      });
-    }
-
-    // KEYBOARD ACCESS voor projectkaarten
-    document.querySelectorAll('.proj-card[onclick]:not([data-has-link])').forEach(function(card) {
-      var t = card.querySelector('.proj-title');
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      if (t) card.setAttribute('aria-label', t.textContent + ' — foto\'s bekijken');
-      card.addEventListener('keydown', function(e) {
-        if (e.target !== card) return;
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
-      });
-    });
-
-    // PROJECT DATA
-    var projects = [
-      {
-        label: 'Portretfotografie', title: 'Portretshoot Marit',
-        photos: [
-          { src: 'fotos/marit/marit%201.webp', title: 'Marit tussen de oranje tulpen', alt: 'Marit staat in een geruit overhemd tussen oranje tulpen onder een blauwe lucht' },
-          { src: 'fotos/marit/marit%202.webp', title: 'Marit met open armen', alt: 'Marit staat met uitgestrekte armen onder een heldere lucht, met windmolens op de achtergrond' },
-          { src: 'fotos/marit/marit%203.webp', title: 'Marit tussen de roze tulpen', alt: 'Marit zit lachend tussen roze tulpen met een bewolkte lucht achter zich' },
-          { src: 'fotos/marit/marit%204.webp', title: 'Marit aan het water', alt: 'Marit zit in profiel op een steiger aan het water en kijkt weg in de verte' },
-          { src: 'fotos/marit/marit%205.webp', title: 'Marit in beweging', alt: 'Marit loopt in beweging langs de waterkant onder een bewolkte lucht' }
-        ]
-      },
-      {
-        label: 'Portretfotografie', title: 'Hondenfoto\'s — Ollie',
-        photos: [
-          { src: 'fotos/portret%20honden/ollie%201.webp', title: 'Ollie van dichtbij', alt: 'Close-up van Ollie, een Jack Russell Terriër met een gevlekte vacht en doordringende blauwe ogen' },
-          { src: 'fotos/portret%20honden/ollie%202.webp', title: 'Ollie op het bospad', alt: 'Ollie, een Jack Russell Terriër, rent met een tuigje en lijn over een bospad' }
-        ]
-      },
-      {
-        label: 'Portretfotografie', title: 'Hondenfoto\'s — Ziggy',
-        photos: [
-          { src: 'fotos/portret%20honden/ziggy%201.webp', title: 'Ziggy in de herfst', alt: 'Ziggy, een Australian Shepherd, kijkt met open bek in de camera voor een onscherpe herfstachtergrond' },
-          { src: 'fotos/portret%20honden/ziggy%202.webp', title: 'Ziggy in het gras', alt: 'Ziggy, een Australian Shepherd, zit rechtop in het gras met een zachte, onscherpe achtergrond' }
-        ]
-      },
-      {
-        label: 'Drone Visuals', title: 'Luchtfotografie',
-        photos: [
-          { src: 'fotos/luchtfotos/eiland.webp', title: 'Bled — eiland met kerkje', alt: 'Luchtfoto van het eiland met kerkje en rode daken in het turquoise water van Bled, Slovenië' },
-          { src: 'fotos/drone-eiland.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
-          { src: 'fotos/drone-fort.webp', title: 'Fort met stervormige wallen', alt: 'Luchtfoto van een stervormig fort met grachten, wallen en bomen eromheen' },
-          { src: 'fotos/drone-kasteel.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' },
-          { src: 'fotos/drone-park.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0016.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0017.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0019.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' }
-        ]
-      },
-      {
-        label: 'Constructie in Beeld', title: 'Bouwplaats — Bouwbedrijf Vellinga',
-        photos: [
-          { src: 'fotos/drone-bouwplaats.webp', title: 'Nieuwbouwwijk rond de waterpartij', alt: 'Luchtfoto van een nieuwbouwwijk met halfronde vakantiewoningen rond een waterpartij' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0021.webp', title: 'Woningen met blauwe dakfolie', alt: 'Drone-opname van woningen in aanbouw met blauwe dakfolie, bouwputten en machines' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0022.webp', title: 'Houten dakconstructie in aanbouw', alt: 'Woning in aanbouw met steigers en een houten dakconstructie tussen afgewerkte huizen' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0023.webp', title: 'Bouwplaats aan de haven', alt: 'Drone-opname van woningen in aanbouw naast een haven, met blauwe daken' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0025.webp', title: 'Waterpartij met woningen in aanbouw', alt: 'Luchtfoto van de waterpartij met halfronde woningen in aanbouw en blauwe dakfolie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0026.webp', title: 'Bouwterrein naast het water', alt: 'Luchtfoto van een bouwterrein met woningen in aanbouw naast een kronkelend waterlichaam' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0028.webp', title: 'Rij woningen met oranje daken', alt: 'Luchtfoto van een rij woningen met oranje daken naast het kronkelende bouwterrein' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0030.webp', title: 'Haven en bouwterrein overzien', alt: 'Luchtfoto van een haven met rode en blauwe daken en een groot bouwterrein' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0036.webp', title: 'Nieuwbouwwijk rond de waterpartij', alt: 'Luchtfoto van een nieuwbouwwijk met halfronde vakantiewoningen rond een waterpartij' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0037.webp', title: 'Houten woningen in ruwbouw', alt: 'Drone-opname van drie houten woningen in ruwbouw met schuine daken' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0038.webp', title: 'Woning met zwarte gevel', alt: 'Woning met zwarte gevel en houten dak in aanbouw, gezien vanuit de lucht' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0039.webp', title: 'Nieuwbouw met zonnepanelen', alt: 'Nieuwbouwwoningen met zonnepanelen en houten dakplaten in aanbouw' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0042.webp', title: 'Straat met drie woningen in opbouw', alt: 'Luchtfoto van drie nieuwbouwwoningen in aanbouw langs een straat' }
-        ]
-      },
-      {
-        label: 'Groepsfotografie', title: 'Groepsfoto — Friesland Ontruimingen',
-        photos: [
-          { src: 'fotos/groepsfoto%202.webp', title: 'Het team in een rij', alt: 'Het team van Friesland Ontruimingen staat in zwarte shirts naast elkaar in een weiland' },
-          { src: 'fotos/events-groep.webp', title: 'Het team in twee rijen', alt: 'Het team staat en zit in twee rijen voor een groene achtergrond met bomen' }
-        ]
-      },
-      {
-        label: 'Bedrijfsfotografie', title: 'Fitplan & NESAclinics Sneek',
-        photos: [
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-behandelkamer.webp', title: 'Het team in de behandelkamer', alt: 'Twee Fitplan-therapeuten poseren lachend in de blauw verlichte NESAclinics-behandelkamer in Sneek' },
-          { src: 'fotos/nesaclinics-fitplan/fitplan-sport-medisch-centrum-sneek-gebouw.webp', title: 'Fitplan Sport-medisch Centrum', alt: 'Gebouw van Fitplan Sport-medisch Centrum aan de Simmerdyk in Sneek bij zonnig weer' },
-          { src: 'fotos/nesaclinics-fitplan/fitplan-nesaclinics-bewegwijzering-simmerdyk.webp', title: 'Simmerdyk 2', alt: 'Bewegwijzeringszuil Simmerdyk 2 in Sneek met onder andere de logo\'s van Fitplan en NESAclinics' },
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-team-nesa-banner.webp', title: 'Team bij de NESA-banner', alt: 'Twee medewerkers van Fitplan staan naast een NESA-banner bij de voordeur van de praktijk' },
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-intakegesprek.webp', title: 'In gesprek aan tafel', alt: 'Twee medewerkers van Fitplan in gesprek aan een houten tafel met NESA-banner en een historische stadskaart aan de muur' },
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-fitplan-high-five.webp', title: 'High five', alt: 'Twee medewerkers van Fitplan geven elkaar een high five aan tafel bij de NESA-banner' },
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-behandelkamer-sneek.webp', title: 'De behandelkamer', alt: 'Behandelkamer van NESAclinics in Sneek met blauw LED-licht, behandelstoel en een scherm met natuurbeeld' },
-          { src: 'fotos/nesaclinics-fitplan/nesaclinics-behandeling-fitplan.webp', title: 'Behandeling in de praktijk', alt: 'Therapeut en cliënt bij de behandelstoel in de NESAclinics-behandelkamer van Fitplan in Sneek' }
-        ]
-      },
-    ];
-
-    // LIGHTBOX
-    var lbItems = [], lbIndex = 0, lbCurrentLabel = '', lbOpener = null;
-
-    function openProject(projectIndex) {
-      var project = projects[projectIndex];
-      lbOpener = document.activeElement;
-      lbItems = project.photos;
-      lbCurrentLabel = project.label;
-      lbIndex = 0;
-      showLb(0);
-      var lb = document.getElementById('lightbox');
-      lb.classList.add('lb-open');
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() { lb.classList.add('lb-visible'); });
-      });
-      document.body.style.overflow = 'hidden';
-      document.getElementById('lightbox').setAttribute('aria-label', 'Foto\'s: ' + project.title);
-      document.getElementById('lb-close').focus();
-    }
-
-    function showLb(i) {
-      var item = lbItems[i];
-      var imgEl = document.getElementById('lightbox-img');
-      imgEl.src = item.src;
-      imgEl.alt = item.alt || item.title;
-      document.getElementById('lb-caption-cat').textContent = lbCurrentLabel;
-      document.getElementById('lb-caption-title').textContent = item.title;
-      document.getElementById('lb-counter').textContent = (i + 1) + ' / ' + lbItems.length;
-      document.getElementById('lb-prev').style.display = lbItems.length > 1 ? 'flex' : 'none';
-      document.getElementById('lb-next').style.display = lbItems.length > 1 ? 'flex' : 'none';
-    }
-
-    function closeLightbox() {
-      var lb = document.getElementById('lightbox');
-      lb.classList.remove('lb-visible');
-      setTimeout(function() { lb.classList.remove('lb-open'); document.body.style.overflow = ''; }, 250);
-      if (lbOpener && lbOpener.focus) lbOpener.focus();
-    }
-
-    function lbPrev() { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; showLb(lbIndex); }
-    function lbNext() { lbIndex = (lbIndex + 1) % lbItems.length; showLb(lbIndex); }
-
-    document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
-    document.addEventListener('keydown', function(e) {
-      if (!document.getElementById('lightbox').classList.contains('lb-open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lbPrev();
-      if (e.key === 'ArrowRight') lbNext();
-      if (e.key === 'Tab') {
-        var f = Array.prototype.filter.call(document.querySelectorAll('#lightbox .lb-btn'), function(b) { return b.style.display !== 'none'; });
-        if (!f.length) return;
-        var first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        else if (f.indexOf(document.activeElement) === -1) { e.preventDefault(); first.focus(); }
-      }
-    });
-  </script>
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/portfolio.js"></script>
 </body>
 </html>

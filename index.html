@@ -962,7 +962,7 @@
 <body>
   <div id="scroll-progress" aria-hidden="true"></div>
 
-  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" data-s-focus="this.style.left='16px'" data-s-blur="this.style.left='-9999px'">Naar hoofdinhoud</a>
 
   <!-- NAV -->
   <nav id="nav" class="nav-pad" style="
@@ -1004,9 +1004,9 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: opacity 0.2s ease;
-    " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Offerte aanvragen</a>
+    " data-s-mouseover="this.style.opacity='0.85'" data-s-mouseout="this.style.opacity='1'">Offerte aanvragen</a>
 
-    <button id="menu-btn" aria-label="Menu openen" onclick="toggleMenu()" style="
+    <button id="menu-btn" aria-label="Menu openen" data-a-click="toggleMenu" style="
       display: none;
       background: transparent;
       border: none;
@@ -1031,14 +1031,14 @@
     padding: 16px 24px 24px;
     flex-direction: column; gap: 16px;
   ">
-    <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Webdesign</a>
-    <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Portret</a>
-    <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Vastgoed</a>
-    <a href="/dronevisuals" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Drone</a>
-    <a href="/portfolio" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Portfolio</a>
-    <a href="#over" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Over mij</a>
-    <a href="#contact" onclick="toggleMenu()" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0;">Contact</a>
-    <a href="#contact" onclick="toggleMenu()" style="
+    <a href="/webdesignopmaat" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Webdesign</a>
+    <a href="/portret-groepsfotografie" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Portret</a>
+    <a href="/vastgoedfotografie" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Vastgoed</a>
+    <a href="/dronevisuals" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Drone</a>
+    <a href="/portfolio" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Portfolio</a>
+    <a href="#over" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border);">Over mij</a>
+    <a href="#contact" data-a-click="toggleMenu" style="font-size: 1rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; padding: 8px 0;">Contact</a>
+    <a href="#contact" data-a-click="toggleMenu" style="
       display: block; text-align: center; margin-top: 8px;
       background: var(--orange); color: #000;
       font-size: 0.8rem; font-weight: 800; padding: 12px;
@@ -1132,8 +1132,8 @@
               box-shadow:0 4px 20px rgba(255,140,0,0.28),0 2px 6px rgba(0,0,0,0.5);
               transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
             "
-            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(255,140,0,0.4),0 4px 10px rgba(0,0,0,0.5)'"
-            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.28),0 2px 6px rgba(0,0,0,0.5)'"
+            data-s-mouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(255,140,0,0.4),0 4px 10px rgba(0,0,0,0.5)'"
+            data-s-mouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.28),0 2px 6px rgba(0,0,0,0.5)'"
             >Offerte aanvragen</a>
           </div>
 
@@ -1162,8 +1162,8 @@
               letter-spacing:0.04em;
               transition:color 0.2s ease;
             "
-            onmouseover="this.style.color='var(--text-primary)'"
-            onmouseout="this.style.color='var(--text-secondary)'"
+            data-s-mouseover="this.style.color='var(--text-primary)'"
+            data-s-mouseout="this.style.color='var(--text-secondary)'"
             >
               <span class="diensten-arrow" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border-light);border-radius:50%;font-size:0.9rem;transition:border-color 0.2s ease;">→</span>
               Portfolio bekijken
@@ -1473,9 +1473,9 @@
             box-shadow:0 4px 20px rgba(255,140,0,0.25);
             transition:background 0.2s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
           "
-          onmouseover="this.style.background='#ff9f1a';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
-          onmouseout="this.style.background='var(--orange)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.25)'"
-          onmousedown="this.style.transform='translateY(0)'"
+          data-s-mouseover="this.style.background='#ff9f1a';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
+          data-s-mouseout="this.style.background='var(--orange)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.25)'"
+          data-s-mousedown="this.style.transform='translateY(0)'"
           >
             Stel je vraag
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1512,8 +1512,8 @@
 
         <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
           transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
-          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
-          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+          data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
         >
           <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -1524,8 +1524,8 @@
 
         <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
           transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
-          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
-          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+          data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
         >
           <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1536,8 +1536,8 @@
 
         <div style="padding:32px;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);position:relative;overflow:hidden;
           transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);"
-          onmouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
-          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
+          data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.3)';this.style.transform='translateY(-3px)'"
+          data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'"
         >
           <div style="width:40px;height:40px;border:1px solid var(--border-light);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.6" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1581,7 +1581,7 @@
           </p>
 
           <div style="display:flex;flex-direction:column;gap:22px;">
-            <a href="mailto:info@mvdbmedia.nl" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <a href="mailto:info@mvdbmedia.nl" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">
               <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
@@ -1590,7 +1590,7 @@
                 <div style="font-size:0.85rem;font-weight:500;">info@mvdbmedia.nl</div>
               </div>
             </a>
-            <a href="tel:+31624819278" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <a href="tel:+31624819278" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text-secondary);transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">
               <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.88a16 16 0 0 0 6.16 6.16l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
@@ -1613,14 +1613,14 @@
 
         <!-- Form Right -->
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:40px;box-shadow:var(--shadow-lg);">
-          <form onsubmit="handleFormSubmit(event)" novalidate>
+          <form data-a-submit="handleFormSubmit" novalidate data-args-submit='["@event"]'>
             <!-- Honeypot: verborgen voor mensen, bots vullen dit in en worden geblokkeerd -->
             <div style="position:absolute;left:-9999px;"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
             <div class="form-naam-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
               <div style="position:relative;">
                 <label for="form-naam" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Naam</label>
 <div style="position:relative;">
-                <input id="form-naam" maxlength="100" aria-describedby="err-naam" aria-invalid="false" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'">
+                <input id="form-naam" maxlength="100" aria-describedby="err-naam" aria-invalid="false" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" data-s-focus="this.style.borderColor='var(--orange)'" data-a-blur="fieldBlurStyle">
                 <span class="field-check" id="check-naam" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
 </div>
 <p class="field-error" id="err-naam"></p>
@@ -1628,7 +1628,7 @@
               <div style="position:relative;">
                 <label for="form-email" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">E-mail</label>
 <div style="position:relative;">
-                <input id="form-email" maxlength="254" aria-describedby="err-email" aria-invalid="false" type="email" name="email" placeholder="jouw@email.nl" required autocomplete="email" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'">
+                <input id="form-email" maxlength="254" aria-describedby="err-email" aria-invalid="false" type="email" name="email" placeholder="jouw@email.nl" required autocomplete="email" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" data-s-focus="this.style.borderColor='var(--orange)'" data-a-blur="fieldBlurStyle">
                 <span class="field-check" id="check-email" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
 </div>
 <p class="field-error" id="err-email"></p>
@@ -1637,7 +1637,7 @@
             <div id="dienst-wrapper" style="margin-bottom:16px;position:relative;transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
               <label for="form-dienst" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Dienst</label>
 <div style="position:relative;">
-              <select id="form-dienst" aria-describedby="err-dienst" aria-invalid="false" name="dienst" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'" >
+              <select id="form-dienst" aria-describedby="err-dienst" aria-invalid="false" name="dienst" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" data-s-focus="this.style.borderColor='var(--orange)'" data-a-blur="fieldBlurStyle" >
                 <option value="" disabled selected style="color:var(--text-muted);">Selecteer een dienst</option>
                 <option value="portret">Portretfotografie</option>
                 <option value="groep">Groepsfotografie</option>
@@ -1662,7 +1662,7 @@
 
             <div style="margin-bottom:16px;position:relative;">
               <label for="form-reden" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Reden van contact</label>
-              <select id="form-reden" name="reden" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'" onchange="toggleDienst(this.value)">
+              <select id="form-reden" name="reden" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" data-s-focus="this.style.borderColor='var(--orange)'" data-a-blur="fieldBlurStyle" data-a-change="toggleDienst" data-args-change='["@value"]'>
                 <option value="offerte">Offerte aanvragen</option>
                 <option value="vraag">Algemene vraag stellen</option>
               </select>
@@ -1671,14 +1671,14 @@
             <div style="margin-bottom:24px;position:relative;">
               <label for="form-bericht" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Bericht</label>
 <div style="position:relative;">
-              <textarea id="form-bericht" maxlength="2000" aria-describedby="err-bericht" aria-invalid="false" name="bericht" placeholder="Vertel me over jouw project, wensen en beschikbaarheid..." required rows="5" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;resize:vertical;line-height:1.65;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'"></textarea>
+              <textarea id="form-bericht" maxlength="2000" aria-describedby="err-bericht" aria-invalid="false" name="bericht" placeholder="Vertel me over jouw project, wensen en beschikbaarheid..." required rows="5" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;resize:vertical;line-height:1.65;transition:border-color 0.2s ease;" data-s-focus="this.style.borderColor='var(--orange)'" data-a-blur="fieldBlurStyle"></textarea>
               <span class="field-check" id="check-bericht" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
 </div>
 <p class="field-error" id="err-bericht"></p>
             </div>
             <button type="submit" id="submit-btn" style="width:100%;background:var(--orange);color:#000;font-size:0.68rem;font-weight:800;padding:15px 24px;border:none;border-radius:3px;cursor:pointer;letter-spacing:0.12em;text-transform:uppercase;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;box-shadow:0 4px 20px rgba(255,140,0,0.22);"
-            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
-            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.22)'"
+            data-s-mouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
+            data-s-mouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.22)'"
             >Verstuur aanvraag of vraag</button>
             <div id="form-status" role="status" aria-live="polite"></div>
           </form>
@@ -1708,35 +1708,35 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/webdesignopmaat" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
-            <a href="/portret-groepsfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
-            <a href="/vastgoedfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Vastgoedfotografie</a>
-            <a href="/dronevisuals" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
+            <a href="/webdesignopmaat" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
+            <a href="/portret-groepsfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
+            <a href="/vastgoedfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Vastgoedfotografie</a>
+            <a href="/dronevisuals" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
           </div>
         </div>
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/portfolio" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
-            <a href="#over" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Over mij</a>
-            <a href="#contact" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
+            <a href="/portfolio" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
+            <a href="#over" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Over mij</a>
+            <a href="#contact" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Contact</a>
           </div>
         </div>
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Webdesign Gidsen</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/webdesign-kosten-friesland" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Wat kost een website?</a>
-            <a href="/maatwerk-website-vs-wordpress" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Maatwerk vs WordPress</a>
-            <a href="/snelle-website-laten-maken" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Snelle website laten maken</a>
-            <a href="/website-laten-maken-sneek" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesigner in Sneek</a>
+            <a href="/webdesign-kosten-friesland" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Wat kost een website?</a>
+            <a href="/maatwerk-website-vs-wordpress" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Maatwerk vs WordPress</a>
+            <a href="/snelle-website-laten-maken" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Snelle website laten maken</a>
+            <a href="/website-laten-maken-sneek" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Webdesigner in Sneek</a>
             <a href="/kennisbank" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;color:var(--orange);font-weight:600;">Bekijk alle gidsen →</a>
           </div>
         </div>
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Instagram</a>
-            <a href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'"><span style="color:var(--orange);">★</span>Laat een review achter</a>
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Instagram</a>
+            <a href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;gap:6px;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'"><span style="color:var(--orange);">★</span>Laat een review achter</a>
           </div>
         </div>
       </div>
@@ -1757,476 +1757,7 @@
   </a>
 
 
-  <script>
-    const PAKKETTEN = {
-      portret: [
-        { label: 'Solo', prijs: '€95' },
-        { label: 'Signatuur', prijs: '€195' },
-        { label: 'Verhaal', prijs: '€345' },
-      ],
-      groep: [
-        { label: 'Klein', prijs: '€125' },
-        { label: 'Groep', prijs: '€195' },
-        { label: 'Uitgebreid', prijs: '€345' },
-        { label: 'Zakelijk', prijs: '€595' },
-      ],
-      vastgoed: [
-        { label: 'Compact', prijs: '€175' },
-        { label: 'Standaard', prijs: '€295' },
-        { label: 'Premium', prijs: '€495' },
-      ],
-      webdesign: [
-        { label: 'Starter', prijs: 'v.a. €499' },
-        { label: 'Business', prijs: 'v.a. €999' },
-      ],
-      constructie: [
-        { label: 'Start', prijs: '€295' },
-        { label: 'Progres', prijs: '€795' },
-        { label: 'Archief', prijs: '€1.495' },
-      ],
-      events: [
-        { label: 'Kort', prijs: '€295' },
-        { label: 'Halve dag', prijs: '€595' },
-        { label: 'Volledig', prijs: '€995' },
-      ],
-      droneauto: [
-        { label: 'Strak', prijs: '€125' },
-        { label: 'Reveal', prijs: '€225' },
-        { label: 'Cinematic', prijs: '€395' },
-      ],
-    };
-
-    function handleDienstChange(val) {
-      const wrapper = document.getElementById('pakket-wrapper');
-      const opties = document.getElementById('pakket-opties');
-      const input = document.getElementById('form-pakket');
-
-      if (PAKKETTEN[val]) {
-        opties.innerHTML = '';
-        input.value = '';
-        PAKKETTEN[val].forEach(p => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.dataset.pakket = p.label;
-          btn.innerHTML = `<span style="font-weight:600;font-size:0.82rem;">${p.label}</span><span style="color:var(--orange);font-size:0.78rem;font-weight:700;">${p.prijs}</span>`;
-          btn.style.cssText = 'display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-family:var(--font-body);cursor:pointer;transition:border-color 0.2s ease,background 0.2s ease;text-align:left;';
-          btn.addEventListener('mouseenter', () => { if (!btn.classList.contains('selected')) btn.style.borderColor = 'rgba(255,140,0,0.4)'; });
-          btn.addEventListener('mouseleave', () => { if (!btn.classList.contains('selected')) btn.style.borderColor = 'var(--border)'; });
-          btn.addEventListener('click', () => {
-            opties.querySelectorAll('button').forEach(b => {
-              b.classList.remove('selected');
-              b.style.borderColor = 'var(--border)';
-              b.style.background = 'var(--bg-elevated)';
-            });
-            btn.classList.add('selected');
-            btn.style.borderColor = 'var(--orange)';
-            btn.style.background = 'rgba(255,140,0,0.06)';
-            input.value = p.label;
-          });
-          opties.appendChild(btn);
-        });
-        wrapper.style.display = 'block';
-        requestAnimationFrame(() => {
-          wrapper.style.opacity = '1';
-          wrapper.style.transform = 'translateY(0)';
-        });
-      } else {
-        wrapper.style.opacity = '0';
-        wrapper.style.transform = 'translateY(-6px)';
-        setTimeout(() => { wrapper.style.display = 'none'; }, 300);
-        input.value = '';
-      }
-    }
-
-    document.getElementById('form-dienst').addEventListener('change', function() {
-      handleDienstChange(this.value);
-    });
-
-    function toggleDienst(val) {
-      const wrapper = document.getElementById('dienst-wrapper');
-      const select = document.getElementById('form-dienst');
-      const bericht = document.getElementById('form-bericht');
-      const pakketWrapper = document.getElementById('pakket-wrapper');
-      if (val === 'vraag') {
-        wrapper.style.opacity = '0';
-        wrapper.style.transform = 'translateY(-6px)';
-        setTimeout(() => { wrapper.style.display = 'none'; }, 300);
-        pakketWrapper.style.opacity = '0';
-        pakketWrapper.style.transform = 'translateY(-6px)';
-        setTimeout(() => { pakketWrapper.style.display = 'none'; }, 300);
-        select.required = false;
-        bericht.placeholder = 'Stel gerust je vraag, ik reageer binnen 24 uur...';
-      } else {
-        wrapper.style.display = 'block';
-        requestAnimationFrame(() => {
-          wrapper.style.opacity = '1';
-          wrapper.style.transform = 'translateY(0)';
-        });
-        select.required = true;
-        bericht.placeholder = 'Vertel me over jouw project, wensen en beschikbaarheid...';
-        handleDienstChange(select.value);
-      }
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const btn = document.getElementById('menu-btn');
-      const isOpen = menu.style.display === 'flex';
-      menu.style.display = isOpen ? 'none' : 'flex';
-      btn.setAttribute('aria-label', isOpen ? 'Menu openen' : 'Menu sluiten');
-    }
-
-    // Nav links hover
-    document.querySelectorAll('#nav-links a').forEach(link => {
-      link.addEventListener('mouseenter', () => link.style.color = 'var(--text-primary)');
-      link.addEventListener('mouseleave', () => link.style.color = 'var(--text-secondary)');
-    });
-
-    // Responsive nav — gebruik ID in plaats van fragiele selector
-    function handleResize() {
-      const w = window.innerWidth;
-      document.getElementById('nav-links').style.display = w < 1100 ? 'none' : 'flex';
-      document.getElementById('nav-cta').style.display = w < 1100 ? 'none' : 'inline-block';
-      document.getElementById('menu-btn').style.display = w < 1100 ? 'flex' : 'none';
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    // Sticky nav scroll effect
-    (function() {
-      const nav = document.getElementById('nav');
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          if (window.scrollY > 20) {
-            nav.style.background = 'rgba(13,13,13,0.96)';
-            nav.style.backdropFilter = 'blur(12px)';
-            nav.style.boxShadow = '0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.5)';
-          } else {
-            nav.style.background = 'var(--bg-elevated)';
-            nav.style.backdropFilter = 'none';
-            nav.style.boxShadow = 'none';
-          }
-          ticking = false;
-        });
-      });
-    })();
-
-    // Dienst card hover
-    document.querySelectorAll('.dienst-card').forEach(card => {
-      const border = card.querySelector('.dienst-border');
-      const img   = card.querySelector('.dienst-img');
-      const icon  = card.querySelector('.dienst-icon');
-      card.addEventListener('mouseenter', () => {
-        if (border) border.style.transform = 'scaleX(1)';
-        if (img)   img.style.transform   = 'scale(1.05)';
-        if (icon) {
-          icon.style.transform   = 'scale(1.2) rotate(8deg)';
-          icon.style.background  = 'rgba(255,140,0,0.2)';
-          icon.style.borderColor = 'rgba(255,140,0,0.55)';
-        }
-      });
-      card.addEventListener('mouseleave', () => {
-        if (border) border.style.transform = 'scaleX(0)';
-        if (img)   img.style.transform   = 'scale(1)';
-        if (icon) {
-          icon.style.transform   = 'scale(1) rotate(0deg)';
-          icon.style.background  = 'rgba(255,140,0,0.1)';
-          icon.style.borderColor = 'rgba(255,140,0,0.22)';
-        }
-      });
-    });
-
-    // Scroll-indicator: verberg op mobiel zodra hero uit beeld scrolt
-    (function initScrollHint() {
-      if (window.innerWidth > 768) return;
-      const indicator = document.querySelector('.scroll-mouse-wrap');
-      const hero = document.querySelector('#hero');
-      if (!indicator || !hero) return;
-      window.addEventListener('scroll', function() {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        const visible = heroBottom > 80;
-        indicator.style.opacity = visible ? '' : '0';
-        indicator.style.pointerEvents = visible ? '' : 'none';
-      }, { passive: true });
-    })();
-
-
-    // Scroll reveal (IntersectionObserver, no library)
-    (function initScrollReveal() {
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return;
-
-      // Label badge-items inside cards so CSS stagger transitions can target them
-      document.querySelectorAll('.dienst-card').forEach(card => {
-        const tagsWrap = card.querySelector('div[style*="gap:6px"][style*="margin-bottom"]');
-        if (tagsWrap) {
-          tagsWrap.querySelectorAll(':scope > div').forEach(tag => tag.classList.add('dienst-tag'));
-        }
-      });
-
-      // General section targets (.over-grid removed — photo has own observer, text col added separately)
-      const targets = [
-        ...document.querySelectorAll(
-          '#diensten h2, #diensten p,' +
-          '#over .over-grid > div:last-child, #over .over-stats-balk,' +
-          '#contact .contact-grid,' +
-          'footer .footer-grid, footer > div > div:last-child'
-        )
-      ];
-
-      const textTargets = [
-        ...document.querySelectorAll('#diensten h3, #diensten .dienst-card p, #over p, #over .over-aanpak-grid > div, #contact p')
-      ];
-
-      const allTargets = [...targets, ...textTargets];
-      allTargets.forEach((el, index) => {
-        el.classList.add('scroll-reveal');
-        const delay = index % 4;
-        if (delay > 0) el.classList.add(`reveal-delay-${delay}`);
-      });
-
-      // Service cards stagger individually (left → right, 0 / 0.1 / 0.2 / 0.3s)
-      const cardDelays = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3'];
-      document.querySelectorAll('.dienst-card').forEach((card, i) => {
-        card.classList.add('scroll-reveal');
-        if (cardDelays[i]) card.classList.add(cardDelays[i]);
-        allTargets.push(card);
-      });
-
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        });
-      }, {
-        root: null,
-        threshold: 0.10,
-        rootMargin: '0px 0px -6% 0px'
-      });
-
-      allTargets.forEach((el) => observer.observe(el));
-    })();
-
-    // ── STATS COUNTER ──
-    (function initStats() {
-      const statEls = document.querySelectorAll('[data-count]');
-      const obs = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          const target = parseInt(el.dataset.count);
-          const suffix = el.dataset.suffix || '';
-          const duration = 1600;
-          let start = null;
-          const tick = (ts) => {
-            if (!start) start = ts;
-            const progress = Math.min((ts - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.floor(eased * target) + suffix;
-            if (progress < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-          observer.unobserve(el);
-        });
-      }, { threshold: 0.6 });
-      statEls.forEach(el => obs.observe(el));
-    })();
-
-    // Form field validation checkmarks
-    function validateField(fieldId, checkId, testFn) {
-      const el    = document.getElementById(fieldId);
-      const check = document.getElementById(checkId);
-      if (!el || !check) return;
-      const valid = testFn(el.value);
-      if (valid) {
-        check.classList.remove('is-valid');
-        void check.offsetWidth;        // force reflow → restart animation
-        check.classList.add('is-valid');
-      } else {
-        check.classList.remove('is-valid');
-      }
-    }
-
-    (function initFormValidation() {
-      const rules = [
-        { id: 'form-naam',    check: 'check-naam',    event: 'blur',   test: v => v.trim().length >= 2 },
-        { id: 'form-email',   check: 'check-email',   event: 'blur',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-        { id: 'form-dienst',  check: 'check-dienst',  event: 'change', test: v => v !== '' },
-        { id: 'form-bericht', check: 'check-bericht', event: 'blur',   test: v => v.trim().length >= 10 },
-      ];
-      rules.forEach(({ id, check, event, test }) => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener(event, () => validateField(id, check, test));
-      });
-      // Submit button hover — pause glow
-      const btn = document.getElementById('submit-btn');
-      if (btn) {
-        btn.addEventListener('mouseenter', () => btn.style.setProperty('--glow','0'));
-        btn.addEventListener('mouseleave', () => btn.style.removeProperty('--glow'));
-      }
-    })();
-
-    // Over mij: photo slide-in + border-draw corner
-    (function() {
-      const photo = document.querySelector('.over-photo');
-      if (!photo || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        if (photo) { photo.style.opacity = '1'; photo.style.transform = 'none'; }
-        return;
-      }
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        });
-      }, { threshold: 0.18 });
-      obs.observe(photo);
-    })();
-
-    // Scroll progress bar
-    (function() {
-      const bar = document.getElementById('scroll-progress');
-      if (!bar) return;
-      let ticking = false;
-      function update() {
-        const scrollTop = window.scrollY;
-        const docH = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (docH > 0 ? Math.min(scrollTop / docH, 1) * 100 : 0) + '%';
-        ticking = false;
-      }
-      window.addEventListener('scroll', () => {
-        if (!ticking) { ticking = true; requestAnimationFrame(update); }
-      }, { passive: true });
-    })();
-
-    // Hero parallax — achtergrond beweegt 35% trager dan de tekst
-    (function() {
-      const bg = document.getElementById('hero-parallax-bg');
-      if (!bg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      let ticking = false;
-      window.addEventListener('scroll', function() {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function() {
-          bg.style.transform = 'translateY(' + (window.scrollY * 0.35) + 'px)';
-          ticking = false;
-        });
-      }, { passive: true });
-    })();
-
-    // Tijdstempel voor timing-check bij submit — reset na elke geslaagde verzending
-    let _formLoadedAt = Date.now();
-
-    const FORM_RULES = [
-      { id: 'form-naam',    msg: 'Vul je naam in (minimaal 2 tekens).', test: v => v.trim().length >= 2 },
-      { id: 'form-email',   msg: 'Vul een geldig e-mailadres in, bijvoorbeeld naam@bedrijf.nl.', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-      { id: 'form-dienst',  msg: 'Kies een dienst.', test: v => v !== '', skip: reden => reden === 'vraag' },
-      { id: 'form-bericht', msg: 'Schrijf een bericht (minimaal 3 tekens).', test: v => v.trim().length >= 3 },
-    ];
-
-    function setFormStatus(text, kind) {
-      const box = document.getElementById('form-status');
-      if (!box) return;
-      box.textContent = text;
-      box.className = kind === 'error' ? 'is-error' : kind === 'ok' ? 'is-ok' : '';
-    }
-
-    function clearFieldError(el) {
-      el.setAttribute('aria-invalid', 'false');
-      el.style.borderColor = 'var(--border)';
-      const p = document.getElementById('err-' + el.id.replace('form-', ''));
-      if (p) p.textContent = '';
-    }
-
-    function showFieldError(el, rule) {
-      el.setAttribute('aria-invalid', 'true');
-      el.style.borderColor = '#e05555';
-      const p = document.getElementById('err-' + el.id.replace('form-', ''));
-      if (p) p.textContent = rule.msg;
-      if (el.dataset.live) return;
-      el.dataset.live = '1';
-      const recheck = () => { if (rule.test(el.value)) clearFieldError(el); };
-      el.addEventListener('input', recheck);
-      el.addEventListener('change', recheck);
-    }
-
-    // Contact form submit — stuurt berichten naar info@mvdbmedia.nl via Formspree
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      const form = e.target;
-
-      // Voorkom dubbele verzending terwijl er al een loopt
-      if (btn.disabled) return;
-
-      // Timing-check: bots submitten direct, mensen doen er minstens 1,5s over
-      if (Date.now() - _formLoadedAt < 1500) return;
-
-      // Honeypot-check: als _gotcha is ingevuld is het een bot
-      const gotcha = form.querySelector('[name="_gotcha"]');
-      if (gotcha && gotcha.value) return;
-
-      const redenVal = document.getElementById('form-reden').value;
-      let firstInvalid = null;
-      FORM_RULES.forEach(rule => {
-        const el = document.getElementById(rule.id);
-        if (!el) return;
-        if (rule.skip && rule.skip(redenVal)) { clearFieldError(el); return; }
-        if (rule.test(el.value)) { clearFieldError(el); return; }
-        showFieldError(el, rule);
-        if (!firstInvalid) firstInvalid = el;
-      });
-      if (firstInvalid) {
-        setFormStatus('Controleer de gemarkeerde velden en probeer het opnieuw.', 'error');
-        firstInvalid.focus();
-        return;
-      }
-
-      btn.textContent = 'Verzenden...';
-      btn.disabled = true;
-      setFormStatus('Bericht wordt verzonden...', '');
-
-      try {
-        const res = await fetch('https://formspree.io/f/xbdqvdpd', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-        if (res.ok) {
-          btn.textContent = 'Verzonden ✓';
-          btn.style.background = '#1a4d1a';
-          btn.style.color = '#7dfa7d';
-          form.reset();
-          form.querySelectorAll('input, select, textarea').forEach(el => {
-            el.style.borderColor = 'var(--border)';
-            el.setAttribute('aria-invalid', 'false');
-          });
-          form.querySelectorAll('.field-error').forEach(p => { p.textContent = ''; });
-          setFormStatus('Bedankt! Je bericht is verzonden. Ik reageer binnen 24 uur.', 'ok');
-          // Timing-klok opnieuw starten voor de volgende invulling
-          _formLoadedAt = Date.now();
-          setTimeout(() => {
-            btn.textContent = 'Verstuur aanvraag of vraag';
-            btn.style.background = 'var(--orange)';
-            btn.style.color = '#000';
-            btn.disabled = false;
-          }, 4000);
-        } else {
-          throw new Error('server error');
-        }
-      } catch {
-        btn.textContent = 'Probeer opnieuw';
-        btn.style.background = '#5c1a1a';
-        btn.style.color = '#fa7d7d';
-        setFormStatus('Verzenden is mislukt. Probeer het opnieuw of mail naar info@mvdbmedia.nl.', 'error');
-        btn.disabled = false;
-      }
-    }
-
-  </script>
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/index.js"></script>
 </body>
 </html>

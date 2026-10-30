@@ -3,7 +3,7 @@ export default {
   title: 'Website beveiliging & onderhoudsarm bouwen zonder kwetsbare plugins',
   crumb: 'Beveiliging & onderhoud',
   h1: 'WEBSITE <em>BEVEILIGING</em> &amp; ONDERHOUDSARM BOUWEN',
-  metaTitle: 'Website beveiliging & onderhoudsarm bouwen (zonder plugins) | MVDBmedia',
+  metaTitle: 'Veilige website bouwen zonder plugins | MVDBmedia',
   metaDescription: 'Zo bouw je een veilige website die weinig onderhoud vraagt. Beveiligingsheaders, formulieren, plugins en back-ups uitgelegd door webdesigner Michael van den Bosch.',
   category: 'Veiligheid & Onderhoud',
   schemaType: 'TechArticle',

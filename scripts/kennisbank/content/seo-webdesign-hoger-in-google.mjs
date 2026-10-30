@@ -3,7 +3,7 @@ export default {
   title: 'SEO & GEO in webdesign: direct hoger in Google en AI-zoekmachines',
   crumb: 'SEO & GEO',
   h1: 'SEO &amp; <em>GEO</em> IN WEBDESIGN: HOGER IN GOOGLE EN AI-ZOEKMACHINES',
-  metaTitle: 'SEO & GEO in webdesign: hoger in Google en AI-zoekmachines | MVDBmedia',
+  metaTitle: 'SEO & GEO in webdesign: hoger in Google en AI | MVDBmedia',
   metaDescription: 'Wat is SEO en GEO (Generative Engine Optimization)? Zo bouw je een website die hoger scoort in Google én wordt geciteerd door ChatGPT, Gemini en AI Overviews.',
   category: 'SEO & GEO',
   tags: ['SEO', 'GEO', 'AI-zoekmachines'],

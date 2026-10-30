@@ -425,9 +425,10 @@
   </script>
   <link rel="stylesheet" href="/faq.css">
   <style>/*kb-patch*/@media(max-width:1180px){#nav-links{gap:18px!important}}@media(min-width:769px) and (max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:768px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important}}</style>
+  <link rel="stylesheet" href="/related.css">
 </head>
 <body>
-  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" onfocus="this.style.left='16px'" onblur="this.style.left='-9999px'">Naar hoofdinhoud</a>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--orange);color:#000;padding:8px 20px;font-size:0.78rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:0.06em;" data-s-focus="this.style.left='16px'" data-s-blur="this.style.left='-9999px'">Naar hoofdinhoud</a>
 
   <!-- ══════════════════════════ NAV ══════════════════════════ -->
   <nav style="
@@ -459,7 +460,7 @@
 
     <a id="nav-cta" href="/#contact" class="btn-orange" style="padding:8px 20px;font-size:0.7rem;">Offerte aanvragen</a>
 
-    <button id="menu-btn" onclick="toggleMenu()" style="
+    <button id="menu-btn" data-a-click="toggleMenu" style="
       display: none;
       background: transparent;
       border: none;
@@ -484,14 +485,14 @@
     padding: 16px 24px 24px;
     flex-direction: column; gap: 16px;
   ">
-    <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
-    <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
-    <a href="/vastgoedfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
-    <a href="/dronevisuals" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
-    <a href="/portfolio" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
-    <a href="/#over" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
-    <a href="/#contact" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
-    <a href="/#contact" onclick="toggleMenu()" class="btn-orange" style="display:block;text-align:center;margin-top:8px;">Offerte aanvragen</a>
+    <a href="/webdesignopmaat" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
+    <a href="/portret-groepsfotografie" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
+    <a href="/vastgoedfotografie" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--orange);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Vastgoed</a>
+    <a href="/dronevisuals" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Drone</a>
+    <a href="/portfolio" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portfolio</a>
+    <a href="/#over" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Over mij</a>
+    <a href="/#contact" data-a-click="toggleMenu" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;">Contact</a>
+    <a href="/#contact" data-a-click="toggleMenu" class="btn-orange" style="display:block;text-align:center;margin-top:8px;">Offerte aanvragen</a>
   </div>
 
 
@@ -526,7 +527,7 @@
         font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
         color:var(--orange);text-decoration:none;margin-bottom:28px;
         transition:opacity 0.2s ease;
-      " onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+      " data-s-mouseover="this.style.opacity='0.75'" data-s-mouseout="this.style.opacity='1'">
         ← Terug
       </a>
 
@@ -897,17 +898,17 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px;margin:0 auto;">
 
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" onmouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
             <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em;color:var(--text-primary);">DRONE ADD-ON</div>
             <div style="font-size:1rem;font-weight:700;color:var(--orange);">+€75–€150</div>
           </div>
 
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" onmouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
             <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em;color:var(--text-primary);">360-TOUR</div>
             <div style="font-size:1rem;font-weight:700;color:var(--orange);">+€100–€250</div>
           </div>
 
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" onmouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s ease,transform 0.2s cubic-bezier(0.22,1,0.36,1);" data-s-mouseover="this.style.borderColor='rgba(255,140,0,0.35)';this.style.transform='translateY(-3px)'" data-s-mouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
             <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em;color:var(--text-primary);">REEL / VIDEO</div>
             <div style="font-size:1rem;font-weight:700;color:var(--orange);">+€150–€300</div>
           </div>
@@ -967,7 +968,36 @@
   </script>
 
   <!-- ══════════════════════════ CTA SECTION ══════════════════════════ -->
-  <section class="section-pad" style="
+  <!-- rel-pages:start -->
+<section class="rel-section" aria-labelledby="rel-pages-title">
+  <div class="rel-inner">
+    <div class="orange-label">Ook interessant</div>
+    <h2 class="rel-title" id="rel-pages-title">MEER <span class="rel-accent">MOGELIJKHEDEN</span></h2>
+    <ul class="rel-grid">
+          <li><a class="rel-card" href="/drone-vastgoed">
+            <span class="rel-cat">Drone</span>
+            <span class="rel-name">Drone vastgoedfotografie</span>
+            <span class="rel-text">Luchtfoto’s en video van panden voor makelaars en bouwbedrijven.</span>
+            <span class="rel-more" aria-hidden="true">Bekijk dienst →</span>
+          </a></li>
+          <li><a class="rel-card" href="/dronevisuals">
+            <span class="rel-cat">Drone</span>
+            <span class="rel-name">Alle dronevisuals</span>
+            <span class="rel-text">Cinematische dronebeelden in 4K voor bedrijven, vastgoed en evenementen.</span>
+            <span class="rel-more" aria-hidden="true">Bekijk dienst →</span>
+          </a></li>
+          <li><a class="rel-card" href="/portfolio/bouwbedrijf-vellinga-bouwplaats">
+            <span class="rel-cat">Case-study</span>
+            <span class="rel-name">Bouwplaats Bouwbedrijf Vellinga</span>
+            <span class="rel-text">13 luchtfoto’s van grondwerk tot rieten daken.</span>
+            <span class="rel-more" aria-hidden="true">Bekijk case →</span>
+          </a></li>
+    </ul>
+  </div>
+</section>
+<!-- rel-pages:end -->
+
+<section class="section-pad" style="
     background: var(--bg-elevated);
     padding: 100px 64px;
     text-align: center;
@@ -1029,10 +1059,10 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Diensten</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/webdesignopmaat" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
-            <a href="/portret-groepsfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
+            <a href="/webdesignopmaat" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Webdesign op maat</a>
+            <a href="/portret-groepsfotografie" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Portret &amp; Groepsfotografie</a>
             <a href="/vastgoedfotografie" style="font-size:0.8rem;color:var(--orange);text-decoration:none;" aria-current="page">Vastgoedfotografie</a>
-            <a href="/dronevisuals" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
+            <a href="/dronevisuals" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Drone Visuals</a>
           </div>
         </div>
 
@@ -1040,9 +1070,9 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Navigatie</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/portfolio" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
-            <a href="/#over" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Over mij</a>
-            <a href="/#contact" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
+            <a href="/portfolio" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Portfolio</a>
+            <a href="/#over" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Over mij</a>
+            <a href="/#contact" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Contact</a>
           </div>
         </div>
 
@@ -1050,18 +1080,18 @@
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Webdesign Gidsen</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="/webdesign-kosten-friesland" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Wat kost een website?</a>
-            <a href="/maatwerk-website-vs-wordpress" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Maatwerk vs WordPress</a>
-            <a href="/snelle-website-laten-maken" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Snelle website laten maken</a>
-            <a href="/website-laten-maken-sneek" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Webdesigner in Sneek</a>
+            <a href="/webdesign-kosten-friesland" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Wat kost een website?</a>
+            <a href="/maatwerk-website-vs-wordpress" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Maatwerk vs WordPress</a>
+            <a href="/snelle-website-laten-maken" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Snelle website laten maken</a>
+            <a href="/website-laten-maken-sneek" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Webdesigner in Sneek</a>
             <a href="/kennisbank" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;color:var(--orange);font-weight:600;">Bekijk alle gidsen →</a>
           </div>
         </div>
         <div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Volg ons</div>
           <div style="display:flex;flex-direction:column;gap:11px;">
-            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Instagram</a>
-            <a href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'"><span style="color:var(--orange);">★</span> Laat een review achter</a>
+            <a href="https://www.instagram.com/mvdbmedia" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'">Instagram</a>
+            <a href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s ease;" data-s-mouseover="this.style.color='var(--text-primary)'" data-s-mouseout="this.style.color='var(--text-secondary)'"><span style="color:var(--orange);">★</span> Laat een review achter</a>
           </div>
         </div>
 
@@ -1087,9 +1117,9 @@
        box-shadow:0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4);
        transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;
      "
-     onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
-     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
-     onfocus="this.style.transform='scale(1.12)'" onblur="this.style.transform='scale(1)'">
+     data-s-mouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,0.5),0 4px 12px rgba(0,0,0,0.4)'"
+     data-s-mouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.4)'"
+     data-s-focus="this.style.transform='scale(1.12)'" data-s-blur="this.style.transform='scale(1)'">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
     </svg>
@@ -1097,31 +1127,8 @@
 
 
   <!-- ══════════════════════════ SCRIPTS ══════════════════════════ -->
-  <script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    // Scroll reveal
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
-
-    // Nav hover highlight
-    document.querySelectorAll('#nav-links a').forEach(link => {
-      link.addEventListener('mouseenter', () => link.style.color = 'var(--text-primary)');
-      link.addEventListener('mouseleave', () => link.style.color = 'var(--text-secondary)');
-    });
-  </script>
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/vastgoedfotografie.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,51 @@
+name: Site-check
+
+# Statische bewaking (geen dependencies nodig). De site zelf wordt door Cloudflare Pages
+# gedeployed; deze workflow deployt niets en raakt GitHub Pages niet aan.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: Statische checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: CSP, links, SEO, schema, sitemap, afgeschermde bestanden
+        run: node scripts/check.mjs
+      - name: Dependencies (alleen sharp nodig voor de generator)
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - name: Kennisbank-generator in sync met de HTML
+        run: |
+          node scripts/build-kennisbank.mjs > /dev/null
+          git diff --exit-code -- '*.html' || (echo "::error::Gegenereerde kennisbank-pagina's wijken af van de repo. Draai 'node scripts/build-kennisbank.mjs' en commit." && exit 1)
+
+  browser:
+    name: Browser-test met echte CSP (handmatig)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Start wrangler pages dev
+        run: |
+          npx --yes wrangler@4 pages dev . --port 8788 --ip 127.0.0.1 > wrangler.log 2>&1 &
+          for i in $(seq 1 40); do curl -sf http://127.0.0.1:8788/ > /dev/null && break; sleep 2; done
+      - name: csp-smoke
+        run: node scripts/csp-smoke.mjs
