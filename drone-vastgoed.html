@@ -11,12 +11,18 @@
   <meta property="og:url" content="https://mvdbmedia.nl/drone-vastgoed">
   <meta property="og:title" content="Drone Vastgoedfotografie Friesland | MVDBmedia">
   <meta property="og:description" content="Drone vastgoedfotografie voor makelaars en bouwbedrijven. Luchtfoto's en video van panden in Friesland en heel Nederland. Snel geleverd, scherp geprijsd.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/drone-vastgoed.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Luchtfoto's voor makelaars en vastgoed — Drone vastgoed, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Drone Vastgoedfotografie Friesland | MVDBmedia">
   <meta name="twitter:description" content="Drone vastgoedfotografie voor makelaars en bouwbedrijven. Luchtfoto's en video van panden in Friesland en heel Nederland. Snel geleverd, scherp geprijsd.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/drone-vastgoed.jpg">
+  <meta name="twitter:image:alt" content="Luchtfoto's voor makelaars en vastgoed — Drone vastgoed, MVDBmedia Sneek">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -80,7 +86,70 @@
     }
   ],
   "url": "https://mvdbmedia.nl/drone-vastgoed",
-  "serviceType": "Drone vastgoedfotografie"
+  "serviceType": "Drone vastgoedfotografie",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": "89",
+    "highPrice": "229",
+    "offerCount": 3,
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Basis",
+        "url": "https://mvdbmedia.nl/drone-vastgoed",
+        "price": "89",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "89",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Standaard",
+        "url": "https://mvdbmedia.nl/drone-vastgoed",
+        "price": "149",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "149",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "url": "https://mvdbmedia.nl/drone-vastgoed",
+        "price": "229",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "229",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      }
+    ]
+  }
 }
 </script>
   <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -98,7 +167,7 @@
       --orange-glow:    rgba(255,140,0,0.15);
       --text-primary:   #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:     #7a736e;
+      --text-muted:     #8f8882;
       --font-display:   'Bebas Neue', sans-serif;
       --font-body:      'Inter', sans-serif;
       --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -215,7 +284,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
-  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+<main id="main-content" tabindex="-1" style="outline:none;">
   <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
     <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
     <a href="/portret-groepsfotografie" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Portret</a>
@@ -359,7 +428,8 @@
     <div style="max-width:1280px;margin:0 auto;">
       <div style="text-align:center;margin-bottom:56px;">
         <div class="orange-label" style="justify-content:center;">Transparante pakketten</div>
-        <h2 style="font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,5rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin:0;">KIES JOUW<br><span style="color:var(--orange);">PAKKET</span></h2>
+        <h2 style="font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,5rem);line-height:0.88;letter-spacing:0.02em;color:var(--text-primary);margin:0 0 10px;">KIES JOUW<br><span style="color:var(--orange);">PAKKET</span></h2>
+        <p style="font-size:0.82rem;color:var(--text-muted);font-weight:300;margin:0;">Vaste prijzen, exclusief BTW.</p>
       </div>
       <div class="packages-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;">
 
@@ -434,7 +504,7 @@
       <div>
         <details class="mv-faq-item">
           <summary class="mv-faq-summary"><span class="mv-faq-q">Wat kost drone vastgoedfotografie?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
-          <p class="mv-faq-a">Luchtbeelden voor vastgoed starten bij €89 (5 bewerkte luchtfoto's). Voor €149 krijg je 10 bewerkte luchtfoto's met een opname in het gouden uur en voor €229 20 bewerkte luchtfoto's, een FPV-shot via de DJI Avata 2 en een opname in het gouden uur.</p>
+          <p class="mv-faq-a">Luchtbeelden voor vastgoed starten bij €89 (5 bewerkte luchtfoto's). Voor €149 krijg je 10 bewerkte luchtfoto's met een opname in het gouden uur en voor €229 20 bewerkte luchtfoto's, een FPV-shot via de DJI Avata 2 en een opname in het gouden uur. Alle prijzen zijn exclusief BTW.</p>
         </details>
         <details class="mv-faq-item">
           <summary class="mv-faq-summary"><span class="mv-faq-q">Hoe snel zijn de luchtbeelden klaar?</span><span class="mv-faq-icon" aria-hidden="true">+</span></summary>
@@ -459,7 +529,7 @@
     "url": "https://mvdbmedia.nl/drone-vastgoed",
     "inLanguage": "nl-NL",
     "mainEntity": [
-      { "@type": "Question", "name": "Wat kost drone vastgoedfotografie?", "acceptedAnswer": { "@type": "Answer", "text": "Luchtbeelden voor vastgoed starten bij €89 (5 bewerkte luchtfoto's). Voor €149 krijg je 10 bewerkte luchtfoto's met een opname in het gouden uur en voor €229 20 bewerkte luchtfoto's, een FPV-shot via de DJI Avata 2 en een opname in het gouden uur." } },
+      { "@type": "Question", "name": "Wat kost drone vastgoedfotografie?", "acceptedAnswer": { "@type": "Answer", "text": "Luchtbeelden voor vastgoed starten bij €89 (5 bewerkte luchtfoto's). Voor €149 krijg je 10 bewerkte luchtfoto's met een opname in het gouden uur en voor €229 20 bewerkte luchtfoto's, een FPV-shot via de DJI Avata 2 en een opname in het gouden uur. Alle prijzen zijn exclusief BTW." } },
       { "@type": "Question", "name": "Hoe snel zijn de luchtbeelden klaar?", "acceptedAnswer": { "@type": "Answer", "text": "Je beelden staan klaar binnen 48 tot 72 uur na de shoot, zodat je snel kunt publiceren." } },
       { "@type": "Question", "name": "Heb ik een vergunning nodig voor luchtbeelden van mijn pand?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. De DJI Mini 2 weegt minder dan 250 gram en vliegt vergunningsvrij. Geen gedoe voor jou, ik regel de planning en de vlucht." } },
       { "@type": "Question", "name": "Waarom luchtbeelden gebruiken bij de verkoop van een woning?", "acceptedAnswer": { "@type": "Answer", "text": "Luchtbeelden onderscheiden je Funda-advertentie direct van de rest. Kopers zien de locatie, de buurt en de buitenruimte in één oogopslag, wat leidt tot snellere beslissingen en meer serieuze bezichtigingen." } }
@@ -483,6 +553,7 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
   <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">

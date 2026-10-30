@@ -13,14 +13,20 @@
   <meta property="og:url" content="https://mvdbmedia.nl/vastgoedfotografie">
   <meta property="og:title" content="Vastgoedfotograaf Friesland: Makelaarsfoto’s | MVDBmedia">
   <meta property="og:description" content="Vastgoedfotografie in Friesland voor makelaars en bouwbedrijven. Interieur, exterieur, 360°-tours en drone. Geleverd binnen 72 uur. Vraag een offerte aan.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/vastgoed-huis.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/vastgoedfotografie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Woningen op hun best in beeld — Vastgoedfotografie, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vastgoedfotograaf Friesland: Makelaarsfoto’s | MVDBmedia">
   <meta name="twitter:description" content="Vastgoedfotografie in Friesland voor makelaars en bouwbedrijven. Interieur, exterieur, 360°-tours en drone. Geleverd binnen 72 uur. Vraag een offerte aan.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/vastgoed-huis.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/vastgoedfotografie.jpg">
+  <meta name="twitter:image:alt" content="Woningen op hun best in beeld — Vastgoedfotografie, MVDBmedia Sneek">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -86,7 +92,70 @@
     }
   ],
   "url": "https://mvdbmedia.nl/vastgoedfotografie",
-  "serviceType": "Vastgoedfotografie"
+  "serviceType": "Vastgoedfotografie",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": "175",
+    "highPrice": "495",
+    "offerCount": 3,
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Compact",
+        "url": "https://mvdbmedia.nl/vastgoedfotografie",
+        "price": "175",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "175",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Standaard",
+        "url": "https://mvdbmedia.nl/vastgoedfotografie",
+        "price": "295",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "295",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "url": "https://mvdbmedia.nl/vastgoedfotografie",
+        "price": "495",
+        "priceCurrency": "EUR",
+        "description": "Prijs exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "495",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      }
+    ]
+  }
 }
 </script>
   <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -105,7 +174,7 @@
       --orange-glow:  rgba(255,140,0,0.15);
       --text-primary: #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:   #7a736e;
+      --text-muted:   #8f8882;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body:    'Inter', sans-serif;
       --shadow-sm:    0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -404,7 +473,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
-  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+<main id="main-content" tabindex="-1" style="outline:none;">
 
   <!-- Mobile menu -->
   <div id="mobile-menu" style="
@@ -437,7 +506,7 @@
   ">
     <!-- Background image -->
     <div style="position:absolute;inset:0;z-index:0;">
-      <img loading="lazy" decoding="async" src="fotos/vastgoed-stock.webp" alt="Vastgoedfotografie van een modern woonhuis, professionele makelaarsfoto door MVDBmedia Friesland" style="
+      <img fetchpriority="high" decoding="async" src="fotos/vastgoed-stock.webp" srcset="fotos/vastgoed-stock-800.webp 800w, fotos/vastgoed-stock.webp 1600w" sizes="100vw" alt="Vastgoedfotografie van een modern woonhuis, professionele makelaarsfoto door MVDBmedia Friesland" style="
         width:100%;height:100%;object-fit:cover;object-position:center;
         display:block;
       ">
@@ -936,6 +1005,7 @@
 
 
   <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  </main>
   <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">

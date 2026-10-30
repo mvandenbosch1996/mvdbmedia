@@ -13,14 +13,20 @@
   <meta property="og:url" content="https://mvdbmedia.nl/">
   <meta property="og:title" content="Fotografie & Webdesign Sneek & Friesland | MVDBmedia">
   <meta property="og:description" content="Fotograaf én webdesigner in Sneek. MVDBmedia levert portret-, vastgoed- en dronefotografie plus websites op maat. Vraag vrijblijvend een offerte aan.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/index.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Beeld en websites voor Friesland — Fotografie &amp; Webdesign, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fotografie & Webdesign Sneek & Friesland | MVDBmedia">
   <meta name="twitter:description" content="Fotograaf én webdesigner in Sneek. MVDBmedia levert portret-, vastgoed- en dronefotografie plus websites op maat. Vraag vrijblijvend een offerte aan.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/index.jpg">
+  <meta name="twitter:image:alt" content="Beeld en websites voor Friesland — Fotografie &amp; Webdesign, MVDBmedia Sneek">
 
   <!-- Favicon (inline SVG) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -33,15 +39,45 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": [
+    "LocalBusiness",
+    "Organization"
+  ],
   "@id": "https://mvdbmedia.nl",
   "name": "MVDBmedia",
-  "image": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
-  "logo": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
+  "url": "https://mvdbmedia.nl",
   "description": "MVDBmedia levert professionele portret-, vastgoed- en dronefotografie, plus webdesign op maat. Gevestigd in Sneek, beschikbaar in heel Friesland en Nederland.",
+  "image": "https://mvdbmedia.nl/fotos/michael-profiel.jpg",
+  "logo": {
+    "@type": "ImageObject",
+    "@id": "https://mvdbmedia.nl/#logo",
+    "url": "https://mvdbmedia.nl/apple-touch-icon.png",
+    "contentUrl": "https://mvdbmedia.nl/apple-touch-icon.png",
+    "width": 180,
+    "height": 180,
+    "encodingFormat": "image/png",
+    "caption": "Logo van MVDBmedia",
+    "license": "https://mvdbmedia.nl/algemene-voorwaarden",
+    "acquireLicensePage": "https://mvdbmedia.nl/#contact"
+  },
   "telephone": "+31624819278",
   "email": "info@mvdbmedia.nl",
-  "url": "https://mvdbmedia.nl",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+31624819278",
+      "email": "info@mvdbmedia.nl",
+      "availableLanguage": "nl",
+      "areaServed": "NL"
+    }
+  ],
+  "vatID": "NL005483105B05",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "KvK",
+    "value": "42084901"
+  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Sneek",
@@ -49,26 +85,218 @@
     "addressCountry": "NL"
   },
   "areaServed": [
-    { "@type": "City", "name": "Sneek" },
-    { "@type": "AdministrativeArea", "name": "Friesland" },
-    { "@type": "Country", "name": "Nederland" }
+    {
+      "@type": "City",
+      "name": "Sneek"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Friesland"
+    },
+    {
+      "@type": "Country",
+      "name": "Nederland"
+    }
   ],
   "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "knowsLanguage": "nl-NL",
   "founder": {
     "@type": "Person",
     "@id": "https://mvdbmedia.nl/#michael-van-den-bosch",
     "name": "Michael van den Bosch"
   },
+  "hasMap": "https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8",
   "sameAs": [
     "https://www.instagram.com/mvdbmedia",
     "https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8"
-  ]
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Diensten van MVDBmedia",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Webdesign op maat",
+          "url": "https://mvdbmedia.nl/webdesignopmaat",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "499",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Vastgoedfotografie",
+          "url": "https://mvdbmedia.nl/vastgoedfotografie",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "175",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Constructie in Beeld (dronefotografie)",
+          "url": "https://mvdbmedia.nl/drone-constructie",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "295",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Portretfotografie",
+          "url": "https://mvdbmedia.nl/portretfotografie",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Groepsfotografie",
+          "url": "https://mvdbmedia.nl/groepsfotografie",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Eventfotografie",
+          "url": "https://mvdbmedia.nl/evenementen",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Dronevisuals",
+          "url": "https://mvdbmedia.nl/dronevisuals",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drone vastgoed",
+          "url": "https://mvdbmedia.nl/drone-vastgoed",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "89",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drone events",
+          "url": "https://mvdbmedia.nl/drone-events",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "295",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drone auto content",
+          "url": "https://mvdbmedia.nl/drone-auto",
+          "provider": {
+            "@id": "https://mvdbmedia.nl"
+          }
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "125",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    ]
+  }
 }
 </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mvdbmedia.nl/#website",
+      "url": "https://mvdbmedia.nl/",
+      "name": "MVDBmedia",
+      "description": "Fotografie en webdesign in Sneek en heel Friesland",
+      "inLanguage": "nl-NL",
+      "publisher": {
+        "@id": "https://mvdbmedia.nl"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mvdbmedia.nl/#webpage",
+      "url": "https://mvdbmedia.nl/",
+      "name": "Fotografie & Webdesign Sneek & Friesland | MVDBmedia",
+      "description": "Fotograaf én webdesigner in Sneek. MVDBmedia levert portret-, vastgoed- en dronefotografie plus websites op maat. Vraag vrijblijvend een offerte aan.",
+      "inLanguage": "nl-NL",
+      "isPartOf": {
+        "@id": "https://mvdbmedia.nl/#website"
+      },
+      "about": {
+        "@id": "https://mvdbmedia.nl"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://mvdbmedia.nl/#img-drone-fort"
+      }
+    },
     {
       "@type": "Person",
       "@id": "https://mvdbmedia.nl/#michael-van-den-bosch",
@@ -226,7 +454,7 @@
       --orange-glow:  rgba(255,140,0,0.15);
       --text-primary: #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:   #7a736e;
+      --text-muted:   #8f8882;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body:    'Inter', sans-serif;
       --shadow-sm:    0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -427,6 +655,16 @@
       transform: scale(0);
       pointer-events: none;
     }
+    .field-error {
+      margin: 8px 0 0;
+      font-size: 0.74rem;
+      line-height: 1.5;
+      color: #ff8a8a;
+    }
+    .field-error:empty { display: none; }
+    #form-status { min-height: 1.4em; margin-top: 14px; font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); }
+    #form-status.is-error { color: #ff8a8a; }
+    #form-status.is-ok { color: #7dfa7d; }
     .field-check.is-valid {
       animation: checkPop 0.44s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
@@ -1381,18 +1619,25 @@
             <div class="form-naam-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
               <div style="position:relative;">
                 <label for="form-naam" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Naam</label>
-                <input id="form-naam" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+<div style="position:relative;">
+                <input id="form-naam" maxlength="100" aria-describedby="err-naam" aria-invalid="false" type="text" name="naam" placeholder="Jouw naam" required autocomplete="name" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'">
                 <span class="field-check" id="check-naam" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+</div>
+<p class="field-error" id="err-naam"></p>
               </div>
               <div style="position:relative;">
                 <label for="form-email" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">E-mail</label>
-                <input id="form-email" type="email" name="email" placeholder="jouw@email.nl" required autocomplete="email" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+<div style="position:relative;">
+                <input id="form-email" maxlength="254" aria-describedby="err-email" aria-invalid="false" type="email" name="email" placeholder="jouw@email.nl" required autocomplete="email" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'">
                 <span class="field-check" id="check-email" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+</div>
+<p class="field-error" id="err-email"></p>
               </div>
             </div>
             <div id="dienst-wrapper" style="margin-bottom:16px;position:relative;transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
               <label for="form-dienst" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Dienst</label>
-              <select id="form-dienst" name="dienst" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" >
+<div style="position:relative;">
+              <select id="form-dienst" aria-describedby="err-dienst" aria-invalid="false" name="dienst" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'" >
                 <option value="" disabled selected style="color:var(--text-muted);">Selecteer een dienst</option>
                 <option value="portret">Portretfotografie</option>
                 <option value="groep">Groepsfotografie</option>
@@ -1405,17 +1650,19 @@
               </select>
               <span aria-hidden="true" style="position:absolute;right:14px;bottom:13px;pointer-events:none;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff8c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
               <span class="field-check" id="check-dienst" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+</div>
+<p class="field-error" id="err-dienst"></p>
             </div>
             <!-- Pakket selector — verschijnt na dienst keuze -->
             <div id="pakket-wrapper" style="display:none;margin-bottom:16px;opacity:0;transform:translateY(-6px);transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
-              <label style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Pakket</label>
-              <div id="pakket-opties" style="display:flex;flex-direction:column;gap:8px;"></div>
+              <span id="pakket-label" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Pakket</span>
+              <div id="pakket-opties" role="group" aria-labelledby="pakket-label" style="display:flex;flex-direction:column;gap:8px;"></div>
               <input type="hidden" id="form-pakket" name="pakket" value="">
             </div>
 
             <div style="margin-bottom:16px;position:relative;">
               <label for="form-reden" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Reden van contact</label>
-              <select id="form-reden" name="reden" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" onchange="toggleDienst(this.value)">
+              <select id="form-reden" name="reden" required style="width:100%;padding:11px 40px 11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'" onchange="toggleDienst(this.value)">
                 <option value="offerte">Offerte aanvragen</option>
                 <option value="vraag">Algemene vraag stellen</option>
               </select>
@@ -1423,13 +1670,17 @@
             </div>
             <div style="margin-bottom:24px;position:relative;">
               <label for="form-bericht" style="display:block;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Bericht</label>
-              <textarea id="form-bericht" name="bericht" placeholder="Vertel me over jouw project, wensen en beschikbaarheid..." required rows="5" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;resize:vertical;line-height:1.65;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+<div style="position:relative;">
+              <textarea id="form-bericht" maxlength="2000" aria-describedby="err-bericht" aria-invalid="false" name="bericht" placeholder="Vertel me over jouw project, wensen en beschikbaarheid..." required rows="5" style="width:100%;padding:11px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);font-size:0.85rem;font-family:var(--font-body);outline:none;resize:vertical;line-height:1.65;transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor=this.getAttribute('aria-invalid')==='true'?'#e05555':'var(--border)'"></textarea>
               <span class="field-check" id="check-bericht" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+</div>
+<p class="field-error" id="err-bericht"></p>
             </div>
             <button type="submit" id="submit-btn" style="width:100%;background:var(--orange);color:#000;font-size:0.68rem;font-weight:800;padding:15px 24px;border:none;border-radius:3px;cursor:pointer;letter-spacing:0.12em;text-transform:uppercase;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease;box-shadow:0 4px 20px rgba(255,140,0,0.22);"
             onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(255,140,0,0.35)'"
             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(255,140,0,0.22)'"
             >Verstuur aanvraag of vraag</button>
+            <div id="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -1870,6 +2121,39 @@
     // Tijdstempel voor timing-check bij submit — reset na elke geslaagde verzending
     let _formLoadedAt = Date.now();
 
+    const FORM_RULES = [
+      { id: 'form-naam',    msg: 'Vul je naam in (minimaal 2 tekens).', test: v => v.trim().length >= 2 },
+      { id: 'form-email',   msg: 'Vul een geldig e-mailadres in, bijvoorbeeld naam@bedrijf.nl.', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      { id: 'form-dienst',  msg: 'Kies een dienst.', test: v => v !== '', skip: reden => reden === 'vraag' },
+      { id: 'form-bericht', msg: 'Schrijf een bericht (minimaal 3 tekens).', test: v => v.trim().length >= 3 },
+    ];
+
+    function setFormStatus(text, kind) {
+      const box = document.getElementById('form-status');
+      if (!box) return;
+      box.textContent = text;
+      box.className = kind === 'error' ? 'is-error' : kind === 'ok' ? 'is-ok' : '';
+    }
+
+    function clearFieldError(el) {
+      el.setAttribute('aria-invalid', 'false');
+      el.style.borderColor = 'var(--border)';
+      const p = document.getElementById('err-' + el.id.replace('form-', ''));
+      if (p) p.textContent = '';
+    }
+
+    function showFieldError(el, rule) {
+      el.setAttribute('aria-invalid', 'true');
+      el.style.borderColor = '#e05555';
+      const p = document.getElementById('err-' + el.id.replace('form-', ''));
+      if (p) p.textContent = rule.msg;
+      if (el.dataset.live) return;
+      el.dataset.live = '1';
+      const recheck = () => { if (rule.test(el.value)) clearFieldError(el); };
+      el.addEventListener('input', recheck);
+      el.addEventListener('change', recheck);
+    }
+
     // Contact form submit — stuurt berichten naar info@mvdbmedia.nl via Formspree
     async function handleFormSubmit(e) {
       e.preventDefault();
@@ -1886,30 +2170,25 @@
       const gotcha = form.querySelector('[name="_gotcha"]');
       if (gotcha && gotcha.value) return;
 
-      const checks = [
-        { id: 'form-naam',    test: v => v.trim().length >= 2 },
-        { id: 'form-email',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-        { id: 'form-dienst',  test: v => v !== '' },
-        { id: 'form-reden',   test: v => v !== '' },
-        { id: 'form-bericht', test: v => v.trim().length >= 3 },
-      ];
-
-      let allValid = true;
-      checks.forEach(({ id, test }) => {
-        const el = document.getElementById(id);
+      const redenVal = document.getElementById('form-reden').value;
+      let firstInvalid = null;
+      FORM_RULES.forEach(rule => {
+        const el = document.getElementById(rule.id);
         if (!el) return;
-        if (!test(el.value)) {
-          allValid = false;
-          el.style.borderColor = '#e05555';
-          const fix = () => { if (test(el.value)) { el.style.borderColor = 'var(--border)'; el.removeEventListener('input', fix); el.removeEventListener('change', fix); } };
-          el.addEventListener('input', fix);
-          el.addEventListener('change', fix);
-        }
+        if (rule.skip && rule.skip(redenVal)) { clearFieldError(el); return; }
+        if (rule.test(el.value)) { clearFieldError(el); return; }
+        showFieldError(el, rule);
+        if (!firstInvalid) firstInvalid = el;
       });
-      if (!allValid) return;
+      if (firstInvalid) {
+        setFormStatus('Controleer de gemarkeerde velden en probeer het opnieuw.', 'error');
+        firstInvalid.focus();
+        return;
+      }
 
       btn.textContent = 'Verzenden...';
       btn.disabled = true;
+      setFormStatus('Bericht wordt verzonden...', '');
 
       try {
         const res = await fetch('https://formspree.io/f/xbdqvdpd', {
@@ -1922,10 +2201,12 @@
           btn.style.background = '#1a4d1a';
           btn.style.color = '#7dfa7d';
           form.reset();
-          // Rode randen van eerdere validatie wissen zodat een nieuw bericht direct kan
           form.querySelectorAll('input, select, textarea').forEach(el => {
             el.style.borderColor = 'var(--border)';
+            el.setAttribute('aria-invalid', 'false');
           });
+          form.querySelectorAll('.field-error').forEach(p => { p.textContent = ''; });
+          setFormStatus('Bedankt! Je bericht is verzonden. Ik reageer binnen 24 uur.', 'ok');
           // Timing-klok opnieuw starten voor de volgende invulling
           _formLoadedAt = Date.now();
           setTimeout(() => {
@@ -1941,6 +2222,7 @@
         btn.textContent = 'Probeer opnieuw';
         btn.style.background = '#5c1a1a';
         btn.style.color = '#fa7d7d';
+        setFormStatus('Verzenden is mislukt. Probeer het opnieuw of mail naar info@mvdbmedia.nl.', 'error');
         btn.disabled = false;
       }
     }

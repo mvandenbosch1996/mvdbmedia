@@ -110,7 +110,7 @@
     letter-spacing:.12em;text-transform:uppercase;
     color:var(--muted);margin-bottom:8px;
   }
-  label .opt{color:#5f594e;text-transform:none;letter-spacing:0;font-weight:400}
+  label .opt{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400}
   input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
     width:100%;
     background:var(--panel-2);
@@ -128,7 +128,7 @@
     border-color:var(--gold);
     background:#201d18;
   }
-  input::placeholder,textarea::placeholder{color:#5c564b}
+  input::placeholder,textarea::placeholder{color:var(--muted)}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:560px){.row{grid-template-columns:1fr}}
 
@@ -223,14 +223,17 @@
     .btn-ghost{margin:12px 0 0;display:block;width:100%}
     .btn-main{display:block;width:100%}
   }
+  .field-error{margin:8px 0 0;font-size:13px;line-height:1.5;color:#f0958b}
+  .field-error:empty{display:none}
+  input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#e0685c}
   .notice{
-    margin-top:20px;font-size:13px;color:var(--ok);
+    margin-top:20px;font-size:13px;color:#f0958b;
     opacity:0;transition:opacity .3s;
   }
   .notice.show{opacity:1}
 
   footer{
-    text-align:center;color:#5c564b;font-size:12px;
+    text-align:center;color:var(--muted);font-size:12px;
     letter-spacing:.1em;padding:0 24px 60px;
   }
   footer a{color:var(--gold);text-decoration:none}
@@ -239,9 +242,14 @@
     *{transition:none!important;animation:none!important}
     html{scroll-behavior:auto}
   }
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--gold);color:#0d0d0d;padding:8px 20px;font-size:.78rem;font-weight:500;text-decoration:none;letter-spacing:.06em}
+.skip-link:focus-visible{left:16px;outline:2px solid #fff;outline-offset:2px}
+main:focus{outline:none}
 </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Naar hoofdinhoud</a>
 
 <div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
 <div class="progress-label"><strong id="pct">0%</strong> ingevuld</div>
@@ -253,40 +261,40 @@
   <div class="header-rule"></div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <!-- 1 · Bedrijfsgegevens -->
   <section data-sec>
     <div class="sec-head"><span class="sec-num">1</span><h2>Bedrijfsgegevens</h2><span class="sec-check">✓ ingevuld</span></div>
     <p class="sec-sub">Wie bent u en hoe kunnen we u bereiken?</p>
     <div class="row">
-      <div class="field"><label for="bedrijf">Bedrijfsnaam</label><input type="text" id="bedrijf" data-q="Bedrijfsnaam" placeholder="Bijv. Bakkerij Jansen"></div>
-      <div class="field"><label for="contact">Contactpersoon</label><input type="text" id="contact" data-q="Contactpersoon" placeholder="Voor- en achternaam"></div>
+      <div class="field"><label for="bedrijf">Bedrijfsnaam</label><input type="text" maxlength="200" autocomplete="organization" id="bedrijf" data-q="Bedrijfsnaam" placeholder="Bijv. Bakkerij Jansen"></div>
+      <div class="field"><label for="contact">Contactpersoon</label><input type="text" maxlength="200" autocomplete="name" id="contact" data-q="Contactpersoon" placeholder="Voor- en achternaam"></div>
     </div>
     <div class="row">
-      <div class="field"><label for="email">E-mailadres</label><input type="email" id="email" data-q="E-mail" placeholder="naam@bedrijf.nl"></div>
-      <div class="field"><label for="tel">Telefoonnummer</label><input type="tel" id="tel" data-q="Telefoon" placeholder="06 12345678"></div>
+      <div class="field"><label for="email">E-mailadres</label><input type="email" id="email" maxlength="254" autocomplete="email" aria-describedby="err-email" aria-invalid="false" data-q="E-mail" placeholder="naam@bedrijf.nl"><p class="field-error" id="err-email"></p></div>
+      <div class="field"><label for="tel">Telefoonnummer</label><input type="tel" maxlength="30" autocomplete="tel" id="tel" data-q="Telefoon" placeholder="06 12345678"></div>
     </div>
-    <div class="field"><label for="huidig">Huidige website <span class="opt">(indien aanwezig)</span></label><input type="url" id="huidig" data-q="Huidige website" placeholder="https://"></div>
-    <div class="field"><label for="huidigfb">Wat stoort u aan uw huidige website — en wat moet juist behouden blijven? <span class="opt">(indien van toepassing)</span></label><textarea id="huidigfb" data-q="Huidige website — wat mist/behouden" placeholder="Bijv. verouderde uitstraling, slecht op mobiel… maar de teksten mogen blijven"></textarea></div>
+    <div class="field"><label for="huidig">Huidige website <span class="opt">(indien aanwezig)</span></label><input type="url" maxlength="300" autocomplete="url" id="huidig" data-q="Huidige website" placeholder="https://"></div>
+    <div class="field"><label for="huidigfb">Wat stoort u aan uw huidige website — en wat moet juist behouden blijven? <span class="opt">(indien van toepassing)</span></label><textarea maxlength="3000" id="huidigfb" data-q="Huidige website — wat mist/behouden" placeholder="Bijv. verouderde uitstraling, slecht op mobiel… maar de teksten mogen blijven"></textarea></div>
   </section>
 
   <!-- 2 · Over het bedrijf -->
   <section data-sec>
     <div class="sec-head"><span class="sec-num">2</span><h2>Over uw bedrijf</h2><span class="sec-check">✓ ingevuld</span></div>
     <p class="sec-sub">Vertel in uw eigen woorden — dit vormt de basis van de teksten en het ontwerp.</p>
-    <div class="field"><label for="watdoet">Wat doet uw bedrijf?</label><textarea id="watdoet" data-q="Wat doet het bedrijf" placeholder="Diensten, producten, werkgebied…"></textarea></div>
-    <div class="field"><label for="usp">Waarin onderscheidt u zich van concurrenten?</label><textarea id="usp" data-q="Onderscheidend vermogen" placeholder="Vakmanschap, ervaring, persoonlijke aanpak…"></textarea></div>
-    <div class="field"><label for="doelgroep">Wie is uw ideale klant?</label><textarea id="doelgroep" data-q="Doelgroep" placeholder="Particulier of zakelijk? Regio? Leeftijd?"></textarea></div>
+    <div class="field"><label for="watdoet">Wat doet uw bedrijf?</label><textarea maxlength="3000" id="watdoet" data-q="Wat doet het bedrijf" placeholder="Diensten, producten, werkgebied…"></textarea></div>
+    <div class="field"><label for="usp">Waarin onderscheidt u zich van concurrenten?</label><textarea maxlength="3000" id="usp" data-q="Onderscheidend vermogen" placeholder="Vakmanschap, ervaring, persoonlijke aanpak…"></textarea></div>
+    <div class="field"><label for="doelgroep">Wie is uw ideale klant?</label><textarea maxlength="3000" id="doelgroep" data-q="Doelgroep" placeholder="Particulier of zakelijk? Regio? Leeftijd?"></textarea></div>
     <div class="field">
       <label for="addTerm">Op welke zoektermen wilt u gevonden worden?</label>
       <div class="add-row" style="margin-top:0">
-        <input type="text" id="addTerm" placeholder="Bijv. loodgieter Sneek — druk op + of Enter">
+        <input type="text" maxlength="300" id="addTerm" placeholder="Bijv. loodgieter Sneek — druk op + of Enter">
         <button type="button" class="btn-add" data-add="addTerm" data-list="termList">+ Toevoegen</button>
       </div>
       <ul class="custom-list" id="termList" data-group="Gewenste zoektermen"></ul>
     </div>
-    <div class="field"><label for="regio">In welke plaatsen of regio werkt u?</label><input type="text" id="regio" data-q="Werkgebied" placeholder="Bijv. Friesland, heel Nederland…"></div>
+    <div class="field"><label for="regio">In welke plaatsen of regio werkt u?</label><input type="text" maxlength="300" id="regio" data-q="Werkgebied" placeholder="Bijv. Friesland, heel Nederland…"></div>
   </section>
 
   <!-- 3 · Doel -->
@@ -302,7 +310,7 @@
       <label class="chip"><input type="checkbox" value="Online boekingen / afspraken"><span>Boekingen / afspraken</span></label>
       <label class="chip"><input type="checkbox" value="Informatie geven aan bestaande klanten"><span>Klanten informeren</span></label>
     </div>
-    <div class="field" style="margin-top:22px"><label for="doelanders">Iets anders of een toelichting? <span class="opt">(optioneel)</span></label><input type="text" id="doelanders" data-q="Doel — toelichting" placeholder="Uw eigen aanvulling"></div>
+    <div class="field" style="margin-top:22px"><label for="doelanders">Iets anders of een toelichting? <span class="opt">(optioneel)</span></label><input type="text" maxlength="300" id="doelanders" data-q="Doel — toelichting" placeholder="Uw eigen aanvulling"></div>
   </section>
 
   <!-- 4 · Pagina's -->
@@ -321,7 +329,7 @@
       <label class="chip"><input type="checkbox" value="Contact"><span>Contact</span></label>
     </div>
     <div class="add-row">
-      <input type="text" id="addPage" placeholder="Eigen pagina toevoegen, bijv. 'Vacatures'">
+      <input type="text" maxlength="300" id="addPage" placeholder="Eigen pagina toevoegen, bijv. 'Vacatures'">
       <button type="button" class="btn-add" data-add="addPage" data-list="pageList">+ Toevoegen</button>
     </div>
     <ul class="custom-list" id="pageList" data-group="Eigen pagina's"></ul>
@@ -346,7 +354,7 @@
       <label class="chip"><input type="checkbox" value="Zelf teksten kunnen aanpassen"><span>Zelf kunnen bewerken</span></label>
     </div>
     <div class="add-row">
-      <input type="text" id="addFunc" placeholder="Eigen wens toevoegen">
+      <input type="text" maxlength="300" id="addFunc" placeholder="Eigen wens toevoegen">
       <button type="button" class="btn-add" data-add="addFunc" data-list="funcList">+ Toevoegen</button>
     </div>
     <ul class="custom-list" id="funcList" data-group="Eigen functionaliteiten"></ul>
@@ -365,9 +373,9 @@
       <label class="chip"><input type="checkbox" value="Speels / kleurrijk"><span>Speels</span></label>
       <label class="chip"><input type="checkbox" value="Rustig / minimalistisch"><span>Minimalistisch</span></label>
     </div>
-    <div class="field" style="margin-top:22px"><label for="kleuren">Voorkeur voor kleuren? <span class="opt">(bijv. huisstijlkleuren)</span></label><input type="text" id="kleuren" data-q="Kleurvoorkeur" placeholder="Bijv. donkergroen met goud, of: volg ons logo"></div>
-    <div class="field"><label for="mooi">Websites die u mooi vindt <span class="opt">(niet verplicht — mogen ook buiten uw branche zijn)</span></label><textarea id="mooi" data-q="Voorbeeldsites (mooi)" placeholder="Plak hier één of meer links en vertel wat u erin aanspreekt"></textarea></div>
-    <div class="field"><label for="nietmooi">Wat moet de website juist níét zijn?</label><input type="text" id="nietmooi" data-q="Wat het niet moet zijn" placeholder="Bijv. druk, kinderachtig, ouderwets…"></div>
+    <div class="field" style="margin-top:22px"><label for="kleuren">Voorkeur voor kleuren? <span class="opt">(bijv. huisstijlkleuren)</span></label><input type="text" maxlength="300" id="kleuren" data-q="Kleurvoorkeur" placeholder="Bijv. donkergroen met goud, of: volg ons logo"></div>
+    <div class="field"><label for="mooi">Websites die u mooi vindt <span class="opt">(niet verplicht — mogen ook buiten uw branche zijn)</span></label><textarea maxlength="3000" id="mooi" data-q="Voorbeeldsites (mooi)" placeholder="Plak hier één of meer links en vertel wat u erin aanspreekt"></textarea></div>
+    <div class="field"><label for="nietmooi">Wat moet de website juist níét zijn?</label><input type="text" maxlength="300" id="nietmooi" data-q="Wat het niet moet zijn" placeholder="Bijv. druk, kinderachtig, ouderwets…"></div>
   </section>
 
   <!-- 7 · Content -->
@@ -384,10 +392,11 @@
       <div id="logoUpload" style="display:none;margin-top:16px">
         <label for="logoFile">Upload uw logo <span class="opt">(png, jpg, svg, pdf of ai — liefst hoogste kwaliteit)</span></label>
         <label class="file-drop" for="logoFile">
-          <input type="file" id="logoFile" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps,.webp" multiple>
+          <input type="file" id="logoFile" aria-describedby="logoHint logoError" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps,.webp" multiple>
           <span id="logoFileText">Klik hier om uw logobestand(en) te kiezen</span>
         </label>
-        <p class="file-hint">Uw logo wordt automatisch meegestuurd wanneer u het formulier verstuurt.</p>
+        <p class="file-hint" id="logoHint">Uw logo wordt automatisch meegestuurd wanneer u het formulier verstuurt. Maximaal 5 bestanden, samen 15 MB.</p>
+        <p class="field-error" id="logoError"></p>
       </div>
     </div>
     <div class="field">
@@ -414,10 +423,10 @@
     <div class="sec-head"><span class="sec-num">8</span><h2>Praktische zaken</h2><span class="sec-check">✓ ingevuld</span></div>
     <p class="sec-sub">Domein, planning en budget — een indicatie is voldoende.</p>
     <div class="row">
-      <div class="field"><label for="domein">Gewenste domeinnaam <span class="opt">(of huidige)</span></label><input type="text" id="domein" data-q="Domeinnaam" placeholder="www.uwbedrijf.nl"></div>
-      <div class="field"><label for="deadline">Wanneer wilt u live?</label><input type="text" id="deadline" data-q="Gewenste livegang" placeholder="Bijv. binnen 4 weken, vóór het seizoen…"></div>
+      <div class="field"><label for="domein">Gewenste domeinnaam <span class="opt">(of huidige)</span></label><input type="text" maxlength="300" id="domein" data-q="Domeinnaam" placeholder="www.uwbedrijf.nl"></div>
+      <div class="field"><label for="deadline">Wanneer wilt u live?</label><input type="text" maxlength="300" id="deadline" data-q="Gewenste livegang" placeholder="Bijv. binnen 4 weken, vóór het seizoen…"></div>
     </div>
-    <div class="field"><label for="domeinbeheer">Waar is het domein geregistreerd en heeft u daar toegang toe? <span class="opt">(indien van toepassing)</span></label><input type="text" id="domeinbeheer" data-q="Domeinbeheer / toegang" placeholder="Bijv. bij TransIP, inloggegevens heb ik / weet ik niet"></div>
+    <div class="field"><label for="domeinbeheer">Waar is het domein geregistreerd en heeft u daar toegang toe? <span class="opt">(indien van toepassing)</span></label><input type="text" maxlength="300" id="domeinbeheer" data-q="Domeinbeheer / toegang" placeholder="Bijv. bij TransIP, inloggegevens heb ik / weet ik niet"></div>
     <div class="field">
       <label>Onderhoud na oplevering</label>
       <div class="choices" data-group="Onderhoud" data-single>
@@ -435,14 +444,14 @@
         <label class="chip"><input type="radio" name="budget" value="€ 2.500 of meer"><span>€ 2.500 +</span></label>
       </div>
     </div>
-    <div class="field"><label for="budgetEigen">Staat uw budget er niet tussen? <span class="opt">(vul hier uw eigen bedrag in)</span></label><input type="text" id="budgetEigen" data-q="Budget — eigen bedrag" placeholder="Bijv. € 1.800"></div>
+    <div class="field"><label for="budgetEigen">Staat uw budget er niet tussen? <span class="opt">(vul hier uw eigen bedrag in)</span></label><input type="text" maxlength="300" id="budgetEigen" data-q="Budget — eigen bedrag" placeholder="Bijv. € 1.800"></div>
   </section>
 
   <!-- 9 · Eigen toevoegingen -->
   <section data-sec>
     <div class="sec-head"><span class="sec-num">9</span><h2>Uw eigen toevoegingen</h2><span class="sec-check">✓ ingevuld</span></div>
     <p class="sec-sub">Alles wat u verder nog kwijt wilt: wensen, ideeën, vragen of zorgen. Niets is te klein of te gek.</p>
-    <div class="field"><textarea id="extra" data-q="Eigen toevoegingen" style="min-height:130px" placeholder="Schrijf hier vrijuit…"></textarea></div>
+    <div class="field"><textarea maxlength="3000" id="extra" data-q="Eigen toevoegingen" style="min-height:130px" placeholder="Schrijf hier vrijuit…"></textarea></div>
   </section>
 
   <!-- Versturen -->
@@ -450,9 +459,10 @@
     <h2>Klaar? Verstuur uw antwoorden</h2>
     <p>Uw antwoorden (en logo) worden direct naar MVDBmedia gestuurd. U ontvangt hieronder een bevestiging.</p>
     <input type="text" name="website_hp" id="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <div id="ts-box" style="display:flex;justify-content:center;margin:0 auto 18px"></div>
     <button type="button" class="btn-main" id="btnSend">Verstuur formulier</button>
     <p style="color:var(--muted);font-size:12.5px;max-width:440px;margin:18px auto 0;line-height:1.6">Op al onze diensten zijn de algemene voorwaarden van toepassing, te vinden op <a href="https://mvdbmedia.nl/algemene-voorwaarden" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">mvdbmedia.nl/algemene-voorwaarden</a>.</p>
-    <div class="notice" id="notice"></div>
+    <div class="notice" id="notice" role="status" aria-live="polite"></div>
   </div>
 
 </main>
@@ -504,7 +514,22 @@
       updateProgress();
     });
   });
+  var LOGO_EXT = /\.(png|jpe?g|webp|gif|svg|pdf|ai|eps)$/i;
+  var logoErr = document.getElementById("logoError");
+  function checkLogoFiles(){
+    var files = Array.prototype.slice.call(logoFile.files);
+    var total = files.reduce(function(t, f){ return t + f.size; }, 0);
+    var msg = "";
+    if(files.length > 5) msg = "Te veel bestanden — maximaal 5 logobestanden.";
+    else if(files.some(function(f){ return !LOGO_EXT.test(f.name); })) msg = "Bestandstype niet toegestaan — gebruik PNG, JPG, WebP, GIF, SVG, PDF, AI of EPS.";
+    else if(total > 15 * 1024 * 1024) msg = "Logobestand(en) te groot — maximaal 15 MB totaal.";
+    logoErr.textContent = msg;
+    logoFile.setAttribute("aria-invalid", msg ? "true" : "false");
+    if(msg) logoFile.value = "";
+    return !msg;
+  }
   logoFile.addEventListener("change", function(){
+    checkLogoFiles();
     if(logoFile.files.length){
       var names = Array.prototype.map.call(logoFile.files, function(f){ return f.name; });
       logoText.textContent = "✓ " + names.join(", ");
@@ -596,6 +621,29 @@
 
   /* ---- versturen ---- */
   var sending = false;
+
+  /* ---- Cloudflare Turnstile (alleen actief als geconfigureerd) ---- */
+  var tsOn = false, tsToken = "", tsWidget = null;
+  function tsReset(){ if(tsOn && window.turnstile && tsWidget !== null){ window.turnstile.reset(tsWidget); } tsToken = ""; }
+  fetch("/api/turnstile", { cache: "no-store" })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d || !d.sitekey) return;
+      tsOn = true;
+      var sc = document.createElement("script");
+      sc.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      sc.async = true;
+      sc.onload = function(){
+        tsWidget = window.turnstile.render("#ts-box", {
+          sitekey: d.sitekey, theme: "dark", language: "nl",
+          callback: function(t){ tsToken = t; },
+          "expired-callback": function(){ tsToken = ""; },
+          "error-callback": function(){ tsToken = ""; }
+        });
+      };
+      document.head.appendChild(sc);
+    })
+    .catch(function(){});
   function mailtoFallback(){
     var body = buildSummary();
     var bedrijf = document.getElementById("bedrijf").value.trim();
@@ -611,8 +659,24 @@
     notify("Direct versturen lukte niet — uw e-mailprogramma is geopend als alternatief. Vergeet uw logo niet als bijlage.");
   }
 
+  var emailEl = document.getElementById("email");
+  var emailErr = document.getElementById("err-email");
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function validateEmail(){
+    var v = emailEl.value.trim();
+    var bad = v !== "" && !EMAIL_RE.test(v);
+    emailEl.setAttribute("aria-invalid", bad ? "true" : "false");
+    emailErr.textContent = bad ? "Dit lijkt geen geldig e-mailadres. Voorbeeld: naam@bedrijf.nl" : "";
+    return !bad;
+  }
+  emailEl.addEventListener("blur", validateEmail);
+  emailEl.addEventListener("input", function(){ if(emailEl.getAttribute("aria-invalid") === "true") validateEmail(); });
+
   document.getElementById("btnSend").addEventListener("click", function(){
     if(sending) return;
+    if(tsOn && !tsToken){ notify("Bevestig eerst de beveiligingscontrole."); return; }
+    if(!validateEmail()){ emailEl.focus(); notify("Controleer het e-mailadres en probeer het opnieuw."); return; }
+    if(logoFile.files.length && !checkLogoFiles()){ logoFile.focus(); notify("Controleer de logobestanden en probeer het opnieuw."); return; }
     var btn = this;
     var summary = buildSummary();
     var fd = new FormData();
@@ -620,6 +684,7 @@
     fd.append("bedrijf", document.getElementById("bedrijf").value.trim());
     fd.append("email", document.getElementById("email").value.trim());
     fd.append("website_hp", document.getElementById("website_hp").value);
+    if(tsToken) fd.append("cf-turnstile-response", tsToken);
     if(logoFile && logoFile.files.length){
       Array.prototype.forEach.call(logoFile.files, function(f){ fd.append("logo", f, f.name); });
     }
@@ -636,11 +701,13 @@
           var box = document.getElementById("submitBox");
           box.innerHTML = '<h2>Bedankt — uw antwoorden zijn verstuurd</h2>' +
             '<p>We nemen zo snel mogelijk contact met u op. Wilt u nog iets toevoegen of wijzigen? Mail gerust naar <a href="mailto:' + MAIL_TO + '" style="color:var(--gold)">' + MAIL_TO + '</a>.</p>';
+          box.setAttribute("role", "status"); box.setAttribute("tabindex", "-1"); box.focus({preventScroll:true});
           box.scrollIntoView({behavior:"smooth", block:"center"});
         } else {
           sending = false;
           btn.disabled = false;
           btn.textContent = oldLabel;
+          tsReset();
           notify((r.data && r.data.error) ? r.data.error : "Versturen mislukt — probeer het opnieuw of mail naar " + MAIL_TO + ".");
         }
       })
@@ -648,6 +715,7 @@
         sending = false;
         btn.disabled = false;
         btn.textContent = oldLabel;
+        tsReset();
         mailtoFallback();
       });
   });

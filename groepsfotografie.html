@@ -12,13 +12,19 @@
   <meta property="og:url" content="https://mvdbmedia.nl/groepsfotografie">
   <meta property="og:title" content="Groepsfotograaf Sneek: Zakelijk & Particulier | MVDBmedia">
   <meta property="og:description" content="Groepsfotografie voor teams, families en verenigingen in Sneek en Friesland. Strakke regie, natuurlijke uitstraling en snelle levering. Plan een shoot.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/groepsfoto 1.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/groepsfotografie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Teamfoto's die bij jullie passen — Groepsfotografie, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Groepsfotograaf Sneek: Zakelijk & Particulier | MVDBmedia">
   <meta name="twitter:description" content="Groepsfotografie voor teams, families en verenigingen in Sneek en Friesland. Strakke regie, natuurlijke uitstraling en snelle levering. Plan een shoot.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/groepsfoto 1.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/groepsfotografie.jpg">
+  <meta name="twitter:image:alt" content="Teamfoto's die bij jullie passen — Groepsfotografie, MVDBmedia Sneek">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -102,7 +108,7 @@
       --orange-glow:    rgba(255,140,0,0.15);
       --text-primary:   #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:     #7a736e;
+      --text-muted:     #8f8882;
       --font-display:   'Bebas Neue', sans-serif;
       --font-body:      'Inter', sans-serif;
       --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -402,7 +408,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
-  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+<main id="main-content" tabindex="-1" style="outline:none;">
 
   <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
     <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
@@ -419,7 +425,7 @@
   <!-- HERO -->
   <section style="position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;">
-      <img loading="lazy" decoding="async" src="fotos/groepsfoto%201.webp" alt="Professionele groepsfoto van een team buiten in Friesland door MVDBmedia" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      <img fetchpriority="high" decoding="async" src="fotos/groepsfoto%201.webp" srcset="fotos/groepsfoto%201-800.webp 800w, fotos/groepsfoto%201.webp 1600w" sizes="100vw" alt="Professionele groepsfoto van een team buiten in Friesland door MVDBmedia" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.97) 0%,rgba(13,13,13,0.55) 50%,rgba(13,13,13,0.3) 100%);"></div>
     </div>
     <svg class="grain" xmlns="http://www.w3.org/2000/svg">
@@ -869,6 +875,7 @@
 
 
   <!-- FOOTER -->
+  </main>
   <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">

@@ -13,14 +13,20 @@
   <meta property="og:url" content="https://mvdbmedia.nl/webdesignopmaat">
   <meta property="og:title" content="Webdesign Sneek: Professionele Websites op Maat | MVDBmedia">
   <meta property="og:description" content="Website laten maken? MVDBmedia bouwt maatwerk websites voor heel Nederland vanuit Sneek: mobielvriendelijk, SEO-klaar en binnen 2 weken live. Bekijk de pakketten.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/webdesignopmaat.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Websites die aanvragen opleveren — Webdesign op maat, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Webdesign Sneek: Professionele Websites op Maat | MVDBmedia">
   <meta name="twitter:description" content="Website laten maken? MVDBmedia bouwt maatwerk websites voor heel Nederland vanuit Sneek: mobielvriendelijk, SEO-klaar en binnen 2 weken live. Bekijk de pakketten.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/webdesignopmaat.jpg">
+  <meta name="twitter:image:alt" content="Websites die aanvragen opleveren — Webdesign op maat, MVDBmedia Sneek">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -86,7 +92,52 @@
     }
   ],
   "url": "https://mvdbmedia.nl/webdesignopmaat",
-  "serviceType": "Webdesign op maat"
+  "serviceType": "Webdesign op maat",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": "499",
+    "highPrice": "999",
+    "offerCount": 2,
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "url": "https://mvdbmedia.nl/webdesignopmaat",
+        "price": "499",
+        "priceCurrency": "EUR",
+        "description": "Vanaf-prijs, exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "499",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "url": "https://mvdbmedia.nl/webdesignopmaat",
+        "price": "999",
+        "priceCurrency": "EUR",
+        "description": "Vanaf-prijs, exclusief btw",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "999",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        },
+        "seller": {
+          "@id": "https://mvdbmedia.nl"
+        }
+      }
+    ]
+  }
 }
 </script>
   <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -105,7 +156,7 @@
       --orange-glow:    rgba(255,140,0,0.15);
       --text-primary:   #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:     #7a736e;
+      --text-muted:     #8f8882;
       --font-display:   'Bebas Neue', sans-serif;
       --font-body:      'Inter', sans-serif;
       --shadow-sm:      0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
@@ -381,7 +432,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
-  <div id="main-content" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+<main id="main-content" tabindex="-1" style="outline:none;">
 
   <!-- MOBIEL MENU -->
   <div id="mobile-menu" style="
@@ -403,7 +454,7 @@
   <!-- HERO -->
   <section style="position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;">
     <div style="position:absolute;inset:0;z-index:0;">
-      <img loading="lazy" decoding="async" src="/fotos/webdesign-op-maat-mvdb-media.jpg.webp" alt="Webdesign op maat voor Friese bedrijven en ZZP-ers door MVDBmedia Sneek" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      <img fetchpriority="high" decoding="async" src="/fotos/webdesign-op-maat-mvdb-media.jpg.webp" alt="Webdesign op maat voor Friese bedrijven en ZZP-ers door MVDBmedia Sneek" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
       <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,13,13,0.82) 0%,rgba(13,13,13,0.88) 50%,rgba(13,13,13,0.55) 100%);"></div>
       <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,140,0,0.09) 0%,transparent 50%);"></div>
     </div>
@@ -612,7 +663,7 @@
             <!-- Echte screenshot -->
             <picture>
               <source type="image/webp" srcset="/fotos/kampr-showcase-800.webp 800w, /fotos/kampr-showcase.webp 1440w" sizes="(max-width:768px) 100vw, 55vw">
-              <img loading="lazy" decoding="async" width="1440" height="900" src="/fotos/kampr-showcase.jpg" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" style="width:100%;height:auto;display:block;">
+              <img loading="lazy" decoding="async" width="1440" height="900" src="/fotos/kampr-showcase.webp" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" style="width:100%;height:auto;display:block;">
             </picture>
           </a>
         </div>
@@ -944,6 +995,7 @@
   </script>
 
   <!-- FOOTER -->
+  </main>
   <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">

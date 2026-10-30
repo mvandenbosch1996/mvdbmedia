@@ -11,12 +11,18 @@
   <meta property="og:url" content="https://mvdbmedia.nl/portfolio">
   <meta property="og:title" content="Portfolio: Foto, Drone, 360 & Webdesign | MVDBmedia">
   <meta property="og:description" content="Bekijk het portfolio van MVDBmedia: webdesign, portret-, vastgoed-, drone- en eventfotografie uit Sneek, Friesland. Laat je inspireren en neem contact op.">
-  <meta property="og:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/portfolio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Projecten en case studies — Portfolio, MVDBmedia Sneek">
+  <meta property="og:site_name" content="MVDBmedia">
   <meta property="og:locale" content="nl_NL">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Portfolio: Foto, Drone, 360 & Webdesign | MVDBmedia">
   <meta name="twitter:description" content="Bekijk het portfolio van MVDBmedia: webdesign, portret-, vastgoed-, drone- en eventfotografie uit Sneek, Friesland. Laat je inspireren en neem contact op.">
-  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/drone-fort.jpg">
+  <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/portfolio.jpg">
+  <meta name="twitter:image:alt" content="Projecten en case studies — Portfolio, MVDBmedia Sneek">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -68,7 +74,7 @@
       --orange:         #ff8c00;
       --text-primary:   #f0ede8;
       --text-secondary: #a09890;
-      --text-muted:     #7a736e;
+      --text-muted:     #8f8882;
       --font-display:   'Bebas Neue', sans-serif;
       --font-body:      'Inter', sans-serif;
     }
@@ -586,7 +592,7 @@
       <span style="display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;"></span>
     </button>
   </nav>
-  <div id="main" tabindex="-1" style="position:absolute;top:64px;left:0;width:0;height:0;overflow:hidden;" aria-hidden="true"></div>
+<main id="main" tabindex="-1" style="outline:none;">
 
   <div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:16px 24px 24px;flex-direction:column;gap:16px;">
     <a href="/webdesignopmaat" onclick="toggleMenu()" style="font-size:1rem;font-weight:500;color:var(--text-secondary);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--border);">Webdesign</a>
@@ -741,7 +747,7 @@
         <div class="proj-card proj-card--text" data-cat="web" data-has-link onclick="location.href='/portfolio/kampr'">
           <picture>
             <source type="image/webp" srcset="fotos/kampr-showcase-800.webp 800w, fotos/kampr-showcase.webp 1440w" sizes="(max-width:560px) 100vw, (max-width:960px) 50vw, 33vw">
-            <img src="fotos/kampr-showcase.jpg" width="1440" height="900" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
+            <img src="fotos/kampr-showcase.webp" width="1440" height="900" alt="Kampr.nl — SaaS reserveringsplatform en boekingswidget voor campings, gebouwd door MVDBmedia" loading="lazy" decoding="async">
           </picture>
           <a class="proj-badge proj-badge--link" href="https://kampr.nl" target="_blank" rel="noopener" aria-label="Bekijk de live site Kampr.nl (opent in nieuw tabblad)" onclick="event.stopPropagation()">Live site ↗</a>
           <div class="proj-overlay">
@@ -819,6 +825,7 @@
 
 
   <!-- FOOTER -->
+  </main>
   <footer style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:52px 64px 32px;">
     <div style="max-width:1280px;margin:0 auto;">
       <div class="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.15fr 1fr;gap:48px;margin-bottom:44px;align-items:start;">
@@ -885,7 +892,7 @@
     <button class="lb-btn" id="lb-prev" onclick="lbPrev()" aria-label="Vorige foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <img loading="lazy" decoding="async" id="lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="">
+    <img decoding="async" id="lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="">
     <button class="lb-btn" id="lb-next" onclick="lbNext()" aria-label="Volgende foto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
@@ -972,63 +979,63 @@
       {
         label: 'Portretfotografie', title: 'Portretshoot Marit',
         photos: [
-          { src: 'fotos/marit/marit%201.jpg', title: 'Portretshoot Marit' },
-          { src: 'fotos/marit/marit%202.jpeg', title: 'Portretshoot Marit' },
-          { src: 'fotos/marit/marit%203.jpeg', title: 'Portretshoot Marit' },
-          { src: 'fotos/marit/marit%204.jpeg', title: 'Portretshoot Marit' },
-          { src: 'fotos/marit/marit%205.jpeg', title: 'Portretshoot Marit' }
+          { src: 'fotos/marit/marit%201.webp', title: 'Marit tussen de oranje tulpen', alt: 'Marit staat in een geruit overhemd tussen oranje tulpen onder een blauwe lucht' },
+          { src: 'fotos/marit/marit%202.webp', title: 'Marit met open armen', alt: 'Marit staat met uitgestrekte armen onder een heldere lucht, met windmolens op de achtergrond' },
+          { src: 'fotos/marit/marit%203.webp', title: 'Marit tussen de roze tulpen', alt: 'Marit zit lachend tussen roze tulpen met een bewolkte lucht achter zich' },
+          { src: 'fotos/marit/marit%204.webp', title: 'Marit aan het water', alt: 'Marit zit in profiel op een steiger aan het water en kijkt weg in de verte' },
+          { src: 'fotos/marit/marit%205.webp', title: 'Marit in beweging', alt: 'Marit loopt in beweging langs de waterkant onder een bewolkte lucht' }
         ]
       },
       {
         label: 'Portretfotografie', title: 'Hondenfoto\'s — Ollie',
         photos: [
-          { src: 'fotos/portret%20honden/ollie%201.jpg', title: 'Ollie' },
-          { src: 'fotos/portret%20honden/ollie%202.jpg', title: 'Ollie' }
+          { src: 'fotos/portret%20honden/ollie%201.webp', title: 'Ollie van dichtbij', alt: 'Close-up van Ollie, een Jack Russell Terriër met een gevlekte vacht en doordringende blauwe ogen' },
+          { src: 'fotos/portret%20honden/ollie%202.webp', title: 'Ollie op het bospad', alt: 'Ollie, een Jack Russell Terriër, rent met een tuigje en lijn over een bospad' }
         ]
       },
       {
         label: 'Portretfotografie', title: 'Hondenfoto\'s — Ziggy',
         photos: [
-          { src: 'fotos/portret%20honden/ziggy%201.jpg', title: 'Ziggy' },
-          { src: 'fotos/portret%20honden/ziggy%202.jpg', title: 'Ziggy' }
+          { src: 'fotos/portret%20honden/ziggy%201.webp', title: 'Ziggy in de herfst', alt: 'Ziggy, een Australian Shepherd, kijkt met open bek in de camera voor een onscherpe herfstachtergrond' },
+          { src: 'fotos/portret%20honden/ziggy%202.webp', title: 'Ziggy in het gras', alt: 'Ziggy, een Australian Shepherd, zit rechtop in het gras met een zachte, onscherpe achtergrond' }
         ]
       },
       {
         label: 'Drone Visuals', title: 'Luchtfotografie',
         photos: [
-          { src: 'fotos/luchtfotos/eiland.jpg', title: 'Eiland vanuit de lucht' },
-          { src: 'fotos/drone-eiland.jpg', title: 'Eiland vanuit de lucht' },
-          { src: 'fotos/drone-fort.jpg', title: 'Fort overzicht' },
-          { src: 'fotos/drone-kasteel.jpg', title: 'Kasteel' },
-          { src: 'fotos/drone-park.jpg', title: 'Parklandschap' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0016.jpg', title: 'Aerial view' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0017.jpg', title: 'Luchtfoto' },
-          { src: 'fotos/luchtfotos/IMG-20251109-WA0019.jpg', title: 'Luchtfoto' }
+          { src: 'fotos/luchtfotos/eiland.webp', title: 'Bled — eiland met kerkje', alt: 'Luchtfoto van het eiland met kerkje en rode daken in het turquoise water van Bled, Slovenië' },
+          { src: 'fotos/drone-eiland.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
+          { src: 'fotos/drone-fort.webp', title: 'Fort met stervormige wallen', alt: 'Luchtfoto van een stervormig fort met grachten, wallen en bomen eromheen' },
+          { src: 'fotos/drone-kasteel.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' },
+          { src: 'fotos/drone-park.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0016.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0017.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
+          { src: 'fotos/luchtfotos/IMG-20251109-WA0019.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' }
         ]
       },
       {
         label: 'Constructie in Beeld', title: 'Bouwplaats — Bouwbedrijf Vellinga',
         photos: [
-          { src: 'fotos/drone-bouwplaats.jpg', title: 'Bouwplaats overzicht' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0021.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0022.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0023.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0025.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0026.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0028.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0030.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0036.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0037.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0038.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0039.jpg', title: 'Bouwprogressie' },
-          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0042.jpg', title: 'Bouwprogressie' }
+          { src: 'fotos/drone-bouwplaats.webp', title: 'Nieuwbouwwijk rond de waterpartij', alt: 'Luchtfoto van een nieuwbouwwijk met halfronde vakantiewoningen rond een waterpartij' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0021.webp', title: 'Woningen met blauwe dakfolie', alt: 'Drone-opname van woningen in aanbouw met blauwe dakfolie, bouwputten en machines' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0022.webp', title: 'Houten dakconstructie in aanbouw', alt: 'Woning in aanbouw met steigers en een houten dakconstructie tussen afgewerkte huizen' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0023.webp', title: 'Bouwplaats aan de haven', alt: 'Drone-opname van woningen in aanbouw naast een haven, met blauwe daken' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0025.webp', title: 'Waterpartij met woningen in aanbouw', alt: 'Luchtfoto van de waterpartij met halfronde woningen in aanbouw en blauwe dakfolie' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0026.webp', title: 'Bouwterrein naast het water', alt: 'Luchtfoto van een bouwterrein met woningen in aanbouw naast een kronkelend waterlichaam' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0028.webp', title: 'Rij woningen met oranje daken', alt: 'Luchtfoto van een rij woningen met oranje daken naast het kronkelende bouwterrein' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0030.webp', title: 'Haven en bouwterrein overzien', alt: 'Luchtfoto van een haven met rode en blauwe daken en een groot bouwterrein' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0036.webp', title: 'Nieuwbouwwijk rond de waterpartij', alt: 'Luchtfoto van een nieuwbouwwijk met halfronde vakantiewoningen rond een waterpartij' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0037.webp', title: 'Houten woningen in ruwbouw', alt: 'Drone-opname van drie houten woningen in ruwbouw met schuine daken' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0038.webp', title: 'Woning met zwarte gevel', alt: 'Woning met zwarte gevel en houten dak in aanbouw, gezien vanuit de lucht' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0039.webp', title: 'Nieuwbouw met zonnepanelen', alt: 'Nieuwbouwwoningen met zonnepanelen en houten dakplaten in aanbouw' },
+          { src: 'fotos/bouwplaats%20drone/IMG-20251109-WA0042.webp', title: 'Straat met drie woningen in opbouw', alt: 'Luchtfoto van drie nieuwbouwwoningen in aanbouw langs een straat' }
         ]
       },
       {
         label: 'Groepsfotografie', title: 'Groepsfoto — Friesland Ontruimingen',
         photos: [
-          { src: 'fotos/groepsfoto%202.jpg', title: 'Groepsfoto' },
-          { src: 'fotos/events-groep.jpg', title: 'Event sfeerbeeld' }
+          { src: 'fotos/groepsfoto%202.webp', title: 'Het team in een rij', alt: 'Het team van Friesland Ontruimingen staat in zwarte shirts naast elkaar in een weiland' },
+          { src: 'fotos/events-groep.webp', title: 'Het team in twee rijen', alt: 'Het team staat en zit in twee rijen voor een groene achtergrond met bomen' }
         ]
       },
       {
@@ -1047,10 +1054,11 @@
     ];
 
     // LIGHTBOX
-    var lbItems = [], lbIndex = 0, lbCurrentLabel = '';
+    var lbItems = [], lbIndex = 0, lbCurrentLabel = '', lbOpener = null;
 
     function openProject(projectIndex) {
       var project = projects[projectIndex];
+      lbOpener = document.activeElement;
       lbItems = project.photos;
       lbCurrentLabel = project.label;
       lbIndex = 0;
@@ -1061,6 +1069,7 @@
         requestAnimationFrame(function() { lb.classList.add('lb-visible'); });
       });
       document.body.style.overflow = 'hidden';
+      document.getElementById('lightbox').setAttribute('aria-label', 'Foto\'s: ' + project.title);
       document.getElementById('lb-close').focus();
     }
 
@@ -1080,6 +1089,7 @@
       var lb = document.getElementById('lightbox');
       lb.classList.remove('lb-visible');
       setTimeout(function() { lb.classList.remove('lb-open'); document.body.style.overflow = ''; }, 250);
+      if (lbOpener && lbOpener.focus) lbOpener.focus();
     }
 
     function lbPrev() { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; showLb(lbIndex); }
@@ -1091,6 +1101,14 @@
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') lbPrev();
       if (e.key === 'ArrowRight') lbNext();
+      if (e.key === 'Tab') {
+        var f = Array.prototype.filter.call(document.querySelectorAll('#lightbox .lb-btn'), function(b) { return b.style.display !== 'none'; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        else if (f.indexOf(document.activeElement) === -1) { e.preventDefault(); first.focus(); }
+      }
     });
   </script>
 </body>
