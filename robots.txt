@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /intake/
-Disallow: /admin/
 
 Sitemap: https://mvdbmedia.nl/sitemap.xml

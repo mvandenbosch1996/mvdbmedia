@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina niet gevonden (404) | MVDBmedia</title>
+  <meta name="description" content="Deze pagina bestaat niet (meer). Ga terug naar de homepage of bekijk de diensten van MVDBmedia: webdesign, portret-, vastgoed- en dronefotografie.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <style>
+    :root {
+      --bg-base: #0d0d0d;
+      --bg-elevated: #161616;
+      --bg-floating: #1f1f1f;
+      --bg-card: #1a1a1a;
+      --border: #2a2a2a;
+      --border-light: #333333;
+      --orange: #ff8c00;
+      --text-primary: #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted: #9a928b;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+
+    .skip-link {
+      position: absolute; left: 16px; top: -64px; z-index: 200;
+      background: var(--orange); color: #000; font-weight: 800; font-size: 0.8rem;
+      padding: 10px 16px; border-radius: 3px; text-decoration: none;
+      transition: transform 0.2s var(--ease);
+    }
+    .skip-link:focus-visible { transform: translateY(80px); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,13,13,0.92);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.06em;
+      color: var(--text-primary); text-decoration: none; line-height: 1;
+    }
+    .nav-logo span { color: var(--orange); }
+    .btn-orange {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--orange); color: #000;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 10px 22px; border-radius: 3px; text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255,140,0,0.18), 0 1px 2px rgba(0,0,0,0.5);
+      transition: transform 0.2s var(--ease), opacity 0.2s ease;
+    }
+    .btn-orange:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn-orange:active { transform: translateY(0); opacity: 1; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--text-primary); border: 1px solid var(--border-light);
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 10px 22px; border-radius: 3px; text-decoration: none;
+      transition: transform 0.2s var(--ease), opacity 0.2s ease;
+    }
+    .btn-ghost:hover { transform: translateY(-2px); opacity: 0.85; }
+    .btn-ghost:active { transform: translateY(0); opacity: 1; }
+
+    main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 80px;
+      background:
+        radial-gradient(ellipse 60% 50% at 78% 30%, rgba(255,140,0,0.10), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 12% 85%, rgba(255,140,0,0.05), transparent 70%),
+        var(--bg-base);
+    }
+    .wrap { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 20px;
+    }
+    .eyebrow::after { content: ''; width: 32px; height: 1px; background: var(--orange); opacity: 0.5; }
+    .code {
+      font-family: var(--font-display);
+      font-size: clamp(7rem, 30vw, 16rem);
+      line-height: 0.82; letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+    .code span { color: var(--orange); }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      line-height: 0.95; letter-spacing: 0.02em;
+      margin: 24px 0 16px;
+    }
+    .lead { max-width: 520px; font-size: 0.95rem; font-weight: 300; color: var(--text-secondary); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+    .links-title {
+      margin-top: 64px; margin-bottom: 16px;
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; list-style: none; }
+    .links a {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 16px 18px; text-decoration: none;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.5);
+      transition: transform 0.2s var(--ease), border-color 0.2s ease;
+    }
+    .links a span { color: var(--orange); }
+    .links a:hover { transform: translateY(-3px); border-color: rgba(255,140,0,0.35); }
+    .links a:active { transform: translateY(0); }
+
+    footer {
+      background: var(--bg-elevated); border-top: 1px solid var(--border);
+      padding: 28px 24px; font-size: 0.72rem; color: var(--text-muted);
+    }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+    .footer-inner a { color: var(--orange); text-decoration: none; }
+    .footer-inner a:hover { text-decoration: underline; }
+
+    @media (min-width: 769px) {
+      nav { padding: 0 48px; }
+      main { padding: 96px 64px 112px; }
+      footer { padding: 28px 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Naar de inhoud</a>
+
+  <nav aria-label="Hoofdnavigatie">
+    <a href="/" class="nav-logo">MVDB<span>media</span></a>
+    <a href="/#contact" class="btn-orange">Offerte aanvragen</a>
+  </nav>
+
+  <main id="main-content" tabindex="-1" style="outline:none;">
+    <div class="wrap">
+      <p class="eyebrow">Foutmelding</p>
+      <div class="code" aria-hidden="true">4<span>0</span>4</div>
+      <h1>Deze pagina bestaat niet (meer)</h1>
+      <p class="lead">De link is verouderd of er zit een typfout in het adres. Ga terug naar de homepage of kies hieronder waar je naar op zoek bent.</p>
+      <div class="actions">
+        <a href="/" class="btn-orange">Naar de homepage</a>
+        <a href="/#contact" class="btn-ghost">Neem contact op</a>
+      </div>
+
+      <h2 class="links-title">Populaire pagina's</h2>
+      <ul class="links">
+        <li><a href="/webdesignopmaat">Webdesign op maat <span aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="/portret-groepsfotografie">Portret &amp; groepsfotografie <span aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="/vastgoedfotografie">Vastgoedfotografie <span aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="/dronevisuals">Drone visuals <span aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="/portfolio">Portfolio <span aria-hidden="true">&rarr;</span></a></li>
+        <li><a href="/kennisbank">Kennisbank <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>&copy; 2026 MVDBmedia. Alle rechten voorbehouden.</div>
+      <div><a href="/privacybeleid">Privacybeleid</a> &nbsp;&middot;&nbsp; <a href="/algemene-voorwaarden">Algemene voorwaarden</a></div>
+    </div>
+  </footer>
+</body>
+</html>
