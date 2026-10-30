@@ -32,3 +32,8 @@ docs/
 # Cloudflare wrangler lokale cache
 .wrangler/
 _wrangler*.log
+
+# Lokaal, nooit in git
+.playwright-mcp/
+_live-check.mjs
+fotos/Nesaclinics-Fitplan foto's/
