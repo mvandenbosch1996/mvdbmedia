@@ -397,6 +397,44 @@
     </div>
   </section>
 
+  <!-- CASES: interne links naar portfolio-case-studies -->
+  <section class="cx" aria-labelledby="cx-title">
+    <style>
+      .cx { background: var(--bg-base); padding: 0 64px 100px; }
+      .cx-in { max-width: 1280px; margin: 0 auto; }
+      .cx-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+      .cx-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+      .cx-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 3.4vw, 3.2rem); line-height: 0.95; letter-spacing: 0.03em; color: var(--text-primary); margin: 0 0 28px; }
+      .cx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px; }
+      .cx-card { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #111; text-decoration: none; }
+      .cx-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+      .cx-card::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+      .cx-card:hover img { transform: scale(1.05); filter: brightness(0.78); }
+      .cx-card:hover::after, .cx-card:focus-visible::after { transform: scaleX(1); }
+      .cx-card:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+      .cx-card:active img { transform: scale(1.02); }
+      .cx-body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px 18px 22px; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, transparent 80%); }
+      .cx-tag { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+      .cx-name { font-family: var(--font-display); font-size: clamp(1.3rem, 1.9vw, 1.9rem); letter-spacing: 0.04em; line-height: 0.95; color: var(--text-primary); }
+      @media (max-width: 768px) { .cx { padding: 0 24px 72px; } }
+      @media (prefers-reduced-motion: reduce) { .cx-card img, .cx-card::after { transition: none !important; } }
+    </style>
+    <div class="cx-in">
+      <div class="cx-eyebrow">Uit mijn portfolio &middot; Bouwplaats</div>
+      <h2 class="cx-title" id="cx-title">BOUWPLAATS <span style="color:var(--orange);">IN PRAKTIJK</span></h2>
+      <div class="cx-grid">
+        <a class="cx-card" href="/portfolio/bouwbedrijf-vellinga-bouwplaats">
+          <img src="/fotos/bouwbedrijf-vellinga/bouwplaats-vellinga-overzicht-kavels-800.webp" width="800" height="450" alt="" loading="lazy" decoding="async">
+          <span class="cx-body"><span class="cx-tag">Constructie in beeld</span><span class="cx-name">Bouwplaats Bouwbedrijf Vellinga</span></span>
+        </a>
+        <a class="cx-card" href="/portfolio/luchtfotografie-bled-slovenie">
+          <img src="/fotos/luchtfotografie-bled/luchtfotografie-bled-eiland-slovenie-800.webp" width="800" height="450" alt="" loading="lazy" decoding="async">
+          <span class="cx-body"><span class="cx-tag">Luchtfotografie</span><span class="cx-name">Luchtfotografie Bled, Slovenië</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="mv-faq" id="mv-faq" aria-labelledby="mv-faq-title">
     <div class="mv-faq-glow" aria-hidden="true"></div>

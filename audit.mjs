@@ -15,6 +15,13 @@ const pages = [
   'http://localhost:3000/webdesignopmaat.html',
   'http://localhost:3000/portfolio.html',
   'http://localhost:3000/portfolio/kampr.html',
+  'http://localhost:3000/portfolio/fitplan-nesaclinics.html',
+  'http://localhost:3000/portfolio/portretshoot-marit.html',
+  'http://localhost:3000/portfolio/luchtfotografie-bled-slovenie.html',
+  'http://localhost:3000/portfolio/hondenfotos-ollie.html',
+  'http://localhost:3000/portfolio/hondenfotos-ziggy.html',
+  'http://localhost:3000/portfolio/bouwbedrijf-vellinga-bouwplaats.html',
+  'http://localhost:3000/portfolio/friesland-ontruimingen-groepsfoto.html',
   'http://localhost:3000/webapplicatie-saas-laten-maken.html',
 ];
 
