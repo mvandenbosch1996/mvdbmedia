@@ -44,7 +44,7 @@ export default {
     {
       h2: '4. Snelheid en mobiel gebruiksgemak',
       html: `
-        <p>Een groot deel van je bezoekers komt via een telefoon. Een trage of onhandige mobiele website kost je direct aanvragen. Knoppen moeten groot genoeg zijn om te tikken, teksten leesbaar zonder in te zoomen en formulieren makkelijk in te vullen. En de laadtijd bepaalt of bezoekers eigenlijk wel blijven. Lees hierover in <a href="/snelle-website-laten-maken">waarom een snelle website meer klanten oplevert</a>.</p>`,
+        <p>Een groot deel van je bezoekers komt via een telefoon. Een trage of onhandige mobiele website kost je direct aanvragen. Knoppen moeten groot genoeg zijn om te tikken, teksten leesbaar zonder in te zoomen en formulieren makkelijk in te vullen. En de laadtijd bepaalt of bezoekers eigenlijk wel blijven. Lees hierover in <a href="/snelle-website-laten-maken">waarom een snelle website meer klanten oplevert</a> en in <a href="/maatwerk-html-website-vs-wordpress-conversie">waarom een maatwerk HTML/JS website sneller converteert dan WordPress</a>.</p>`,
     },
     {
       h2: '5. Maak contact opnemen laagdrempelig',

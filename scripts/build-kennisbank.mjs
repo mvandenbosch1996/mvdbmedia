@@ -1,4 +1,4 @@
-// Genereert kennisbank.html + de 8 gidsen uit scripts/kennisbank/content/*.mjs
+// Genereert kennisbank.html + de gidsen uit scripts/kennisbank/content/*.mjs
 // Gebruik: node scripts/build-kennisbank.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,12 +11,15 @@ import { GUIDE_SERVICES, GUIDE_PRACTICE, serviceCards, relatedSection } from './
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
+const LATEST = guides.reduce((m, g) => ((g.date ?? DATE) > m ? (g.date ?? DATE) : m), DATE);
 const stripTags = (s) => String(s).replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 const slugify = (s) => stripTags(s).toLowerCase().normalize('NFD').replace(new RegExp('[\\u0300-\\u036f]', 'g'), '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // ── Afgeleide velden ────────────────────────────────────────────────────────
 for (const g of guides) {
   g.url = `${SITE}/${g.slug}`;
+  g.date ??= DATE;
+  g.dateLabel ??= 'oktober 2026';
   if (GUIDE_PRACTICE[g.slug]) g.sections.push(GUIDE_PRACTICE[g.slug]);
   g.sections.forEach((s) => { s.id = slugify(s.h2); });
   const text = [g.answer, g.lead, ...g.sections.map((s) => stripTags(s.h2) + ' ' + stripTags(s.html)), ...g.faq.map((f) => f.q + ' ' + f.a)].join(' ');
@@ -93,8 +96,8 @@ function articlePage(g) {
           inLanguage: 'nl-NL',
           breadcrumb: { '@id': `${g.url}#breadcrumb` },
           primaryImageOfPage: imageObj,
-          datePublished: DATE,
-          dateModified: DATE,
+          datePublished: g.date,
+          dateModified: g.date,
         },
         {
           '@type': g.schemaType ?? 'Article',
@@ -102,8 +105,8 @@ function articlePage(g) {
           headline: g.title,
           description: g.metaDescription,
           image: imageObj,
-          datePublished: DATE,
-          dateModified: DATE,
+          datePublished: g.date,
+          dateModified: g.date,
           inLanguage: 'nl-NL',
           articleSection: g.category,
           keywords: g.keywords.join(', '),
@@ -131,7 +134,7 @@ function articlePage(g) {
     url: g.url,
     ogType: 'article',
     ogSlug: g.slug,
-    extraMeta: `\n  <meta property="article:published_time" content="${DATE}">\n  <meta property="article:modified_time" content="${DATE}">\n  <meta property="article:author" content="Michael van den Bosch">\n  <meta property="article:section" content="${esc(g.category)}">`,
+    extraMeta: `\n  <meta property="article:published_time" content="${g.date}">\n  <meta property="article:modified_time" content="${g.date}">\n  <meta property="article:author" content="Michael van den Bosch">\n  <meta property="article:section" content="${esc(g.category)}">`,
     schema,
   })}
 <body>
@@ -152,7 +155,7 @@ ${navHtml()}
         <p class="kb-lead">${g.lead}</p>
         <div class="kb-meta">
           <span>Door <strong>Michael van den Bosch</strong></span><span class="dot" aria-hidden="true"></span>
-          <span>Bijgewerkt: <time datetime="${DATE}">oktober 2026</time></span><span class="dot" aria-hidden="true"></span>
+          <span>Bijgewerkt: <time datetime="${g.date}">${g.dateLabel}</time></span><span class="dot" aria-hidden="true"></span>
           <span>${g.readMin} min leestijd</span>
         </div>
       </div>
@@ -221,7 +224,7 @@ ${footerHtml()}
 function overviewPage() {
   const url = `${SITE}/kennisbank`;
   const title = 'Webdesign Kennisbank: gidsen over websites & SEO | MVDBmedia';
-  const description = 'Acht gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, SEO & GEO en webapps. Van webdesigner Michael van den Bosch uit Sneek. Lees de gidsen.';
+  const description = 'Negen gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, SEO & GEO en webapps. Van webdesigner Michael van den Bosch uit Sneek. Lees de gidsen.';
   const schema = [
     {
       '@context': 'https://schema.org',
@@ -235,8 +238,8 @@ function overviewPage() {
           inLanguage: 'nl-NL',
           breadcrumb: { '@id': `${url}#breadcrumb` },
           primaryImageOfPage: { '@type': 'ImageObject', license: `${SITE}/algemene-voorwaarden`, acquireLicensePage: `${SITE}/#contact`, url: ogUrl('kennisbank'), width: 1200, height: 630 },
-          datePublished: DATE,
-          dateModified: DATE,
+          datePublished: LATEST,
+          dateModified: LATEST,
           author: PERSON,
           publisher: PERSON,
           mainEntity: { '@id': `${url}#guides` },
@@ -269,9 +272,9 @@ ${navHtml()}
         </nav>
         <div class="orange-label">Webdesign Gidsen</div>
         <h1 class="kb-h1">WEBDESIGN<br><em>KENNISBANK</em></h1>
-        <p class="kb-lead">Acht diepgaande gidsen over wat een website kost, hoe je kiest tussen maatwerk en WordPress, en hoe je hoger scoort in Google én AI-zoekmachines. Praktisch, eerlijk en geschreven door een webdesigner uit Sneek.</p>
+        <p class="kb-lead">Negen diepgaande gidsen over wat een website kost, hoe je kiest tussen maatwerk en WordPress, en hoe je hoger scoort in Google én AI-zoekmachines. Praktisch, eerlijk en geschreven door een webdesigner uit Sneek.</p>
         <div class="kb-stats">
-          <div class="kb-stat"><b>8</b><span>Gidsen</span></div>
+          <div class="kb-stat"><b>${guides.length}</b><span>Gidsen</span></div>
           <div class="kb-stat"><b>SEO + GEO</b><span>Google &amp; AI</span></div>
           <div class="kb-stat"><b>Sneek</b><span>Friesland &amp; NL</span></div>
         </div>

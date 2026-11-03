@@ -207,7 +207,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/webdesignopmaat</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/webdesign-op-maat-mvdb-media.jpg.webp</image:loc>
@@ -225,7 +225,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/business-website-pakket</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -729,13 +729,13 @@
 
   <url>
     <loc>https://mvdbmedia.nl/kennisbank</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://mvdbmedia.nl/webdesign-kosten-friesland</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -744,7 +744,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/maatwerk-website-vs-wordpress</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -753,7 +753,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/snelle-website-laten-maken</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -762,7 +762,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/website-laten-maken-sneek</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -780,7 +780,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/seo-webdesign-hoger-in-google</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -789,7 +789,7 @@
 
   <url>
     <loc>https://mvdbmedia.nl/conversie-gericht-webdesign</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
@@ -803,6 +803,15 @@
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/kampr-showcase.webp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mvdbmedia.nl/maatwerk-html-website-vs-wordpress-conversie</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
     </image:image>

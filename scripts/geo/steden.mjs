@@ -112,7 +112,7 @@ export const STEDEN = [
       {
         h2: 'Webdesign dat snel is en aanvragen oplevert',
         html: `
-        <p>Een trage website kost je bezoekers. Mijn websites zijn op maat gebouwd, zonder zware plugins of onnodige code, en laden daardoor snel op mobiel. Hoe dat werkt en wat het verschil is met een kant-en-klaar systeem lees je in <a href="/maatwerk-website-vs-wordpress">maatwerk versus WordPress</a>.</p>
+        <p>Een trage website kost je bezoekers. Mijn websites zijn op maat gebouwd, zonder zware plugins of onnodige code, en laden daardoor snel op mobiel. Hoe dat werkt en wat het verschil is met een kant-en-klaar systeem lees je in <a href="/maatwerk-website-vs-wordpress">maatwerk versus WordPress</a>. Waarom dat ook meer aanvragen oplevert staat in de gids over <a href="/maatwerk-html-website-vs-wordpress-conversie">HTML/JS websites die sneller converteren dan WordPress</a>.</p>
         <p>Je kiest wat bij je past:</p>
         <ul>
           <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw, in 7 werkdagen live. Ideaal voor een ZZP’er of kleine club.</li>
@@ -314,7 +314,7 @@ export const VERDER = {
   'webdesign-fotografie-leeuwarden': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',
     html: `
-        <p>Wil je weten hoe een zakelijke website aanvragen oplevert? Lees de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a>, en over het <a href="/website-beveiliging-onderhoud">onderhouden en beveiligen van je website</a> na de oplevering. Voorbeelden van mijn fotografie: de <a href="/portfolio/portretshoot-marit">portretshoot voor Marit</a>, de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>.</p>`,
+        <p>Wil je weten hoe een zakelijke website aanvragen oplevert? Lees de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a>, over <a href="/maatwerk-html-website-vs-wordpress-conversie">waarom een maatwerk HTML/JS website sneller converteert dan WordPress</a> en over het <a href="/website-beveiliging-onderhoud">onderhouden en beveiligen van je website</a> na de oplevering. Voorbeelden van mijn fotografie: de <a href="/portfolio/portretshoot-marit">portretshoot voor Marit</a>, de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>.</p>`,
   },
   'webdesign-fotografie-heerenveen': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',

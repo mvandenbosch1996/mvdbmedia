@@ -30,6 +30,7 @@ export const OG = {
   'kennisbank':                    { photo: null, label: 'Kennisbank', title: 'Webdesign gidsen\nvoor ondernemers' },
   'conversie-gericht-webdesign':   { photo: null, label: 'Gids · Webdesign', title: 'Conversiegericht\nwebdesign' },
   'maatwerk-website-vs-wordpress': { photo: null, label: 'Gids · Webdesign', title: 'Maatwerk website\nof WordPress?' },
+  'maatwerk-html-website-vs-wordpress-conversie': { photo: null, label: 'Gids · Conversie', title: 'HTML/JS website sneller\nconverteert dan WordPress' },
   'seo-webdesign-hoger-in-google': { photo: null, label: 'Gids · SEO', title: 'Webdesign en SEO:\nhoger in Google' },
   'snelle-website-laten-maken':    { photo: null, label: 'Gids · Webdesign', title: 'Snel een website\nlaten maken' },
   'webapplicatie-saas-laten-maken':{ photo: null, label: 'Gids · Webapplicatie', title: 'Webapplicatie of\nSaaS laten maken' },

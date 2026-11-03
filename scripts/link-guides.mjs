@@ -11,9 +11,9 @@ const START = '<!-- rel-guides:start -->';
 const END = '<!-- rel-guides:end -->';
 
 const PAGES = {
-  webdesignopmaat: ['webdesign-kosten-friesland', 'maatwerk-website-vs-wordpress', 'snelle-website-laten-maken', 'website-laten-maken-sneek', 'conversie-gericht-webdesign', 'seo-webdesign-hoger-in-google'],
+  webdesignopmaat: ['webdesign-kosten-friesland', 'maatwerk-website-vs-wordpress', 'snelle-website-laten-maken', 'website-laten-maken-sneek', 'conversie-gericht-webdesign', 'seo-webdesign-hoger-in-google', 'maatwerk-html-website-vs-wordpress-conversie'],
   'starter-website-pakket': ['snelle-website-laten-maken', 'webdesign-kosten-friesland', 'website-laten-maken-sneek'],
-  'business-website-pakket': ['conversie-gericht-webdesign', 'seo-webdesign-hoger-in-google', 'maatwerk-website-vs-wordpress', 'website-beveiliging-onderhoud'],
+  'business-website-pakket': ['conversie-gericht-webdesign', 'seo-webdesign-hoger-in-google', 'maatwerk-website-vs-wordpress', 'maatwerk-html-website-vs-wordpress-conversie', 'website-beveiliging-onderhoud'],
 };
 
 for (const [page, slugs] of Object.entries(PAGES)) {

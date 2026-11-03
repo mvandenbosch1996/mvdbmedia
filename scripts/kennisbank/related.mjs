@@ -51,6 +51,7 @@ export const GUIDE_SERVICES = {
   'seo-webdesign-hoger-in-google': ['business', 'maatwerk'],
   'conversie-gericht-webdesign': ['business', 'maatwerk'],
   'webapplicatie-saas-laten-maken': ['maatwerk', 'business'],
+  'maatwerk-html-website-vs-wordpress-conversie': ['business', 'maatwerk'],
 };
 
 // Slotsectie per gids: contextuele links naar portfolio-cases en stadspagina's met beschrijvende ankers (hub-and-spoke).
@@ -74,7 +75,7 @@ export const GUIDE_PRACTICE = {
   'website-laten-maken-sneek': {
     h2: 'Voorbeelden van mijn werk',
     html: `
-        <p>Een greep uit het portfolio: de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a> en het SaaS-platform <a href="/portfolio/kampr">Kampr.nl</a>. Meer voorbeelden vind je in het <a href="/portfolio">volledige portfolio van MVDBmedia</a>.</p>`,
+        <p>Een greep uit het portfolio: de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a> en het SaaS-platform <a href="/portfolio/kampr">Kampr.nl</a>. Meer voorbeelden vind je in het <a href="/portfolio">volledige portfolio van MVDBmedia</a>. Benieuwd waarom ik handgeschreven code verkies boven een CMS? Lees <a href="/maatwerk-html-website-vs-wordpress-conversie">waarom een maatwerk HTML/JS website sneller converteert dan WordPress</a>.</p>`,
   },
   'website-beveiliging-onderhoud': {
     h2: 'Beveiliging in de praktijk',
@@ -90,6 +91,11 @@ export const GUIDE_PRACTICE = {
     h2: 'Vertrouwen en conversie in de praktijk',
     html: `
         <p>Echte foto's van team en werkplek geven bezoekers vertrouwen. Bekijk de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics</a>. Voor ondernemers die meer aanvragen willen: <a href="${CITY('drachten')}">zakelijke websites in Drachten</a> en <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a>.</p>`,
+  },
+  'maatwerk-html-website-vs-wordpress-conversie': {
+    h2: 'Snelle HTML/JS websites in de praktijk',
+    html: `
+        <p>Een voorbeeld van een product dat snel en mobiel-first moet werken is het boekingsplatform in de <a href="/portfolio/kampr">case-study van Kampr.nl</a>. Voor lokale ondernemers lees je hoe dit uitpakt in de gids over <a href="/website-laten-maken-sneek">een website laten maken in Sneek</a> en op de pagina over <a href="${CITY('leeuwarden')}">snelle zakelijke websites voor ondernemers in Leeuwarden</a>.</p>`,
   },
   'webapplicatie-saas-laten-maken': {
     h2: 'Webapplicaties voor ondernemers in de regio',

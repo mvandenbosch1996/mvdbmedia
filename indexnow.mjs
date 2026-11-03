@@ -39,6 +39,7 @@ const urls = [
   'https://mvdbmedia.nl/seo-webdesign-hoger-in-google',
   'https://mvdbmedia.nl/conversie-gericht-webdesign',
   'https://mvdbmedia.nl/webapplicatie-saas-laten-maken',
+  'https://mvdbmedia.nl/maatwerk-html-website-vs-wordpress-conversie',
   'https://mvdbmedia.nl/webdesign-fotografie-leeuwarden',
   'https://mvdbmedia.nl/webdesign-fotografie-heerenveen',
   'https://mvdbmedia.nl/webdesign-fotografie-harlingen',

@@ -47,7 +47,7 @@ export default {
         <p>In mijn ervaring zijn dit de meest voorkomende oorzaken:</p>
         <ul>
           <li><strong>Zware afbeeldingen:</strong> foto's in volle resolutie van meerdere megabytes, niet gecomprimeerd en niet aangepast aan het scherm.</li>
-          <li><strong>Te veel plugins en scripts:</strong> elke extra plugin, tracker of chatwidget voegt code toe die geladen moet worden. Lees ook <a href="/maatwerk-website-vs-wordpress">maatwerk vs. WordPress</a>.</li>
+          <li><strong>Te veel plugins en scripts:</strong> elke extra plugin, tracker of chatwidget voegt code toe die geladen moet worden. Lees ook <a href="/maatwerk-website-vs-wordpress">maatwerk vs. WordPress</a> en hoe een <a href="/maatwerk-html-website-vs-wordpress-conversie">handgeschreven HTML/JS website sneller converteert dan WordPress</a>.</li>
           <li><strong>Zware thema's en page builders:</strong> ze leveren veel functies die je niet gebruikt, maar die wel worden geladen.</li>
           <li><strong>Webfonts en render-blocking bestanden:</strong> lettertypen of stijlbestanden die de weergave tegenhouden.</li>
           <li><strong>Trage hosting:</strong> goedkope servers met lange responstijden.</li>
