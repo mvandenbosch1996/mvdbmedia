@@ -7,7 +7,7 @@ import { SITE, PERSON, LOCAL_BUSINESS } from './kennisbank/shared.mjs';
 import { esc, navHtml, footerHtml, headHtml } from './kennisbank/layout.mjs';
 import { card, serviceCards, pageCards, relatedSection } from './kennisbank/related.mjs';
 import { ogUrl } from './og-images.mjs';
-import { STEDEN } from './geo/steden.mjs';
+import { STEDEN, VERDER } from './geo/steden.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATE = '2026-11-03';
@@ -25,6 +25,7 @@ const TEASERS = {
 
 for (const c of STEDEN) {
   c.url = `${SITE}/${c.slug}`;
+  if (VERDER[c.slug]) c.sections.push(VERDER[c.slug]);
   c.sections.forEach((s) => { s.id = slugify(s.h2); });
   const text = [c.answer, c.lead, ...c.sections.map((s) => `${stripTags(s.h2)} ${stripTags(s.html)}`), ...c.faq.map((f) => `${f.q} ${f.a}`)].join(' ');
   c.words = stripTags(text).split(' ').length;

@@ -7,7 +7,7 @@ import { SITE, DATE, PERSON, LOCAL_BUSINESS } from './kennisbank/shared.mjs';
 import { esc, jsonLd, navHtml, footerHtml, headHtml } from './kennisbank/layout.mjs';
 import guides from './kennisbank/content/index.mjs';
 import { ogUrl } from './og-images.mjs';
-import { GUIDE_SERVICES, serviceCards, relatedSection } from './kennisbank/related.mjs';
+import { GUIDE_SERVICES, GUIDE_PRACTICE, serviceCards, relatedSection } from './kennisbank/related.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -17,6 +17,7 @@ const slugify = (s) => stripTags(s).toLowerCase().normalize('NFD').replace(new R
 // ── Afgeleide velden ────────────────────────────────────────────────────────
 for (const g of guides) {
   g.url = `${SITE}/${g.slug}`;
+  if (GUIDE_PRACTICE[g.slug]) g.sections.push(GUIDE_PRACTICE[g.slug]);
   g.sections.forEach((s) => { s.id = slugify(s.h2); });
   const text = [g.answer, g.lead, ...g.sections.map((s) => stripTags(s.h2) + ' ' + stripTags(s.html)), ...g.faq.map((f) => f.q + ' ' + f.a)].join(' ');
   g.words = stripTags(text).split(' ').length;

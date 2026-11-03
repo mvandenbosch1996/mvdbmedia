@@ -53,6 +53,51 @@ export const GUIDE_SERVICES = {
   'webapplicatie-saas-laten-maken': ['maatwerk', 'business'],
 };
 
+// Slotsectie per gids: contextuele links naar portfolio-cases en stadspagina's met beschrijvende ankers (hub-and-spoke).
+const CITY = (slug) => `/webdesign-fotografie-${slug}`;
+export const GUIDE_PRACTICE = {
+  'webdesign-kosten-friesland': {
+    h2: 'Prijzen in de praktijk en in jouw regio',
+    html: `
+        <p>Wil je zien wat een maatwerk traject oplevert? Lees de case-study van het <a href="/portfolio/kampr">boekingsplatform Kampr.nl</a>, een volledig zelfgebouwd SaaS-product. Voor lokale ondernemers staan prijzen en werkwijze ook uitgewerkt op de pagina's over <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a> en <a href="${CITY('heerenveen')}">webdesign in Heerenveen</a>.</p>`,
+  },
+  'maatwerk-website-vs-wordpress': {
+    h2: 'Maatwerk in de praktijk',
+    html: `
+        <p>Een voorbeeld van maatwerk is het <a href="/portfolio/kampr">SaaS-boekingsplatform Kampr.nl</a>, gebouwd rond één duidelijk probleem voor één doelgroep. Wil je lezen hoe dat voor een lokale ondernemer uitpakt? Bekijk <a href="${CITY('heerenveen')}">snelle maatwerk websites voor ondernemers in Heerenveen</a> of <a href="${CITY('drachten')}">zakelijke websites voor industrie en techniek in Drachten</a>.</p>`,
+  },
+  'snelle-website-laten-maken': {
+    h2: 'Snel online in jouw regio',
+    html: `
+        <p>Een snelle start werkt het best als ook de beelden op orde zijn. Een voorbeeld daarvan is de case <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>. Zoek je een snelle website in de buurt? Bekijk <a href="${CITY('heerenveen')}">webdesign voor ondernemers in Heerenveen</a> of <a href="${CITY('harlingen')}">webdesign voor horeca en verhuur in Harlingen</a>.</p>`,
+  },
+  'website-laten-maken-sneek': {
+    h2: 'Voorbeelden van mijn werk',
+    html: `
+        <p>Een greep uit het portfolio: de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a> en het SaaS-platform <a href="/portfolio/kampr">Kampr.nl</a>. Meer voorbeelden vind je in het <a href="/portfolio">volledige portfolio van MVDBmedia</a>.</p>`,
+  },
+  'website-beveiliging-onderhoud': {
+    h2: 'Beveiliging in de praktijk',
+    html: `
+        <p>Beveiliging telt extra zwaar als een site betalingen of accounts verwerkt, zoals het boekingsplatform in de <a href="/portfolio/kampr">case-study van Kampr.nl</a>. Voor zakelijke websites lees je meer over <a href="${CITY('drachten')}">websites voor industrie en techniek in Drachten</a> en <a href="${CITY('leeuwarden')}">webdesign voor zakelijke dienstverleners in Leeuwarden</a>.</p>`,
+  },
+  'seo-webdesign-hoger-in-google': {
+    h2: 'Lokale vindbaarheid in de praktijk',
+    html: `
+        <p>Lokale SEO werkt het best met een eigen pagina per plaats. Zo ziet dat eruit voor <a href="${CITY('leeuwarden')}">webdesign en fotografie in Leeuwarden</a> en <a href="${CITY('harlingen')}">webdesign en fotografie in Harlingen</a>. Ook eigen beeld versterkt het vertrouwen: zie de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics</a> als voorbeeld.</p>`,
+  },
+  'conversie-gericht-webdesign': {
+    h2: 'Vertrouwen en conversie in de praktijk',
+    html: `
+        <p>Echte foto's van team en werkplek geven bezoekers vertrouwen. Bekijk de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics</a>. Voor ondernemers die meer aanvragen willen: <a href="${CITY('drachten')}">zakelijke websites in Drachten</a> en <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a>.</p>`,
+  },
+  'webapplicatie-saas-laten-maken': {
+    h2: 'Webapplicaties voor ondernemers in de regio',
+    html: `
+        <p>Naast de case-study van <a href="/portfolio/kampr">Kampr.nl</a> bouw ik webapplicaties voor ondernemers in heel Friesland. Lees over <a href="${CITY('drachten')}">maatwerk websites en webapplicaties in Drachten</a> of <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a>.</p>`,
+  },
+};
+
 export const card = ({ href, cat, name, text, more }) => `
           <li><a class="rel-card" href="${href}">
             <span class="rel-cat">${esc(cat)}</span>

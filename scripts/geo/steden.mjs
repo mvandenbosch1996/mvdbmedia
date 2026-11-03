@@ -308,3 +308,27 @@ export const STEDEN = [
     finalCtaText: 'Vertel me over jouw bedrijf in Drachten. Ik maak een vrijblijvende offerte op maat, meestal binnen 24 uur.',
   },
 ];
+
+// Slotsectie per stad: gidsen en portfolio-cases met beschrijvende ankerteksten (hub-and-spoke). Gebruikt door scripts/build-geo.mjs.
+export const VERDER = {
+  'webdesign-fotografie-leeuwarden': {
+    h2: 'Gidsen en voorbeelden uit mijn portfolio',
+    html: `
+        <p>Wil je weten hoe een zakelijke website aanvragen oplevert? Lees de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a>, en over het <a href="/website-beveiliging-onderhoud">onderhouden en beveiligen van je website</a> na de oplevering. Voorbeelden van mijn fotografie: de <a href="/portfolio/portretshoot-marit">portretshoot voor Marit</a>, de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>.</p>`,
+  },
+  'webdesign-fotografie-heerenveen': {
+    h2: 'Gidsen en voorbeelden uit mijn portfolio',
+    html: `
+        <p>Benieuwd naar de kosten? <a href="/webdesign-kosten-friesland">Wat een website in Friesland kost</a> staat eerlijk uitgeschreven, en in de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a> lees je hoe een site meer aanvragen oplevert. Voorbeelden van mijn fotografie: de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a>, de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor het sport-medisch centrum Fitplan in Sneek</a> en de <a href="/portfolio/hondenfotos-ollie">hondenportretten van Ollie</a>.</p>`,
+  },
+  'webdesign-fotografie-harlingen': {
+    h2: 'Gidsen en voorbeelden uit mijn portfolio',
+    html: `
+        <p>Een website die gasten en huurders trekt begint met de juiste keuzes. Lees <a href="/webdesign-kosten-friesland">wat een website in Friesland kost</a>, hoe je <a href="/snelle-website-laten-maken">snel een website laat maken</a> en hoe je <a href="/seo-webdesign-hoger-in-google">hoger in Google komt met je webdesign</a>. Voorbeelden van mijn werk vanuit de lucht: de <a href="/portfolio/bouwbedrijf-vellinga-bouwplaats">luchtfoto’s van de bouwplaats van Bouwbedrijf Vellinga</a>.</p>`,
+  },
+  'webdesign-fotografie-drachten': {
+    h2: 'Gidsen en voorbeelden uit mijn portfolio',
+    html: `
+        <p>Voor zakelijke websites zijn deze gidsen het meest relevant: <a href="/maatwerk-website-vs-wordpress">maatwerk versus WordPress</a>, <a href="/website-beveiliging-onderhoud">beveiliging en onderhoud van je website</a>, <a href="/webdesign-kosten-friesland">wat een website in Friesland kost</a> en <a href="/seo-webdesign-hoger-in-google">SEO en GEO in webdesign</a>. Een voorbeeld van een groter maatwerkproject is de <a href="/portfolio/kampr">case-study van het boekingsplatform Kampr.nl</a>.</p>`,
+  },
+};
