@@ -189,7 +189,7 @@ ${body}
         </address>
 
         <div class="kb-author">
-          <img src="/fotos/michael-profiel.webp" width="72" height="72" alt="Michael van den Bosch, webdesigner en fotograaf bij MVDBmedia in Sneek" loading="lazy" decoding="async">
+          <img src="/fotos/michael-profiel.webp" width="72" height="72" alt="Michael van den Bosch, webdesigner en fotograaf bij MVDBmedia in Sneek, actief in ${esc(c.stad)} en omgeving" loading="lazy" decoding="async">
           <div>
             <p class="kb-author-name">Michael van den Bosch</p>
             <p>Oprichter van MVDBmedia in Sneek. Ik ontwerp en bouw websites en webapplicaties op maat en maak foto’s en dronebeelden voor ondernemers in ${esc(c.stad)}, Friesland en heel Nederland. <a href="/#over">Meer over mij</a></p>
