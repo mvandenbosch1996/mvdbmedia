@@ -91,13 +91,10 @@ var projects = [
     label: 'Drone Visuals', title: 'Luchtfotografie',
     photos: [
       { src: 'fotos/luchtfotos/eiland.webp', title: 'Bled — eiland met kerkje', alt: 'Luchtfoto van het eiland met kerkje en rode daken in het turquoise water van Bled, Slovenië' },
-      { src: 'fotos/drone-eiland.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
-      { src: 'fotos/drone-fort.webp', title: 'Fort met stervormige wallen', alt: 'Luchtfoto van een stervormig fort met grachten, wallen en bomen eromheen' },
-      { src: 'fotos/drone-kasteel.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' },
-      { src: 'fotos/drone-park.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
-      { src: 'fotos/luchtfotos/IMG-20251109-WA0016.webp', title: 'Gebogen eiland met schip', alt: 'Luchtfoto van een gebogen, begroeid eilandje met een binnenvaartschip in donker water' },
-      { src: 'fotos/luchtfotos/IMG-20251109-WA0017.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Luchtfoto van een symmetrisch aangelegd park met paden en bomen in herfstkleuren' },
-      { src: 'fotos/luchtfotos/IMG-20251109-WA0019.webp', title: 'Landhuis in herfstkleuren', alt: 'Luchtfoto van een wit landhuis tussen bomen in herfstkleuren' }
+      { src: 'fotos/drone-eiland.webp', title: 'Gebogen eiland met schip', alt: 'Dronefoto van het Tulpeiland in het Wolderwijd bij Zeewolde (Flevoland): een gebogen, begroeid eiland met een binnenvaartschip in donker water' },
+      { src: 'fotos/drone-fort.webp', title: 'Fort met stervormige wallen', alt: 'Dronefoto van vestingstad Naarden (Noord-Holland): stervormige wallen met grachten en bomen, recht van boven gezien' },
+      { src: 'fotos/drone-kasteel.webp', title: 'Landhuis in herfstkleuren', alt: 'Dronefoto van Huize De Sprengenberg bij Haarle op de Sallandse Heuvelrug (Overijssel): wit landhuis met toren tussen bomen in herfstkleuren' },
+      { src: 'fotos/drone-park.webp', title: 'Park met symmetrische tuinaanleg', alt: 'Dronefoto van het Julianapark in Bolsward (Friesland): symmetrisch aangelegd park met paden en bomen in herfstkleuren' }
     ]
   },
   {

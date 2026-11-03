@@ -4,3 +4,10 @@
 # Oude ampersand-duplicate → clean URL (301, behoudt SEO van ooit geindexeerde URL)
 /portret&groepsfotografie.html   /portret-groepsfotografie   301
 /portret%26groepsfotografie.html /portret-groepsfotografie   301
+
+# Dubbele drone-foto (byte-identiek aan het canonieke bestand): 301 naar het origineel
+/fotos/luchtfotos/IMG-20251109-WA0012.webp /fotos/drone-fort.webp 301
+/fotos/luchtfotos/IMG-20251109-WA0016.webp /fotos/drone-eiland.webp 301
+/fotos/luchtfotos/IMG-20251109-WA0017.webp /fotos/drone-park.webp 301
+/fotos/luchtfotos/IMG-20251109-WA0019.webp /fotos/drone-kasteel.webp 301
+/fotos/luchtfotos/IMG-20251109-WA0012-800.webp /fotos/drone-fort-800.webp 301
