@@ -75,6 +75,7 @@ export default {
       h2: 'Werkgebied: Sneek, Friesland en heel Nederland',
       html: `
         <p>Mijn basis is Sneek, en ik werk regelmatig voor ondernemers in de omgeving, zoals in Bolsward, IJlst, Joure, Heerenveen, Lemmer, Leeuwarden en Drachten. Voor de website zelf maakt locatie niet uit: de meeste afstemming gaat prima via telefoon, video of WhatsApp. Ook ondernemers buiten Friesland werken dus gewoon met me samen.</p>
+        <p>Voor vier steden heb ik een eigen pagina met webdesign en fotografie: <a href="/webdesign-fotografie-leeuwarden">Leeuwarden</a>, <a href="/webdesign-fotografie-heerenveen">Heerenveen</a>, <a href="/webdesign-fotografie-harlingen">Harlingen</a> en <a href="/webdesign-fotografie-drachten">Drachten</a>.</p>
         <address style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
           <strong style="color:var(--text-primary);">MVDBmedia</strong><br>Dagpauwoog 15, 8607 HN Sneek<br>
           <a href="tel:+31624819278">+31 6 24 81 92 78</a> · <a href="mailto:info@mvdbmedia.nl">info@mvdbmedia.nl</a>

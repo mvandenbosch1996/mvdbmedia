@@ -11,7 +11,7 @@ export const AREA_SERVED = [
   { '@type': 'City', name: 'Sneek' },
   { '@type': 'City', name: 'Leeuwarden' },
   { '@type': 'City', name: 'Heerenveen' },
-  { '@type': 'City', name: 'Drachten' },
+  { '@type': 'City', name: 'Drachten' }, { '@type': 'City', name: 'Harlingen' },
   { '@type': 'AdministrativeArea', name: 'Friesland' },
   { '@type': 'Country', name: 'Nederland' },
 ];
@@ -21,7 +21,7 @@ export const LOCAL_BUSINESS = {
   '@id': SITE,
   name: 'MVDBmedia',
   url: SITE,
-  description: 'MVDBmedia levert webdesign op maat en professionele portret-, vastgoed- en dronefotografie. Gevestigd in Sneek, actief in Leeuwarden, Heerenveen, Drachten en heel Friesland, en landelijk beschikbaar.',
+  description: 'MVDBmedia levert webdesign op maat en professionele portret-, vastgoed- en dronefotografie. Gevestigd in Sneek, actief in Leeuwarden, Heerenveen, Harlingen, Drachten en heel Friesland, en landelijk beschikbaar.',
   image: `${SITE}/fotos/michael-profiel.jpg`,
   telephone: '+31624819278',
   email: 'info@mvdbmedia.nl',

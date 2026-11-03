@@ -820,4 +820,40 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://mvdbmedia.nl/webdesign-fotografie-leeuwarden</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mvdbmedia.nl/webdesign-fotografie-heerenveen</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mvdbmedia.nl/webdesign-fotografie-harlingen</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mvdbmedia.nl/webdesign-fotografie-drachten</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mvdbmedia.nl/fotos/michael-profiel.webp</image:loc>
+    </image:image>
+  </url>
+
 </urlset>

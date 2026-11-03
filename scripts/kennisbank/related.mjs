@@ -53,7 +53,7 @@ export const GUIDE_SERVICES = {
   'webapplicatie-saas-laten-maken': ['maatwerk', 'business'],
 };
 
-const card = ({ href, cat, name, text, more }) => `
+export const card = ({ href, cat, name, text, more }) => `
           <li><a class="rel-card" href="${href}">
             <span class="rel-cat">${esc(cat)}</span>
             <span class="rel-name">${esc(name)}</span>

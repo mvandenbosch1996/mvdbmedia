@@ -1,5 +1,5 @@
 // Unieke OG-afbeeldingen (1200x630 JPG) per pagina: fotos/og/<slug>.jpg
-// Gebruik: node scripts/og-images.mjs   (OG-config wordt ook door build-kennisbank.mjs gelezen)
+// Gebruik: node scripts/og-images.mjs [slug ...]  (zonder slugs: alles; OG-config wordt ook door build-kennisbank.mjs gelezen)
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,6 +36,10 @@ export const OG = {
   'webdesign-kosten-friesland':    { photo: null, label: 'Gids · Prijzen', title: 'Wat kost een\nwebsite in Friesland?' },
   'website-beveiliging-onderhoud': { photo: null, label: 'Gids · Onderhoud', title: 'Website beveiliging\nen onderhoud' },
   'website-laten-maken-sneek':     { photo: null, label: 'Gids · Sneek', title: 'Website laten maken\nin Sneek' },
+  'webdesign-fotografie-leeuwarden': { photo: null, label: 'Leeuwarden', title: 'Webdesign en fotografie\nin Leeuwarden' },
+  'webdesign-fotografie-heerenveen': { photo: null, label: 'Heerenveen', title: 'Webdesign en fotografie\nin Heerenveen' },
+  'webdesign-fotografie-harlingen':  { photo: null, label: 'Harlingen', title: 'Webdesign en fotografie\nin Harlingen' },
+  'webdesign-fotografie-drachten':   { photo: null, label: 'Drachten', title: 'Webdesign en fotografie\nin Drachten' },
   'algemene-voorwaarden':          { photo: null, label: 'Juridisch', title: 'Algemene\nvoorwaarden' },
   'privacybeleid':                 { photo: null, label: 'Juridisch', title: 'Privacybeleid' },
 };
@@ -78,7 +82,9 @@ async function build() {
   const outDir = path.join(ROOT, 'fotos', 'og');
   fs.mkdirSync(outDir, { recursive: true });
   const logo = await sharp(path.join(ROOT, 'apple-touch-icon.png')).resize(80, 80).toBuffer();
+  const only = process.argv.slice(2);
   for (const [slug, o] of Object.entries(OG)) {
+    if (only.length && !only.includes(slug)) continue;
     const base = o.photo
       ? sharp(path.join(ROOT, 'fotos', o.photo)).resize(OG_W, OG_H, { fit: 'cover', position: o.pos || sharp.strategy.attention })
       : sharp({ create: { width: OG_W, height: OG_H, channels: 3, background: '#0d0d0d' } });
