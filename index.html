@@ -131,6 +131,31 @@
     "https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8",
     "https://g.page/r/CW9KIY_IYVdrEBM/review"
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "1"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Gerlof (Friesland Ontruimingen)"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Google"
+    },
+    "reviewBody": "Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!"
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Diensten van MVDBmedia",
@@ -967,6 +992,8 @@
     @media (prefers-reduced-motion: reduce) {
       .showreel-marquee { animation: none !important; }
     }
+    .klant-link { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+    .klant-link:hover { color: var(--orange); }
   </style>
   <script type="application/ld+json">
 {
@@ -1572,6 +1599,17 @@
         </div>
 
       </div>
+
+      <!-- Klantervaring -->
+      <figure style="margin:24px 0 0;padding:28px 32px;border:1px solid var(--border);border-left:2px solid var(--orange);border-radius:4px;background:var(--bg-card);display:flex;flex-wrap:wrap;align-items:center;gap:14px 32px;">
+        <blockquote style="margin:0;flex:1 1 340px;">
+          <p style="margin:0;font-size:0.92rem;line-height:1.8;color:var(--text-secondary);font-weight:300;font-style:italic;">&ldquo;Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!&rdquo;</p>
+        </blockquote>
+        <figcaption style="flex:0 1 auto;font-size:0.72rem;line-height:1.7;color:var(--text-muted);letter-spacing:0.04em;">
+          <span role="img" aria-label="5 van 5 sterren" style="display:block;color:var(--orange);letter-spacing:0.18em;font-size:0.85rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="color:var(--text-primary);font-weight:600;">Gerlof</span> &middot; <a href="/portfolio/friesland-ontruimingen-groepsfoto" class="klant-link">Friesland Ontruimingen</a>
+        </figcaption>
+      </figure>
 
     </div>
   </section>

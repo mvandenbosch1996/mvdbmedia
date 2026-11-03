@@ -84,6 +84,31 @@
     "https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8",
     "https://g.page/r/CW9KIY_IYVdrEBM/review"
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "1"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Gerlof (Friesland Ontruimingen)"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Google"
+    },
+    "reviewBody": "Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!"
+  },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 53.033,
@@ -488,6 +513,21 @@
     @media (max-width: 768px) { .related { margin-top: 72px; } }
     @media (max-width: 480px) { .gal.n2 { columns: 1; } .rel-card { aspect-ratio: 16 / 10; } }
     @media (prefers-reduced-motion: reduce) { .rel-card img, .rel-card::after { transition: none !important; } }
+
+    /* klantervaring */
+    .testi { position: relative; margin: 0; padding: 56px 64px 52px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: radial-gradient(ellipse at 0% 0%, rgba(255,140,0,0.09) 0%, transparent 60%), radial-gradient(ellipse at 100% 100%, rgba(255,140,0,0.04) 0%, transparent 55%), var(--bg-elevated); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 28px 60px -28px rgba(255,140,0,0.16), 0 14px 36px rgba(0,0,0,0.5); }
+    .testi::before { content: '\201C'; position: absolute; top: -26px; left: 34px; font-family: var(--font-display); font-size: 12rem; line-height: 1; color: var(--orange); opacity: 0.16; pointer-events: none; }
+    .block h2.testi-label { position: relative; font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.2; color: var(--orange); margin-bottom: 22px; }
+    .testi-quote { position: relative; margin: 0; }
+    .testi-quote p { font-family: var(--font-display); font-size: clamp(1.75rem, 3.1vw, 2.9rem); line-height: 1.08; letter-spacing: 0.02em; color: var(--text-primary); max-width: 30em; }
+    .testi-by { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-secondary); }
+    .testi-stars { color: var(--orange); letter-spacing: 0.18em; font-size: 0.9rem; }
+    .testi-name { color: var(--text-primary); font-weight: 600; letter-spacing: 0.02em; }
+    .testi-name span { color: var(--text-secondary); font-weight: 400; }
+    .testi-src { margin-left: auto; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); text-decoration: underline; text-underline-offset: 4px; transition: color 0.2s ease; }
+    .testi-src:hover { color: var(--orange); }
+    .testi-src:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    @media (max-width: 768px) { .testi { padding: 44px 24px 32px; } .testi::before { font-size: 9rem; left: 14px; top: -18px; } .testi-src { margin-left: 0; } }
   </style>
   <style>/*kb-patch*/@media(max-width:1180px){#nav-links{gap:18px!important}}@media(min-width:769px) and (max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:768px){.footer-grid{grid-template-columns:1fr!important;gap:32px!important}}</style>
 
@@ -612,6 +652,21 @@
           <!-- rel-case:start --><p>Een teamfoto in de regio laten maken? Bekijk <a href="/webdesign-fotografie-heerenveen">teamfoto's in Heerenveen</a> of <a href="/webdesign-fotografie-leeuwarden">teamfoto's in Leeuwarden</a>.</p><!-- rel-case:end -->
         </div>
       </div>
+    </section>
+
+    <!-- KLANTERVARING -->
+    <section class="block wrap" id="klantervaring" aria-labelledby="klantervaring-title">
+      <figure class="testi">
+        <h2 class="testi-label" id="klantervaring-title">Klantervaring</h2>
+        <blockquote class="testi-quote" cite="https://g.page/r/CW9KIY_IYVdrEBM/review">
+          <p>Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!</p>
+        </blockquote>
+        <figcaption class="testi-by">
+          <span class="testi-stars" role="img" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="testi-name">Gerlof<span> &middot; Friesland Ontruimingen</span></span>
+          <a class="testi-src" href="https://g.page/r/CW9KIY_IYVdrEBM/review" target="_blank" rel="noopener noreferrer">Google review</a>
+        </figcaption>
+      </figure>
     </section>
 
     <!-- GALERIJ -->

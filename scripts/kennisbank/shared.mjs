@@ -16,6 +16,22 @@ export const AREA_SERVED = [
   { '@type': 'Country', name: 'Nederland' },
 ];
 
+export const AGGREGATE_RATING = {
+  '@type': 'AggregateRating',
+  ratingValue: '5.0',
+  bestRating: '5',
+  worstRating: '1',
+  reviewCount: '1',
+};
+
+export const REVIEW = {
+  '@type': 'Review',
+  reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5', worstRating: '1' },
+  author: { '@type': 'Person', name: 'Gerlof (Friesland Ontruimingen)' },
+  publisher: { '@type': 'Organization', name: 'Google' },
+  reviewBody: 'Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!',
+};
+
 export const LOCAL_BUSINESS = {
   '@type': ['ProfessionalService', 'LocalBusiness'],
   '@id': SITE,
@@ -40,6 +56,8 @@ export const LOCAL_BUSINESS = {
   knowsLanguage: 'nl-NL',
   founder: { '@type': 'Person', '@id': `${SITE}/#michael-van-den-bosch`, name: 'Michael van den Bosch' },
   sameAs: ['https://www.instagram.com/mvdbmedia', 'https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8', 'https://g.page/r/CW9KIY_IYVdrEBM/review'],
+  aggregateRating: AGGREGATE_RATING,
+  review: REVIEW,
 };
 
 export const GUIDES_LABEL = 'Webdesign Gidsen';
