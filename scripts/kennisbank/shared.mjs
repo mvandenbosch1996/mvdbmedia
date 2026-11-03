@@ -39,7 +39,7 @@ export const LOCAL_BUSINESS = {
   currenciesAccepted: 'EUR',
   knowsLanguage: 'nl-NL',
   founder: { '@type': 'Person', '@id': `${SITE}/#michael-van-den-bosch`, name: 'Michael van den Bosch' },
-  sameAs: ['https://www.instagram.com/mvdbmedia', 'https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8'],
+  sameAs: ['https://www.instagram.com/mvdbmedia', 'https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8', 'https://g.page/r/CW9KIY_IYVdrEBM/review'],
 };
 
 export const GUIDES_LABEL = 'Webdesign Gidsen';
