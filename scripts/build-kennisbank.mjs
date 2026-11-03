@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SITE, DATE, PERSON, TOP4, ALL_GUIDES_LINK, GUIDES_LABEL } from './kennisbank/shared.mjs';
+import { SITE, DATE, PERSON, LOCAL_BUSINESS, TOP4, ALL_GUIDES_LINK, GUIDES_LABEL } from './kennisbank/shared.mjs';
 import guides from './kennisbank/content/index.mjs';
 import { ogUrl, ogAlt } from './og-images.mjs';
 import { GUIDE_SERVICES, serviceCards, relatedSection } from './kennisbank/related.mjs';
@@ -56,7 +56,7 @@ const footerHtml = () => `
       <div class="footer-grid">
         <div>
           <a href="/" class="footer-brand">MVDB<span>media</span></a>
-          <p class="footer-blurb">Webdesign op maat in Sneek &amp; Friesland. Ook voor fotografie en drone — alles onder één dak.</p>
+          <p class="footer-blurb">Webdesign, fotografie en drone vanuit Sneek. Actief in Leeuwarden, Heerenveen, Drachten en heel Friesland.</p>
           <div class="footer-label spaced">Algemeen</div>
           <address>Dagpauwoog 15<br>8607 HN Sneek<br><br>KVK: 42084901<br>BTW: NL005483105B05</address>
         </div>
@@ -238,6 +238,7 @@ function articlePage(g) {
           ...(g.mentions ? { mentions: g.mentions } : {}),
         },
         breadcrumbSchema([['Home', `${SITE}/`], ['Kennisbank', `${SITE}/kennisbank`], [g.title, g.url]]),
+        LOCAL_BUSINESS,
       ],
     },
     {
@@ -343,8 +344,8 @@ ${footerHtml()}
 // ── Overzichtspagina ────────────────────────────────────────────────────────
 function overviewPage() {
   const url = `${SITE}/kennisbank`;
-  const title = 'Webdesign Kennisbank: 8 gidsen over websites & SEO | MVDBmedia';
-  const description = 'Acht gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, beveiliging, SEO & GEO, conversie en webapps. Door Michael van den Bosch, Sneek.';
+  const title = 'Webdesign Kennisbank: gidsen over websites & SEO | MVDBmedia';
+  const description = 'Acht gidsen over webdesign: kosten, maatwerk vs WordPress, snelheid, SEO & GEO en webapps. Van webdesigner Michael van den Bosch uit Sneek. Lees de gidsen.';
   const schema = [
     {
       '@context': 'https://schema.org',
@@ -372,6 +373,7 @@ function overviewPage() {
           itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, url: g.url, name: g.title })),
         },
         breadcrumbSchema([['Home', `${SITE}/`], ['Kennisbank', url]]),
+        LOCAL_BUSINESS,
       ],
     },
   ];

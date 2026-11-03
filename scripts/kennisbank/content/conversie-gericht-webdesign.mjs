@@ -4,7 +4,7 @@ export default {
   crumb: 'Conversiegericht webdesign',
   h1: 'CONVERSIEGERICHT WEBDESIGN: VAN BEZOEKER NAAR <em>BETALENDE KLANT</em>',
   metaTitle: 'Conversiegericht webdesign: van bezoeker naar klant | MVDBmedia',
-  metaDescription: 'Hoe bouw je een website die bezoekers omzet in klanten? Praktische principes voor conversiegericht webdesign: propositie, CTA, vertrouwen, snelheid en meten.',
+  metaDescription: 'Hoe bouw je een website die bezoekers omzet in klanten? Principes voor conversiegericht webdesign: propositie, CTA, vertrouwen en meten. Uit Sneek.',
   category: 'Conversie & Groei',
   tags: ['Conversie', 'UX', 'Groei'],
   keywords: ['conversiegericht webdesign', 'conversie optimalisatie', 'meer aanvragen website', 'call-to-action', 'website klanten'],

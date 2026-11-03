@@ -4,7 +4,7 @@ export default {
   crumb: 'Maatwerk vs WordPress',
   h1: 'MAATWERK WEBSITE <em>VS. WORDPRESS</em>: SNELHEID &amp; VEILIGHEID',
   metaTitle: 'Maatwerk website vs WordPress: snelheid & veiligheid | MVDBmedia',
-  metaDescription: 'Maatwerk website of WordPress? Eerlijke vergelijking op snelheid, veiligheid, onderhoud en kosten, plus wanneer WordPress wél de slimme keuze is.',
+  metaDescription: 'Maatwerk website of WordPress? Vergelijking op snelheid, veiligheid, onderhoud en kosten, van een webdesigner uit Sneek. Lees wanneer WordPress slim is.',
   category: 'Techniek & Keuzes',
   schemaType: 'TechArticle',
   tags: ['Maatwerk', 'WordPress', 'Techniek'],

@@ -7,6 +7,41 @@ export const PERSON = {
   '@id': `${SITE}/#michael-van-den-bosch`,
 };
 
+export const AREA_SERVED = [
+  { '@type': 'City', name: 'Sneek' },
+  { '@type': 'City', name: 'Leeuwarden' },
+  { '@type': 'City', name: 'Heerenveen' },
+  { '@type': 'City', name: 'Drachten' },
+  { '@type': 'AdministrativeArea', name: 'Friesland' },
+  { '@type': 'Country', name: 'Nederland' },
+];
+
+export const LOCAL_BUSINESS = {
+  '@type': ['ProfessionalService', 'LocalBusiness'],
+  '@id': SITE,
+  name: 'MVDBmedia',
+  url: SITE,
+  description: 'MVDBmedia levert webdesign op maat en professionele portret-, vastgoed- en dronefotografie. Gevestigd in Sneek, actief in Leeuwarden, Heerenveen, Drachten en heel Friesland, en landelijk beschikbaar.',
+  image: `${SITE}/fotos/michael-profiel.jpg`,
+  telephone: '+31624819278',
+  email: 'info@mvdbmedia.nl',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Dagpauwoog 15',
+    postalCode: '8607 HN',
+    addressLocality: 'Sneek',
+    addressRegion: 'Friesland',
+    addressCountry: 'NL',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 53.033, longitude: 5.659 },
+  areaServed: AREA_SERVED,
+  priceRange: '€€',
+  currenciesAccepted: 'EUR',
+  knowsLanguage: 'nl-NL',
+  founder: { '@type': 'Person', '@id': `${SITE}/#michael-van-den-bosch`, name: 'Michael van den Bosch' },
+  sameAs: ['https://www.instagram.com/mvdbmedia', 'https://maps.app.goo.gl/tzDFTKJLBTuvmsKy8'],
+};
+
 export const GUIDES_LABEL = 'Webdesign Gidsen';
 
 export const TOP4 = [
