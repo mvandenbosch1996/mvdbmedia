@@ -29,7 +29,7 @@ export const REVIEW = {
   reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5', worstRating: '1' },
   author: { '@type': 'Person', name: 'Gerlof (Friesland Ontruimingen)' },
   publisher: { '@type': 'Organization', name: 'Google' },
-  reviewBody: 'Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te me komen. Daarnaast ook nog eens hele scherpe prijzen!',
+  reviewBody: 'Zeer professionele service, ruimdenkend en creatief om tot het beste resultaat te komen. Daarnaast ook nog eens hele scherpe prijzen!',
 };
 
 export const LOCAL_BUSINESS = {
