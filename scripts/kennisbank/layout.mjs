@@ -16,10 +16,14 @@ export const NAV_LINKS = [
   ['/#contact', 'Contact'],
 ];
 
+// M-monogram naast de merknaam; verhoog ?v= bij elke wijziging van het bestand (fotos/* wordt 30 dagen gecachet).
+export const NAV_LOGO_IMG = '<img src="/fotos/logo-mvdbmedia-nav.webp?v=2" alt="" width="36" height="36" decoding="async" style="display:block;width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,140,0,0.28),0 6px 18px -4px rgba(255,140,0,0.35);flex:none;margin-right:10px;">';
+export const NAV_LOGO_FLEX = 'display:inline-flex;align-items:center;';
+
 export const navHtml = () => `
   <a href="#main-content" class="skip-link">Naar hoofdinhoud</a>
   <nav id="nav" class="nav-pad" aria-label="Hoofdnavigatie">
-    <a href="/" class="nav-logo" aria-label="MVDBmedia, naar de homepage">MVDB<span>media</span></a>
+    <a href="/" class="nav-logo" style="${NAV_LOGO_FLEX}" aria-label="MVDBmedia, naar de homepage">${NAV_LOGO_IMG}MVDB<span>media</span></a>
     <div id="nav-links">
 ${NAV_LINKS.map(([h, t]) => `      <a href="${h}" class="nav-link">${t}</a>`).join('\n')}
     </div>

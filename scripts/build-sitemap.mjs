@@ -21,7 +21,7 @@ const entries = [...current.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => ({
 }));
 
 const xmlEsc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const SKIP = /^(data:|https?:)|\/fotos\/og\/|favicon|apple-touch/;
+const SKIP = /^(data:|https?:)|\/fotos\/og\/|favicon|apple-touch|logo-mvdbmedia-nav/;
 
 function htmlFileFor(loc) {
   const p = loc.replace(SITE, '') || '/';
