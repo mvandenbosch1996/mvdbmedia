@@ -38,7 +38,8 @@ export const LOCAL_BUSINESS = {
   name: 'MVDBmedia',
   url: SITE,
   description: 'MVDBmedia levert webdesign op maat en professionele portret-, vastgoed- en dronefotografie. Gevestigd in Sneek, actief in Leeuwarden, Heerenveen, Harlingen, Drachten en heel Friesland, en landelijk beschikbaar.',
-  image: `${SITE}/fotos/michael-profiel.jpg`,
+  image: `${SITE}/fotos/logo-mvdbmedia.png`,
+  logo: `${SITE}/fotos/logo-mvdbmedia.png`,
   telephone: '+31624819278',
   email: 'info@mvdbmedia.nl',
   address: {
