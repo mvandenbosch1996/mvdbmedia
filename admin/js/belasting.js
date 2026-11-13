@@ -111,6 +111,8 @@
         eu: rubriek(vl.eu),
         nonEu: rubriek(vl.nonEu),
         btw: naarEuro(verlegdBtwCent),
+        // Dezelfde btw staat in 5a (verschuldigd) en 5b (voorbelasting): netto-effect op het saldo.
+        perSaldo: naarEuro(verlegdBtwCent - verlegdBtwCent),
         aantal: vl.eu.aantal + vl.nonEu.aantal,
       },
     };

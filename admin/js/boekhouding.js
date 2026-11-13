@@ -145,8 +145,22 @@
     const verlegdRegels = verlegd
       ? rubriekRegels("4a", "Diensten uit landen buiten de EU", verlegd.nonEu) + rubriekRegels("4b", "Diensten uit landen binnen de EU", verlegd.eu)
       : "";
-    const voorStart = k.berekend.voorbelastingVoorStart
-      ? `<dt class="sub">waarvan vóór startdatum</dt><dd class="sub">${euro(k.berekend.voorbelastingVoorStart)}</dd>` : "";
+    const voorStartTekst = k.berekend.voorbelastingVoorStart
+      ? ` Waarvan vóór de startdatum: ${euro(k.berekend.voorbelastingVoorStart)}.` : "";
+    // Visuele splitsing van 5b: echt terug te vragen btw naast de administratieve verlegging (die per saldo 0 is).
+    const split = k.berekend.voorbelastingBon || verlegd
+      ? `<div class="btw-split" role="group" aria-label="Verdeling btw: terug te vragen en verlegd">
+          <div class="split-regel split-echt">
+            <div><div class="split-kop">Terug te vragen btw (reguliere voorbelasting)</div>
+              <div class="split-sub">Echt betaalde btw op bonnen en facturen, exclusief verlegd.${voorStartTekst}</div></div>
+            <div class="split-bedrag ontvangen">${euro(k.berekend.voorbelastingBon)}</div>
+          </div>
+          ${verlegd ? `<div class="split-regel split-verlegd">
+            <div><div class="split-kop">Btw verlegd (Rubriek 4a + 4b — per saldo ${euro(verlegd.perSaldo)})</div>
+              <div class="split-sub">Wordt opgegeven in 5a en direct weer afgetrokken in 5b (geen invloed op eindsaldo).</div></div>
+            <div class="split-bedrag">${euro(verlegd.btw)}</div>
+          </div>` : ""}
+        </div>` : "";
     const aangegeven = k.aangegeven
       ? `<dt>Aangegeven bij Belastingdienst</dt><dd>${euro(k.aangegeven.btwOmzet)} − ${euro(k.aangegeven.voorbelasting)}</dd>` : "";
     const afwijking = k.afwijking
@@ -165,8 +179,9 @@
         ${verlegd ? `<dt class="sub">waarvan verlegd</dt><dd class="sub">${euro(verlegd.btw)}</dd>` : ""}
         <dt><span class="rubriek">5b</span>Af: voorbelasting</dt><dd>${euro(k.berekend.voorbelasting)}</dd>
         ${verlegd ? `<dt class="sub">waarvan verlegd</dt><dd class="sub">${euro(verlegd.btw)}</dd>` : ""}
-        ${voorStart}${aangegeven}
+        ${aangegeven}
       </dl>
+      ${split}
       ${afwijking}${bron}
       <div class="saldo"><span class="saldo-label">Saldo ${s.label}</span><span class="saldo-bedrag ${s.klasse}">${euro(Math.abs(k.saldo))}</span></div>
       <div class="kw-onder">
