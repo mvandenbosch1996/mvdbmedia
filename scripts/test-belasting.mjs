@@ -59,8 +59,9 @@ gelijk('Q2 status open', k2.status, 'open');
   };
   const zonder = { omzet: vd.omzet, kosten: vd.kosten.filter((k) => !k.verlegd), aangiften: {} };
   const k3 = B.berekenKwartaal(vd, 3);
-  gelijk('verlegd netto', k3.verlegd.netto, 173.99);
-  gelijk('verlegd hele euro\'s (afgekapt)', k3.verlegd.nettoHeleEuros, 173);
+  gelijk('oude verlegd-records (zonder regio) tellen als EU/4b', k3.verlegd.eu.netto, 173.99);
+  gelijk('oude verlegd-records: niets in 4a', k3.verlegd.nonEu.aantal, 0);
+  gelijk('verlegd hele euro\'s (afgekapt)', k3.verlegd.eu.nettoHeleEuros, 173);
   gelijk('verlegde btw 21%', k3.verlegd.btw, 36.54);
   gelijk('verlegd aantal', k3.verlegd.aantal, 2);
   gelijk('5a = omzetbtw + verlegd', k3.berekend.btwOmzet, B.rond(210 + 36.54));
@@ -68,6 +69,39 @@ gelijk('Q2 status open', k2.status, 'open');
   gelijk('saldo ongewijzigd door verlegging', k3.saldo, B.berekenKwartaal(zonder, 3).saldo);
   gelijk('0%-record zonder kenmerk blijft regulier', B.berekenKwartaal({ omzet: [], kosten: [{ kwartaal: 3, netto: 40, btw: 0 }], aangiften: {} }, 3).verlegd.aantal, 0);
   gelijk('kosten tellen volledig mee in winst', k3.berekend.kostenNetto, 473.99);
+}
+
+// ---- verlegd gesplitst: 4a (buiten EU) en 4b (EU), samen in 5a én 5b, saldo ongewijzigd
+{
+  const gem = {
+    omzet: [{ kwartaal: 3, netto: 1000, tarief: 21 }],
+    kosten: [
+      { kwartaal: 3, netto: 18.5, btw: 0, verlegd: true, verlegdRegio: 'non_eu' },
+      { kwartaal: 3, netto: 18.5, btw: 0, verlegd: true, verlegdRegio: 'non_eu' },
+      { kwartaal: 3, netto: 90.99, btw: 0, verlegd: true, verlegdRegio: 'non_eu' },
+      { kwartaal: 3, netto: 200, btw: 0, verlegd: true, verlegdRegio: 'eu' },
+      { kwartaal: 3, netto: 50, btw: 0, verlegd: true },
+      { kwartaal: 3, netto: 75, btw: 0 },
+      { kwartaal: 3, netto: 100, btw: 21 },
+    ],
+    aangiften: {},
+  };
+  const q = B.berekenKwartaal(gem, 3);
+  gelijk('4a netto', q.verlegd.nonEu.netto, 127.99);
+  gelijk('4a hele euro\'s', q.verlegd.nonEu.nettoHeleEuros, 127);
+  gelijk('4a btw (3,89 + 3,89 + 19,11)', q.verlegd.nonEu.btw, 26.89);
+  gelijk('4a aantal', q.verlegd.nonEu.aantal, 3);
+  gelijk('4b netto (eu + oud record)', q.verlegd.eu.netto, 250);
+  gelijk('4b hele euro\'s', q.verlegd.eu.nettoHeleEuros, 250);
+  gelijk('4b btw', q.verlegd.eu.btw, 52.5);
+  gelijk('verlegd totaal = 4a + 4b', q.verlegd.btw, B.rond(26.89 + 52.5));
+  gelijk('5a = omzetbtw + 4a + 4b', q.berekend.btwOmzet, B.rond(210 + 26.89 + 52.5));
+  gelijk('5b = bon-btw + 4a + 4b', q.berekend.voorbelasting, B.rond(21 + 26.89 + 52.5));
+  gelijk('saldo = alleen omzetbtw − bon-btw', q.saldo, 189);
+  gelijk('verlegdRegio eu default', B.verlegdRegio({ verlegd: true }), 'eu');
+  gelijk('verlegdRegio non_eu', B.verlegdRegio({ verlegd: true, verlegdRegio: 'non_eu' }), 'non_eu');
+  gelijk('verlegdRegio regulier', B.verlegdRegio({ btw: 0 }), null);
+  gelijk('verlegdRegio negeert regio zonder verlegd-vlag', B.verlegdRegio({ verlegdRegio: 'non_eu' }), null);
 }
 
 // ---- reeds ingediend: aangegeven bedragen gaan voor, afwijking wordt getoond
@@ -158,6 +192,11 @@ is('negatieve btw geweigerd', V.schoonKosten({ datum: '2026-08-15', omschrijving
 const vl = V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 18.5, btw: 0, voorStart: false, verlegd: true }, 2026);
 is('verlegde kost geldig', vl.ok === true, JSON.stringify(vl));
 gelijk('verlegd kenmerk opgeslagen', vl.item?.verlegd, true);
+gelijk('verlegd zonder regio → eu (oude client)', vl.item?.verlegdRegio, 'eu');
+const vn = V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 18.5, btw: 0, verlegd: true, verlegdRegio: 'non_eu' }, 2026);
+gelijk('regio non_eu opgeslagen', vn.item?.verlegdRegio, 'non_eu');
+is('ongeldige regio geweigerd', V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 18.5, btw: 0, verlegd: true, verlegdRegio: 'mars' }, 2026).ok === false);
+is('regulier record krijgt geen regio', !('verlegdRegio' in V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Stripe', netto: 40, btw: 0, verlegdRegio: 'non_eu' }, 2026).item));
 is('verlegd met betaalde btw geweigerd', V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 100, btw: 21, verlegd: true }, 2026).ok === false);
 is('bestaand 0%-record zonder kenmerk blijft regulier', !('verlegd' in V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Stripe', netto: 40, btw: 0 }, 2026).item));
 {

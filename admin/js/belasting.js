@@ -52,6 +52,12 @@
     return `${j}-${String(m).padStart(2, "0")}-${String(laatste).padStart(2, "0")}`;
   }
 
+  // Records van vóór het EU/buiten-EU-onderscheid hebben alleen verlegd:true; die golden als EU (rubriek 4b).
+  function verlegdRegio(k) {
+    if (!k || !k.verlegd) return null;
+    return k.verlegdRegio === "non_eu" ? "non_eu" : "eu";
+  }
+
   function btwCent(nettoCent, tarief) {
     return Math.round((nettoCent * (Number(tarief) || 0)) / 100);
   }
@@ -70,20 +76,24 @@
       omzetCent += n; btwOmzetCent += b;
     }
     let kostenCent = 0, voorbelastingBonCent = 0, voorStartCent = 0;
-    let verlegdNettoCent = 0, verlegdBtwCent = 0, verlegdAantal = 0;
+    const vl = { eu: { n: 0, b: 0, aantal: 0 }, nonEu: { n: 0, b: 0, aantal: 0 } };
     for (const k of kostenRecs) {
       const n = naarCent(k.netto);
       kostenCent += n;
       const b = naarCent(k.btw);
       voorbelastingBonCent += b;
       if (k.voorStart) voorStartCent += b;
-      // Btw verlegd: op de factuur staat geen btw; je geeft 21% aan (rubriek 4b/5a) en trekt dezelfde btw af (5b).
-      if (k.verlegd) {
-        verlegdNettoCent += n;
-        verlegdBtwCent += btwCent(n, VERLEGD_TARIEF);
-        verlegdAantal++;
+      // Btw verlegd: op de factuur staat geen btw; je geeft 21% aan (rubriek 4a of 4b, plus 5a) en trekt dezelfde btw af (5b).
+      const regio = verlegdRegio(k);
+      if (regio) {
+        const slot = regio === "non_eu" ? vl.nonEu : vl.eu;
+        slot.n += n;
+        slot.b += btwCent(n, VERLEGD_TARIEF);
+        slot.aantal++;
       }
     }
+    const verlegdBtwCent = vl.eu.b + vl.nonEu.b;
+    const rubriek = (s) => ({ netto: naarEuro(s.n), nettoHeleEuros: Math.trunc(s.n / 100), btw: naarEuro(s.b), aantal: s.aantal });
     const voorbelastingCent = voorbelastingBonCent + verlegdBtwCent;
     const verschuldigdCent = btwOmzetCent + verlegdBtwCent;
 
@@ -96,11 +106,12 @@
       voorbelastingVoorStart: naarEuro(voorStartCent),
       kostenNetto: naarEuro(kostenCent),
       saldo: naarEuro(verschuldigdCent - voorbelastingCent),
+      // 4a = diensten uit landen buiten de EU (nonEu), 4b = binnen de EU (eu); totaal = optelling voor 5a/5b.
       verlegd: {
-        netto: naarEuro(verlegdNettoCent),
-        nettoHeleEuros: Math.trunc(verlegdNettoCent / 100),
+        eu: rubriek(vl.eu),
+        nonEu: rubriek(vl.nonEu),
         btw: naarEuro(verlegdBtwCent),
-        aantal: verlegdAantal,
+        aantal: vl.eu.aantal + vl.nonEu.aantal,
       },
     };
     for (const t of Object.keys(perTarief)) {
@@ -222,7 +233,7 @@
   }
 
   const api = {
-    PARAMS, VERLEGD_TARIEF, kwartaalVan, deadline, parameters, rond,
+    PARAMS, VERLEGD_TARIEF, verlegdRegio, kwartaalVan, deadline, parameters, rond,
     berekenKwartaal, berekenJaar, berekenInkomstenbelasting,
     arbeidskorting, algemeneHeffingskorting,
   };

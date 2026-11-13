@@ -86,6 +86,9 @@ export function schoonKosten(input, jaar) {
   // Optioneel kenmerk; ontbreekt bij bestaande records en betekent dan "regulier".
   const verlegd = bool(input.verlegd);
   if (verlegd && btw !== 0) return fout("Bij btw verlegd is de betaalde btw € 0,00.");
+  // eu = rubriek 4b, non_eu = rubriek 4a. Ontbreekt de regio (oudere client), dan geldt eu zoals voorheen.
+  const regio = input.verlegdRegio === undefined || input.verlegdRegio === null || input.verlegdRegio === "" ? "eu" : input.verlegdRegio;
+  if (verlegd && regio !== "eu" && regio !== "non_eu") return fout("Ongeldige regio voor btw verlegd (eu of non_eu).");
 
   let kwartaal = kwartaalVan(b.datum);
   if (voorStart) {
@@ -98,7 +101,7 @@ export function schoonKosten(input, jaar) {
     item: {
       id: tekst(input.id, 60) || undefined,
       datum: b.datum, omschrijving: b.omschrijving, netto: b.netto, btw, voorStart, kwartaal,
-      ...(verlegd ? { verlegd: true } : {}),
+      ...(verlegd ? { verlegd: true, verlegdRegio: regio } : {}),
     },
   };
 }
