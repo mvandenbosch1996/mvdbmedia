@@ -27,6 +27,7 @@
     },
   };
   const BASISJAAR = 2026;
+  const VERLEGD_TARIEF = 21;
 
   const naarCent = (euro) => Math.round((Number(euro) || 0) * 100);
   const naarEuro = (cent) => Math.round(cent) / 100;
@@ -68,21 +69,39 @@
       slot.netto += n; slot.btw += b;
       omzetCent += n; btwOmzetCent += b;
     }
-    let kostenCent = 0, voorbelastingCent = 0, voorStartCent = 0;
+    let kostenCent = 0, voorbelastingBonCent = 0, voorStartCent = 0;
+    let verlegdNettoCent = 0, verlegdBtwCent = 0, verlegdAantal = 0;
     for (const k of kostenRecs) {
-      kostenCent += naarCent(k.netto);
+      const n = naarCent(k.netto);
+      kostenCent += n;
       const b = naarCent(k.btw);
-      voorbelastingCent += b;
+      voorbelastingBonCent += b;
       if (k.voorStart) voorStartCent += b;
+      // Btw verlegd: op de factuur staat geen btw; je geeft 21% aan (rubriek 4b/5a) en trekt dezelfde btw af (5b).
+      if (k.verlegd) {
+        verlegdNettoCent += n;
+        verlegdBtwCent += btwCent(n, VERLEGD_TARIEF);
+        verlegdAantal++;
+      }
     }
+    const voorbelastingCent = voorbelastingBonCent + verlegdBtwCent;
+    const verschuldigdCent = btwOmzetCent + verlegdBtwCent;
 
     const berekend = {
       omzetNetto: naarEuro(omzetCent),
-      btwOmzet: naarEuro(btwOmzetCent),
+      btwOmzet: naarEuro(verschuldigdCent),
+      btwOmzetEigen: naarEuro(btwOmzetCent),
       voorbelasting: naarEuro(voorbelastingCent),
+      voorbelastingBon: naarEuro(voorbelastingBonCent),
       voorbelastingVoorStart: naarEuro(voorStartCent),
       kostenNetto: naarEuro(kostenCent),
-      saldo: naarEuro(btwOmzetCent - voorbelastingCent),
+      saldo: naarEuro(verschuldigdCent - voorbelastingCent),
+      verlegd: {
+        netto: naarEuro(verlegdNettoCent),
+        nettoHeleEuros: Math.trunc(verlegdNettoCent / 100),
+        btw: naarEuro(verlegdBtwCent),
+        aantal: verlegdAantal,
+      },
     };
     for (const t of Object.keys(perTarief)) {
       perTarief[t] = { netto: naarEuro(perTarief[t].netto), btw: naarEuro(perTarief[t].btw) };
@@ -114,6 +133,7 @@
       status: voldaan ? "voldaan" : ingediend ? "ingediend" : "open",
       ingediend, voldaan,
       perTarief, berekend, aangegeven, bron,
+      verlegd: berekend.verlegd,
       saldo: gebruikt.saldo,
       btwOmzet: gebruikt.btwOmzet,
       voorbelasting: gebruikt.voorbelasting,
@@ -202,7 +222,7 @@
   }
 
   const api = {
-    PARAMS, kwartaalVan, deadline, parameters, rond,
+    PARAMS, VERLEGD_TARIEF, kwartaalVan, deadline, parameters, rond,
     berekenKwartaal, berekenJaar, berekenInkomstenbelasting,
     arbeidskorting, algemeneHeffingskorting,
   };

@@ -103,7 +103,8 @@
     .b-open { background:rgba(160,152,144,0.16); color:var(--muted); }
     .b-ingediend { background:rgba(255,140,0,0.16); color:var(--orange); }
     .b-voldaan { background:rgba(95,208,138,0.16); color:var(--groen); }
-    .b-start { background:rgba(255,140,0,0.12); color:var(--orange); margin-left:6px; }
+    .b-start, .b-verlegd { background:rgba(255,140,0,0.12); color:var(--orange); margin-left:6px; }
+    dl.regels .rubriek { color:var(--orange); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; margin-right:6px; }
     .b-bron { background:rgba(160,152,144,0.14); color:var(--muted); margin-left:6px; }
     dl.regels { display:grid; grid-template-columns:1fr auto; gap:3px 14px; font-size:0.82rem; }
     dl.regels dt { color:var(--muted); } dl.regels dd { text-align:right; font-variant-numeric:tabular-nums; }
@@ -198,8 +199,8 @@
         <div class="rij">
           <div class="veld"><label for="af-datum">Ingediend op</label><input type="date" id="af-datum"></div>
           <div class="veld"><label for="af-omzet">Omzet excl. btw (€)</label><input type="number" id="af-omzet" step="0.01" inputmode="decimal"></div>
-          <div class="veld"><label for="af-btwomzet">Btw over omzet (€)</label><input type="number" id="af-btwomzet" step="0.01" inputmode="decimal"></div>
-          <div class="veld"><label for="af-voorbel">Voorbelasting (€)</label><input type="number" id="af-voorbel" step="0.01" inputmode="decimal"></div>
+          <div class="veld"><label for="af-btwomzet">Verschuldigde btw, rubriek 5a (€)</label><input type="number" id="af-btwomzet" step="0.01" inputmode="decimal"></div>
+          <div class="veld"><label for="af-voorbel">Voorbelasting, rubriek 5b (€)</label><input type="number" id="af-voorbel" step="0.01" inputmode="decimal"></div>
           <div class="veld"><label for="af-kosten">Kosten excl. btw (€)</label><input type="number" id="af-kosten" step="0.01" inputmode="decimal"></div>
         </div>
         <div class="veld" style="margin-bottom:12px;"><label for="af-notitie">Notitie</label><input type="text" id="af-notitie" maxlength="300"></div>
@@ -217,6 +218,7 @@
 
       <ul class="noot">
         <li>Voorbelasting op kosten van vóór de startdatum (bijv. 15 juni) is aftrekbaar in de eerste aangifte, mits de spullen of diensten voor je bedrijf zijn en bij de start nog aanwezig of in gebruik zijn. Markeer zulke kosten bij <strong>Kosten</strong> met &ldquo;vóór start&rdquo;; ze tellen dan mee in het startkwartaal, of in een kwartaal naar keuze (bijv. als dat kwartaal al is ingediend).</li>
+        <li>Btw verlegd (diensten van een buitenlandse leverancier, bijv. SaaS): op de factuur staat geen btw. Kies bij de kosten &ldquo;Btw verlegd (21%)&rdquo;; het dashboard berekent 21% over het bedrag excl. btw en telt dat zowel bij rubriek 5a als 5b, zodat het saldo gelijk blijft. Rubriek 4b is voor leveranciers uit een EU-land; komt de factuur van een leverancier buiten de EU (bijv. een Amerikaanse entiteit), dan hoort het bedrag in rubriek 4a.</li>
         <li>Aangifte en betaling uiterlijk aan het einde van de maand na het kwartaal. Positief saldo = betalen, negatief = terugkrijgen.</li>
       </ul>
     </section>
@@ -278,7 +280,7 @@
         <div class="rij">
           <div class="veld"><label for="ko-netto">Bedrag excl. btw (€)</label><input type="number" id="ko-netto" step="0.01" inputmode="decimal" required></div>
           <div class="veld"><label for="ko-tarief">Btw invullen met</label>
-            <select id="ko-tarief"><option value="21">21%</option><option value="9">9%</option><option value="0">0%</option><option value="">Handmatig</option></select></div>
+            <select id="ko-tarief"><option value="21">21%</option><option value="9">9%</option><option value="0">0%</option><option value="verlegd">Btw verlegd (21%)</option><option value="">Handmatig</option></select></div>
           <div class="veld"><label for="ko-btw">Btw-bedrag (€)</label><input type="number" id="ko-btw" step="0.01" inputmode="decimal" required></div>
         </div>
         <div class="rij">

@@ -45,6 +45,31 @@ gelijk('Q2 saldo te betalen', k2.saldo, 123);
 gelijk('Q3 saldo te ontvangen', B.berekenKwartaal(data, 3).saldo, -209.98);
 gelijk('Q2 status open', k2.status, 'open');
 
+// ---- btw verlegd: 21% erbij in 5a én 5b, saldo ongewijzigd; bestaande records zonder kenmerk blijven regulier
+{
+  const vd = {
+    omzet: [{ kwartaal: 3, netto: 1000, tarief: 21 }],
+    kosten: [
+      { kwartaal: 3, netto: 123.99, btw: 0, verlegd: true },
+      { kwartaal: 3, netto: 50, btw: 0, verlegd: true },
+      { kwartaal: 3, netto: 200, btw: 0 },
+      { kwartaal: 3, netto: 100, btw: 21 },
+    ],
+    aangiften: {},
+  };
+  const zonder = { omzet: vd.omzet, kosten: vd.kosten.filter((k) => !k.verlegd), aangiften: {} };
+  const k3 = B.berekenKwartaal(vd, 3);
+  gelijk('verlegd netto', k3.verlegd.netto, 173.99);
+  gelijk('verlegd hele euro\'s (afgekapt)', k3.verlegd.nettoHeleEuros, 173);
+  gelijk('verlegde btw 21%', k3.verlegd.btw, 36.54);
+  gelijk('verlegd aantal', k3.verlegd.aantal, 2);
+  gelijk('5a = omzetbtw + verlegd', k3.berekend.btwOmzet, B.rond(210 + 36.54));
+  gelijk('5b = bon-voorbelasting + verlegd', k3.berekend.voorbelasting, B.rond(21 + 36.54));
+  gelijk('saldo ongewijzigd door verlegging', k3.saldo, B.berekenKwartaal(zonder, 3).saldo);
+  gelijk('0%-record zonder kenmerk blijft regulier', B.berekenKwartaal({ omzet: [], kosten: [{ kwartaal: 3, netto: 40, btw: 0 }], aangiften: {} }, 3).verlegd.aantal, 0);
+  gelijk('kosten tellen volledig mee in winst', k3.berekend.kostenNetto, 473.99);
+}
+
 // ---- reeds ingediend: aangegeven bedragen gaan voor, afwijking wordt getoond
 data.aangiften[2] = { ingediend: true, voldaan: false, btwOmzet: 200, voorbelasting: 100, omzetNetto: 1400, kostenNetto: 450 };
 k2 = B.berekenKwartaal(data, 2);
@@ -129,6 +154,18 @@ const kn = V.schoonKosten({ datum: '2026-08-15', omschrijving: 'x', netto: 100, 
 gelijk('gewone kost: kwartaal volgt datum, niet de client', kn.item?.kwartaal, 3);
 is('btw hoger dan 21% geweigerd', V.schoonKosten({ datum: '2026-08-15', omschrijving: 'x', netto: 100, btw: 30, voorStart: false }, 2026).ok === false);
 is('negatieve btw geweigerd', V.schoonKosten({ datum: '2026-08-15', omschrijving: 'x', netto: 100, btw: -1, voorStart: false }, 2026).ok === false);
+
+const vl = V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 18.5, btw: 0, voorStart: false, verlegd: true }, 2026);
+is('verlegde kost geldig', vl.ok === true, JSON.stringify(vl));
+gelijk('verlegd kenmerk opgeslagen', vl.item?.verlegd, true);
+is('verlegd met betaalde btw geweigerd', V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Claude', netto: 100, btw: 21, verlegd: true }, 2026).ok === false);
+is('bestaand 0%-record zonder kenmerk blijft regulier', !('verlegd' in V.schoonKosten({ datum: '2026-08-26', omschrijving: 'Stripe', netto: 40, btw: 0 }, 2026).item));
+{
+  const boek = V.leegBoek(2026);
+  boek.kosten.push({ id: 'oud', datum: '2026-09-21', omschrijving: 'Claude', netto: 18.5, btw: 0, voorStart: false, kwartaal: 3 });
+  const res = V.pasToe(boek, 'kosten.opslaan', { item: { id: 'oud', datum: '2026-09-21', omschrijving: 'Claude', netto: 18.5, btw: 0, voorStart: false, verlegd: true } });
+  is('bestaande kost omzetten naar verlegd', res.ok && res.boek.kosten.length === 1 && res.boek.kosten[0].verlegd === true && res.boek.kosten[0].kwartaal === 3, JSON.stringify(res));
+}
 
 const ag = V.schoonAangifte({ ingediend: false, voldaan: true, btwOmzet: '12,50', voorbelasting: 3 });
 is('aangifte geldig', ag.ok === true, JSON.stringify(ag));

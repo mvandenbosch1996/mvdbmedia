@@ -83,6 +83,9 @@ export function schoonKosten(input, jaar) {
   if (btw === null || Number.isNaN(btw)) return fout("Ongeldig btw-bedrag.");
   if (btw !== 0 && Math.sign(btw) !== Math.sign(b.netto)) return fout("Btw moet hetzelfde teken hebben als het bedrag.");
   if (Math.abs(btw) > Math.abs(b.netto) * 0.21 + 0.1) return fout("Btw is hoger dan 21% van het bedrag.");
+  // Optioneel kenmerk; ontbreekt bij bestaande records en betekent dan "regulier".
+  const verlegd = bool(input.verlegd);
+  if (verlegd && btw !== 0) return fout("Bij btw verlegd is de betaalde btw € 0,00.");
 
   let kwartaal = kwartaalVan(b.datum);
   if (voorStart) {
@@ -95,6 +98,7 @@ export function schoonKosten(input, jaar) {
     item: {
       id: tekst(input.id, 60) || undefined,
       datum: b.datum, omschrijving: b.omschrijving, netto: b.netto, btw, voorStart, kwartaal,
+      ...(verlegd ? { verlegd: true } : {}),
     },
   };
 }

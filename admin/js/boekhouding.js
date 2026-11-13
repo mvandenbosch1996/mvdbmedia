@@ -21,6 +21,8 @@
   const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const fmtEuro = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
   const euro = (n) => fmtEuro.format(Number(n) || 0);
+  const fmtEuroHeel = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR", maximumFractionDigits: 0, minimumFractionDigits: 0 });
+  const euroHeel = (n) => fmtEuroHeel.format(Number(n) || 0);
   const pct = (n) => (n * 100).toLocaleString("nl-NL", { maximumFractionDigits: 2 }) + "%";
   const datumNl = (iso) => (iso ? new Date(iso + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric" }) : "");
   const MAANDEN = ["jan – mrt", "apr – jun", "jul – sep", "okt – dec"];
@@ -134,6 +136,12 @@
       .filter((t) => k.perTarief[t] && (k.perTarief[t].netto !== 0 || k.perTarief[t].btw !== 0))
       .map((t) => `<dt>Omzet ${t}%</dt><dd>${euro(k.perTarief[t].netto)}${t ? ` · btw ${euro(k.perTarief[t].btw)}` : ""}</dd>`)
       .join("");
+    const verlegd = k.berekend.verlegd.aantal ? k.berekend.verlegd : null;
+    const verlegdRegels = verlegd
+      ? `<dt><span class="rubriek">4b</span>Verlegd (21%), omzet</dt><dd>${euro(verlegd.netto)}</dd>` +
+        `<dt class="sub">in aangifte, hele euro's</dt><dd class="sub">${euroHeel(verlegd.nettoHeleEuros)}</dd>` +
+        `<dt><span class="rubriek">4b</span>Verlegde btw 21%</dt><dd>${euro(verlegd.btw)}</dd>`
+      : "";
     const voorStart = k.berekend.voorbelastingVoorStart
       ? `<dt class="sub">waarvan vóór startdatum</dt><dd class="sub">${euro(k.berekend.voorbelastingVoorStart)}</dd>` : "";
     const aangegeven = k.aangegeven
@@ -149,8 +157,11 @@
       <div class="deadline">${k.ingediend ? "Aangifte ingediend" + (state.boek.aangiften[q]?.datum ? " op " + datumNl(state.boek.aangiften[q].datum) : "") : "Aangifte uiterlijk " + datumNl(B.deadline(state.jaar, q))}</div>
       <dl class="regels">
         ${tariefRegels}
-        <dt>Btw over omzet</dt><dd>${euro(k.berekend.btwOmzet)}</dd>
-        <dt>Af: voorbelasting</dt><dd>${euro(k.berekend.voorbelasting)}</dd>
+        ${verlegdRegels}
+        <dt><span class="rubriek">5a</span>Verschuldigde btw</dt><dd>${euro(k.berekend.btwOmzet)}</dd>
+        ${verlegd ? `<dt class="sub">waarvan verlegd</dt><dd class="sub">${euro(verlegd.btw)}</dd>` : ""}
+        <dt><span class="rubriek">5b</span>Af: voorbelasting</dt><dd>${euro(k.berekend.voorbelasting)}</dd>
+        ${verlegd ? `<dt class="sub">waarvan verlegd</dt><dd class="sub">${euro(verlegd.btw)}</dd>` : ""}
         ${voorStart}${aangegeven}
       </dl>
       ${afwijking}${bron}
@@ -208,9 +219,9 @@
       netto += Math.round(r.netto * 100); btw += Math.round(r.btw * 100);
       const label = esc(r.omschrijving);
       return `<tr><td data-label="Datum">${datumNl(r.datum)}</td>` +
-        `<td data-label="Omschrijving">${label}${r.voorStart ? '<span class="badge b-start">vóór start</span>' : ""}</td>` +
+        `<td data-label="Omschrijving">${label}${r.voorStart ? '<span class="badge b-start">vóór start</span>' : ""}${r.verlegd ? '<span class="badge b-verlegd">verlegd (21%)</span>' : ""}</td>` +
         `<td data-label="Kwartaal">Q${r.kwartaal}</td><td class="r" data-label="Excl. btw">${euro(r.netto)}</td>` +
-        `<td class="r" data-label="Voorbelasting">${euro(r.btw)}</td>` +
+        `<td class="r" data-label="Voorbelasting">${euro(r.btw)}${r.verlegd ? `<span class="klein">(${euro(Math.round(Math.round(r.netto * 100) * B.VERLEGD_TARIEF / 100) / 100)} verlegd)</span>` : ""}</td>` +
         `<td class="acties-cel"><button class="btn btn-ghost btn-klein" type="button" data-actie="bewerk-kosten" data-id="${esc(r.id)}" aria-label="Bewerk ${label}">Bewerk</button> ` +
         `<button class="btn btn-ghost btn-klein btn-gevaar" type="button" data-actie="verwijder-kosten" data-id="${esc(r.id)}" aria-label="Verwijder ${label}">Verwijder</button></td></tr>`;
     }).join("");
@@ -312,13 +323,22 @@
   function kostenHint() {
     const d = $("ko-datum").value;
     const start = state.boek.instellingen.startdatum;
-    $("ko-hint").textContent = $("ko-voorstart").checked
-      ? `Telt mee in de btw-aangifte van Q${$("ko-kwartaal").value}.`
-      : d && d < start ? `Deze datum ligt vóór de startdatum (${datumNl(start)}); vink "voorbelasting van vóór de startdatum" aan om de btw mee te nemen.` : "";
+    const delen = [];
+    if ($("ko-tarief").value === "verlegd") {
+      const netto = Number($("ko-netto").value) || 0;
+      const btw = Math.round(Math.round(netto * 100) * B.VERLEGD_TARIEF / 100) / 100;
+      delen.push(`Btw verlegd: je betaalt € 0,00 btw aan de leverancier. Het dashboard rekent ${euro(btw)} (21%) mee in rubriek 4b/5a en trekt dezelfde btw af in 5b.`);
+    }
+    if ($("ko-voorstart").checked) delen.push(`Telt mee in de btw-aangifte van Q${$("ko-kwartaal").value}.`);
+    else if (d && d < start) delen.push(`Deze datum ligt vóór de startdatum (${datumNl(start)}); vink "voorbelasting van vóór de startdatum" aan om de btw mee te nemen.`);
+    $("ko-hint").textContent = delen.join(" ");
   }
 
   function kostenBtwAuto() {
     const t = $("ko-tarief").value;
+    const verlegd = t === "verlegd";
+    $("ko-btw").readOnly = verlegd;
+    if (verlegd) { $("ko-btw").value = "0.00"; kostenHint(); return; }
     if (t === "") return;
     const netto = Number($("ko-netto").value) || 0;
     $("ko-btw").value = netto ? (Math.round(netto * Number(t)) / 100).toFixed(2) : "";
@@ -331,8 +351,9 @@
     $("ko-datum").min = `${state.jaar - 1}-01-01`; $("ko-datum").max = `${state.jaar}-12-31`;
     $("ko-omschrijving").value = r ? r.omschrijving : "";
     $("ko-netto").value = r ? r.netto : "";
-    $("ko-tarief").value = r ? "" : "21";
+    $("ko-tarief").value = r ? (r.verlegd ? "verlegd" : "") : "21";
     $("ko-btw").value = r ? r.btw : "";
+    $("ko-btw").readOnly = !!(r && r.verlegd);
     $("ko-voorstart").checked = r ? !!r.voorStart : false;
     $("ko-kwartaal").value = String(r ? r.kwartaal : startKwartaal());
     $("ko-kw-veld").hidden = !$("ko-voorstart").checked;
@@ -493,6 +514,7 @@
     const item = {
       id: num("ko-id") || undefined, datum: num("ko-datum"), omschrijving: num("ko-omschrijving"),
       netto: num("ko-netto"), btw: num("ko-btw"), voorStart: $("ko-voorstart").checked, kwartaal: Number(num("ko-kwartaal")),
+      verlegd: num("ko-tarief") === "verlegd",
     };
     probeer(() => opslaan("kosten.opslaan", { item })).then((r) => { if (r) { $("form-kosten").hidden = true; toon("Kosten opgeslagen."); } });
   });
