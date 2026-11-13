@@ -64,6 +64,12 @@ const admin = await get('/admin/factuur/');
 check(admin.status === 302, `/admin/factuur/ zonder sessie → 302 (was ${admin.status})`);
 const api = await get('/api/klanten');
 check(api.status === 401, `/api/klanten zonder sessie → 401 (was ${api.status})`);
+const boekPagina = await get('/admin/boekhouding/');
+check(boekPagina.status === 302, `/admin/boekhouding/ zonder sessie → 302 (was ${boekPagina.status})`);
+const boekApi = await get('/api/boekhouding?jaar=2026');
+check(boekApi.status === 401, `/api/boekhouding zonder sessie → 401 (was ${boekApi.status})`);
+const boekPost = await get('/api/boekhouding', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+check(boekPost.status === 401, `POST /api/boekhouding zonder sessie → 401 (was ${boekPost.status})`);
 
 // Redirects
 const idx = await get('/index.html');

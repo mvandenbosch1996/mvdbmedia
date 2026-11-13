@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Boekhouding — MVDBmedia</title>
+  <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <style>
+    :root { --bg:#0d0d0d; --elev:#161616; --float:#1f1f1f; --card:#1a1a1a; --border:#2a2a2a;
+            --border-light:#3a3a3a; --orange:#ff8c00; --orange-dim:#c96e00; --text:#f0ede8; --muted:#a09890; --dim:#8f8882;
+            --groen:#5fd08a; --rood:#ff6b6b;
+            --font-display:'Bebas Neue',sans-serif; --font-body:'Inter',sans-serif;
+            --ease:cubic-bezier(0.22,1,0.36,1); }
+    * { box-sizing:border-box; margin:0; }
+    body { background:radial-gradient(900px 420px at 85% -80px, rgba(255,140,0,0.07), transparent 70%), var(--bg);
+           color:var(--text); font-family:var(--font-body); font-size:14px; line-height:1.6; min-height:100vh; }
+    .vh { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+              padding:14px 24px; border-bottom:1px solid var(--border); background:rgba(22,22,22,0.92);
+              backdrop-filter:blur(8px); position:sticky; top:0; z-index:20; }
+    .logo { font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.06em; }
+    .logo span { color:var(--orange); }
+    .topacties { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    .btn { border:none; border-radius:4px; font-family:var(--font-body); font-weight:600; font-size:0.8rem; cursor:pointer;
+           padding:9px 16px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; line-height:1.2;
+           transition:transform 0.15s var(--ease), opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    .btn:hover { transform:translateY(-1px); }
+    .btn:active { transform:translateY(1px); }
+    .btn:focus-visible, .tab:focus-visible, .chip-knop:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible
+      { outline:2px solid var(--orange); outline-offset:2px; }
+    .btn-oranje { background:var(--orange); color:#000; } .btn-oranje:hover { opacity:0.92; }
+    .btn-ghost { background:transparent; color:var(--muted); border:1px solid var(--border); }
+    .btn-ghost:hover { color:var(--text); border-color:var(--border-light); }
+    .btn-klein { padding:5px 10px; font-size:0.72rem; }
+    .btn-gevaar:hover { color:var(--rood); border-color:rgba(255,107,107,0.5); }
+    .btn[disabled] { opacity:0.5; cursor:wait; transform:none; }
+
+    .wrap { max-width:1180px; margin:0 auto; padding:24px; }
+    .jaarkeuze { display:flex; align-items:center; gap:8px; }
+    .jaarkeuze label { margin:0; }
+    select, input[type=text], input[type=number], input[type=date], textarea {
+      width:100%; padding:9px 11px; background:var(--bg); border:1px solid var(--border); border-radius:4px;
+      color:var(--text); font-size:0.85rem; font-family:var(--font-body); transition:border-color 0.2s ease; }
+    select:focus, input:focus, textarea:focus { border-color:var(--orange); }
+    .jaarkeuze select { width:auto; padding:7px 10px; }
+    label { display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+
+    /* KPI-kaarten: base → elevated → floating */
+    .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    .kpi { position:relative; overflow:hidden; border:1px solid var(--border); border-radius:10px; padding:18px 18px 16px;
+           background:linear-gradient(165deg,#1d1d1d 0%,#141414 100%);
+           box-shadow:0 1px 0 rgba(255,255,255,0.04) inset, 0 14px 30px -16px rgba(255,140,0,0.22), 0 2px 8px rgba(0,0,0,0.5);
+           transition:transform 0.25s var(--ease); }
+    .kpi::before { content:""; position:absolute; inset:0; pointer-events:none;
+                   background:radial-gradient(260px 120px at 100% 0, rgba(255,140,0,0.13), transparent 70%); }
+    .kpi:hover { transform:translateY(-2px); }
+    .kpi-label { position:relative; font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    .kpi-waarde { position:relative; font-family:var(--font-display); font-size:2.6rem; letter-spacing:0.02em; line-height:1.1; margin-top:6px; }
+    .kpi-sub { position:relative; font-size:0.74rem; color:var(--dim); margin-top:4px; }
+    .betalen { color:var(--orange); } .ontvangen { color:var(--groen); } .negatief { color:var(--rood); }
+
+    .tabs { display:flex; gap:4px; border-bottom:1px solid var(--border); margin-bottom:22px; overflow-x:auto; }
+    .tab { background:transparent; border:none; color:var(--muted); font-family:var(--font-body); font-size:0.85rem; font-weight:600;
+           padding:11px 18px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap;
+           transition:color 0.2s ease, border-color 0.2s ease; }
+    .tab:hover { color:var(--text); }
+    .tab[aria-selected=true] { color:var(--orange); border-bottom-color:var(--orange); }
+
+    h2 { font-family:var(--font-display); font-size:1.3rem; font-weight:400; letter-spacing:0.05em; margin-bottom:12px; }
+    h3 { font-family:var(--font-display); font-size:1.05rem; font-weight:400; letter-spacing:0.05em; margin:0 0 10px; }
+    .paneel-kop { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+    .chips { display:flex; gap:6px; flex-wrap:wrap; }
+    .chip-knop { background:var(--card); color:var(--muted); border:1px solid var(--border); border-radius:4px; padding:6px 12px;
+                 font-size:0.78rem; cursor:pointer; font-family:var(--font-body); transition:background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+    .chip-knop:hover { color:var(--text); border-color:var(--border-light); }
+    .chip-knop[aria-pressed=true] { background:var(--orange); color:#000; border-color:var(--orange); font-weight:600; }
+    .acties { display:flex; gap:8px; flex-wrap:wrap; }
+
+    .kaart { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px;
+             box-shadow:0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 24px -14px rgba(0,0,0,0.8); }
+    .formkaart { margin-bottom:18px; border-color:rgba(255,140,0,0.35);
+                 box-shadow:0 1px 0 rgba(255,255,255,0.04) inset, 0 18px 40px -18px rgba(255,140,0,0.25), 0 4px 14px rgba(0,0,0,0.5); }
+    .formkaart[hidden] { display:none; }
+    .rij { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:12px; }
+    .veld { min-width:0; }
+    .vink { display:flex; align-items:center; gap:9px; font-size:0.82rem; letter-spacing:0; text-transform:none; color:var(--text); margin:0; cursor:pointer; }
+    .vink input { width:18px; height:18px; accent-color:var(--orange); flex:none; cursor:pointer; }
+    .hint { font-size:0.74rem; color:var(--dim); margin-top:6px; }
+
+    .kwartalen { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:18px; }
+    .kw { display:flex; flex-direction:column; gap:10px; transition:transform 0.25s var(--ease); }
+    .kw:hover { transform:translateY(-2px); }
+    .kw.huidig { border-color:rgba(255,140,0,0.4); }
+    .kw-kop { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+    .kw-titel { font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.05em; }
+    .kw-periode { color:var(--dim); font-size:0.74rem; margin-left:8px; }
+    .badge { display:inline-block; font-size:0.62rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; border-radius:3px; white-space:nowrap; }
+    .b-open { background:rgba(160,152,144,0.16); color:var(--muted); }
+    .b-ingediend { background:rgba(255,140,0,0.16); color:var(--orange); }
+    .b-voldaan { background:rgba(95,208,138,0.16); color:var(--groen); }
+    .b-start { background:rgba(255,140,0,0.12); color:var(--orange); margin-left:6px; }
+    .b-bron { background:rgba(160,152,144,0.14); color:var(--muted); margin-left:6px; }
+    dl.regels { display:grid; grid-template-columns:1fr auto; gap:3px 14px; font-size:0.82rem; }
+    dl.regels dt { color:var(--muted); } dl.regels dd { text-align:right; font-variant-numeric:tabular-nums; }
+    dl.regels .sub { color:var(--dim); font-size:0.74rem; }
+    .saldo { display:flex; justify-content:space-between; align-items:baseline; gap:10px; border-top:1px solid var(--border); padding-top:10px; }
+    .saldo-label { font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+    .saldo-bedrag { font-family:var(--font-display); font-size:1.9rem; letter-spacing:0.02em; line-height:1.1; }
+    .afwijking { font-size:0.76rem; color:var(--rood); }
+    .kw-onder { display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--border); padding-top:10px; }
+    .kw-onder .acties { margin-top:2px; }
+    .deadline { font-size:0.74rem; color:var(--dim); }
+
+    .scroll { overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--elev); }
+    table { width:100%; border-collapse:collapse; }
+    thead th { text-align:left; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--dim); padding:11px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }
+    tbody td, tfoot td { padding:10px 12px; vertical-align:middle; border-bottom:1px solid var(--border); }
+    tbody tr { transition:background-color 0.15s ease; } tbody tr:hover { background:var(--float); }
+    tfoot td { font-weight:600; background:var(--card); border-bottom:none; }
+    .r { text-align:right; font-variant-numeric:tabular-nums; }
+    td.acties-cel { white-space:nowrap; text-align:right; }
+    .klein { display:block; font-size:0.74rem; color:var(--dim); }
+    .leeg { padding:36px 12px; text-align:center; color:var(--dim); }
+
+    .ib-grid { display:grid; grid-template-columns:minmax(260px,340px) 1fr; gap:20px; align-items:start; }
+    .ib-tabel td { padding:7px 4px; border-bottom:1px solid var(--border); }
+    .ib-tabel tr.sectie td { padding-top:16px; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--dim); border-bottom-color:var(--border-light); }
+    .ib-tabel tr.totaal td { font-weight:700; border-bottom:none; padding-top:12px; }
+    .ib-tabel tr.totaal td.r { font-family:var(--font-display); font-size:1.5rem; font-weight:400; color:var(--orange); }
+    .ib-tabel .min { color:var(--muted); }
+    .noot { color:var(--dim); font-size:0.76rem; margin-top:14px; padding-left:18px; }
+    .noot li { margin-bottom:4px; }
+    .waarschuwing { background:rgba(255,140,0,0.08); border:1px solid rgba(255,140,0,0.3); color:var(--text); border-radius:6px; padding:10px 12px; font-size:0.8rem; margin-bottom:14px; }
+    .waarschuwing[hidden] { display:none; }
+
+    .melding { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:50; max-width:min(560px,92vw);
+               padding:11px 16px; border-radius:6px; font-size:0.84rem; background:var(--float); border:1px solid var(--border-light);
+               box-shadow:0 14px 34px rgba(0,0,0,0.6); }
+    .melding[hidden] { display:none; }
+    .melding.fout { border-color:rgba(255,107,107,0.6); color:#ffb0b0; }
+    .melding.ok { border-color:rgba(95,208,138,0.5); }
+
+    @media (max-width:980px) { .kpis { grid-template-columns:repeat(2,1fr); } .ib-grid { grid-template-columns:1fr; } }
+    @media (max-width:700px) {
+      .wrap { padding:16px; } .topbar { padding:12px 16px; }
+      .kwartalen { grid-template-columns:1fr; }
+      .kpi-waarde { font-size:2.1rem; }
+      /* tabellen worden kaarten */
+      table.stapel thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+      table.stapel, table.stapel tbody, table.stapel tfoot, table.stapel tr, table.stapel td { display:block; width:100%; }
+      table.stapel tbody tr { padding:10px 12px; border-bottom:1px solid var(--border); }
+      table.stapel tbody td, table.stapel tfoot td { border:none; padding:3px 0; display:flex; justify-content:space-between; gap:14px; text-align:right; }
+      table.stapel tbody td::before, table.stapel tfoot td::before { content:attr(data-label); color:var(--dim); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; text-align:left; flex:none; padding-top:2px; }
+      table.stapel td.acties-cel { justify-content:flex-end; padding-top:8px; } table.stapel td.acties-cel::before { content:none; }
+      table.stapel tfoot tr { padding:10px 12px; }
+      table.stapel td:empty { display:none; }
+    }
+    @media (max-width:420px) { .kpis { grid-template-columns:1fr; } }
+    @media (prefers-reduced-motion:reduce) { .kpi, .kw, .btn { transition:none; } .kpi:hover, .kw:hover, .btn:hover { transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">MVDB<span>media</span> · Boekhouding</div>
+    <div class="topacties">
+      <div class="jaarkeuze">
+        <label for="jaar-select" class="vh">Boekjaar</label>
+        <select id="jaar-select" aria-label="Boekjaar"></select>
+      </div>
+      <a class="btn btn-ghost" href="/admin/overzicht/">Overzicht</a>
+      <a class="btn btn-oranje" href="/admin/factuur/">Nieuw document</a>
+      <button class="btn btn-ghost" id="logout-knop" type="button">Uitloggen</button>
+    </div>
+  </div>
+
+  <main class="wrap" id="main">
+    <section class="kpis" id="kpi" aria-label="Kerncijfers"></section>
+
+    <div class="tabs" role="tablist" aria-label="Boekhouding">
+      <button class="tab" role="tab" id="tab-btw" aria-controls="paneel-btw" aria-selected="true" type="button" data-tab="btw">BTW per kwartaal</button>
+      <button class="tab" role="tab" id="tab-omzet" aria-controls="paneel-omzet" aria-selected="false" tabindex="-1" type="button" data-tab="omzet">Omzet</button>
+      <button class="tab" role="tab" id="tab-kosten" aria-controls="paneel-kosten" aria-selected="false" tabindex="-1" type="button" data-tab="kosten">Kosten</button>
+      <button class="tab" role="tab" id="tab-ib" aria-controls="paneel-ib" aria-selected="false" tabindex="-1" type="button" data-tab="ib">Inkomstenbelasting</button>
+    </div>
+
+    <!-- BTW -->
+    <section role="tabpanel" id="paneel-btw" aria-labelledby="tab-btw">
+      <div class="kwartalen" id="kwartalen"></div>
+
+      <form class="kaart formkaart" id="form-aangifte" hidden autocomplete="off">
+        <h3 id="af-titel">Aangifte vastleggen</h3>
+        <input type="hidden" id="af-kw">
+        <div class="rij">
+          <div class="veld"><label for="af-datum">Ingediend op</label><input type="date" id="af-datum"></div>
+          <div class="veld"><label for="af-omzet">Omzet excl. btw (€)</label><input type="number" id="af-omzet" step="0.01" inputmode="decimal"></div>
+          <div class="veld"><label for="af-btwomzet">Btw over omzet (€)</label><input type="number" id="af-btwomzet" step="0.01" inputmode="decimal"></div>
+          <div class="veld"><label for="af-voorbel">Voorbelasting (€)</label><input type="number" id="af-voorbel" step="0.01" inputmode="decimal"></div>
+          <div class="veld"><label for="af-kosten">Kosten excl. btw (€)</label><input type="number" id="af-kosten" step="0.01" inputmode="decimal"></div>
+        </div>
+        <div class="veld" style="margin-bottom:12px;"><label for="af-notitie">Notitie</label><input type="text" id="af-notitie" maxlength="300"></div>
+        <div class="rij">
+          <label class="vink"><input type="checkbox" id="af-ingediend"> Aangifte ingediend</label>
+          <label class="vink"><input type="checkbox" id="af-voldaan"> Betaald / teruggekregen</label>
+        </div>
+        <p class="hint">Bedragen zoals ze bij de Belastingdienst zijn aangegeven. Voor een ingediend kwartaal tellen deze bedragen als btw-saldo; zijn er voor dat kwartaal geen regels ingevoerd, dan tellen ze ook mee in omzet en kosten.</p>
+        <div class="acties" style="margin-top:14px;">
+          <button class="btn btn-oranje" type="submit">Opslaan</button>
+          <button class="btn btn-ghost" type="button" id="af-vul">Vul in vanuit administratie</button>
+          <button class="btn btn-ghost" type="button" id="af-annuleer">Annuleren</button>
+        </div>
+      </form>
+
+      <ul class="noot">
+        <li>Voorbelasting op kosten van vóór de startdatum (bijv. 15 juni) is aftrekbaar in de eerste aangifte, mits de spullen of diensten voor je bedrijf zijn en bij de start nog aanwezig of in gebruik zijn. Markeer zulke kosten bij <strong>Kosten</strong> met &ldquo;vóór start&rdquo;; ze tellen dan mee in het startkwartaal, of in een kwartaal naar keuze (bijv. als dat kwartaal al is ingediend).</li>
+        <li>Aangifte en betaling uiterlijk aan het einde van de maand na het kwartaal. Positief saldo = betalen, negatief = terugkrijgen.</li>
+      </ul>
+    </section>
+
+    <!-- OMZET -->
+    <section role="tabpanel" id="paneel-omzet" aria-labelledby="tab-omzet" hidden>
+      <div class="paneel-kop">
+        <div class="chips" data-filters="omzet" role="group" aria-label="Filter op kwartaal"></div>
+        <div class="acties">
+          <button class="btn btn-ghost" type="button" id="import-facturen">Importeer uit factuurgenerator</button>
+          <button class="btn btn-oranje" type="button" id="nieuw-omzet">+ Omzet toevoegen</button>
+        </div>
+      </div>
+      <form class="kaart formkaart" id="form-omzet" hidden autocomplete="off">
+        <h3 id="oz-titel">Omzet toevoegen</h3>
+        <input type="hidden" id="oz-id">
+        <div class="rij">
+          <div class="veld"><label for="oz-datum">Factuurdatum</label><input type="date" id="oz-datum" required></div>
+          <div class="veld" style="grid-column:span 2;"><label for="oz-omschrijving">Omschrijving</label><input type="text" id="oz-omschrijving" maxlength="200" required></div>
+          <div class="veld"><label for="oz-klant">Klant</label><input type="text" id="oz-klant" maxlength="120"></div>
+        </div>
+        <div class="rij">
+          <div class="veld"><label for="oz-netto">Bedrag excl. btw (€)</label><input type="number" id="oz-netto" step="0.01" inputmode="decimal" required></div>
+          <div class="veld"><label for="oz-tarief">Btw-tarief</label>
+            <select id="oz-tarief"><option value="21">21%</option><option value="9">9%</option><option value="0">0% (o.a. verlegd / vrijgesteld)</option></select></div>
+        </div>
+        <p class="hint" id="oz-hint" aria-live="polite"></p>
+        <div class="acties" style="margin-top:14px;">
+          <button class="btn btn-oranje" type="submit">Opslaan</button>
+          <button class="btn btn-ghost" type="button" data-sluit="form-omzet">Annuleren</button>
+        </div>
+      </form>
+      <div class="scroll">
+        <table class="stapel">
+          <caption class="vh">Omzet</caption>
+          <thead><tr><th>Datum</th><th>Omschrijving</th><th>Kw.</th><th class="r">Excl. btw</th><th class="r">Tarief</th><th class="r">Btw</th><th><span class="vh">Acties</span></th></tr></thead>
+          <tbody id="tbody-omzet"></tbody>
+          <tfoot id="tfoot-omzet"></tfoot>
+        </table>
+        <div class="leeg" id="leeg-omzet" hidden>Geen omzet in deze selectie.</div>
+      </div>
+    </section>
+
+    <!-- KOSTEN -->
+    <section role="tabpanel" id="paneel-kosten" aria-labelledby="tab-kosten" hidden>
+      <div class="paneel-kop">
+        <div class="chips" data-filters="kosten" role="group" aria-label="Filter op kwartaal"></div>
+        <div class="acties">
+          <button class="btn btn-oranje" type="button" id="nieuw-kosten">+ Kosten / bon toevoegen</button>
+        </div>
+      </div>
+      <form class="kaart formkaart" id="form-kosten" hidden autocomplete="off">
+        <h3 id="ko-titel">Kosten toevoegen</h3>
+        <input type="hidden" id="ko-id">
+        <div class="rij">
+          <div class="veld"><label for="ko-datum">Datum bon / factuur</label><input type="date" id="ko-datum" required></div>
+          <div class="veld" style="grid-column:span 2;"><label for="ko-omschrijving">Omschrijving</label><input type="text" id="ko-omschrijving" maxlength="200" required></div>
+        </div>
+        <div class="rij">
+          <div class="veld"><label for="ko-netto">Bedrag excl. btw (€)</label><input type="number" id="ko-netto" step="0.01" inputmode="decimal" required></div>
+          <div class="veld"><label for="ko-tarief">Btw invullen met</label>
+            <select id="ko-tarief"><option value="21">21%</option><option value="9">9%</option><option value="0">0%</option><option value="">Handmatig</option></select></div>
+          <div class="veld"><label for="ko-btw">Btw-bedrag (€)</label><input type="number" id="ko-btw" step="0.01" inputmode="decimal" required></div>
+        </div>
+        <div class="rij">
+          <label class="vink"><input type="checkbox" id="ko-voorstart"> Voorbelasting van vóór de startdatum</label>
+          <div class="veld" id="ko-kw-veld" hidden><label for="ko-kwartaal">Meenemen in aangifte van</label>
+            <select id="ko-kwartaal"><option value="1">Q1</option><option value="2">Q2</option><option value="3">Q3</option><option value="4">Q4</option></select></div>
+        </div>
+        <p class="hint" id="ko-hint" aria-live="polite"></p>
+        <div class="acties" style="margin-top:14px;">
+          <button class="btn btn-oranje" type="submit">Opslaan</button>
+          <button class="btn btn-ghost" type="button" data-sluit="form-kosten">Annuleren</button>
+        </div>
+      </form>
+      <div class="scroll">
+        <table class="stapel">
+          <caption class="vh">Kosten</caption>
+          <thead><tr><th>Datum</th><th>Omschrijving</th><th>Kw.</th><th class="r">Excl. btw</th><th class="r">Voorbelasting</th><th><span class="vh">Acties</span></th></tr></thead>
+          <tbody id="tbody-kosten"></tbody>
+          <tfoot id="tfoot-kosten"></tfoot>
+        </table>
+        <div class="leeg" id="leeg-kosten" hidden>Geen kosten in deze selectie.</div>
+      </div>
+    </section>
+
+    <!-- INKOMSTENBELASTING -->
+    <section role="tabpanel" id="paneel-ib" aria-labelledby="tab-ib" hidden>
+      <div class="waarschuwing" id="ib-waarschuwing" hidden></div>
+      <div class="ib-grid">
+        <form class="kaart" id="form-instellingen" autocomplete="off">
+          <h3>Uitgangspunten</h3>
+          <div class="veld" style="margin-bottom:12px;"><label for="in-start">Startdatum onderneming</label><input type="date" id="in-start" required></div>
+          <div class="veld" style="margin-bottom:12px;"><label class="vink"><input type="checkbox" id="in-uren"> Voldoet aan urencriterium (1.225 uur)</label></div>
+          <div class="veld" style="margin-bottom:12px;"><label class="vink"><input type="checkbox" id="in-starter"> Startersaftrek van toepassing</label></div>
+          <div class="veld" style="margin-bottom:12px;"><label for="in-extra">Verwachte extra winst rest van het jaar (€)</label><input type="number" id="in-extra" step="1" inputmode="decimal"></div>
+          <button class="btn btn-oranje" type="submit">Opslaan</button>
+          <p class="hint">Zelfstandigenaftrek en startersaftrek gelden alleen bij het urencriterium. Startersaftrek: max. 3 keer binnen de eerste 5 jaar.</p>
+        </form>
+        <div class="kaart">
+          <h3>Indicatie inkomstenbelasting</h3>
+          <table class="ib-tabel" id="ib-tabel"></table>
+          <ul class="noot" id="ib-noten"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="melding" id="melding" role="status" aria-live="polite" hidden></div>
+
+  <script src="/admin/js/belasting.js" defer></script>
+  <script src="/admin/js/boekhouding.js" defer></script>
+</body>
+</html>
