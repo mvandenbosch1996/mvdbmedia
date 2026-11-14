@@ -23,6 +23,15 @@ const pages = [
   'http://localhost:3000/portfolio/bouwbedrijf-vellinga-bouwplaats.html',
   'http://localhost:3000/portfolio/friesland-ontruimingen-groepsfoto.html',
   'http://localhost:3000/webapplicatie-saas-laten-maken.html',
+  'http://localhost:3000/kennisbank.html',
+  'http://localhost:3000/webdesign-kosten-friesland.html',
+  'http://localhost:3000/maatwerk-website-vs-wordpress.html',
+  'http://localhost:3000/snelle-website-laten-maken.html',
+  'http://localhost:3000/website-laten-maken-sneek.html',
+  'http://localhost:3000/website-beveiliging-onderhoud.html',
+  'http://localhost:3000/seo-webdesign-hoger-in-google.html',
+  'http://localhost:3000/conversie-gericht-webdesign.html',
+  'http://localhost:3000/maatwerk-html-website-vs-wordpress-conversie.html',
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
