@@ -14,11 +14,6 @@ Precies één gebruiker, geen registratie. Deze map wordt niet geïndexeerd (noi
 Zet deze bij **Production** (en desgewenst Preview). Je wachtwoord zelf komt nergens in de repo —
 alleen de salt + hash. Wil je het wachtwoord wijzigen: draai het script opnieuw en vervang beide vars.
 
-**Slimme scan (optioneel):** `ANTHROPIC_API_KEY` — API-sleutel uit console.anthropic.com (met tegoed). Zonder deze
-variabele werkt "Kosten / bon toevoegen" gewoon, alleen geeft `/api/scan-bon` dan een nette melding (503) en vul je
-de velden zelf in. Instellen als secret: `npx wrangler pages secret put ANTHROPIC_API_KEY --project-name mvdbmedia`
-(of in het dashboard bij Settings → Variables and secrets). Lokaal: regel `ANTHROPIC_API_KEY=...` in `.dev.vars`.
-
 ## 2. KV-namespace voor de factuurteller
 
 1. Cloudflare dashboard → **Workers & Pages → KV** → **Create namespace**, naam bijv. `facturen`.

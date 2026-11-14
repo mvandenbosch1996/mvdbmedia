@@ -476,91 +476,6 @@
     return res.url;
   }
 
-  // ---------- slimme scan (AI leest factuur of bon uit) ----------
-  // De scan vult alleen het formulier in; opslaan gebeurt pas als je zelf op Opslaan klikt.
-  const SCAN_TARIEF = { "21%": "21", "9%": "9", "0%": "0", verlegd_eu: "verlegd-eu", verlegd_buiten_eu: "verlegd-non_eu" };
-  const scan = { teller: 0 };
-
-  function scanHint(tekst, soort) {
-    const h = $("ko-scan-hint");
-    h.textContent = tekst;
-    h.className = "hint" + (soort ? " " + soort : "");
-    $("ko-scan-blok").setAttribute("aria-busy", soort === "bezig" ? "true" : "false");
-  }
-
-  function resetScan() {
-    scan.teller++;
-    $("ko-scan").value = "";
-    $("ko-opslaan").disabled = false;
-    scanHint("");
-  }
-
-  // Zet de uitkomst in de bestaande velden en laat de bestaande handlers rekenen (btw-veld, verlegd, voorbelasting vóór start, hint).
-  function vulKostenIn(d, naam) {
-    const opm = Array.isArray(d.waarschuwingen) ? d.waarschuwingen.slice() : [];
-    if (d.datum) {
-      $("ko-datum").value = d.datum;
-      if (d.datum < `${state.jaar - 1}-01-01` || d.datum > `${state.jaar}-12-31`) opm.push(`De factuurdatum (${datumNl(d.datum)}) valt buiten boekjaar ${state.jaar}; kies het juiste boekjaar of pas de datum aan.`);
-    }
-    if (d.omschrijving) $("ko-omschrijving").value = d.omschrijving;
-    $("ko-netto").value = Number(d.bedrag_excl_btw).toFixed(2);
-    if (SCAN_TARIEF[d.btw_type] !== undefined) $("ko-tarief").value = SCAN_TARIEF[d.btw_type];
-    $("ko-netto").dispatchEvent(new Event("input", { bubbles: true }));
-    $("ko-tarief").dispatchEvent(new Event("change", { bubbles: true }));
-    $("ko-datum").dispatchEvent(new Event("change", { bubbles: true }));
-
-    // Verlegd: het btw-veld blijft € 0,00 (je betaalt niets); het dashboard rekent de 21% zelf mee. Regulier: het bedrag van de factuur.
-    const echt = Number(d.btw_bedrag);
-    if (!verlegdRegioVanSelect() && Number.isFinite(echt)) {
-      const berekend = Number($("ko-btw").value);
-      if (Math.abs(berekend - echt) > 0.02) {
-        const gekozen = $("ko-tarief").selectedOptions[0].textContent;
-        $("ko-tarief").value = "";
-        kostenBtwAuto();
-        opm.push(`Het btw-bedrag op de factuur (${euro(echt)}) wijkt af van ${gekozen} over het bedrag excl. btw; de btw staat daarom op "Handmatig".`);
-      }
-      $("ko-btw").value = echt.toFixed(2);
-    }
-    kostenHint();
-
-    const btwTekst = $("ko-tarief").selectedOptions[0].textContent;
-    scanHint(
-      `Ingevuld uit ${naam}: ${d.datum ? datumNl(d.datum) + ", " : ""}${euro(d.bedrag_excl_btw)} excl. btw, ${btwTekst}. Controleer de velden, pas aan waar nodig en klik zelf op Opslaan.` + (opm.length ? " Let op: " + opm.join(" ") : ""),
-      opm.length ? "" : "ok",
-    );
-  }
-
-  async function scanBon(file) {
-    const nr = ++scan.teller;
-    const actueel = () => nr === scan.teller;
-    let bijlageKlaar = false;
-    const naam = (file.name || "bestand").slice(0, 40);
-    $("ko-opslaan").disabled = true;
-    scanHint(`${naam}: bestand verwerken…`, "bezig");
-    try {
-      const { blob, tekst } = await verwerkBon(file);
-      if (!actueel()) return;
-      // Meteen klaarzetten als bijlage (zelfde pad als het uploadveld), zodat je het bestand niet nog eens hoeft te kiezen.
-      bon.klaar = blob; bon.bezig = null; bijlageKlaar = true;
-      $("ko-bon").value = "";
-      bonHint(`${tekst} Wordt als bijlage bewaard zodra je opslaat.`, "ok");
-      renderBonHuidig();
-      scanHint(`${naam}: factuur uitlezen…`, "bezig");
-      const d = await verzoek("/api/scan-bon", {
-        method: "POST", headers: { "Content-Type": blob.type || "application/octet-stream" }, body: blob, signal: AbortSignal.timeout(75000),
-      });
-      if (actueel()) vulKostenIn(d, naam);
-    } catch (err) {
-      if (!actueel()) return;
-      const reden = err && err.name === "TimeoutError" ? "Uitlezen duurde te lang."
-        : err instanceof TypeError && /fetch|network|load/i.test(err.message) ? "Geen verbinding met de server."
-        : (err && err.message) || "Uitlezen is niet gelukt.";
-      scanHint(`${naam}: ${reden} Vul de velden zelf in${bijlageKlaar ? "; het bestand staat wel klaar als bijlage" : ""}.`, "fout");
-    } finally {
-      if (actueel()) $("ko-opslaan").disabled = false;
-    }
-  }
-
   function openKostenForm(r) {
     $("ko-titel").textContent = r ? "Kosten bewerken" : "Kosten toevoegen";
     $("ko-id").value = r ? r.id : "";
@@ -577,7 +492,6 @@
     $("ko-kw-veld").hidden = !$("ko-voorstart").checked;
     state.voorStartHandmatig = !!r;
     resetBon(r && BON_URL.test(r.factuur_url || "") ? r.factuur_url : "");
-    resetScan();
     kostenHint();
     toonForm("form-kosten");
     $("ko-omschrijving").focus();
@@ -740,14 +654,6 @@
     ).finally(() => { if (bon.bezig === werk) { bon.bezig = null; renderBonHuidig(); } });
     bon.bezig = werk;
     renderBonHuidig();
-  });
-
-  $("ko-scan").addEventListener("change", () => {
-    const file = $("ko-scan").files[0];
-    if (!file) return;
-    // Leegmaken zodat je hetzelfde bestand opnieuw kunt kiezen (bijv. na een fout); de naam staat in de statusregel.
-    $("ko-scan").value = "";
-    scanBon(file);
   });
 
   $("ko-bon-weg").addEventListener("click", () => {
