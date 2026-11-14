@@ -132,6 +132,26 @@
                        padding:6px 12px; margin-right:12px; font-family:var(--font-body); font-size:0.78rem; font-weight:600; cursor:pointer; }
     input[type=file]::file-selector-button:hover { border-color:var(--orange); color:var(--orange); }
     .hint.fout { color:#ffb0b0; } .hint.ok { color:var(--groen); }
+    .hint.bezig { color:var(--text); display:flex; align-items:center; gap:9px; }
+    .hint.bezig::before { content:""; flex:none; width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,140,0,0.28);
+                          border-top-color:var(--orange); animation:draai 0.8s linear infinite; }
+    @keyframes draai { to { transform:rotate(360deg); } }
+
+    /* Slimme scan: opvallend blok bovenaan het kostenformulier (elevated + oranje gloed) */
+    .scan-blok { position:relative; overflow:hidden; margin-bottom:18px; padding:16px 18px 14px; border-radius:10px;
+                 border:1px dashed rgba(255,140,0,0.55);
+                 background:radial-gradient(420px 150px at 100% 0, rgba(255,140,0,0.16), transparent 70%), linear-gradient(165deg,#222 0%,#181818 100%);
+                 box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 16px 34px -18px rgba(255,140,0,0.35), 0 2px 8px rgba(0,0,0,0.45); }
+    .scan-kop { display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
+    .scan-icoon { flex:none; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+                  background:rgba(255,140,0,0.14); border:1px solid rgba(255,140,0,0.4); color:var(--orange); }
+    .scan-icoon svg { width:18px; height:18px; }
+    label.scan-titel { font-family:var(--font-display); font-size:1.2rem; font-weight:400; letter-spacing:0.05em; text-transform:none; color:var(--text); margin:0 0 2px; }
+    .scan-uitleg { font-size:0.8rem; color:var(--muted); line-height:1.5; max-width:62ch; }
+    .scan-blok input[type=file] { border-color:rgba(255,140,0,0.5); background:rgba(13,13,13,0.7); }
+    .scan-blok .hint { margin-top:10px; }
+    .scan-blok .hint:empty { display:none; }
+    @media (max-width:700px) { .scan-blok { padding:14px 14px 12px; } .scan-kop { gap:10px; } }
     dl.regels { display:grid; grid-template-columns:1fr auto; gap:3px 14px; font-size:0.82rem; }
     dl.regels dt { color:var(--muted); } dl.regels dd { text-align:right; font-variant-numeric:tabular-nums; }
     dl.regels .sub { color:var(--dim); font-size:0.74rem; }
@@ -188,7 +208,7 @@
       table.stapel td:empty { display:none; }
     }
     @media (max-width:420px) { .kpis { grid-template-columns:1fr; } }
-    @media (prefers-reduced-motion:reduce) { .kpi, .kw, .btn { transition:none; } .kpi:hover, .kw:hover, .btn:hover { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .kpi, .kw, .btn { transition:none; } .kpi:hover, .kw:hover, .btn:hover { transform:none; } .hint.bezig::before { animation:none; } }
   </style>
 </head>
 <body>
@@ -299,6 +319,17 @@
       <form class="kaart formkaart" id="form-kosten" hidden autocomplete="off">
         <h3 id="ko-titel">Kosten toevoegen</h3>
         <input type="hidden" id="ko-id">
+        <div class="scan-blok" id="ko-scan-blok" aria-busy="false">
+          <div class="scan-kop">
+            <span class="scan-icoon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg></span>
+            <div>
+              <label for="ko-scan" class="scan-titel">Slimme scan (optioneel)</label>
+              <p class="scan-uitleg">Upload een factuur of bon (PDF of foto): de velden hieronder worden automatisch ingevuld en het bestand wordt als bijlage klaargezet. Controleer alles en klik zelf op Opslaan.</p>
+            </div>
+          </div>
+          <input type="file" id="ko-scan" accept="application/pdf,image/*,.pdf,.heic,.heif">
+          <p class="hint" id="ko-scan-hint" role="status" aria-live="polite"></p>
+        </div>
         <div class="rij">
           <div class="veld"><label for="ko-datum">Datum bon / factuur</label><input type="date" id="ko-datum" required></div>
           <div class="veld" style="grid-column:span 2;"><label for="ko-omschrijving">Omschrijving</label><input type="text" id="ko-omschrijving" maxlength="200" required></div>

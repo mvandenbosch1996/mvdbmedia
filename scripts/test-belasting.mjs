@@ -1,4 +1,4 @@
-// Rekentests voor admin/js/belasting.js en de validatie in functions/_lib/boekhouding.js.
+// Rekentests voor admin/js/belasting.js, de validatie in functions/_lib/boekhouding.js en de slimme scan (/api/scan-bon).
 //   node scripts/test-belasting.mjs
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -244,5 +244,114 @@ is('instellingen geldig', inst.ok === true, JSON.stringify(inst));
 gelijk('extraWinst', inst.instellingen?.extraWinst, 500);
 is('startdatum ongeldig', V.schoonInstellingen({ startdatum: 'morgen' }, 2026).ok === false);
 
-console.log(fouten ? `\n${fouten} test(s) mislukt` : '✓ belasting- en validatietests: geen fouten');
+// ---- slimme scan: opschoning van het modelantwoord (functions/_lib/scan-bon.js)
+const S = await import(pathToFileURL(path.join(ROOT, 'functions/_lib/scan-bon.js')).href);
+const scanBasis = { datum: '2026-09-21', omschrijving: 'Claude Pro (september)', bedrag_excl_btw: 18, valuta: 'EUR', btw_type: '21%', btw_bedrag: 3.78 };
+{
+  const ok = (extra) => S.schoonScan({ ...scanBasis, ...extra });
+  gelijk('scan 21%: btw van de factuur', ok().resultaat?.btw_bedrag, 3.78);
+  gelijk('scan 21%: afrondingsverschil van de factuur blijft', ok({ btw_bedrag: 3.79 }).resultaat?.btw_bedrag, 3.79);
+  gelijk('scan 21%: onwaarschijnlijke btw valt terug op netto x 21%', ok({ btw_bedrag: 40 }).resultaat?.btw_bedrag, 3.78);
+  gelijk('scan 9%: ontbrekende btw wordt netto x 9%', ok({ btw_type: '9%', btw_bedrag: null }).resultaat?.btw_bedrag, 1.62);
+  gelijk('scan 21%: btw 0 = onbekend → netto x 21%', ok({ btw_bedrag: 0 }).resultaat?.btw_bedrag, 3.78);
+  gelijk('scan 0%: btw is 0', ok({ btw_type: '0%', btw_bedrag: 0 }).resultaat?.btw_bedrag, 0);
+  gelijk('scan 0%: btw is altijd 0', ok({ btw_type: '0%', btw_bedrag: 3.78 }).resultaat?.btw_bedrag, 0);
+  gelijk('scan lege datum geeft datum null', ok({ datum: '' }).resultaat?.datum, null);
+  gelijk('scan verlegd buiten EU: 21% over netto', ok({ bedrag_excl_btw: 18.5, btw_type: 'verlegd_buiten_eu', btw_bedrag: 0 }).resultaat?.btw_bedrag, Math.round(Math.round(18.5 * 100) * B.VERLEGD_TARIEF / 100) / 100);
+  gelijk('scan verlegd EU: 21% over netto, ook als het model iets anders gaf', ok({ btw_type: 'verlegd_eu', btw_bedrag: 99 }).resultaat?.btw_bedrag, 3.78);
+  gelijk('scan creditnota: negatieve btw', ok({ bedrag_excl_btw: -10, btw_bedrag: -2.1 }).resultaat?.btw_bedrag, -2.1);
+  gelijk('scan creditnota: btw met verkeerd teken valt terug', ok({ bedrag_excl_btw: -10, btw_bedrag: 2.1 }).resultaat?.btw_bedrag, -2.1);
+  is('scan zonder bedrag geweigerd', ok({ bedrag_excl_btw: null }).ok === false);
+  is('scan met onbekend btw-type geweigerd', ok({ btw_type: '6%' }).ok === false);
+  is('scan met onleesbaar antwoord geweigerd', S.schoonScan(null).ok === false);
+  gelijk('scan met ongeldige datum geeft datum null', ok({ datum: '2026-02-31' }).resultaat?.datum, null);
+  is('scan met ongeldige datum waarschuwt', ok({ datum: 'gisteren' }).resultaat?.waarschuwingen.length === 1);
+  is('scan in USD waarschuwt', ok({ valuta: 'usd' }).resultaat?.waarschuwingen.some((w) => w.includes('USD')));
+  is('scan in EUR waarschuwt niet', ok().resultaat?.waarschuwingen.length === 0);
+  gelijk('scan omschrijving zonder stuurtekens', ok({ omschrijving: ' Claude\n\tPro ' }).resultaat?.omschrijving, 'Claude Pro');
+  // Wat de client daarmee invult moet door de bestaande kostenvalidatie komen (verlegd: btw betaald = 0).
+  const r = ok({ bedrag_excl_btw: 18.5, btw_type: 'verlegd_buiten_eu', btw_bedrag: 0 }).resultaat;
+  is('scan-uitkomst (verlegd) is een geldige kostenpost', V.schoonKosten({ datum: r.datum, omschrijving: r.omschrijving, netto: r.bedrag_excl_btw, btw: 0, verlegd: true, verlegdRegio: 'non_eu' }, 2026).ok === true);
+  const g = ok().resultaat;
+  is('scan-uitkomst (21%) is een geldige kostenpost', V.schoonKosten({ datum: g.datum, omschrijving: g.omschrijving, netto: g.bedrag_excl_btw, btw: g.btw_bedrag }, 2026).ok === true);
+
+  gelijk('scan type pdf', S.scanTypeVanBytes(new TextEncoder().encode('%PDF-1.7')), 'application/pdf');
+  gelijk('scan type jpeg', S.scanTypeVanBytes(new Uint8Array([0xff, 0xd8, 0xff, 0xe0])), 'image/jpeg');
+  gelijk('scan type onbekend', S.scanTypeVanBytes(new TextEncoder().encode('MZ.exe')), null);
+  const groot = Uint8Array.from({ length: 100_000 }, (_, i) => (i * 31) % 256);
+  gelijk('scan base64 klopt', S.scanBase64(groot), Buffer.from(groot).toString('base64'));
+}
+
+// ---- slimme scan: endpoint (sessie, invoer, Claude-aanroep gemockt, foutafhandeling)
+{
+  const A = await import(pathToFileURL(path.join(ROOT, 'functions/_lib/auth.js')).href);
+  const H = await import(pathToFileURL(path.join(ROOT, 'functions/api/scan-bon.js')).href);
+  const SECRET = 'test-secret-'.repeat(4);
+  const cookie = `__session=${await A.signSession({ exp: Date.now() + 60_000 }, SECRET)}`;
+  const PDF = new TextEncoder().encode('%PDF-1.4 test');
+  const env = { SESSION_SECRET: SECRET, ANTHROPIC_API_KEY: 'sk-ant-test' };
+  const roep = (body, { headers = {}, env: e = env } = {}) =>
+    H.onRequestPost({ request: new Request('https://mvdbmedia.nl/api/scan-bon', { method: 'POST', body, headers }), env: e });
+  const echteFetch = globalThis.fetch;
+  let verstuurd = null;
+  const mock = (res) => { globalThis.fetch = async (url, init) => { verstuurd = { url, init }; if (res instanceof Error) throw res; return res; }; };
+  const claude = (obj, extra = {}) => new Response(JSON.stringify({ stop_reason: 'end_turn', content: [{ type: 'text', text: JSON.stringify(obj) }], ...extra }), { status: 200 });
+  const fail = (status, type) => new Response(JSON.stringify({ type: 'error', error: { type, message: 'x' } }), { status });
+  const stil = console.error; console.error = () => {};
+  try {
+    gelijk('scan-bon zonder sessie → 401', (await roep(PDF)).status, 401);
+    gelijk('scan-bon met ongeldige sessie → 401', (await roep(PDF, { headers: { Cookie: '__session=x.y' } })).status, 401);
+    gelijk('scan-bon zonder sessie → 401, ook zonder API-key', (await roep(PDF, { env: { SESSION_SECRET: SECRET } })).status, 401);
+    gelijk('scan-bon zonder API-key → 503', (await roep(PDF, { headers: { Cookie: cookie }, env: { SESSION_SECRET: SECRET } })).status, 503);
+    gelijk('scan-bon cross-site → 403', (await roep(PDF, { headers: { Cookie: cookie, Origin: 'https://evil.example' } })).status, 403);
+    gelijk('scan-bon leeg bestand → 400', (await roep(new Uint8Array(0), { headers: { Cookie: cookie } })).status, 400);
+    gelijk('scan-bon geen PDF/foto → 415', (await roep(new TextEncoder().encode('hallo'), { headers: { Cookie: cookie } })).status, 415);
+    gelijk('scan-bon te groot → 413', (await roep(new Uint8Array(4 * 1024 * 1024 + 1).fill(0x25), { headers: { Cookie: cookie } })).status, 413);
+
+    mock(claude({ ...scanBasis, bedrag_excl_btw: 18.5, btw_type: 'verlegd_buiten_eu', btw_bedrag: 0 }));
+    const res = await roep(PDF, { headers: { Cookie: cookie } });
+    const body = await res.json();
+    gelijk('scan-bon geldig → 200', res.status, 200);
+    gelijk('scan-bon geeft verlegd btw-type terug', body.btw_type, 'verlegd_buiten_eu');
+    gelijk('scan-bon geeft berekende verlegde btw terug', body.btw_bedrag, 3.89);
+    gelijk('scan-bon geeft datum terug', body.datum, '2026-09-21');
+    const uit = JSON.parse(verstuurd.init.body);
+    gelijk('Claude-aanroep: url', verstuurd.url, 'https://api.anthropic.com/v1/messages');
+    gelijk('Claude-aanroep: api-key header', verstuurd.init.headers['x-api-key'], 'sk-ant-test');
+    gelijk('Claude-aanroep: versie-header', verstuurd.init.headers['anthropic-version'], '2023-06-01');
+    gelijk('Claude-aanroep: model', uit.model, 'claude-opus-4-8');
+    gelijk('Claude-aanroep: PDF als document-blok', uit.messages[0].content[0].type, 'document');
+    gelijk('Claude-aanroep: base64 van het bestand', uit.messages[0].content[0].source.data, Buffer.from(PDF).toString('base64'));
+    is('Claude-aanroep: gestructureerde output', uit.output_config?.format?.type === 'json_schema' && uit.thinking?.type === 'adaptive');
+    is('Claude-aanroep: geen sampling-parameters (400 op Opus 4.8)', !('temperature' in uit) && !('top_p' in uit) && !('top_k' in uit));
+    is('API-key lekt niet naar de client', !JSON.stringify(body).includes('sk-ant'));
+
+    const jpeg = new Uint8Array([0xff, 0xd8, 0xff, 0xe0, 1, 2, 3]);
+    mock(claude(scanBasis));
+    await roep(jpeg, { headers: { Cookie: cookie } });
+    gelijk('Claude-aanroep: foto als image-blok', JSON.parse(verstuurd.init.body).messages[0].content[0].type, 'image');
+
+    mock(fail(429, 'rate_limit_error'));
+    gelijk('Claude 429 → 429', (await roep(PDF, { headers: { Cookie: cookie } })).status, 429);
+    mock(fail(401, 'authentication_error'));
+    gelijk('Claude 401 (ongeldige key) wordt nooit 401 naar de client', (await roep(PDF, { headers: { Cookie: cookie } })).status, 502);
+    mock(fail(400, 'invalid_request_error'));
+    gelijk('Claude 400 (bv. tegoed op) → 502', (await roep(PDF, { headers: { Cookie: cookie } })).status, 502);
+    mock(fail(529, 'overloaded_error'));
+    gelijk('Claude 529 → 503', (await roep(PDF, { headers: { Cookie: cookie } })).status, 503);
+    mock(new Error('netwerk'));
+    gelijk('netwerkfout → 504', (await roep(PDF, { headers: { Cookie: cookie } })).status, 504);
+    mock(claude({ ...scanBasis, bedrag_excl_btw: null }));
+    gelijk('geen bedrag gevonden → 422', (await roep(PDF, { headers: { Cookie: cookie } })).status, 422);
+    mock(claude(scanBasis, { stop_reason: 'refusal' }));
+    gelijk('weigering door model → 422', (await roep(PDF, { headers: { Cookie: cookie } })).status, 422);
+    mock(new Response(JSON.stringify({ stop_reason: 'end_turn', content: [{ type: 'text', text: 'geen json' }] }), { status: 200 }));
+    gelijk('onleesbaar modelantwoord → 422', (await roep(PDF, { headers: { Cookie: cookie } })).status, 422);
+  } finally {
+    globalThis.fetch = echteFetch;
+    console.error = stil;
+  }
+}
+
+console.log(fouten ? `\n${fouten} test(s) mislukt` : '✓ belasting-, validatie- en scantests: geen fouten');
 process.exit(fouten ? 1 : 0);
