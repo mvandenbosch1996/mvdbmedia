@@ -70,6 +70,10 @@ const boekApi = await get('/api/boekhouding?jaar=2026');
 check(boekApi.status === 401, `/api/boekhouding zonder sessie → 401 (was ${boekApi.status})`);
 const boekPost = await get('/api/boekhouding', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
 check(boekPost.status === 401, `POST /api/boekhouding zonder sessie → 401 (was ${boekPost.status})`);
+const bonGet = await get('/api/bon?id=00000000-0000-4000-8000-000000000000');
+check(bonGet.status === 401, `/api/bon zonder sessie → 401 (was ${bonGet.status})`);
+const bonPost = await get('/api/bon', { method: 'POST', headers: { 'Content-Type': 'application/pdf' }, body: '%PDF-1.4' });
+check(bonPost.status === 401, `POST /api/bon zonder sessie → 401 (was ${bonPost.status})`);
 
 // Redirects
 const idx = await get('/index.html');

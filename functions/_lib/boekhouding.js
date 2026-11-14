@@ -7,6 +7,14 @@ export const MAX_BEDRAG = 10_000_000;
 export const MAX_REGELS = 2000;
 export const MAX_IMPORT = 500;
 
+// Bijlage bij een kostenpost: bestand staat in KV onder "bon-<uuid>" en wordt alleen via /api/bon geserveerd.
+export const BON_ID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+export const bonUrl = (id) => `/api/bon?id=${id}`;
+export function bonIdUitUrl(url) {
+  const m = typeof url === "string" ? /^\/api\/bon\?id=([0-9a-f-]{36})$/.exec(url) : null;
+  return m && BON_ID_RE.test(m[1]) ? m[1] : null;
+}
+
 const rond2 = (n) => Math.round(n * 100) / 100;
 
 export function kwartaalVan(iso) {
@@ -96,12 +104,19 @@ export function schoonKosten(input, jaar) {
     const k = Number(input.kwartaal);
     kwartaal = Number.isInteger(k) && k >= 1 && k <= 4 ? k : b.dj === jaar ? kwartaal : 1;
   }
+  // Optioneel: ontbreekt = bestaande bijlage behouden, "" = bijlage verwijderen, anders een geldige /api/bon-url.
+  let factuurUrl;
+  if (input.factuur_url !== undefined && input.factuur_url !== null) {
+    if (input.factuur_url !== "" && !bonIdUitUrl(input.factuur_url)) return fout("Ongeldige bijlage.");
+    factuurUrl = input.factuur_url;
+  }
   return {
     ok: true,
     item: {
       id: tekst(input.id, 60) || undefined,
       datum: b.datum, omschrijving: b.omschrijving, netto: b.netto, btw, voorStart, kwartaal,
       ...(verlegd ? { verlegd: true, verlegdRegio: regio } : {}),
+      ...(factuurUrl !== undefined ? { factuur_url: factuurUrl } : {}),
     },
   };
 }
@@ -169,9 +184,12 @@ export function pasToe(boek, actie, body, nu = new Date()) {
       const i = lijst.findIndex((x) => x.id === item.id);
       if (i < 0) return afgewezen("Regel niet gevonden.", 404);
       if (lijst[i].bron && !item.bron) item.bron = lijst[i].bron;
+      if (item.factuur_url === undefined && lijst[i].factuur_url) item.factuur_url = lijst[i].factuur_url;
+      if (item.factuur_url === "") delete item.factuur_url;
       lijst[i] = item;
     } else {
       if (lijst.length >= MAX_REGELS) return afgewezen("Maximum aantal regels bereikt.");
+      if (item.factuur_url === "") delete item.factuur_url;
       item.id = nieuweId();
       lijst.push(item);
     }

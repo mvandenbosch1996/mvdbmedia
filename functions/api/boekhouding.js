@@ -6,7 +6,7 @@
 
 import { parseCookie, verifySession } from "../_lib/auth.js";
 import { isCrossSite } from "../_lib/abuse.js";
-import { geldigJaar, leegBoek, pasToe } from "../_lib/boekhouding.js";
+import { bonIdUitUrl, geldigJaar, leegBoek, pasToe } from "../_lib/boekhouding.js";
 
 const KEY = (jaar) => `boek-${jaar}`;
 const MAX_BODY_BYTES = 400_000;
@@ -77,9 +77,17 @@ export async function onRequestPost(context) {
   const boek = await laadBoek(env, jaar);
   if (!boek) return json({ error: "Boekhouding beschadigd." }, 500);
 
+  const bonIds = (b) => new Set(b.kosten.map((k) => bonIdUitUrl(k.factuur_url)).filter(Boolean));
+  const voor = bonIds(boek);
+
   const res = pasToe(boek, String(body.actie || ""), body);
   if (!res.ok) return json({ error: res.error }, res.status || 400);
 
   await env.FACTUREN.put(KEY(jaar), JSON.stringify(res.boek));
+
+  // Bijlagen die na deze actie nergens meer aan hangen opruimen (kostenpost verwijderd of bestand vervangen).
+  const na = bonIds(res.boek);
+  for (const id of voor) if (!na.has(id)) await env.FACTUREN.delete(`bon-${id}`);
+
   return json({ boek: res.boek, info: res.info });
 }

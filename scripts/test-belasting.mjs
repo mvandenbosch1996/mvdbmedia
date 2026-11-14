@@ -210,6 +210,28 @@ is('bestaand 0%-record zonder kenmerk blijft regulier', !('verlegd' in V.schoonK
   is('bestaande kost omzetten naar verlegd', res.ok && res.boek.kosten.length === 1 && res.boek.kosten[0].verlegd === true && res.boek.kosten[0].kwartaal === 3, JSON.stringify(res));
 }
 
+// ---- bijlage (factuur_url) bij kosten
+{
+  const URL1 = '/api/bon?id=0b6f1c2e-3a4d-4e5f-8a9b-0c1d2e3f4a5b';
+  const basisKost = { datum: '2026-09-21', omschrijving: 'Claude', netto: 18.5, btw: 0, voorStart: false };
+  is('record zonder bijlage krijgt geen factuur_url', !('factuur_url' in V.schoonKosten(basisKost, 2026).item));
+  gelijk('geldige bijlage-url bewaard', V.schoonKosten({ ...basisKost, factuur_url: URL1 }, 2026).item?.factuur_url, URL1);
+  is('externe url als bijlage geweigerd', V.schoonKosten({ ...basisKost, factuur_url: 'https://evil.example/x.pdf' }, 2026).ok === false);
+  is('javascript-url als bijlage geweigerd', V.schoonKosten({ ...basisKost, factuur_url: 'javascript:alert(1)' }, 2026).ok === false);
+  is('pad-traversal als bijlage geweigerd', V.schoonKosten({ ...basisKost, factuur_url: '/api/bon?id=../../boek-2026' }, 2026).ok === false);
+
+  const boek = V.leegBoek(2026);
+  boek.kosten.push({ id: 'k1', ...basisKost, kwartaal: 3, factuur_url: URL1 });
+  let res = V.pasToe(boek, 'kosten.opslaan', { item: { id: 'k1', ...basisKost, omschrijving: 'Claude (bewerkt)' } });
+  gelijk('bewerken zonder factuur_url behoudt bijlage', res.boek.kosten[0].factuur_url, URL1);
+  res = V.pasToe(boek, 'kosten.opslaan', { item: { id: 'k1', ...basisKost, factuur_url: '' } });
+  is('factuur_url "" verwijdert bijlage', res.ok && !('factuur_url' in res.boek.kosten[0]));
+  res = V.pasToe(boek, 'kosten.opslaan', { item: { ...basisKost, factuur_url: '' } });
+  is('nieuwe kost met lege bijlage heeft geen veld', res.ok && !('factuur_url' in res.boek.kosten[1]));
+  gelijk('bonIdUitUrl geldig', V.bonIdUitUrl(URL1), '0b6f1c2e-3a4d-4e5f-8a9b-0c1d2e3f4a5b');
+  gelijk('bonIdUitUrl ongeldig', V.bonIdUitUrl('/api/bon?id=x'), null);
+}
+
 const ag = V.schoonAangifte({ ingediend: false, voldaan: true, btwOmzet: '12,50', voorbelasting: 3 });
 is('aangifte geldig', ag.ok === true, JSON.stringify(ag));
 gelijk('voldaan impliceert ingediend', ag.aangifte?.ingediend, true);

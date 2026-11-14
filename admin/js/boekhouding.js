@@ -237,6 +237,13 @@
       : '<span class="badge b-verlegd">verlegd EU · 4b</span>';
   }
 
+  // Alleen eigen bijlage-urls worden een link; alles anders wordt genegeerd.
+  const BON_URL = /^\/api\/bon\?id=[0-9a-f-]{36}$/;
+  function factuurLink(r, label) {
+    if (!r.factuur_url || !BON_URL.test(r.factuur_url)) return "";
+    return `<a class="badge b-bron b-link" href="${esc(r.factuur_url)}" target="_blank" rel="noopener noreferrer" aria-label="Factuur of bon bij ${label} openen (nieuw tabblad)">factuur</a>`;
+  }
+
   function renderKosten() {
     const f = state.filter.kosten;
     const rijen = state.boek.kosten.filter((r) => !f || r.kwartaal === f).sort(perDatum);
@@ -245,7 +252,7 @@
       netto += Math.round(r.netto * 100); btw += Math.round(r.btw * 100);
       const label = esc(r.omschrijving);
       return `<tr><td data-label="Datum">${datumNl(r.datum)}</td>` +
-        `<td data-label="Omschrijving">${label}${r.voorStart ? '<span class="badge b-start">vóór start</span>' : ""}${verlegdBadge(r)}</td>` +
+        `<td data-label="Omschrijving">${label}${r.voorStart ? '<span class="badge b-start">vóór start</span>' : ""}${verlegdBadge(r)}${factuurLink(r, label)}</td>` +
         `<td data-label="Kwartaal">Q${r.kwartaal}</td><td class="r" data-label="Excl. btw">${euro(r.netto)}</td>` +
         `<td class="r" data-label="Voorbelasting">${euro(r.btw)}${r.verlegd ? `<span class="klein">(${euro(Math.round(Math.round(r.netto * 100) * B.VERLEGD_TARIEF / 100) / 100)} verlegd)</span>` : ""}</td>` +
         `<td class="acties-cel"><button class="btn btn-ghost btn-klein" type="button" data-actie="bewerk-kosten" data-id="${esc(r.id)}" aria-label="Bewerk ${label}">Bewerk</button> ` +
@@ -377,6 +384,98 @@
     $("ko-btw").value = netto ? (Math.round(netto * Number(t)) / 100).toFixed(2) : "";
   }
 
+  // ---------- bijlage (factuur / bon) ----------
+  const BON_MAX_BYTES = 4 * 1024 * 1024;
+  const BON_DOEL_BYTES = 500 * 1024;
+  const BON_MAX_ZIJDE = 1600;
+  const bon = { huidig: "", verwijder: false, klaar: null, bezig: null };
+
+  const kb = (n) => (n >= 1024 * 1024 ? (n / 1024 / 1024).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB");
+  const BON_STANDAARDHINT = "Optioneel. Foto's worden automatisch verkleind (max. 1600 px, ongeveer 200 – 500 KB). PDF: max. 4 MB.";
+
+  function bonHint(tekst, soort) {
+    const h = $("ko-bon-hint");
+    h.textContent = tekst;
+    h.className = "hint" + (soort ? " " + soort : "");
+  }
+
+  function renderBonHuidig() {
+    const toonHuidig = !!bon.huidig && !bon.verwijder && !bon.klaar;
+    $("ko-bon-huidig").hidden = !toonHuidig;
+    if (toonHuidig) $("ko-bon-link").href = bon.huidig;
+  }
+
+  function resetBon(huidigeUrl) {
+    bon.huidig = huidigeUrl; bon.verwijder = false; bon.klaar = null; bon.bezig = null;
+    $("ko-bon").value = "";
+    bonHint(BON_STANDAARDHINT);
+    renderBonHuidig();
+  }
+
+  async function laadBitmap(file) {
+    try {
+      return await createImageBitmap(file, { imageOrientation: "from-image" });
+    } catch (e) {
+      // Fallback via data-url (blob:-urls zijn door de CSP niet toegestaan voor <img>).
+      const url = await new Promise((ok, mis) => {
+        const fr = new FileReader();
+        fr.onload = () => ok(fr.result); fr.onerror = () => mis(fr.error);
+        fr.readAsDataURL(file);
+      });
+      return await new Promise((ok, mis) => {
+        const img = new Image();
+        img.onload = () => ok(img); img.onerror = () => mis(new Error("decode"));
+        img.src = url;
+      });
+    }
+  }
+
+  async function comprimeerAfbeelding(file) {
+    let bmp;
+    try { bmp = await laadBitmap(file); }
+    catch (e) { throw new Error("Deze foto kan in deze browser niet worden gelezen (HEIC?). Kies een JPG of PNG, of een PDF."); }
+    const breed = bmp.width, hoog = bmp.height;
+    let zijde = BON_MAX_ZIJDE, kwaliteit = 0.8, blob = null, geschaald = false;
+    for (let poging = 0; poging < 5; poging++) {
+      const schaal = Math.min(1, zijde / Math.max(breed, hoog));
+      geschaald = schaal < 1;
+      const c = document.createElement("canvas");
+      c.width = Math.max(1, Math.round(breed * schaal)); c.height = Math.max(1, Math.round(hoog * schaal));
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(bmp, 0, 0, c.width, c.height);
+      blob = await new Promise((ok) => c.toBlob(ok, "image/jpeg", kwaliteit));
+      if (!blob) throw new Error("Foto verkleinen is mislukt.");
+      if (blob.size <= BON_DOEL_BYTES) break;
+      kwaliteit = Math.max(0.5, kwaliteit - 0.1);
+      if (poging >= 1) zijde = Math.round(zijde * 0.85);
+    }
+    if (bmp.close) bmp.close();
+    // Kleine bestanden die al klein genoeg zijn niet opnieuw coderen.
+    if (!geschaald && (file.type === "image/jpeg" || file.type === "image/png") && file.size <= blob.size && file.size <= BON_MAX_BYTES) return file;
+    return blob;
+  }
+
+  async function verwerkBon(file) {
+    const naam = (file.name || "").toLowerCase();
+    const isPdf = file.type === "application/pdf" || naam.endsWith(".pdf");
+    const isAfbeelding = file.type.startsWith("image/") || /\.(heic|heif|jpe?g|png|webp)$/.test(naam);
+    if (!isPdf && !isAfbeelding) throw new Error("Alleen PDF of foto (JPG, PNG, WebP, HEIC) is toegestaan.");
+    if (isPdf) {
+      if (file.size > BON_MAX_BYTES) throw new Error(`Deze PDF is ${kb(file.size)}; het maximum is 4 MB. Maak er een foto of schermafbeelding van (die wordt automatisch verkleind) of verklein de PDF eerst.`);
+      return { blob: file, tekst: `PDF klaar om te uploaden (${kb(file.size)}).` };
+    }
+    const blob = await comprimeerAfbeelding(file);
+    if (blob.size > BON_MAX_BYTES) throw new Error("Deze foto blijft te groot, ook na verkleinen. Kies een andere foto.");
+    const tekst = blob === file ? `Foto klaar om te uploaden (${kb(blob.size)}).` : `Foto verkleind van ${kb(file.size)} naar ${kb(blob.size)}.`;
+    return { blob, tekst };
+  }
+
+  async function uploadBon(blob) {
+    const res = await verzoek("/api/bon", { method: "POST", headers: { "Content-Type": blob.type || "application/octet-stream" }, body: blob });
+    return res.url;
+  }
+
   function openKostenForm(r) {
     $("ko-titel").textContent = r ? "Kosten bewerken" : "Kosten toevoegen";
     $("ko-id").value = r ? r.id : "";
@@ -392,6 +491,7 @@
     $("ko-kwartaal").value = String(r ? r.kwartaal : startKwartaal());
     $("ko-kw-veld").hidden = !$("ko-voorstart").checked;
     state.voorStartHandmatig = !!r;
+    resetBon(r && BON_URL.test(r.factuur_url || "") ? r.factuur_url : "");
     kostenHint();
     toonForm("form-kosten");
     $("ko-omschrijving").focus();
@@ -543,14 +643,55 @@
     probeer(() => opslaan("omzet.opslaan", { item })).then((r) => { if (r) { $("form-omzet").hidden = true; toon("Omzet opgeslagen."); } });
   });
 
-  $("form-kosten").addEventListener("submit", (e) => {
+  $("ko-bon").addEventListener("change", () => {
+    const file = $("ko-bon").files[0];
+    bon.klaar = null;
+    if (!file) { bonHint(BON_STANDAARDHINT); renderBonHuidig(); return; }
+    bonHint("Bestand verwerken…");
+    const werk = verwerkBon(file).then(
+      ({ blob, tekst }) => { if (bon.bezig === werk) { bon.klaar = blob; bonHint(tekst, "ok"); } },
+      (err) => { if (bon.bezig === werk) { $("ko-bon").value = ""; bonHint(err.message || "Bestand verwerken mislukt.", "fout"); } },
+    ).finally(() => { if (bon.bezig === werk) { bon.bezig = null; renderBonHuidig(); } });
+    bon.bezig = werk;
+    renderBonHuidig();
+  });
+
+  $("ko-bon-weg").addEventListener("click", () => {
+    bon.verwijder = true;
+    bonHint("De bijlage wordt verwijderd zodra je opslaat.");
+    renderBonHuidig();
+    $("ko-bon").focus();
+  });
+
+  $("form-kosten").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const item = {
-      id: num("ko-id") || undefined, datum: num("ko-datum"), omschrijving: num("ko-omschrijving"),
-      netto: num("ko-netto"), btw: num("ko-btw"), voorStart: $("ko-voorstart").checked, kwartaal: Number(num("ko-kwartaal")),
-      verlegd: !!verlegdRegioVanSelect(), verlegdRegio: verlegdRegioVanSelect() || undefined,
-    };
-    probeer(() => opslaan("kosten.opslaan", { item })).then((r) => { if (r) { $("form-kosten").hidden = true; toon("Kosten opgeslagen."); } });
+    const knop = $("ko-opslaan");
+    knop.disabled = true;
+    let nieuweUrl = "";
+    try {
+      if (bon.bezig) await bon.bezig;
+      const item = {
+        id: num("ko-id") || undefined, datum: num("ko-datum"), omschrijving: num("ko-omschrijving"),
+        netto: num("ko-netto"), btw: num("ko-btw"), voorStart: $("ko-voorstart").checked, kwartaal: Number(num("ko-kwartaal")),
+        verlegd: !!verlegdRegioVanSelect(), verlegdRegio: verlegdRegioVanSelect() || undefined,
+      };
+      // Zonder factuur_url blijft een bestaande bijlage op de server behouden; "" verwijdert hem.
+      if (bon.klaar) {
+        bonHint("Bijlage uploaden…");
+        nieuweUrl = await uploadBon(bon.klaar);
+        item.factuur_url = nieuweUrl;
+      } else if (bon.verwijder) {
+        item.factuur_url = "";
+      }
+      const r = await opslaan("kosten.opslaan", { item });
+      if (r) { nieuweUrl = ""; $("form-kosten").hidden = true; toon("Kosten opgeslagen."); }
+    } catch (err) {
+      if (nieuweUrl) fetch(nieuweUrl, { method: "DELETE" }).catch(() => {});
+      bonHint(BON_STANDAARDHINT);
+      toon(err.message || "Er ging iets mis.", "fout");
+    } finally {
+      knop.disabled = false;
+    }
   });
 
   $("form-aangifte").addEventListener("submit", (e) => {

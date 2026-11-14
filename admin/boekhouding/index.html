@@ -115,6 +115,23 @@
     @media (max-width:420px) { .split-regel { flex-direction:column; align-items:flex-start; gap:4px; } }
     dl.regels .rubriek { color:var(--orange); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; margin-right:6px; }
     .b-bron { background:rgba(160,152,144,0.14); color:var(--muted); margin-left:6px; }
+    a.b-link { text-decoration:none; transition:background-color 0.2s ease, color 0.2s ease; }
+    a.b-link:hover { background:rgba(255,140,0,0.16); color:var(--orange); }
+    a.b-link:active { background:rgba(255,140,0,0.26); }
+    a.b-link:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+    .bon-blok { margin-top:4px; padding-top:14px; border-top:1px solid var(--border); }
+    .bon-huidig { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+    .bon-huidig[hidden] { display:none; }
+    .bon-huidig .b-bron { margin-left:0; }
+    .bon-tekst { font-size:0.8rem; color:var(--muted); }
+    input[type=file] { width:100%; padding:7px 9px; background:var(--bg); border:1px dashed var(--border-light); border-radius:4px; color:var(--muted);
+                       font-size:0.82rem; font-family:var(--font-body); cursor:pointer; transition:border-color 0.2s ease, color 0.2s ease; }
+    input[type=file]:hover { border-color:var(--orange); color:var(--text); }
+    input[type=file]:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+    input[type=file]::file-selector-button { background:var(--elev); color:var(--text); border:1px solid var(--border-light); border-radius:4px;
+                       padding:6px 12px; margin-right:12px; font-family:var(--font-body); font-size:0.78rem; font-weight:600; cursor:pointer; }
+    input[type=file]::file-selector-button:hover { border-color:var(--orange); color:var(--orange); }
+    .hint.fout { color:#ffb0b0; } .hint.ok { color:var(--groen); }
     dl.regels { display:grid; grid-template-columns:1fr auto; gap:3px 14px; font-size:0.82rem; }
     dl.regels dt { color:var(--muted); } dl.regels dd { text-align:right; font-variant-numeric:tabular-nums; }
     dl.regels .sub { color:var(--dim); font-size:0.74rem; }
@@ -298,8 +315,18 @@
             <select id="ko-kwartaal"><option value="1">Q1</option><option value="2">Q2</option><option value="3">Q3</option><option value="4">Q4</option></select></div>
         </div>
         <p class="hint" id="ko-hint" aria-live="polite"></p>
+        <div class="bon-blok">
+          <label for="ko-bon">Factuur of bon bijvoegen (PDF / foto)</label>
+          <div class="bon-huidig" id="ko-bon-huidig" hidden>
+            <a class="badge b-bron b-link" id="ko-bon-link" href="#" target="_blank" rel="noopener noreferrer">factuur</a>
+            <span class="bon-tekst">Huidige bijlage</span>
+            <button class="btn btn-ghost btn-klein btn-gevaar" type="button" id="ko-bon-weg">Bijlage verwijderen</button>
+          </div>
+          <input type="file" id="ko-bon" accept="application/pdf,image/*,.pdf,.heic,.heif">
+          <p class="hint" id="ko-bon-hint" aria-live="polite">Optioneel. Foto's worden automatisch verkleind (max. 1600 px, ongeveer 200 – 500 KB). PDF: max. 4 MB.</p>
+        </div>
         <div class="acties" style="margin-top:14px;">
-          <button class="btn btn-oranje" type="submit">Opslaan</button>
+          <button class="btn btn-oranje" type="submit" id="ko-opslaan">Opslaan</button>
           <button class="btn btn-ghost" type="button" data-sluit="form-kosten">Annuleren</button>
         </div>
       </form>
