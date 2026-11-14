@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webdesign Sneek & Friesland | Website Laten Maken | MVDBmedia</title>
-  <meta name="description" content="Website laten maken in Sneek, Leeuwarden, Heerenveen of Drachten? Maatwerk webdesign, SEO-klaar en binnen 2 weken live, ook landelijk. Vraag een offerte.">
+  <meta name="description" content="Website laten maken in Sneek, Leeuwarden of Friesland? Maatwerk webdesign vanaf €499 excl. btw: Starter, Business of op maat. Vraag een offerte.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mvdbmedia.nl/webdesignopmaat">
 
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mvdbmedia.nl/webdesignopmaat">
   <meta property="og:title" content="Webdesign Sneek & Friesland | Website Laten Maken | MVDBmedia">
-  <meta property="og:description" content="Website laten maken in Sneek, Leeuwarden, Heerenveen of Drachten? Maatwerk webdesign, SEO-klaar en binnen 2 weken live, ook landelijk. Vraag een offerte.">
+  <meta property="og:description" content="Website laten maken in Sneek, Leeuwarden of Friesland? Maatwerk webdesign vanaf €499 excl. btw: Starter, Business of op maat. Vraag een offerte.">
   <meta property="og:image" content="https://mvdbmedia.nl/fotos/og/webdesignopmaat.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,7 +24,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Webdesign Sneek & Friesland | Website Laten Maken | MVDBmedia">
-  <meta name="twitter:description" content="Website laten maken in Sneek, Leeuwarden, Heerenveen of Drachten? Maatwerk webdesign, SEO-klaar en binnen 2 weken live, ook landelijk. Vraag een offerte.">
+  <meta name="twitter:description" content="Website laten maken in Sneek, Leeuwarden of Friesland? Maatwerk webdesign vanaf €499 excl. btw: Starter, Business of op maat. Vraag een offerte.">
   <meta name="twitter:image" content="https://mvdbmedia.nl/fotos/og/webdesignopmaat.jpg">
   <meta name="twitter:image:alt" content="Websites die aanvragen opleveren — Webdesign op maat, MVDBmedia Sneek">
 
@@ -422,8 +422,37 @@
       background: rgba(255,140,0,0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%23ff8c00' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
       border: 1px solid rgba(255,140,0,0.3);
     }
+    .packages-grid { grid-template-columns: repeat(3, 1fr); }
+    .pkg-intro { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-primary); }
+    .pkg-link {
+      display: block; text-align: center; width: 100%; margin-top: 10px; padding: 8px 0;
+      font-size: 0.66rem; font-weight: 600; color: var(--orange); text-decoration: none; letter-spacing: 0.08em;
+      opacity: 0.75; transition: opacity 0.2s ease;
+    }
+    .pkg-link:hover, .pkg-link:focus-visible { opacity: 1; }
+    .pkg-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
     @media (max-width: 768px) { .packages-grid { grid-template-columns: 1fr !important; } }
-    @media (min-width: 769px) and (max-width: 1024px) { .packages-grid { grid-template-columns: 1fr 1fr !important; } }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .packages-grid { grid-template-columns: 1fr 1fr !important; }
+      .packages-grid .package-card.op-maat { grid-column: 1 / -1; }
+    }
+
+    /* Extra info onder de pakketten */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1120px; margin: 56px auto 0; }
+    .info-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .info-card h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.06em; color: var(--text-primary); margin: 0 0 14px; font-weight: 400; }
+    .info-card p, .info-card li { font-size: 0.8rem; line-height: 1.7; color: var(--text-secondary); font-weight: 300; margin: 0 0 10px; }
+    .info-card ul { list-style: none; padding: 0; margin: 0 0 10px; display: flex; flex-direction: column; gap: 8px; }
+    .info-card li { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .info-card li:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-card li strong { color: var(--orange); font-weight: 700; white-space: nowrap; }
+    .info-card a { color: var(--orange); text-decoration: none; font-weight: 600; }
+    .info-card a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .info-card a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    @media (max-width: 1024px) { .info-grid { grid-template-columns: 1fr; max-width: 560px; } }
 
     /* Voorbeeldproject frame */
     .voorbeeld-frame:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,140,0,0.2); }
@@ -554,7 +583,7 @@
         </h1>
 
         <p class="hero-anim-3" style="font-size:1rem;font-weight:300;color:var(--text-secondary);margin:0 0 28px;max-width:460px;line-height:1.75;">
-          Maatwerk websites die vertrouwen uitstralen en klanten opleveren.
+          Maatwerk websites die vertrouwen uitstralen en bezoekers naar contact leiden.
         </p>
 
         <!-- Trust chips -->
@@ -780,10 +809,10 @@
       <div style="text-align:center;margin-bottom:56px;">
         <div class="orange-label scroll-reveal" style="justify-content:center;">Transparante pakketten</div>
         <h2 class="scroll-reveal reveal-delay-1" style="font-family:var(--font-display);font-size:clamp(2.4rem,3.8vw,4.2rem);line-height:0.92;letter-spacing:0.02em;color:var(--text-primary);margin:0 0 10px;">KIES JOUW<br><span style="color:rgba(255,140,0,0.75);">PAKKET</span></h2>
-        <p style="font-size:0.82rem;color:var(--text-muted);font-weight:300;margin:0;">Vaste prijzen, exclusief BTW.</p>
+        <p style="font-size:0.82rem;color:var(--text-muted);font-weight:300;margin:0;">Heldere prijzen, exclusief BTW. Uitbreidingen spreken we vooraf af.</p>
       </div>
 
-      <div class="packages-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:stretch;max-width:860px;margin:0 auto;">
+      <div class="packages-grid" style="display:grid;gap:20px;align-items:stretch;max-width:1120px;margin:0 auto;">
 
         <!-- STARTER -->
         <div class="package-card scroll-reveal reveal-delay-1">
@@ -793,14 +822,16 @@
           </div>
           <div style="font-size:1rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">vanaf €499</div>
           <ul class="pkg-list">
-            <li>1–3 pagina's (home, over, contact)</li>
-            <li>Professionele website die perfect werkt op mobiel en desktop</li>
-            <li>Contactformulier</li>
-            <li>Oplevering binnen 7 werkdagen</li>
+            <li>1–4 pagina's (bijv. home, over, diensten, contact)</li>
+            <li>Professioneel maatwerkdesign, responsive</li>
+            <li>Contactformulier met spam-beveiliging</li>
+            <li>Basis SEO</li>
+            <li>Oplevering binnen 7 werkdagen (na complete aanlevering)</li>
+            <li>2 feedbackrondes</li>
             <li>2 weken gratis onderhoud</li>
           </ul>
           <a href="/#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
-          <a href="/starter-website-pakket" style="display:block;text-align:center;width:100%;margin-top:10px;font-size:0.66rem;font-weight:600;color:var(--orange);text-decoration:none;letter-spacing:0.08em;padding:8px 0;opacity:0.75;transition:opacity 0.2s ease;" data-s-mouseover="this.style.opacity='1'" data-s-mouseout="this.style.opacity='0.75'">Bekijk alle details →</a>
+          <a href="/starter-website-pakket" class="pkg-link">Bekijk alle details →</a>
           <div style="margin-top:10px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px;opacity:0.38;">
             <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
               <span style="color:var(--orange);font-size:0.5rem;">✓</span> Vrijblijvend gesprek
@@ -819,22 +850,24 @@
 
         <!-- BUSINESS — featured -->
         <div class="package-card featured scroll-reveal reveal-delay-2">
-          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-size:0.58rem;font-weight:900;padding:4px 14px;border-radius:20px;letter-spacing:0.15em;text-transform:uppercase;white-space:nowrap;">Meest gekozen</div>
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-size:0.58rem;font-weight:900;padding:4px 14px;border-radius:20px;letter-spacing:0.15em;text-transform:uppercase;white-space:nowrap;">Aanbevolen</div>
           <div style="margin-bottom:24px;margin-top:4px;">
             <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--orange);margin-bottom:6px;">BUSINESS</div>
             <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Groeien met flexibiliteit</div>
           </div>
           <div style="font-size:1rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">vanaf €999</div>
+          <div class="pkg-intro" style="margin-bottom:12px;">Alles uit Starter, plus:</div>
           <ul class="pkg-list">
             <li>5–8 pagina's op maat</li>
-            <li>Professioneel maatwerkdesign</li>
-            <li>Basis SEO-optimalisatie</li>
-            <li>Website opgebouwd om meer aanvragen te krijgen</li>
-            <li>Oplevering binnen 2 weken</li>
+            <li>Zelf-beheerbaar CMS</li>
+            <li>Uitgebreide SEO</li>
+            <li>Opgebouwd om bezoekers naar contact te sturen</li>
+            <li>Oplevering binnen 2 weken (na complete aanlevering)</li>
+            <li>3 feedbackrondes</li>
             <li>4 weken gratis onderhoud</li>
           </ul>
           <a href="/#contact" class="btn-orange" style="text-align:center;width:100%;">Offerte aanvragen</a>
-          <a href="/business-website-pakket" style="display:block;text-align:center;width:100%;margin-top:10px;font-size:0.66rem;font-weight:600;color:var(--orange);text-decoration:none;letter-spacing:0.08em;padding:8px 0;opacity:0.75;transition:opacity 0.2s ease;" data-s-mouseover="this.style.opacity='1'" data-s-mouseout="this.style.opacity='0.75'">Bekijk alle details →</a>
+          <a href="/business-website-pakket" class="pkg-link">Bekijk alle details →</a>
           <div style="margin-top:10px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px;opacity:0.38;">
             <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
               <span style="color:var(--orange);font-size:0.5rem;">✓</span> Vrijblijvend gesprek
@@ -851,24 +884,64 @@
           </div>
         </div>
 
-        <!-- PREMIUM — tijdelijk verborgen
-        <div class="package-card scroll-reveal reveal-delay-3">
+        <!-- OP MAAT -->
+        <div class="package-card op-maat scroll-reveal reveal-delay-3">
           <div style="margin-bottom:24px;">
-            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">PREMIUM</div>
-            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Volledige aanpak</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.04em;color:var(--text-primary);margin-bottom:6px;">OP MAAT</div>
+            <div style="font-size:0.72rem;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;">Voor wat verder gaat</div>
           </div>
-          <div style="font-size:0.88rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">vanaf €1.999</div>
+          <div style="font-size:1rem;color:var(--orange);font-weight:700;margin-bottom:20px;letter-spacing:0.02em;">Prijs op aanvraag</div>
           <ul class="pkg-list">
-            <li>10+ pagina's volledig maatwerk</li>
-            <li>Geavanceerde SEO</li>
-            <li>Performance-optimalisatie</li>
-            <li>Extra functies (blog, etc.)</li>
-            <li>Volledig CMS via WordPress</li>
-            <li>12 maanden onderhoud &amp; prioriteit</li>
+            <li>Boekingssystemen</li>
+            <li>Webshops</li>
+            <li>Koppelingen met andere systemen</li>
+            <li>Eerst een gesprek, daarna een voorstel op maat</li>
           </ul>
           <a href="/#contact" class="btn-ghost" style="text-align:center;width:100%;">Offerte aanvragen</a>
+          <a href="/webapplicatie-saas-laten-maken" class="pkg-link">Meer over webapplicaties →</a>
+          <div style="margin-top:10px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px;opacity:0.38;">
+            <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
+              <span style="color:var(--orange);font-size:0.5rem;">✓</span> Vrijblijvend gesprek
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
+              <span style="color:var(--orange);font-size:0.5rem;">✓</span> Geen verrassingen achteraf
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
+              <span style="color:var(--orange);font-size:0.5rem;">✓</span> Direct contact via WhatsApp
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:0.65rem;color:var(--text-muted);font-weight:300;letter-spacing:0.01em;">
+              <span style="color:var(--orange);font-size:0.5rem;">✓</span> Binnen 24 uur reactie
+            </div>
+          </div>
         </div>
-        -->
+
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info-card scroll-reveal reveal-delay-1">
+          <h3>DOMEIN, HOSTING &amp; ONDERHOUD</h3>
+          <p>Domein en hosting zitten niet in de websiteprijs, maar ik richt ze wel gratis voor je in. De hosting zit in het onderhoudspakket.</p>
+          <p><strong style="color:var(--text-primary);font-weight:600;">Onderhoud en hosting vanaf €19 per maand</strong>, optioneel na de gratis onderhoudsperiode: hosting, updates en kleine aanpassingen (tot 30 minuten per maand).</p>
+          <p>Wil je zelf hosten? Dan draag ik de website over.</p>
+        </div>
+
+        <div class="info-card scroll-reveal reveal-delay-2">
+          <h3>UITBREIDINGEN</h3>
+          <ul>
+            <li>Extra pagina <strong>€75</strong></li>
+            <li>Copywriting <strong>op aanvraag</strong></li>
+            <li>Extra taal <strong>op aanvraag</strong></li>
+            <li>Extra feedbackronde <strong>op uurbasis</strong></li>
+          </ul>
+          <p>Prijzen excl. BTW. Uitbreidingen spreken we vooraf af.</p>
+        </div>
+
+        <div class="info-card scroll-reveal reveal-delay-3">
+          <h3>WAT IK VAN JOU NODIG HEB</h3>
+          <p>Teksten en beeldmateriaal aanleveren. De levertijd start zodra alles compleet is aangeleverd. Duurt aanleveren langer dan 14 dagen, dan schuift de planning mee.</p>
+          <p>Nog geen teksten of foto's? Dan bespreken we samen wat er nodig is.</p>
+        </div>
 
       </div>
     </div>
@@ -904,13 +977,13 @@
         <div class="process-step scroll-reveal reveal-delay-3">
           <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">03</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">BOUW</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">De website wordt gebouwd en getest op alle apparaten en browsers.</p>
+          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">De website wordt gebouwd en getest op de gangbare apparaten en browsers.</p>
         </div>
 
         <div class="process-step scroll-reveal reveal-delay-4">
           <div style="font-family:var(--font-display);font-size:3rem;color:var(--orange);line-height:1;margin-bottom:16px;">04</div>
           <div style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.06em;color:var(--text-primary);margin-bottom:10px;">LIVE</div>
-          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Jouw website gaat online. Inclusief instructies zodat je zelf wijzigingen kunt maken.</p>
+          <p style="font-size:0.8rem;line-height:1.7;color:var(--text-secondary);margin:0;font-weight:300;">Jouw website gaat online, inclusief een korte uitleg. Bij Business pas je zelf teksten en foto's aan.</p>
         </div>
 
       </div>
@@ -949,7 +1022,7 @@
           </button>
           <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 0.35s ease;">
             <p style="font-size:0.9rem;line-height:1.8;color:var(--text-secondary);padding:0 0 28px;margin:0;font-weight:300;">
-              Ja. Bij het Business-pakket kun je teksten, foto's en pagina's zelf beheren via een gebruiksvriendelijk dashboard — geen technische kennis nodig. Bij Starter zorg ik voor aanpassingen wanneer jij dat wil.
+              Alleen bij het Business-pakket. Daar pas je teksten, foto's en blogberichten zelf aan via een eenvoudige beheeromgeving. Het Starter-pakket heeft geen beheeromgeving: aanpassingen laat je door mij doen, tijdens de gratis onderhoudsperiode en daarna via het optionele onderhoudspakket.
             </p>
           </div>
         </div>
@@ -1069,7 +1142,7 @@
         "name": "Kan ik later zelf aanpassen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja. Bij het Business-pakket kun je teksten, foto's en pagina's zelf beheren via een gebruiksvriendelijk dashboard — geen technische kennis nodig. Bij Starter zorg ik voor aanpassingen wanneer jij dat wil."
+          "text": "Alleen bij het Business-pakket. Daar pas je teksten, foto's en blogberichten zelf aan via een eenvoudige beheeromgeving. Het Starter-pakket heeft geen beheeromgeving: aanpassingen laat je door mij doen, tijdens de gratis onderhoudsperiode en daarna via het optionele onderhoudspakket."
         }
       },
       {
