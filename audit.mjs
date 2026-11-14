@@ -37,6 +37,8 @@ try {
       if (msg.type() === 'error') jsErrors.push(msg.text());
     });
     page.on('requestfailed', req => {
+      // ERR_ABORTED = door de browser afgebroken (lazy image bij sluiten pagina), geen echte fout
+      if (req.failure()?.errorText === 'net::ERR_ABORTED') return;
       failedRequests.push('FAIL: ' + req.url() + ' — ' + (req.failure()?.errorText ?? 'unknown'));
     });
     page.on('response', async res => {
@@ -46,7 +48,7 @@ try {
     try {
       await page.goto(url, { waitUntil: 'networkidle2', timeout: 20000 });
 
-      // Scroll to trigger lazy-loaded images before checking
+      // Scroll to trigger lazy-loaded images, then wait until every image has finished loading
       await page.evaluate(async () => {
         await new Promise(resolve => {
           let totalHeight = 0;
@@ -59,20 +61,27 @@ try {
               window.scrollTo(0, 0);
               resolve();
             }
-          }, 50);
+          }, 100);
         });
       });
-      await new Promise(r => setTimeout(r, 800));
+      await page.waitForFunction(
+        () => Array.from(document.images).every(img => !img.src || img.src.startsWith('data:') || img.complete),
+        { timeout: 10000 }
+      ).catch(() => {});
+      await new Promise(r => setTimeout(r, 300));
 
-      const brokenImgs = await page.evaluate(() =>
-        Array.from(document.images)
-          .filter(img => {
-            if (!img.src || img.src.startsWith('data:')) return false;
-            if (img.loading === 'lazy' && !img.getBoundingClientRect().width) return false;
-            return !img.complete || img.naturalWidth === 0;
-          })
-          .map(img => img.src)
-      );
+      // Kapot = geladen maar leeg, of nog niet geladen (lazy buiten beeld) terwijl het bestand niet bestaat
+      const brokenImgs = await page.evaluate(async () => {
+        const broken = [];
+        for (const img of Array.from(document.images)) {
+          if (!img.src || img.src.startsWith('data:')) continue;
+          if (img.complete && img.naturalWidth > 0) continue;
+          if (img.complete) { broken.push(img.src); continue; }
+          const res = await fetch(img.currentSrc || img.src, { method: 'HEAD' }).catch(() => null);
+          if (!res || !res.ok) broken.push(img.src);
+        }
+        return broken;
+      });
 
       const name = url.replace('http://localhost:3000/', '') || 'index.html';
       console.log('\n=== ' + name + ' ===');
