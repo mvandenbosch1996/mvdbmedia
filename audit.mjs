@@ -32,6 +32,12 @@ const pages = [
   'http://localhost:3000/seo-webdesign-hoger-in-google.html',
   'http://localhost:3000/conversie-gericht-webdesign.html',
   'http://localhost:3000/maatwerk-html-website-vs-wordpress-conversie.html',
+  'http://localhost:3000/starter-website-pakket.html',
+  'http://localhost:3000/business-website-pakket.html',
+  'http://localhost:3000/webdesign-fotografie-leeuwarden.html',
+  'http://localhost:3000/webdesign-fotografie-heerenveen.html',
+  'http://localhost:3000/webdesign-fotografie-harlingen.html',
+  'http://localhost:3000/webdesign-fotografie-drachten.html',
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
