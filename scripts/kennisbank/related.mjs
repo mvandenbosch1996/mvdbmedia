@@ -8,13 +8,13 @@ export const SERVICES = {
     href: '/starter-website-pakket',
     cat: 'Vanaf €499 excl. btw',
     name: 'Starter Website Pakket',
-    text: 'Een compacte, snelle website voor ondernemers die online willen starten. Oplevering binnen 7 werkdagen.',
+    text: 'Een compacte, snelle website voor ondernemers die online willen starten. Oplevering binnen 7 werkdagen na complete aanlevering.',
   },
   business: {
     href: '/business-website-pakket',
     cat: 'Vanaf €999 excl. btw',
     name: 'Business Website Pakket',
-    text: 'Een uitgebreide website die is opgebouwd om meer aanvragen te krijgen. Oplevering binnen 2 weken.',
+    text: 'Een uitgebreide website met zelf-beheerbaar CMS en uitgebreide SEO. Oplevering binnen 2 weken na complete aanlevering.',
   },
   maatwerk: {
     href: '/webdesignopmaat',
@@ -75,7 +75,7 @@ export const GUIDE_PRACTICE = {
   'website-laten-maken-sneek': {
     h2: 'Voorbeelden van mijn werk',
     html: `
-        <p>Een greep uit het portfolio: de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a> en het SaaS-platform <a href="/portfolio/kampr">Kampr.nl</a>. Meer voorbeelden vind je in het <a href="/portfolio">volledige portfolio van MVDBmedia</a>. Benieuwd waarom ik handgeschreven code verkies boven een CMS? Lees <a href="/maatwerk-html-website-vs-wordpress-conversie">waarom een maatwerk HTML/JS website sneller converteert dan WordPress</a>.</p>`,
+        <p>Een greep uit het portfolio: de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a> en het SaaS-platform <a href="/portfolio/kampr">Kampr.nl</a>. Meer voorbeelden vind je in het <a href="/portfolio">volledige portfolio van MVDBmedia</a>. Benieuwd waarom ik handgeschreven code verkies boven een CMS? Lees <a href="/maatwerk-html-website-vs-wordpress-conversie">maatwerk HTML/JS website of WordPress: sneller laden en gericht op contact</a>.</p>`,
   },
   'website-beveiliging-onderhoud': {
     h2: 'Beveiliging in de praktijk',
@@ -90,7 +90,7 @@ export const GUIDE_PRACTICE = {
   'conversie-gericht-webdesign': {
     h2: 'Vertrouwen en conversie in de praktijk',
     html: `
-        <p>Echte foto's van team en werkplek geven bezoekers vertrouwen. Bekijk de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics</a>. Voor ondernemers die meer aanvragen willen: <a href="${CITY('drachten')}">zakelijke websites in Drachten</a> en <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a>.</p>`,
+        <p>Echte foto's van team en werkplek geven bezoekers vertrouwen. Bekijk de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics</a>. Voor ondernemers die bezoekers naar contact willen leiden: <a href="${CITY('drachten')}">zakelijke websites in Drachten</a> en <a href="${CITY('leeuwarden')}">webdesign in Leeuwarden</a>.</p>`,
   },
   'maatwerk-html-website-vs-wordpress-conversie': {
     h2: 'Snelle HTML/JS websites in de praktijk',

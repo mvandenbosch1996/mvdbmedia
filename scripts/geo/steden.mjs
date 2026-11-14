@@ -25,9 +25,9 @@ export const STEDEN = [
         <ul>
           <li><strong>Winkels en horeca in de binnenstad.</strong> Rond Nieuwestad, de Voorstreek en het Waagplein zoeken bezoekers op hun telefoon. Je website moet binnen een paar seconden laten zien wie je bent, waar je zit en wanneer je open bent.</li>
           <li><strong>Zorg- en praktijkondernemers.</strong> Fysiotherapeuten, coaches en andere zorgprofessionals die vertrouwen moeten wekken, met een heldere aanmeldroute.</li>
-          <li><strong>Zakelijke dienstverleners.</strong> Advies, administratie, juridisch en techniek: websites die expertise tonen en offerteaanvragen opleveren.</li>
+          <li><strong>Zakelijke dienstverleners.</strong> Advies, administratie, juridisch en techniek: websites die expertise tonen en bezoekers naar contact leiden.</li>
           <li><strong>Creatieve en culturele ondernemers.</strong> Sinds Leeuwarden-Fryslân in 2018 Culturele Hoofdstad van Europa was, is de creatieve scene in de stad zichtbaarder dan ooit. Daar hoort een portfolio bij dat er net zo goed uitziet als het werk zelf.</li>
-          <li><strong>Startende ondernemers.</strong> Net begonnen? Met het Starter-pakket sta je binnen een week online, zonder dat je meteen een groot budget nodig hebt.</li>
+          <li><strong>Startende ondernemers.</strong> Net begonnen? Met het Starter-pakket sta je binnen 7 werkdagen na complete aanlevering online, zonder dat je meteen een groot budget nodig hebt.</li>
         </ul>`,
       },
       {
@@ -35,8 +35,8 @@ export const STEDEN = [
         html: `
         <p>Ik ontwerp en bouw elke website op maat. Geen kant-en-klaar thema met jouw logo erop, maar een ontwerp dat past bij je bedrijf en bij de mensen die je wilt bereiken. Je kiest uit twee vaste pakketten of vraagt een offerte op maat aan:</p>
         <ul>
-          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw: compact en snel, binnen 7 werkdagen live.</li>
-          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw: uitgebreider, opgebouwd om aanvragen te krijgen, binnen 2 weken live.</li>
+          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw: compact en snel, binnen 7 werkdagen live na complete aanlevering.</li>
+          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw: uitgebreider, met zelf-beheerbaar CMS en uitgebreide SEO, binnen 2 weken live na complete aanlevering.</li>
           <li><a href="/webdesignopmaat">Webdesign op maat</a> voor grotere websites en webapplicaties.</li>
         </ul>
         <p>Voor een bedrijf in Leeuwarden bouw ik de lokale vindbaarheid direct in: de stad in titels en koppen waar dat natuurlijk leest, een eigen pagina per dienst en gestructureerde gegevens die zoekmachines en AI-assistenten vertellen wie je bent en waar je werkt. Hoe dat werkt lees je in de gids over <a href="/seo-webdesign-hoger-in-google">SEO en GEO in webdesign</a>. Wil je vooraf weten waar je aan toe bent? <a href="/webdesign-kosten-friesland">Wat een website in Friesland kost</a> staat eerlijk uitgeschreven.</p>
@@ -65,7 +65,7 @@ export const STEDEN = [
         <p>Sneek ligt ongeveer 25 minuten rijden van Leeuwarden, dus een kennismaking of fotoshoot op jouw locatie is geen enkel probleem. Het overige werk gaat efficiënt op afstand: feedback, teksten en ontwerp via telefoon, e-mail of WhatsApp.</p>
         <ol>
           <li><strong>Kennismaking.</strong> We bespreken je bedrijf, je klanten en wat de website of de foto’s moeten opleveren.</li>
-          <li><strong>Voorstel.</strong> Je krijgt een duidelijke offerte met vaste prijs, meestal binnen 24 uur.</li>
+          <li><strong>Voorstel.</strong> Je krijgt een duidelijke offerte met een heldere prijs, meestal binnen 24 uur.</li>
           <li><strong>Maken.</strong> Ik ontwerp en bouw, of plan de fotoshoot op een moment dat het licht goed is.</li>
           <li><strong>Oplevering.</strong> Je website gaat live of je ontvangt je beelden, en ik blijf bereikbaar voor vragen.</li>
         </ol>`,
@@ -75,7 +75,7 @@ export const STEDEN = [
       { q: 'Kom je ook naar Leeuwarden voor een kennismaking of fotoshoot?', a: 'Ja. Vanuit Sneek ben ik ongeveer 25 minuten onderweg, dus ik kom graag langs op jouw locatie in Leeuwarden. Heb je liever een videogesprek of telefoontje, dan kan dat net zo goed.' },
       { q: 'Wat kost een website laten maken in Leeuwarden?', a: 'Een Starter-website begint bij MVDBmedia vanaf €499 en een Business-website vanaf €999, beide exclusief btw. Voor uitgebreidere websites of webapplicaties maak ik een offerte op maat. De prijs is niet afhankelijk van waar in Friesland je gevestigd bent.' },
       { q: 'Kan ik mijn website en bedrijfsfoto’s in één keer laten doen?', a: 'Ja. Ik ben zowel webdesigner als fotograaf. Daardoor sluiten beeld en ontwerp op elkaar aan en heb je maar één aanspreekpunt. Je kunt de foto’s ook los bestellen.' },
-      { q: 'Hoe zorg je dat mijn website in Leeuwarden gevonden wordt?', a: 'Ik bouw snelle, mobielvriendelijke websites met een heldere structuur, goede koppen, een eigen pagina per dienst en lokale structured data. Bij het Business-pakket is basis SEO inbegrepen. Rankings kan niemand garanderen, maar een goed fundament geeft je de beste kans.' },
+      { q: 'Hoe zorg je dat mijn website in Leeuwarden gevonden wordt?', a: 'Ik bouw snelle, mobielvriendelijke websites met een heldere structuur, goede koppen, een eigen pagina per dienst en lokale structured data. Het Starter-pakket bevat basis SEO, het Business-pakket uitgebreide SEO. Rankings kan niemand garanderen, maar een goed fundament geeft je de beste kans.' },
       { q: 'Maak je ook foto’s en dronebeelden van panden in Leeuwarden?', a: 'Ja. Voor makelaars, verhuurders en bedrijven maak ik vastgoedfoto’s van binnen en buiten en dronebeelden van de ligging. Vooraf controleer ik per locatie welke regels gelden voor drones.' },
     ],
     faqTitle: 'VRAGEN OVER<br><span>LEEUWARDEN</span>',
@@ -110,13 +110,13 @@ export const STEDEN = [
         </ul>`,
       },
       {
-        h2: 'Webdesign dat snel is en aanvragen oplevert',
+        h2: 'Webdesign dat snel is en bezoekers naar contact leidt',
         html: `
-        <p>Een trage website kost je bezoekers. Mijn websites zijn op maat gebouwd, zonder zware plugins of onnodige code, en laden daardoor snel op mobiel. Hoe dat werkt en wat het verschil is met een kant-en-klaar systeem lees je in <a href="/maatwerk-website-vs-wordpress">maatwerk versus WordPress</a>. Waarom dat ook meer aanvragen oplevert staat in de gids over <a href="/maatwerk-html-website-vs-wordpress-conversie">HTML/JS websites die sneller converteren dan WordPress</a>.</p>
+        <p>Een trage website kost je bezoekers. Mijn websites zijn op maat gebouwd, zonder zware plugins of onnodige code, en laden daardoor snel op mobiel. Hoe dat werkt en wat het verschil is met een kant-en-klaar systeem lees je in <a href="/maatwerk-website-vs-wordpress">maatwerk versus WordPress</a>. Hoe dat bezoekers sneller naar contact leidt staat in de gids over <a href="/maatwerk-html-website-vs-wordpress-conversie">maatwerk HTML/JS website of WordPress: sneller laden en gericht op contact</a>.</p>
         <p>Je kiest wat bij je past:</p>
         <ul>
-          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw, in 7 werkdagen live. Ideaal voor een ZZP’er of kleine club.</li>
-          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw, in 2 weken live, met een structuur gericht op aanvragen.</li>
+          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw, in 7 werkdagen live na complete aanlevering. Ideaal voor een ZZP’er of kleine club.</li>
+          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw, in 2 weken live na complete aanlevering, met een structuur gericht op contact opnemen.</li>
           <li><a href="/webdesignopmaat">Webdesign op maat</a> als je meer wilt, zoals een aanmeldmodule of een eigen webapplicatie.</li>
         </ul>
         <p>Haast? Lees dan hoe je <a href="/snelle-website-laten-maken">snel een website laat maken</a> zonder dat de kwaliteit eronder lijdt.</p>
@@ -190,8 +190,8 @@ export const STEDEN = [
         html: `
         <p>In Harlingen zijn er drukke maanden en rustige maanden. Je website moet in de piek niet alleen mooi zijn, maar ook rustig werken: snel op een telefoon in de wind, met een duidelijke knop om te reserveren of te boeken. Bezoekers vergelijken vaak onderweg, dus ik ontwerp altijd eerst voor mobiel.</p>
         <ul>
-          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw: voor een kleine zaak of verhuurder die snel online wil, in 7 werkdagen live.</li>
-          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw: uitgebreider, met meerdere pagina’s en een structuur gericht op reserveringen en aanvragen, in 2 weken live.</li>
+          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499 excl. btw: voor een kleine zaak of verhuurder die snel online wil, in 7 werkdagen live na complete aanlevering.</li>
+          <li><a href="/business-website-pakket">Business-website</a> vanaf €999 excl. btw: uitgebreider, met meerdere pagina’s en een structuur gericht op reserveringen en contact opnemen, in 2 weken live na complete aanlevering.</li>
           <li>Een meertalige website, bijvoorbeeld in het Nederlands, Duits en Engels, is mogelijk als maatwerk en bespreken we in de <a href="/webdesignopmaat">offerte op maat</a>.</li>
         </ul>
         <p>Begin liefst ruim voor het seizoen. Dan is er tijd voor teksten, foto’s en een fatsoenlijke test voordat de eerste gasten komen.</p>
@@ -314,17 +314,17 @@ export const VERDER = {
   'webdesign-fotografie-leeuwarden': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',
     html: `
-        <p>Wil je weten hoe een zakelijke website aanvragen oplevert? Lees de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a>, over <a href="/maatwerk-html-website-vs-wordpress-conversie">waarom een maatwerk HTML/JS website sneller converteert dan WordPress</a> en over het <a href="/website-beveiliging-onderhoud">onderhouden en beveiligen van je website</a> na de oplevering. Voorbeelden van mijn fotografie: de <a href="/portfolio/portretshoot-marit">portretshoot voor Marit</a>, de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>.</p>`,
+        <p>Wil je weten hoe een zakelijke website bezoekers naar contact leidt? Lees de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a>, over <a href="/maatwerk-html-website-vs-wordpress-conversie">maatwerk HTML/JS website of WordPress: sneller laden en gericht op contact</a> en over het <a href="/website-beveiliging-onderhoud">onderhouden en beveiligen van je website</a> na de oplevering. Voorbeelden van mijn fotografie: de <a href="/portfolio/portretshoot-marit">portretshoot voor Marit</a>, de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a> en de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor Fitplan en NESAclinics in Sneek</a>.</p>`,
   },
   'webdesign-fotografie-heerenveen': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',
     html: `
-        <p>Benieuwd naar de kosten? <a href="/webdesign-kosten-friesland">Wat een website in Friesland kost</a> staat eerlijk uitgeschreven, en in de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a> lees je hoe een site meer aanvragen oplevert. Voorbeelden van mijn fotografie: de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a>, de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor het sport-medisch centrum Fitplan in Sneek</a> en de <a href="/portfolio/hondenfotos-ollie">hondenportretten van Ollie</a>.</p>`,
+        <p>Benieuwd naar de kosten? <a href="/webdesign-kosten-friesland">Wat een website in Friesland kost</a> staat eerlijk uitgeschreven, en in de gids over <a href="/conversie-gericht-webdesign">conversiegericht webdesign</a> lees je hoe een site bezoekers naar contact leidt. Voorbeelden van mijn fotografie: de <a href="/portfolio/friesland-ontruimingen-groepsfoto">teamfoto voor Friesland Ontruimingen</a>, de <a href="/portfolio/fitplan-nesaclinics">bedrijfsfotografie voor het sport-medisch centrum Fitplan in Sneek</a> en de <a href="/portfolio/hondenfotos-ollie">hondenportretten van Ollie</a>.</p>`,
   },
   'webdesign-fotografie-harlingen': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',
     html: `
-        <p>Een website die gasten en huurders trekt begint met de juiste keuzes. Lees <a href="/webdesign-kosten-friesland">wat een website in Friesland kost</a>, hoe je <a href="/snelle-website-laten-maken">snel een website laat maken</a> en hoe je <a href="/seo-webdesign-hoger-in-google">hoger in Google komt met je webdesign</a>. Voorbeelden van mijn werk vanuit de lucht: de <a href="/portfolio/bouwbedrijf-vellinga-bouwplaats">luchtfoto’s van de bouwplaats van Bouwbedrijf Vellinga</a>.</p>`,
+        <p>Een website die gasten en huurders trekt begint met de juiste keuzes. Lees <a href="/webdesign-kosten-friesland">wat een website in Friesland kost</a>, hoe je <a href="/snelle-website-laten-maken">snel een website laat maken</a> en hoe je <a href="/seo-webdesign-hoger-in-google">beter vindbaar wordt in Google met je webdesign</a>. Voorbeelden van mijn werk vanuit de lucht: de <a href="/portfolio/bouwbedrijf-vellinga-bouwplaats">luchtfoto’s van de bouwplaats van Bouwbedrijf Vellinga</a>.</p>`,
   },
   'webdesign-fotografie-drachten': {
     h2: 'Gidsen en voorbeelden uit mijn portfolio',

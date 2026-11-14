@@ -10,7 +10,7 @@ export default {
   keywords: ['website laten maken Sneek', 'webdesigner Sneek', 'webdesign Friesland', 'lokale webdesigner', 'website laten maken Friesland'],
   cardSummary: 'Waarom een lokale webdesigner uit Sneek? Persoonlijk contact, snelle reactie en kennis van de Friese markt, plus fotografie en drone onder één dak.',
   lead: 'Een website laten maken doe je liever met iemand die je kent, die snel reageert en die begrijpt voor wie je werkt. Dat is precies wat een lokale webdesigner je biedt. Ik werk vanuit Sneek voor ondernemers in heel Friesland.',
-  answer: 'Ik ben <strong>Michael van den Bosch</strong>, webdesigner bij MVDBmedia in Sneek (Dagpauwoog 15). Ik bouw maatwerk websites voor ondernemers in Sneek, Friesland en heel Nederland, met persoonlijk contact, vaste prijzen vanaf €499 en een reactie binnen 24 uur. Fotografie en drone regel ik op verzoek in hetzelfde traject.',
+  answer: 'Ik ben <strong>Michael van den Bosch</strong>, webdesigner bij MVDBmedia in Sneek (Dagpauwoog 15). Ik bouw maatwerk websites voor ondernemers in Sneek, Friesland en heel Nederland, met persoonlijk contact, heldere prijzen vanaf €499 en een reactie binnen 24 uur. Fotografie en drone regel ik op verzoek in hetzelfde traject.',
   sections: [
     {
       h2: 'Waarom een lokale webdesigner kiezen?',
@@ -30,8 +30,8 @@ export default {
         <p>Ik bouw websites op maat voor ZZP'ers, MKB en lokale dienstverleners. Denk aan ondernemers in toerisme en recreatie, horeca, bouw en installatie, zorg en welzijn, makelaardij en zakelijke dienstverlening. Elke website krijgt een eigen ontwerp dat past bij het bedrijf en de doelgroep.</p>
         <p>Mijn aanbod:</p>
         <ul>
-          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499: snel online met 1 tot 3 pagina's.</li>
-          <li><a href="/business-website-pakket">Business-website</a> vanaf €999: 5 tot 8 pagina's met maatwerkontwerp en basis SEO.</li>
+          <li><a href="/starter-website-pakket">Starter-website</a> vanaf €499: snel online met 1 tot 4 pagina's.</li>
+          <li><a href="/business-website-pakket">Business-website</a> vanaf €999: 5 tot 8 pagina's met maatwerkontwerp, een zelf-beheerbaar CMS en uitgebreide SEO.</li>
           <li><a href="/webdesignopmaat">Webdesign op maat</a>: een uitgebreidere website of webapplicatie, met een offerte op maat.</li>
         </ul>
         <p>Benieuwd naar de prijzen en wat erbij komt kijken? Lees <a href="/webdesign-kosten-friesland">wat een website in Friesland kost</a>.</p>`,
@@ -87,7 +87,7 @@ export default {
     { q: 'Werk je alleen voor bedrijven in Sneek?', a: 'Nee. Ik werk vanuit Sneek voor ondernemers in heel Friesland en de rest van Nederland. Afstemming gaat via telefoon, video of WhatsApp, en voor wie dat prettig vindt kunnen we ook persoonlijk afspreken.' },
     { q: 'Hoe snel krijg ik reactie op mijn aanvraag?', a: 'Je krijgt doorgaans binnen 24 uur een reactie, inclusief een vrijblijvende offerte op maat. Voor korte vragen kun je me ook direct een bericht sturen via WhatsApp.' },
     { q: 'Wat kost een website laten maken in Sneek?', a: 'Een Starter-website begint bij MVDBmedia vanaf €499 en een Business-website vanaf €999, beide exclusief BTW. Voor uitgebreidere websites of webapplicaties maak ik een offerte op maat.' },
-    { q: 'Kan ik ook foto\'s en drone-opnamen voor mijn website laten maken?', a: 'Ja. Ik ben ook fotograaf en dronepiloot. Bedrijfsfoto\'s, portretten, vastgoedfotografie en luchtopnamen kan ik in hetzelfde traject regelen, zodat beeld en ontwerp perfect op elkaar aansluiten.' },
+    { q: 'Kan ik ook foto\'s en drone-opnamen voor mijn website laten maken?', a: 'Ja. Ik ben ook fotograaf en dronepiloot. Bedrijfsfoto\'s, portretten, vastgoedfotografie en luchtopnamen kan ik in hetzelfde traject regelen, zodat beeld en ontwerp goed op elkaar aansluiten.' },
     { q: 'Waarom zou ik kiezen voor een lokale webdesigner in plaats van een groot bureau?', a: 'Bij een lokale webdesigner heb je direct contact met degene die je website bouwt, zijn de lijnen kort en word je persoonlijk begeleid. Je betaalt bovendien niet voor overhead en tussenlagen. Voor de meeste MKB-websites is dat de betere combinatie van kwaliteit en prijs.' },
   ],
   related: ['webdesign-kosten-friesland', 'seo-webdesign-hoger-in-google', 'maatwerk-website-vs-wordpress'],

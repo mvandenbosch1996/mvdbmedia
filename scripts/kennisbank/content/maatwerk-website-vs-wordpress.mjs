@@ -46,7 +46,7 @@ export default {
               <tr><td>Veiligheid</td><td>Regelmatige updates nodig, plugins zijn risico</td><td>Klein aanvalsoppervlak, weinig afhankelijkheden</td></tr>
               <tr><td>Onderhoud</td><td>Doorlopend: kern, thema en plugins</td><td>Minimaal</td></tr>
               <tr><td>Ontwerp</td><td>Template of aangepast thema</td><td>Volledig op maat</td></tr>
-              <tr><td>Zelf aanpassen</td><td>Eenvoudig via beheeromgeving</td><td>Via dashboard of door mij</td></tr>
+              <tr><td>Zelf aanpassen</td><td>Eenvoudig via beheeromgeving</td><td>Via eenvoudige beheeromgeving (Business) of door mij</td></tr>
               <tr><td>Startkosten</td><td>Laag tot gemiddeld</td><td>Gemiddeld</td></tr>
               <tr><td>Langetermijnkosten</td><td>Updates, licenties, herstel na problemen</td><td>Meestal lager</td></tr>
             </tbody>
@@ -63,7 +63,7 @@ export default {
     {
       h2: 'Kun je een maatwerk website zelf aanpassen?',
       html: `
-        <p>Dit is de meest gestelde tegenwerping, en een terechte. Het antwoord is ja. Bij het Business-pakket kun je teksten, foto's en pagina's zelf beheren via een gebruiksvriendelijk dashboard, zonder technische kennis. Bij het Starter-pakket doe ik de aanpassingen voor je wanneer jij dat wilt. Je zit dus niet vast, en je houdt de controle over je inhoud.</p>`,
+        <p>Dit is de meest gestelde tegenwerping, en een terechte. Het antwoord is ja. Bij het Business-pakket pas je teksten, foto's en blogberichten zelf aan via een eenvoudige beheeromgeving. Bij het Starter-pakket pas ik wijzigingen voor je aan. Je zit dus niet vast, en je houdt de controle over je inhoud.</p>`,
     },
     {
       h2: 'Wanneer is WordPress wél de slimste keuze?',
@@ -75,7 +75,7 @@ export default {
           <li>Je bouwt een webshop en wilt gebruikmaken van bestaande betaal- en verzendplugins.</li>
           <li>Meerdere medewerkers moeten zelfstandig pagina's kunnen aanpassen, met rollen en rechten.</li>
         </ul>
-        <p>Voor een bedrijfswebsite die vooral informeert, vertrouwen wekt en aanvragen genereert (de situatie van de meeste ZZP'ers en MKB-bedrijven), is maatwerk meestal de snellere, veiligere en voordeligere keuze.</p>`,
+        <p>Voor een bedrijfswebsite die vooral informeert, vertrouwen wekt en bezoekers naar contact leidt (de situatie van de meeste ZZP'ers en MKB-bedrijven), is maatwerk meestal de snellere, veiligere en voordeligere keuze.</p>`,
     },
     {
       h2: 'Zo kies je: een eenvoudige beslisregel',
@@ -92,7 +92,7 @@ export default {
   faq: [
     { q: 'Is een maatwerk website duurder dan WordPress?', a: 'De bouwkosten liggen bij maatwerk vaak iets hoger dan bij een standaard WordPress-template. Op de lange termijn is maatwerk meestal voordeliger, omdat updates, plugin-licenties en herstel na problemen grotendeels wegvallen.' },
     { q: 'Is WordPress onveilig?', a: 'De WordPress-kern is redelijk veilig, maar plugins en thema\'s van derden zijn de belangrijkste oorzaak van kwetsbaarheden. Een WordPress-site is veilig zolang alles consequent wordt bijgewerkt en het aantal plugins beperkt blijft.' },
-    { q: 'Kan ik een maatwerk website zelf beheren?', a: 'Ja. Bij het Business-pakket van MVDBmedia beheer je teksten, foto\'s en pagina\'s zelf via een gebruiksvriendelijk dashboard. Bij het Starter-pakket verzorg ik de aanpassingen voor je.' },
+    { q: 'Kan ik een maatwerk website zelf beheren?', a: 'Ja. Bij het Business-pakket van MVDBmedia pas je teksten, foto\'s en blogberichten zelf aan via een eenvoudige beheeromgeving. Bij het Starter-pakket pas ik wijzigingen voor je aan.' },
     { q: 'Wordt een maatwerk website beter gevonden in Google?', a: 'Niet automatisch, maar een snelle, schone en goed gestructureerde website heeft een goede basis voor vindbaarheid. Bij maatwerk bouw ik SEO, snelheid en gestructureerde data direct in, zonder extra plugins.' },
     { q: 'Kan ik van WordPress naar een maatwerk website overstappen?', a: 'Ja. Ik neem je bestaande inhoud over, behoud je belangrijke URL\'s of zet ze netjes door en zorg dat je vindbaarheid niet verloren gaat. Zo is de overstap meestal soepel en zonder gedoe.' },
   ],

@@ -10,7 +10,7 @@ export default {
   keywords: ['website laten maken kosten', 'webdesign prijs Friesland', 'kosten website MKB', 'website offerte', 'webdesigner Sneek'],
   cardSummary: 'Een eerlijk prijsoverzicht: van doe-het-zelf tot maatwerk. Wat bepaalt de prijs, welke kosten komen er nog bij en waar let je op in een offerte?',
   lead: 'Een website laten maken kan €500 kosten of €15.000. Dat verschil is niet willekeurig. In deze gids leg ik uit waar de prijs uit bestaat, welke kosten je vaak vergeet en hoe je een eerlijke offerte herkent.',
-  answer: 'Een professionele website in Friesland kost gemiddeld <strong>€500 tot €3.000</strong> bij een freelancer en <strong>€3.000 tot €15.000+</strong> bij een bureau. Bij MVDBmedia in Sneek begint een maatwerk Starter-website vanaf <strong>€499</strong> en een Business-website vanaf <strong>€999</strong> (exclusief BTW), met vaste prijzen en oplevering binnen 7 werkdagen tot 2 weken.',
+  answer: 'Een professionele website in Friesland kost gemiddeld <strong>€500 tot €3.000</strong> bij een freelancer en <strong>€3.000 tot €15.000+</strong> bij een bureau. Bij MVDBmedia in Sneek begint een maatwerk Starter-website vanaf <strong>€499</strong> en een Business-website vanaf <strong>€999</strong> (exclusief BTW), met heldere prijzen en oplevering binnen 7 werkdagen tot 2 weken na complete aanlevering.',
   sections: [
     {
       h2: 'Prijsoverzicht: wat kost welk type website?',
@@ -51,9 +51,9 @@ export default {
       html: `
         <p>Ik werk met vaste pakketprijzen, zodat je vooraf weet waar je aan toe bent. Alle prijzen zijn exclusief BTW.</p>
         <h3>Starter: vanaf €499</h3>
-        <p>Voor ondernemers die snel professioneel online willen. Je krijgt 1 tot 3 pagina's (zoals home, over en contact), een website die perfect werkt op mobiel en desktop, een contactformulier, oplevering binnen 7 werkdagen en 2 weken gratis onderhoud. <a href="/starter-website-pakket">Bekijk het Starter pakket</a>.</p>
+        <p>Voor ondernemers die snel professioneel online willen. Je krijgt 1 tot 4 pagina's (zoals home, over, diensten en contact), een responsive website voor mobiel, tablet en desktop, een contactformulier met spam-beveiliging, basis SEO, oplevering binnen 7 werkdagen na complete aanlevering, 2 feedbackrondes en 2 weken gratis onderhoud. <a href="/starter-website-pakket">Bekijk het Starter pakket</a>.</p>
         <h3>Business: vanaf €999</h3>
-        <p>Voor bedrijven die willen groeien. Je krijgt 5 tot 8 pagina's met een professioneel maatwerkontwerp, basis SEO-optimalisatie, een opbouw gericht op meer aanvragen, oplevering binnen 2 weken en 4 weken gratis onderhoud. <a href="/business-website-pakket">Bekijk het Business pakket</a>.</p>
+        <p>Voor bedrijven die willen groeien. Je krijgt 5 tot 8 pagina's met een professioneel maatwerkontwerp, een zelf-beheerbaar CMS, uitgebreide SEO, een opbouw gericht op contact opnemen, oplevering binnen 2 weken na complete aanlevering, 3 feedbackrondes en 4 weken gratis onderhoud. <a href="/business-website-pakket">Bekijk het Business pakket</a>.</p>
         <p>Heb je specifieke wensen, zoals een webapplicatie of een bijzondere functie? Dan maak ik een offerte op maat. Meer over mijn aanpak vind je op <a href="/webdesignopmaat">webdesign op maat</a>.</p>`,
     },
     {
@@ -62,7 +62,7 @@ export default {
         <p>Een lage prijs voor het bouwen zegt niets over wat je daarna betaalt. Vraag in elke offerte naar deze punten:</p>
         <ul>
           <li><strong>Domeinnaam:</strong> een .nl-domein kost doorgaans enkele euro's per maand of een klein jaarbedrag. Het domein hoort op jouw naam te staan, niet op die van het bureau.</li>
-          <li><strong>Hosting:</strong> niet inbegrepen in mijn pakketten. Goede hosting voor een snelle website kost doorgaans ongeveer €3–€8 per maand. Ik adviseer en regel de koppeling voor je.</li>
+          <li><strong>Hosting:</strong> niet inbegrepen in de websiteprijs, maar ik richt het wel gratis voor je in. De hosting zit in het optionele onderhoudspakket vanaf €19 per maand (hosting, updates en kleine aanpassingen tot 30 minuten per maand). Wil je zelf hosten? Dan draag ik de website over.</li>
           <li><strong>Onderhoud en updates:</strong> bij systemen met veel plugins betaal je structureel voor updates en beveiliging. Bij een lichte maatwerk website is dat aanzienlijk minder. Zie <a href="/website-beveiliging-onderhoud">website beveiliging en onderhoud</a>.</li>
           <li><strong>Licenties:</strong> betaalde plugins en thema's worden vaak jaarlijks verlengd.</li>
           <li><strong>Aanpassingen na oplevering:</strong> zijn kleine wijzigingen inbegrepen, of betaal je per uur?</li>
@@ -95,8 +95,8 @@ export default {
   ],
   faqTitle: 'VRAGEN OVER<br><span>WEBSITEKOSTEN</span>',
   faq: [
-    { q: 'Wat kost een eenvoudige website in Friesland?', a: 'Een eenvoudige maatwerk website van 1 tot 3 pagina\'s kost bij MVDBmedia vanaf €499 (exclusief BTW). Bij andere freelancers ligt de prijs voor een kleine maatwerk website meestal tussen €500 en €3.000, afhankelijk van ontwerp en functies.' },
-    { q: 'Zijn er na oplevering maandelijkse kosten?', a: 'Ja, voor hosting en een domeinnaam. Hosting kost doorgaans ongeveer €3 tot €8 per maand en is niet inbegrepen in mijn pakketten. Na de gratis onderhoudsperiode kun je kiezen voor een onderhoudsabonnement of losse aanpassingen.' },
+    { q: 'Wat kost een eenvoudige website in Friesland?', a: 'Een eenvoudige maatwerk website van 1 tot 4 pagina\'s kost bij MVDBmedia vanaf €499 (exclusief BTW). Bij andere freelancers ligt de prijs voor een kleine maatwerk website meestal tussen €500 en €3.000, afhankelijk van ontwerp en functies.' },
+    { q: 'Zijn er na oplevering maandelijkse kosten?', a: 'Ja, voor een domeinnaam en hosting. Een domeinnaam kost doorgaans een klein jaarbedrag. Hosting is niet inbegrepen in de websiteprijs, maar zit in het optionele onderhoudspakket vanaf €19 per maand (hosting, updates en kleine aanpassingen tot 30 minuten per maand). Wil je zelf hosten? Dan draag ik de website over.' },
     { q: 'Zijn de genoemde prijzen inclusief BTW?', a: 'Nee. Alle prijzen van MVDBmedia zijn exclusief BTW. Controleer bij elke offerte of bedragen inclusief of exclusief BTW zijn weergegeven.' },
     { q: 'Hoe lang duurt het om een website te laten maken?', a: 'Een Starter-website is bij MVDBmedia binnen 7 werkdagen klaar, een Business-website binnen 2 weken. De doorlooptijd hangt ook af van hoe snel je teksten en foto\'s aanlevert.' },
     { q: 'Is een goedkope website van €200 een goed idee?', a: 'Meestal niet voor een bedrijf dat klanten wil winnen. Zeer lage prijzen betekenen vaak een standaardtemplate, weinig aandacht voor snelheid en vindbaarheid, en geen ondersteuning. Dan betaal je later alsnog extra voor aanpassingen of een nieuwe website.' },

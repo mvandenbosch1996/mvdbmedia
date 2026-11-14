@@ -127,7 +127,7 @@ function page(c) {
   const others = STEDEN.filter((x) => x.slug !== c.slug).map((x) => card({
     href: `/${x.slug}`, cat: 'Werkgebied', name: `Webdesign & fotografie ${x.stad}`, text: TEASERS[x.slug], more: 'Bekijk pagina →',
   }));
-  others.push(card({ href: '/website-laten-maken-sneek', cat: 'Thuisbasis', name: 'Webdesigner in Sneek', text: 'Lokale webdesigner in Sneek en Friesland: persoonlijke aanpak, vaste prijzen en korte lijnen.', more: 'Lees de gids →' }));
+  others.push(card({ href: '/website-laten-maken-sneek', cat: 'Thuisbasis', name: 'Webdesigner in Sneek', text: 'Lokale webdesigner in Sneek en Friesland: persoonlijke aanpak, heldere prijzen en korte lijnen.', more: 'Lees de gids →' }));
 
   const html = `${headHtml({
     title: c.metaTitle,

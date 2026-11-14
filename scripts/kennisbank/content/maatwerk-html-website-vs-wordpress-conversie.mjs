@@ -2,18 +2,18 @@ export default {
   slug: 'maatwerk-html-website-vs-wordpress-conversie',
   date: '2026-11-03',
   dateLabel: 'november 2026',
-  title: 'Waarom een maatwerk HTML/JS website sneller converteert dan WordPress',
+  title: 'Maatwerk HTML/JS website of WordPress: sneller laden en gericht op contact',
   crumb: 'HTML/JS vs WordPress: conversie',
-  h1: 'WAAROM EEN MAATWERK <em>HTML/JS WEBSITE</em> SNELLER CONVERTEERT DAN WORDPRESS',
-  metaTitle: 'HTML/JS website vs WordPress: sneller en meer aanvragen | MVDBmedia',
-  metaDescription: 'Waarom een maatwerk HTML/JS website sneller laadt en beter converteert dan WordPress: Core Web Vitals, plugins en beveiliging uitgelegd. Lees de gids.',
+  h1: 'MAATWERK <em>HTML/JS WEBSITE</em> OF WORDPRESS: SNELLER LADEN, GERICHT OP CONTACT',
+  metaTitle: 'HTML/JS vs WordPress: sneller en gericht op contact | MVDBmedia',
+  metaDescription: 'Waarom een maatwerk HTML/JS website sneller laadt en gerichter is op contact opnemen dan WordPress: Core Web Vitals, plugins en beveiliging. Lees de gids.',
   category: 'Techniek & Conversie',
   schemaType: 'TechArticle',
   tags: ['Conversie', 'HTML/JS', 'WordPress'],
   keywords: ['maatwerk website sneller dan WordPress', 'HTML JS website', 'website conversie verhogen', 'WordPress traag', 'Core Web Vitals WordPress', 'WordPress alternatief'],
   cardSummary: 'Hoe laadtijd, plugins en beveiliging bepalen hoeveel aanvragen je website oplevert, en waarom handgeschreven HTML/JS daarin vaak wint van WordPress.',
-  lead: 'Twee websites kunnen er hetzelfde uitzien en toch een heel ander aantal aanvragen opleveren. Het verschil zit onder de motorkap: in laadtijd, stabiliteit en in hoeveel er tussen je bezoeker en je contactknop staat. In deze gids leg ik uit waarom een handgeschreven HTML/JS website in de praktijk sneller converteert dan een gemiddelde WordPress-site, en wanneer dat verschil klein is.',
-  answer: 'Een <strong>maatwerk HTML/JS website</strong> converteert doorgaans beter dan WordPress, omdat hij sneller laadt, stabieler is en geen plugins of paginabouwer tussen bezoeker en aanvraag zet. Snelle pagina\'s verliezen minder bezoekers: <strong>53% van de mobiele bezoekers haakt af</strong> bij een laadtijd boven de 3 seconden. Een goed afgestelde WordPress-site kan dicht in de buurt komen, maar dat kost extra werk en onderhoud.',
+  lead: 'Twee websites kunnen er hetzelfde uitzien en toch een heel ander aantal aanvragen opleveren. Het verschil zit onder de motorkap: in laadtijd, stabiliteit en in hoeveel er tussen je bezoeker en je contactknop staat. In deze gids leg ik uit waarom een handgeschreven HTML/JS website vaak sneller laadt en gerichter is op contact opnemen dan een gemiddelde WordPress-site, en wanneer dat verschil klein is.',
+  answer: 'Een <strong>maatwerk HTML/JS website</strong> laadt doorgaans sneller dan WordPress en houdt het pad naar contact opnemen kort, omdat hij stabieler is en geen plugins of paginabouwer tussen bezoeker en aanvraag zet. Snelle pagina\'s verliezen minder bezoekers: <strong>53% van de mobiele bezoekers haakt af</strong> bij een laadtijd boven de 3 seconden. Een goed afgestelde WordPress-site kan dicht in de buurt komen, maar dat kost extra werk en onderhoud.',
   sections: [
     {
       h2: 'Wat is een maatwerk HTML/JS website?',
@@ -40,7 +40,7 @@ export default {
     {
       h2: 'Core Web Vitals: waar WordPress tijd verliest',
       html: `
-        <p>Google meet de gebruikservaring met drie waarden: LCP, INP en CLS (zie <a href="/snelle-website-laten-maken">waarom een snelle website meer klanten oplevert</a>). Op alle drie heeft een gemiddelde WordPress-site een structureel nadeel, simpelweg omdat er meer software tussen de bezoeker en de pagina zit.</p>
+        <p>Google meet de gebruikservaring met drie waarden: LCP, INP en CLS (zie <a href="/snelle-website-laten-maken">waarom een snelle laadtijd telt voor je bezoekers en je vindbaarheid</a>). Op alle drie heeft een gemiddelde WordPress-site een structureel nadeel, simpelweg omdat er meer software tussen de bezoeker en de pagina zit.</p>
         <h3>LCP: het grootste element is lang onderweg</h3>
         <p>De tijd tot de eerste byte (TTFB) is bij WordPress afhankelijk van PHP en database. Daarbovenop komen render-blocking CSS van thema en plugins, en een hoofdafbeelding die een paginabouwer vaak pas laat in beeld zet. Bij maatwerk geef ik de hoofdafbeelding vaste afmetingen en laat ik de browser die als eerste ophalen.</p>
         <h3>INP: reactietijd door zwaar JavaScript</h3>
@@ -100,7 +100,7 @@ export default {
               <tr><td>Stabiele layout</td><td>Risico door widgets en late lettertypen</td><td>Vooraf vastgelegd</td></tr>
               <tr><td>Beveiliging en uptime</td><td>Doorlopende updates nodig</td><td>Klein aanvalsoppervlak</td></tr>
               <tr><td>Controle over conversiepad</td><td>Beperkt door thema</td><td>Volledig op maat</td></tr>
-              <tr><td>Zelf aanpassen</td><td>Eenvoudig via beheeromgeving</td><td>Via dashboard (Business) of door mij</td></tr>
+              <tr><td>Zelf aanpassen</td><td>Eenvoudig via beheeromgeving</td><td>Via eenvoudige beheeromgeving (Business) of door mij</td></tr>
               <tr><td>Past het best bij</td><td>Grote redacties en grote webshops</td><td>Bedrijfswebsites die aanvragen moeten opleveren</td></tr>
             </tbody>
           </table>
@@ -131,7 +131,7 @@ export default {
     {
       h2: 'Wat kost het en wanneer verdient het zich terug?',
       html: `
-        <p>Een Starter-website begint bij €499 excl. btw en staat binnen 7 werkdagen live. Een Business-website, opgebouwd om aanvragen te genereren, begint bij €999 excl. btw en staat binnen 2 weken live. Een uitgebreide uitleg van de prijzen vind je in <a href="/webdesign-kosten-friesland">wat kost een professionele website in Friesland</a>.</p>
+        <p>Een Starter-website begint bij €499 excl. btw en staat binnen 7 werkdagen na complete aanlevering live. Een Business-website, opgebouwd om bezoekers naar contact te sturen, begint bij €999 excl. btw en staat binnen 2 weken na complete aanlevering live. Een uitgebreide uitleg van de prijzen vind je in <a href="/webdesign-kosten-friesland">wat kost een professionele website in Friesland</a>.</p>
         <p>Reken met de waarde van één aanvraag. Levert een snellere website één extra opdracht per maand op ter waarde van €500, dan is het Business-pakket in ongeveer twee maanden terugverdiend. Dat is een voorbeeld, geen belofte, maar het is de rekensom die ik je aanraad te maken voor je eigen bedrijf. Bovendien vallen bij maatwerk de terugkerende kosten van plugin-licenties en herstel na updates grotendeels weg.</p>`,
     },
   ],
@@ -140,15 +140,15 @@ export default {
     { q: 'Is een HTML/JS website echt sneller dan WordPress?', a: `Meestal wel. Een HTML/JS website levert kant-en-klare pagina's zonder PHP en database en laadt alleen de code die de pagina nodig heeft. Een goed afgestelde WordPress-site kan ook snel zijn, maar dat vraagt doorlopend afstellen van thema, plugins en caching.` },
     { q: 'Converteert een snellere website altijd beter?', a: `Niet automatisch. Snelheid haalt een belangrijke drempel weg: bezoekers haken minder af en de pagina voelt betrouwbaarder. Maar je aanbod, je teksten en je vertrouwenselementen bepalen daarna of iemand ook echt contact opneemt. Snelheid en een sterke inhoud versterken elkaar.` },
     { q: 'Hoeveel bezoekers verlies ik door een trage website?', a: `Volgens Google (2016) verlaat 53% van de mobiele bezoekers een pagina die er langer dan 3 seconden over doet om te laden. Hoeveel dat voor jou betekent, hangt af van je verkeer en je huidige laadtijd. Meet daarom eerst je mobiele score in PageSpeed Insights.` },
-    { q: 'Kan ik een HTML/JS website zelf aanpassen?', a: `Ja. Bij het Business-pakket van MVDBmedia beheer je teksten, foto's en pagina's zelf via een gebruiksvriendelijk dashboard. Bij het Starter-pakket verzorg ik de aanpassingen voor je, zodat je niet vastzit aan technische kennis.` },
+    { q: 'Kan ik een HTML/JS website zelf aanpassen?', a: `Ja. Bij het Business-pakket van MVDBmedia pas je teksten, foto's en blogberichten zelf aan via een eenvoudige beheeromgeving. Bij het Starter-pakket pas ik wijzigingen voor je aan, zodat je niet vastzit aan technische kennis.` },
     { q: 'Is een HTML/JS website goed voor SEO?', a: `Een snelle, schone website met nette koppen en gestructureerde data is een sterke basis voor vindbaarheid, in Google en in AI-zoekmachines. Het is geen garantie voor een hoge positie: daarvoor zijn goede inhoud en een duidelijke structuur minstens zo belangrijk.` },
-    { q: 'Hoe lang duurt de overstap van WordPress naar maatwerk?', a: `Dat hangt af van de omvang van je site. Een Starter-website staat binnen 7 werkdagen live en een Business-website binnen 2 weken. Ik neem je bestaande inhoud over en zorg dat je belangrijke URL's behouden blijven of netjes worden doorgestuurd, zodat je vindbaarheid niet verloren gaat.` },
+    { q: 'Hoe lang duurt de overstap van WordPress naar maatwerk?', a: `Dat hangt af van de omvang van je site. Een Starter-website staat binnen 7 werkdagen live en een Business-website binnen 2 weken, gerekend vanaf complete aanlevering. Ik neem je bestaande inhoud over en zorg dat je belangrijke URL's behouden blijven of netjes worden doorgestuurd, zodat je vindbaarheid niet verloren gaat.` },
   ],
   cta: {
-    title: 'Wil je een snellere website die meer aanvragen oplevert?',
+    title: 'Wil je een snellere website die bezoekers naar contact leidt?',
     text: 'Bekijk hoe ik maatwerk HTML/JS websites bouw voor ondernemers in Friesland en heel Nederland. Vrijblijvende offerte, meestal binnen 24 uur.',
   },
-  finalCtaTitle: 'SNELLERE WEBSITE,<br><em>MEER AANVRAGEN?</em>',
+  finalCtaTitle: 'SNELLERE WEBSITE,<br><em>GERICHT OP CONTACT?</em>',
   finalCtaText: 'Vertel me over jouw website en je doelen. Ik laat je zien wat maatwerk voor jouw laadtijd en aanvragen kan betekenen, vrijblijvend en meestal binnen 24 uur.',
   related: ['maatwerk-website-vs-wordpress', 'snelle-website-laten-maken', 'conversie-gericht-webdesign'],
 };

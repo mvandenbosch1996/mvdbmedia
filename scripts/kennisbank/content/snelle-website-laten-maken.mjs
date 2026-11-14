@@ -1,15 +1,15 @@
 export default {
   slug: 'snelle-website-laten-maken',
-  title: 'Waarom een snelle laadtijd zorgt voor meer klanten en betere Google-posities',
+  title: 'Waarom een snelle laadtijd telt voor je bezoekers en je vindbaarheid in Google',
   crumb: 'Snelle website',
-  h1: 'SNELLE <em>LAADTIJD</em>: MEER KLANTEN EN BETERE GOOGLE-POSITIES',
+  h1: 'SNELLE <em>LAADTIJD</em>: BETERE ERVARING EN BETERE VINDBAARHEID',
   metaTitle: 'Snelle Website Laten Maken: Laadtijd & Google | MVDBmedia',
-  metaDescription: 'Waarom laadtijd bepaalt hoeveel klanten je krijgt en hoe hoog je scoort in Google. Core Web Vitals uitgelegd door een webdesigner uit Sneek. Lees de gids.',
+  metaDescription: 'Waarom laadtijd meetelt voor je bezoekers en je vindbaarheid in Google. Core Web Vitals uitgelegd door een webdesigner uit Sneek. Lees de gids.',
   category: 'Snelheid & Performance',
   schemaType: 'TechArticle',
   tags: ['Snelheid', 'Core Web Vitals', 'SEO'],
   keywords: ['snelle website', 'laadtijd website', 'Core Web Vitals', 'PageSpeed verbeteren', 'website sneller maken'],
-  cardSummary: 'Elke seconde telt. Ontdek hoe laadtijd je omzet en Google-positie beïnvloedt, wat Core Web Vitals zijn en hoe ik websites razendsnel bouw.',
+  cardSummary: 'Elke seconde telt. Ontdek hoe laadtijd je bezoekers en je vindbaarheid kan beïnvloeden, wat Core Web Vitals zijn en hoe ik websites snel bouw.',
   lead: 'Bezoekers wachten niet. Een trage website kost je klanten voordat ze je aanbod hebben gezien, en Google houdt daar rekening mee. Hier lees je waarom snelheid zo belangrijk is en wat je eraan kunt doen.',
   answer: 'Een snelle website houdt bezoekers vast, verhoogt het aantal aanvragen en geeft je een voordeel in Google. Onderzoek van Google (2016) toonde dat <strong>53% van de mobiele bezoekers afhaakt</strong> als een pagina langer dan 3 seconden laadt. Streef naar een <strong>LCP onder 2,5 seconden</strong>, een INP onder 200 ms en een CLS onder 0,1.',
   sections: [
@@ -55,7 +55,7 @@ export default {
         ${'{{CTA}}'}`,
     },
     {
-      h2: 'Zo bouw ik een razendsnelle website',
+      h2: 'Zo bouw ik een snelle website',
       html: `
         <p>Snelheid is bij mij geen achteraf-optimalisatie, maar een uitgangspunt van het ontwerp. Dit is mijn aanpak:</p>
         <ol>
@@ -100,7 +100,7 @@ export default {
   faqTitle: 'VRAGEN OVER<br><span>WEBSITESNELHEID</span>',
   faq: [
     { q: 'Wat is een goede laadtijd voor een website?', a: 'Streef naar een Largest Contentful Paint (LCP) van maximaal 2,5 seconden op mobiel. Daaronder voelt een website voor bezoekers als snel. Hoe korter, hoe beter, vooral voor bezoekers met een tragere verbinding.' },
-    { q: 'Beïnvloedt de laadtijd mijn positie in Google?', a: 'Ja, in beperkte mate. Core Web Vitals maken deel uit van de page experience-signalen van Google. Inhoud en relevantie wegen zwaarder, maar bij vergelijkbare pagina\'s kan een snellere website voordeel opleveren. Bovendien levert snelheid direct meer conversies op.' },
+    { q: 'Beïnvloedt de laadtijd mijn positie in Google?', a: 'Ja, in beperkte mate. Core Web Vitals maken deel uit van de page experience-signalen van Google. Inhoud en relevantie wegen zwaarder, maar bij vergelijkbare pagina\'s kan een snellere website voordeel opleveren. Bovendien helpt snelheid bezoekers om sneller te doen wat ze willen, zoals contact opnemen.' },
     { q: 'Waarom is mijn WordPress-website traag?', a: 'De meest voorkomende oorzaken zijn te veel plugins, een zwaar thema of page builder, niet-geoptimaliseerde afbeeldingen en trage hosting. Met een lichter thema, minder plugins en goede caching is veel winst te halen.' },
     { q: 'Kan een bestaande website sneller gemaakt worden?', a: 'Vaak wel. Afbeeldingen optimaliseren, onnodige scripts verwijderen en lettertypen slimmer laden geeft meestal direct resultaat. Bij een zware opbouw is een nieuwe, lichte maatwerk website uiteindelijk effectiever.' },
     { q: 'Bouwt MVDBmedia websites die vanaf het begin snel zijn?', a: 'Ja. Snelheid is een uitgangspunt van elk ontwerp: moderne afbeeldingsformaten, lazy loading, minimale code en een stabiele layout. Zo voldoet je website aan de Core Web Vitals zonder dat je daar later extra voor hoeft te betalen.' },

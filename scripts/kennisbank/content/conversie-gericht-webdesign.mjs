@@ -9,7 +9,7 @@ export default {
   tags: ['Conversie', 'UX', 'Groei'],
   keywords: ['conversiegericht webdesign', 'conversie optimalisatie', 'meer aanvragen website', 'call-to-action', 'website klanten'],
   cardSummary: 'Een mooie website is niet genoeg. Leer welke bouwstenen bezoekers omzetten in aanvragen: propositie, call-to-action, vertrouwen, snelheid en meten.',
-  lead: 'Veel websites zien er goed uit, maar leveren weinig op. Het verschil zit in conversie: het percentage bezoekers dat daadwerkelijk iets doet. Zo ontwerp ik websites die niet alleen mooi zijn, maar ook klanten opleveren.',
+  lead: 'Veel websites zien er goed uit, maar leveren weinig op. Het verschil zit in conversie: het percentage bezoekers dat daadwerkelijk iets doet. Zo ontwerp ik websites die niet alleen mooi zijn, maar ook gericht zijn op contact opnemen.',
   answer: 'Conversiegericht webdesign betekent dat elke pagina is ontworpen om bezoekers naar één duidelijke actie te leiden, zoals een offerte aanvragen of bellen. De belangrijkste bouwstenen zijn een <strong>heldere propositie bovenaan</strong>, <strong>één duidelijke call-to-action</strong>, <strong>bewijs en vertrouwen</strong>, een <strong>snelle, mobielvriendelijke ervaring</strong> en een <strong>laagdrempelig contactmoment</strong>.',
   sections: [
     {
@@ -83,7 +83,7 @@ export default {
   faq: [
     { q: 'Wat is een goede conversieratio voor een bedrijfswebsite?', a: 'Dat verschilt sterk per branche en dienst. Bij lokale dienstverleners zie je in de praktijk vaak een aanvraagpercentage van enkele procenten van het aantal bezoekers. Belangrijker dan een vast getal is dat je ratio groeit door gerichte verbeteringen.' },
     { q: 'Hoe krijg ik meer aanvragen via mijn website?', a: 'Begin met een heldere propositie bovenaan, één duidelijke call-to-action, bewijs zoals reviews en eigen foto\'s, en een snelle mobielvriendelijke website. Maak daarnaast contact opnemen eenvoudig, met een kort formulier, klikbaar telefoonnummer en WhatsApp.' },
-    { q: 'Bouwt MVDBmedia websites die gericht zijn op conversie?', a: 'Ja. Elke website bouw ik met een duidelijk doel: meer aanvragen. Het Business-pakket is opgebouwd om meer aanvragen te krijgen, met een heldere structuur, duidelijke call-to-actions en een snelle, mobielvriendelijke ervaring.' },
+    { q: 'Bouwt MVDBmedia websites die gericht zijn op conversie?', a: 'Ja. Elke website bouw ik met een duidelijk doel: bezoekers naar contact leiden. Het Business-pakket is opgebouwd om bezoekers naar contact te sturen, met een heldere structuur, duidelijke call-to-actions en een snelle, mobielvriendelijke ervaring.' },
     { q: 'Heeft snelheid invloed op conversie?', a: 'Ja, aanzienlijk. Bezoekers haken sneller af bij een trage website. Onderzoek van Google (2016) toonde dat 53% van de mobiele bezoekers vertrekt als een pagina langer dan 3 seconden laadt.' },
     { q: 'Moet ik een A/B-test doen?', a: 'Niet per se. A/B-tests vragen veel bezoekers voor betrouwbare uitkomsten. Bij een kleinere website werkt het beter om bewezen principes toe te passen en verbeteringen stap voor stap door te voeren.' },
   ],

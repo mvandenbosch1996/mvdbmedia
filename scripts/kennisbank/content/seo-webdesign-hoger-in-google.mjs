@@ -1,30 +1,30 @@
 export default {
   slug: 'seo-webdesign-hoger-in-google',
-  title: 'SEO & GEO in webdesign: direct hoger in Google en AI-zoekmachines',
+  title: 'SEO & GEO in webdesign: beter vindbaar in Google en AI-zoekmachines',
   crumb: 'SEO & GEO',
-  h1: 'SEO &amp; <em>GEO</em> IN WEBDESIGN: HOGER IN GOOGLE EN AI-ZOEKMACHINES',
-  metaTitle: 'SEO & GEO Webdesign: hoger in Google en AI | MVDBmedia',
-  metaDescription: 'Wat is SEO en GEO? Zo bouw je een website die hoger scoort in Google én geciteerd wordt door ChatGPT en AI Overviews. Uitleg door webdesigner uit Sneek.',
+  h1: 'SEO &amp; <em>GEO</em> IN WEBDESIGN: BETER VINDBAAR IN GOOGLE EN AI-ZOEKMACHINES',
+  metaTitle: 'SEO & GEO Webdesign: beter vindbaar | MVDBmedia',
+  metaDescription: 'Wat is SEO en GEO? Zo bouw je een website die beter vindbaar is in Google en geciteerd kan worden door ChatGPT en AI Overviews. Uitleg uit Sneek.',
   category: 'SEO & GEO',
   tags: ['SEO', 'GEO', 'AI-zoekmachines'],
   keywords: ['SEO webdesign', 'GEO Generative Engine Optimization', 'hoger in Google', 'AI Overviews', 'gestructureerde data', 'lokale SEO'],
-  cardSummary: 'SEO is de basis, GEO is de toekomst. Zo bouw je een website die hoger scoort in Google én wordt geciteerd door AI-zoekmachines als ChatGPT en AI Overviews.',
+  cardSummary: 'SEO is de basis, GEO is de toekomst. Zo bouw je een website die beter vindbaar is in Google en kans maakt om geciteerd te worden door AI-zoekmachines als ChatGPT en AI Overviews.',
   lead: 'Mensen zoeken steeds vaker via Google én via AI-assistenten. Een website die in beide gevonden wil worden, heeft een solide technische basis, heldere inhoud en gestructureerde data nodig. Dit is hoe ik dat in elk ontwerp verwerk.',
-  answer: '<strong>SEO</strong> (zoekmachineoptimalisatie) zorgt dat je website goed scoort in Google. <strong>GEO</strong> (Generative Engine Optimization) zorgt dat AI-zoekmachines zoals ChatGPT, Gemini en Google AI Overviews jouw website begrijpen en citeren. Beide begin je in het webdesign: met een snelle, schone site, duidelijke antwoorden, gestructureerde data en een herkenbare afzender.',
+  answer: '<strong>SEO</strong> (zoekmachineoptimalisatie) zorgt dat je website beter vindbaar is in Google. <strong>GEO</strong> (Generative Engine Optimization) zorgt dat AI-zoekmachines zoals ChatGPT, Gemini en Google AI Overviews jouw website begrijpen en citeren. Beide begin je in het webdesign: met een snelle, schone site, duidelijke antwoorden, gestructureerde data en een herkenbare afzender.',
   sections: [
     {
       h2: 'Wat is het verschil tussen SEO en GEO?',
       html: `
         <p><strong>SEO</strong> richt zich op het scoren van je pagina's in de zoekresultaten van Google en Bing. Je wilt dat je website verschijnt wanneer iemand zoekt op "webdesigner Sneek" of "fotograaf Friesland".</p>
         <p><strong>GEO</strong> richt zich op AI-zoekmachines en -assistenten die zelf een antwoord samenstellen, zoals ChatGPT, Gemini, Perplexity en Google AI Overviews. Hier wil je niet alleen vindbaar zijn, maar ook genoemd of geciteerd worden als bron in het antwoord.</p>
-        <p>De twee versterken elkaar: een website die technisch sterk is en duidelijke, betrouwbare antwoorden geeft, scoort beter in beide. Het goede nieuws is dat je er geen apart traject voor nodig hebt. Het zit in de manier waarop je de website bouwt.</p>`,
+        <p>De twee versterken elkaar: een website die technisch sterk is en duidelijke, betrouwbare antwoorden geeft, is beter vindbaar in beide. Het goede nieuws is dat je er geen apart traject voor nodig hebt. Het zit in de manier waarop je de website bouwt.</p>`,
     },
     {
       h2: 'De technische basis van SEO',
       html: `
         <p>Zonder technische basis haalt geen enkele tekst het eruit. Dit zijn de onderdelen die ik altijd controleer:</p>
         <ul>
-          <li><strong>Snelheid.</strong> Snelle pagina's geven een betere ervaring en worden efficiënter gecrawld. Zie <a href="/snelle-website-laten-maken">waarom een snelle website meer klanten oplevert</a>.</li>
+          <li><strong>Snelheid.</strong> Snelle pagina's geven een betere ervaring en worden efficiënter gecrawld. Zie <a href="/snelle-website-laten-maken">waarom een snelle laadtijd telt voor je bezoekers en je vindbaarheid</a>.</li>
           <li><strong>Mobielvriendelijk.</strong> Google beoordeelt in de eerste plaats de mobiele versie van je website.</li>
           <li><strong>HTTPS en veiligheid.</strong> Een beveiligde verbinding is standaard. Lees meer in <a href="/website-beveiliging-onderhoud">website beveiliging &amp; onderhoud</a>.</li>
           <li><strong>Crawlbaarheid.</strong> Een sitemap, een goed ingesteld robots.txt-bestand, schone URL's en geen kapotte interne links.</li>
@@ -81,7 +81,7 @@ export default {
       h2: 'Wat SEO niet is',
       html: `
         <p>Wees voorzichtig met bureaus die "positie 1 in Google" garanderen. Niemand kan dat beloven, omdat Google zelf de resultaten bepaalt. Wat je wél kunt doen is een stevige basis leggen, relevante inhoud bieden en de resultaten meten via Google Search Console en Bing Webmaster Tools. SEO is geen eenmalige actie maar een groeiproces. Een goed gebouwde website geeft je daarvoor het beste startpunt.</p>
-        <p>Wil je weten hoe jouw website ervoor staat of hoe ik SEO en GEO in een nieuwe website inbouw? Bekijk <a href="/webdesignopmaat">webdesign op maat</a>. Het Business-pakket bevat basis SEO-optimalisatie.</p>`,
+        <p>Wil je weten hoe jouw website ervoor staat of hoe ik SEO en GEO in een nieuwe website inbouw? Bekijk <a href="/webdesignopmaat">webdesign op maat</a>. Het Starter-pakket bevat basis SEO, het Business-pakket uitgebreide SEO.</p>`,
     },
   ],
   faqTitle: 'VRAGEN OVER<br><span>SEO &amp; GEO</span>',
@@ -90,7 +90,7 @@ export default {
     { q: 'Is SEO nog nodig nu er AI-zoekmachines zijn?', a: 'Ja. SEO vormt de basis voor vindbaarheid en veel AI-systemen gebruiken zoekresultaten als bron. GEO bouwt daarop voort. Een goed gebouwde, snelle en duidelijke website helpt je in beide kanalen.' },
     { q: 'Hoe snel zie ik resultaat van SEO?', a: 'Dat verschilt per situatie. Technische verbeteringen kunnen binnen weken effect hebben, maar het opbouwen van structurele vindbaarheid duurt gewoonlijk enkele maanden. Niemand kan een specifieke positie garanderen.' },
     { q: 'Wat is gestructureerde data en heb ik dat nodig?', a: 'Gestructureerde data (schema.org in JSON-LD) beschrijft de inhoud van je pagina in een vorm die machines direct begrijpen, zoals je bedrijf, diensten, auteur en veelgestelde vragen. Voor een bedrijfswebsite is het sterk aan te raden, vooral voor lokale en AI-zichtbaarheid.' },
-    { q: 'Zit SEO inbegrepen in mijn website?', a: 'Bij MVDBmedia is een SEO-vriendelijke basis onderdeel van elke website: snel, mobielvriendelijk, schone koppen en nette markup. Het Business-pakket bevat daarnaast basis SEO-optimalisatie. Voor uitgebreidere SEO maak ik een offerte op maat.' },
+    { q: 'Zit SEO inbegrepen in mijn website?', a: 'Bij MVDBmedia is een SEO-vriendelijke basis onderdeel van elke website: snel, mobielvriendelijk, schone koppen en nette markup. Het Starter-pakket bevat basis SEO. Het Business-pakket bevat uitgebreide SEO: zoekwoordenonderzoek, een geoptimaliseerde paginastructuur, interne links, schema markup en een Google Search Console-koppeling. Voor meer dan dat maak ik een offerte op maat.' },
   ],
   related: ['snelle-website-laten-maken', 'conversie-gericht-webdesign', 'website-laten-maken-sneek'],
 };

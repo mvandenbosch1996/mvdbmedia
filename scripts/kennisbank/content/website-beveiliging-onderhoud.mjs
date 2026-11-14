@@ -79,14 +79,14 @@ export default {
           <li><strong>Uptime-monitor.</strong> Een gratis dienst die een melding stuurt als je website niet bereikbaar is.</li>
           <li><strong>Back-up of versiebeheer</strong> van alle bestanden, zodat herstel snel gaat.</li>
         </ol>
-        <p>Bij mijn pakketten is er na oplevering een periode gratis onderhoud, en daarna kun je kiezen voor een onderhoudsabonnement of losse aanpassingen. Wat dat kost? Zie <a href="/webdesign-kosten-friesland">wat een website kost</a>.</p>`,
+        <p>Bij mijn pakketten is er na oplevering een periode gratis onderhoud, en daarna kun je kiezen voor het optionele onderhoudspakket (vanaf €19 per maand: hosting, updates en kleine aanpassingen). Wat dat kost? Zie <a href="/webdesign-kosten-friesland">wat een website kost</a>.</p>`,
     },
   ],
   faqTitle: 'VRAGEN OVER<br><span>WEBSITEBEVEILIGING</span>',
   faq: [
     { q: 'Hoe veilig is een website zonder plugins?', a: 'Een website zonder onnodige plugins heeft een veel kleiner aanvalsoppervlak. Er is minder externe code die kwetsbaar kan zijn, en dus minder dat moet worden bijgewerkt. Dat maakt de website van nature veiliger en onderhoudsarmer.' },
     { q: 'Wat zijn beveiligingsheaders?', a: 'Beveiligingsheaders zijn instructies die de server meestuurt en die de browser vertellen hoe hij je website veilig moet behandelen, zoals HSTS en Content-Security-Policy. Ze blokkeren veelvoorkomende aanvallen zoals clickjacking en XSS zonder dat bezoekers er iets van merken.' },
-    { q: 'Hoeveel onderhoud heeft een maatwerk website nodig?', a: 'Weinig. Er hoeven geen plugin- en thema-updates te worden uitgevoerd. Je let vooral op domeinverlenging, hosting en actuele inhoud. Bij MVDBmedia zit er na oplevering een periode gratis onderhoud bij, waarna je kunt kiezen voor een abonnement of losse aanpassingen.' },
+    { q: 'Hoeveel onderhoud heeft een maatwerk website nodig?', a: 'Weinig. Er hoeven geen plugin- en thema-updates te worden uitgevoerd. Je let vooral op domeinverlenging, hosting en actuele inhoud. Bij MVDBmedia zit er na oplevering een periode gratis onderhoud bij, waarna je kunt kiezen voor het optionele onderhoudspakket vanaf €19 per maand.' },
     { q: 'Hoe weet ik of mijn website is gehackt?', a: 'Signalen zijn onverwachte pagina\'s of omleidingen, een waarschuwing in Google of je browser, plotselinge daling van bezoekers, of spam die vanuit je domein wordt verstuurd. Neem bij twijfel direct contact op met je webbouwer of hostingpartij.' },
     { q: 'Is een contactformulier veilig?', a: 'Dat hangt af van de uitvoering. Een veilig formulier valideert invoer ook aan de serverkant, heeft spambescherming en vraagt alleen om de gegevens die echt nodig zijn. Zo blijft het formulier beschermd tegen misbruik en voldoe je aan de AVG.' },
   ],
