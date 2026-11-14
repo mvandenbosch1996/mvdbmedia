@@ -62,7 +62,7 @@ export default {
     {
       h2: 'Lokale SEO: gevonden worden in je eigen regio',
       html: `
-        <p>Voor de meeste MKB-ondernemers is lokale vindbaarheid de snelste manier om extra klanten te winnen. Zorg voor een compleet Google Bedrijfsprofiel, consequente bedrijfsgegevens, echte reviews en pagina's die duidelijk maken waar je werkt. Een uitgebreide uitleg, specifiek voor ondernemers in de regio, vind je in <a href="/website-laten-maken-sneek">website laten maken in Sneek &amp; Friesland</a>.</p>`,
+        <p>Voor de meeste MKB-ondernemers is lokale vindbaarheid vaak de snelste manier om nieuwe klanten te bereiken. Zorg voor een compleet Google Bedrijfsprofiel, consequente bedrijfsgegevens, echte reviews en pagina's die duidelijk maken waar je werkt. Een uitgebreide uitleg, specifiek voor ondernemers in de regio, vind je in <a href="/website-laten-maken-sneek">website laten maken in Sneek &amp; Friesland</a>.</p>`,
     },
     {
       h2: 'GEO in de praktijk: zo word je geciteerd door AI',

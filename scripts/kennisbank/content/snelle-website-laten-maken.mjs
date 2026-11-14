@@ -11,7 +11,7 @@ export default {
   keywords: ['snelle website', 'laadtijd website', 'Core Web Vitals', 'PageSpeed verbeteren', 'website sneller maken'],
   cardSummary: 'Elke seconde telt. Ontdek hoe laadtijd je bezoekers en je vindbaarheid kan beïnvloeden, wat Core Web Vitals zijn en hoe ik websites snel bouw.',
   lead: 'Bezoekers wachten niet. Een trage website kost je klanten voordat ze je aanbod hebben gezien, en Google houdt daar rekening mee. Hier lees je waarom snelheid zo belangrijk is en wat je eraan kunt doen.',
-  answer: 'Een snelle website houdt bezoekers vast, verhoogt het aantal aanvragen en geeft je een voordeel in Google. Onderzoek van Google (2016) toonde dat <strong>53% van de mobiele bezoekers afhaakt</strong> als een pagina langer dan 3 seconden laadt. Streef naar een <strong>LCP onder 2,5 seconden</strong>, een INP onder 200 ms en een CLS onder 0,1.',
+  answer: 'Een snelle website houdt bezoekers vast, helpt bij het krijgen van aanvragen en kan een voordeel geven in Google. Onderzoek van Google (2016) toonde dat <strong>53% van de mobiele bezoekers afhaakt</strong> als een pagina langer dan 3 seconden laadt. Streef naar een <strong>LCP onder 2,5 seconden</strong>, een INP onder 200 ms en een CLS onder 0,1.',
   sections: [
     {
       h2: 'Waarom laadtijd je omzet bepaalt',
@@ -39,7 +39,7 @@ export default {
             </tbody>
           </table>
         </div>
-        <p>Let op: relevante, nuttige inhoud blijft belangrijker dan snelheid. Maar bij twee even sterke pagina's kan een betere gebruikservaring het verschil maken. En ook los van Google levert snelheid je meer klanten op.</p>`,
+        <p>Let op: relevante, nuttige inhoud blijft belangrijker dan snelheid. Maar bij twee even sterke pagina's kan een betere gebruikservaring het verschil maken. En ook los van Google helpt snelheid om bezoekers te houden en contact makkelijker te maken.</p>`,
     },
     {
       h2: 'Waarom zijn websites traag?',
@@ -47,7 +47,7 @@ export default {
         <p>In mijn ervaring zijn dit de meest voorkomende oorzaken:</p>
         <ul>
           <li><strong>Zware afbeeldingen:</strong> foto's in volle resolutie van meerdere megabytes, niet gecomprimeerd en niet aangepast aan het scherm.</li>
-          <li><strong>Te veel plugins en scripts:</strong> elke extra plugin, tracker of chatwidget voegt code toe die geladen moet worden. Lees ook <a href="/maatwerk-website-vs-wordpress">maatwerk vs. WordPress</a> en hoe een <a href="/maatwerk-html-website-vs-wordpress-conversie">handgeschreven HTML/JS website sneller converteert dan WordPress</a>.</li>
+          <li><strong>Te veel plugins en scripts:</strong> elke extra plugin, tracker of chatwidget voegt code toe die geladen moet worden. Lees ook <a href="/maatwerk-website-vs-wordpress">maatwerk vs. WordPress</a> en <a href="/maatwerk-html-website-vs-wordpress-conversie">maatwerk HTML/JS website of WordPress: sneller laden en gericht op contact</a>.</li>
           <li><strong>Zware thema's en page builders:</strong> ze leveren veel functies die je niet gebruikt, maar die wel worden geladen.</li>
           <li><strong>Webfonts en render-blocking bestanden:</strong> lettertypen of stijlbestanden die de weergave tegenhouden.</li>
           <li><strong>Trage hosting:</strong> goedkope servers met lange responstijden.</li>

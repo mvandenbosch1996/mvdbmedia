@@ -210,7 +210,7 @@ ${g.faq.map((f) => `          <details class="mv-faq-item">
       </div>
     </section>
 ${relatedSection({ id: 'services-title', label: 'Passende diensten', titleHtml: 'DIT KAN IK <span class="rel-accent">VOOR JE BOUWEN</span>', cardsHtml: serviceCards(GUIDE_SERVICES[g.slug]), allLink: false })}
-${finalCta(g.finalCtaTitle ?? 'WEBSITE DIE<br><em>RESULTAAT OPLEVERT?</em>', g.finalCtaText ?? 'Vertel me over jouw project. Ik maak een vrijblijvende offerte op maat — meestal binnen 24 uur.')}
+${finalCta(g.finalCtaTitle ?? 'WEBSITE DIE<br><em>VOOR JOU WERKT?</em>', g.finalCtaText ?? 'Vertel me over jouw project. Ik maak een vrijblijvende offerte op maat — meestal binnen 24 uur.')}
   </main>
 ${footerHtml()}
 
@@ -272,7 +272,7 @@ ${navHtml()}
         </nav>
         <div class="orange-label">Webdesign Gidsen</div>
         <h1 class="kb-h1">WEBDESIGN<br><em>KENNISBANK</em></h1>
-        <p class="kb-lead">Negen diepgaande gidsen over wat een website kost, hoe je kiest tussen maatwerk en WordPress, en hoe je hoger scoort in Google én AI-zoekmachines. Praktisch, eerlijk en geschreven door een webdesigner uit Sneek.</p>
+        <p class="kb-lead">Negen diepgaande gidsen over wat een website kost, hoe je kiest tussen maatwerk en WordPress, en hoe je beter vindbaar wordt in Google én AI-zoekmachines. Praktisch, eerlijk en geschreven door een webdesigner uit Sneek.</p>
         <div class="kb-stats">
           <div class="kb-stat"><b>${guides.length}</b><span>Gidsen</span></div>
           <div class="kb-stat"><b>SEO + GEO</b><span>Google &amp; AI</span></div>

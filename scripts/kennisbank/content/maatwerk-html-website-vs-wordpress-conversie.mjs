@@ -11,7 +11,7 @@ export default {
   schemaType: 'TechArticle',
   tags: ['Conversie', 'HTML/JS', 'WordPress'],
   keywords: ['maatwerk website sneller dan WordPress', 'HTML JS website', 'website conversie verhogen', 'WordPress traag', 'Core Web Vitals WordPress', 'WordPress alternatief'],
-  cardSummary: 'Hoe laadtijd, plugins en beveiliging bepalen hoeveel aanvragen je website oplevert, en waarom handgeschreven HTML/JS daarin vaak wint van WordPress.',
+  cardSummary: 'Hoe laadtijd, plugins en beveiliging meespelen in hoe makkelijk bezoekers contact opnemen, en waarom handgeschreven HTML/JS daarin vaak een voordeel biedt ten opzichte van WordPress.',
   lead: 'Twee websites kunnen er hetzelfde uitzien en toch een heel ander aantal aanvragen opleveren. Het verschil zit onder de motorkap: in laadtijd, stabiliteit en in hoeveel er tussen je bezoeker en je contactknop staat. In deze gids leg ik uit waarom een handgeschreven HTML/JS website vaak sneller laadt en gerichter is op contact opnemen dan een gemiddelde WordPress-site, en wanneer dat verschil klein is.',
   answer: 'Een <strong>maatwerk HTML/JS website</strong> laadt doorgaans sneller dan WordPress en houdt het pad naar contact opnemen kort, omdat hij stabieler is en geen plugins of paginabouwer tussen bezoeker en aanvraag zet. Snelle pagina\'s verliezen minder bezoekers: <strong>53% van de mobiele bezoekers haakt af</strong> bij een laadtijd boven de 3 seconden. Een goed afgestelde WordPress-site kan dicht in de buurt komen, maar dat kost extra werk en onderhoud.',
   sections: [
